@@ -24,7 +24,7 @@ class TicketRequest extends FormRequest
     public function rules()
     {
         return [
-            'session_id' => ['required', 'array'],
+            'session_id' => ['required', 'integer'],
         ];
     }
 }

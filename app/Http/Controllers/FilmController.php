@@ -1,9 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FilmRequest;
 use App\Models\Film;
+use Illuminate\Http\Response;
 
 class FilmController extends Controller
 {
@@ -16,7 +16,6 @@ class FilmController extends Controller
     {
         return Film::paginate(10);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -27,7 +26,6 @@ class FilmController extends Controller
     {
         return Film::create($request->validated());
     }
-
     /**
      * Display the specified resource.
      *
@@ -38,7 +36,6 @@ class FilmController extends Controller
     {
         return Film::findOfFail($id);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -51,7 +48,6 @@ class FilmController extends Controller
         $film->fill($request->validated());
         return $film->save();
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -62,6 +58,7 @@ class FilmController extends Controller
     {
         if ($film->delete()) {
             return response(null, Responce::HTTP_NO_CONTENT);
+            return response(null, Response::HTTP_NO_CONTENT);
         }
         return null;
     }

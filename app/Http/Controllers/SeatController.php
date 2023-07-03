@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Seat;
-use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\Http\Requests\SeatRequest;
+use App\Models\CinemaHall;
 
 class SeatController extends Controller
 {
@@ -14,7 +16,7 @@ class SeatController extends Controller
      */
     public function index()
     {
-        //
+        return Seat::all();
     }
 
     /**
@@ -48,7 +50,8 @@ class SeatController extends Controller
      */
     public function update(Request $request, Seat $seat)
     {
-        //
+        $seat->fill($request->validated());
+        return $seat->save();
     }
 
     /**
