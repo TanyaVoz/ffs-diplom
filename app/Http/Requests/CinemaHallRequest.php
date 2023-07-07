@@ -2,6 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\Response;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CinemaHallRequest extends FormRequest
@@ -31,5 +34,12 @@ class CinemaHallRequest extends FormRequest
             'price_vip' => ['required', 'integer'],
             'free' => ['required', 'boolean'],
         ];
+    }
+
+    protected function failedValidation(Validator $validator): void
+    {
+        throw new HttpResponseException(
+            response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY)
+        );
     }
 }

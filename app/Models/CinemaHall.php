@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use \Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CinemaHall extends Model
 {
@@ -19,11 +19,11 @@ class CinemaHall extends Model
     
     public function sessions(): hasMany
     {
-        return $this->hasMany(Session::class, 'cinema_id', 'id');
+        return $this->hasMany(Session::class, 'cinema_hall_id', 'id');
     }
 
-    public function chairs(): hasMany
+    public function seats(): hasMany
     {
-        return $this->hasMany(Seat::class, 'cinema_id', 'id');
+        return $this->hasMany(Seat::class, 'cinema_hall_id', 'id');
     }
 }
