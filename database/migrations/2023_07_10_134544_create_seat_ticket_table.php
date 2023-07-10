@@ -4,17 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFilmsTable extends Migration
+return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
-        Schema::create('films', function (Blueprint $table) {
+        Schema::create('seat_ticket', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('description');
-            $table->integer('duration');
-            $table->string('country');
-            $table->string('poster');
+            $table->integer('ticket_id');
+            $table->integer('seat_id');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateFilmsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('films');
+        Schema::dropIfExists('seat_ticket');
     }
-}
+};

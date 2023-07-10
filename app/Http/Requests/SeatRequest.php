@@ -28,8 +28,11 @@ class SeatRequest extends FormRequest
     {
         return [
             'number' => ['required', 'integer'],
-            'status' => ['required', 'string'],
-            'seats' => ['required', 'array'],
+            'seats.*.number' => ['required', 'integer'],
+            'seats.*.status' => ['required', 'string'],
+            'seats.*.id' => ['integer'],
+            'seats.*.cinema_hall_id' => ['integer'],
+        
         ];
     }
 

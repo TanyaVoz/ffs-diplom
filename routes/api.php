@@ -24,3 +24,6 @@ Route::apiResource('/session', \App\Http\Controllers\SessionController::class);
 Route::apiResource('/ticket', \App\Http\Controllers\TicketController::class);
 
 Route::apiResource('/info', \App\Http\Controllers\CommonController::class);
+
+
+Route::get('/afisha', [\App\Http\Controllers\CommonController::class, 'index']);
