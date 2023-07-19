@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CinemaHallRequest;
 use App\Models\CinemaHall;
+use Illuminate\Http\Response;
 
 class CinemaHallController extends Controller
 {
@@ -14,7 +15,7 @@ class CinemaHallController extends Controller
      */
     public function index()
     {
-        //
+        return CinemaHall::all();
     }
 
     /**

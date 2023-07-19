@@ -15,13 +15,13 @@ class FilmSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('films')->insert([
-            'title' => 'Звёздные войны XXIII: Атака клонированных клонов',
-            'description' => 'Две сотни лет назад малороссийские хутора разоряла шайка нехристей-ляхов во главе с могущественным колдуном.',
-            'duration' => 130,
-            'country' => 'США',
-            'poster' => 'poster'
-        ]);
+        // DB::table('films')->insert([
+        //     'title' => 'Звёздные войны XXIII: Атака клонированных клонов',
+        //     'description' => 'Две сотни лет назад малороссийские хутора разоряла шайка нехристей-ляхов во главе с могущественным колдуном.',
+        //     'duration' => 130,
+        //     'country' => 'США',
+        //     'poster' => 'poster'
+        // ]);
 
         DB::table('films')->insert([
             'title' => 'Альфа',
