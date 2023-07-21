@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Response;
-use Illuminate\Foundation\Http\FormRequest;
 
 class CinemaHallRequest extends FormRequest
 {
@@ -27,12 +27,12 @@ class CinemaHallRequest extends FormRequest
     public function rules()
     {
         return [
-            'hall_title' => ['required', 'string'],
-            'row' => ['required', 'integer'],
-            'chair' => ['required', 'integer'],
-            'price_standard' => ['required', 'integer'],
-            'price_vip' => ['required', 'integer'],
-            'free' => ['required', 'boolean'],
+            'name' => ['required', 'string'],
+            'row' => ['integer'],
+            'chair' => ['integer'],
+            'price_standard' => ['integer'],
+            'price_vip' => ['integer'],
+            'free' => ['boolean'],
         ];
     }
 

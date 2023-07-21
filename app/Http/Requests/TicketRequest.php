@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Response;
-use Illuminate\Foundation\Http\FormRequest;
 
 class TicketRequest extends FormRequest
 {
@@ -32,6 +32,7 @@ class TicketRequest extends FormRequest
             'seats.*' => ['required', 'integer']
         ];
     }
+
     protected function failedValidation(Validator $validator): void
     {
         throw new HttpResponseException(

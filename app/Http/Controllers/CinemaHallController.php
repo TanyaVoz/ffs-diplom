@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CinemaHallRequest;
 use App\Models\CinemaHall;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
 class CinemaHallController extends Controller
@@ -11,20 +12,20 @@ class CinemaHallController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        return CinemaHall::all();
+        return response()->json(CinemaHall::all());
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\CinemaHallRequest $request
+     * @return \App\Models\CinemaHall
      */
-    public function store(CinemaHallRequest $request)
+    public function store(CinemaHallRequest $request): CinemaHall
     {
         return CinemaHall::create($request->validated());
     }
@@ -32,22 +33,22 @@ class CinemaHallController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\CinemaHall  $cinemaHall
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id): Response
     {
-        return CinemaHall::findOfFail($id);
+        return CinemaHall::findOrFail($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CinemaHall  $cinemaHall
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\CinemaHallRequest $request
+     * @param \App\Models\CinemaHall $cinemaHall
+     * @return bool
      */
-    public function update(CinemaHallRequest $request, CinemaHall $cinemaHall)
+    public function update(CinemaHallRequest $request, CinemaHall $cinemaHall): bool
     {
         $cinemaHall->fill($request->validated());
         return $cinemaHall->save();
@@ -56,14 +57,14 @@ class CinemaHallController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\CinemaHall  $cinemaHall
+     * @param \App\Models\CinemaHall $cinemaHall
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CinemaHall $cinemaHall)
+    public function destroy(CinemaHall $cinemaHall): Response
     {
         if ($cinemaHall->delete()) {
-            return response(null, Responce::HTTP_NO_CONTENT);
+            return response(null, Response::HTTP_NO_CONTENT);
         }
-        return null;
+        return response()->json(['error' => 'Failed to delete cinema hall.'], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }

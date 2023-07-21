@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Response;
-use Illuminate\Foundation\Http\FormRequest;
 
 class SessionRequest extends FormRequest
 {
@@ -27,12 +27,12 @@ class SessionRequest extends FormRequest
     public function rules()
     {
         return [
-            'time' => ['required', 'string'],
-            'cinema_hall_id' => ['required', 'integer'],
-            'film_id' => ['required', 'integer'],
+            'datetime' => ['required', 'string'],
+            'cinema_hall_id' => ['integer'],
+            'film_id' => ['integer'],
         ];
     }
-    
+
     protected function failedValidation(Validator $validator): void
     {
         throw new HttpResponseException(

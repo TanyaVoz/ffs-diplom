@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Response;
-use Illuminate\Foundation\Http\FormRequest;
 
 class SeatRequest extends FormRequest
 {
@@ -27,12 +27,11 @@ class SeatRequest extends FormRequest
     public function rules()
     {
         return [
-            'number' => ['required', 'integer'],
+            'seats' => ['required', 'array'],
             'seats.*.number' => ['required', 'integer'],
             'seats.*.status' => ['required', 'string'],
             'seats.*.id' => ['integer'],
             'seats.*.cinema_hall_id' => ['integer'],
-        
         ];
     }
 

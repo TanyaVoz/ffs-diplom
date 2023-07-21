@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateSeatTicketTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('seat_ticket', function (Blueprint $table) {
             $table->id();
-            $table->integer('ticket_id');
-            $table->integer('seat_id');
+            $table->unsignedInteger('ticket_id');
+            $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
+            $table->unsignedInteger('seat_id');
+            $table->foreign('seat_id')->references('id')->on('seats')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,4 +32,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('seat_ticket');
     }
-};
+}

@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Ticket extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'id', 'session_id',
+        'session_id',
     ];
 
     protected $hidden = [
@@ -22,6 +23,7 @@ class Ticket extends Model
     {
         return $this->belongsTo(Session::class, 'session_id');
     }
+
     public function seats(): BelongsToMany
     {
         return $this->belongsToMany(Seat::class);

@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/admin', function () {
+Route::get('/admin/login', function () {
     return view('admin');
-});
+})->name('login');
 
-// Auth::routes();
+Route::get('/admin/{path?}', function () {
+    return view('admin');
+})->where('path', '.*');
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/{path?}', function () {
+    return view('welcome');
+})->where('path', '.*');

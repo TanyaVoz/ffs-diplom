@@ -1,29 +1,23 @@
-export default function AddSeance()
-{
+import {useDispatch, useSelector} from "react-redux";
+import {createSeance} from "../../../reducers/createAdminSlice";
+import SeanceCard from "../Cards/seanceCard";
+
+export default function AddSeance() {
+    const {movies, chosenDate} = useSelector((state) => state.admin);
+    const dispatch = useDispatch();
+    const {id} = useSelector((state) => state.popup);
+
     return (
-        <form action="add_movie" method="post" accept-charset="utf-8">
-            <label className="conf-step__label conf-step__label-fullsize" htmlFor="hall">
-                Название зала
-                <select className="conf-step__input" name="hall" required>
-                    <option value="1" selected>Зал 1</option>
-                    <option value="2">Зал 2</option>
-                </select>
-            </label>
-            <label className="conf-step__label conf-step__label-fullsize" htmlFor="name">
-                Время начала
-                <input className="conf-step__input" type="time" value="00:00" name="start_time" required/>
-            </label>
-
-            <label className="conf-step__label conf-step__label-fullsize" htmlFor="name">
-                Название зала
-                <input className="conf-step__input" type="text" placeholder="Например, &laquo;Зал 1&raquo;" name="name"
-                       required/>
-            </label>
-
-            <div className="conf-step__buttons text-center">
-                <input type="submit" value="Добавить" className="conf-step__button conf-step__button-accent"/>
-                    <button className="conf-step__button conf-step__button-regular">Отменить</button>
-            </div>
-        </form>
-    )
+        <SeanceCard
+            callbackSubmit={(datetime, cinema_hall_id, film_id) => dispatch(createSeance({
+                datetime,
+                cinema_hall_id,
+                film_id
+            }))}
+            cinema_hall_id={id}
+            film_id={movies[0].id}
+            date={chosenDate}
+            time={"00:00"}
+        />
+    );
 }

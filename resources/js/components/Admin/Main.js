@@ -5,11 +5,12 @@ import CinemaHallConfig from "./AdminPanel/cinemaHallConfig";
 import PriceConfig from "./AdminPanel/priceConfig";
 import SessionGrid from "./AdminPanel/sessionGrid";
 import OpenSales from "./AdminPanel/openSales";
+import Popup from "./Popup";
 
-export default function Main()
-{
+export default function Main() {
     return (
         <>
+            <Popup/>
             <Header/>
             <main className="conf-steps">
                 <StepHeader title={'Управление залами'}>
@@ -33,5 +34,5 @@ export default function Main()
                 </StepHeader>
             </main>
         </>
-    )
+    );
 }

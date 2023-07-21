@@ -1,61 +1,76 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FilmRequest;
 use App\Models\Film;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class FilmController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function index()
+    public function index(): \Illuminate\Database\Eloquent\Collection
     {
-        return Film::paginate(10);
+        return Film::all();
     }
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\FilmRequest $request
+     * @return bool
      */
-    public function store(FilmRequest $request)
+    public function store(FilmRequest $request): bool
     {
-        return Film::create($request->validated());
+        $film = new Film;
+        $film->fill($request->validated());
+        $film->poster = $request->poster->store('posters');
+        return $film->save();
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Film  $film
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \App\Models\Film|null
      */
-    public function show($id)
+    public function show($id): ?\App\Models\Film
     {
-        return Film::findOfFail($id);
+        return Film::findOrFail($id);
     }
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Film  $film
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\FilmRequest $request
+     * @param \App\Models\Film $film
+     * @return bool
      */
-    public function update(FilmRequest $request, Film $film)
+    public function update(FilmRequest $request, Film $film): bool
     {
-        $film->fill($request->validated());
+        if ($request->has('poster')) {
+            Storage::delete($film->poster);
+            $film->poster = $request->poster->store('posters');
+        }
+        $film->fill($request->safe()->except('poster'));
         return $film->save();
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Film  $film
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Film $film
+     * @return \Illuminate\Http\Response|null
+     * @throws \Exception
      */
-    public function destroy(Film $film)
+    public function destroy(Film $film): ?\Illuminate\Http\Response
     {
+        Storage::delete($film->poster);
         if ($film->delete()) {
             return response(null, Response::HTTP_NO_CONTENT);
         }

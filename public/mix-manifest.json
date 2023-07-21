@@ -1,5 +1,7 @@
 {
-    "/js/app.js": "/js/app.js",
+    "/js/index.js": "/js/index.js",
     "/css/admin/normalize.css": "/css/admin/normalize.css",
-    "/css/normalize.css": "/css/normalize.css"
+    "/css/normalize.css": "/css/normalize.css",
+    "/css/admin/styles.css": "/css/admin/styles.css",
+    "/css/styles.css": "/css/styles.css"
 }
