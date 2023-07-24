@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeatRequest;
@@ -8,7 +7,7 @@ use App\Models\Seat;
 use App\Models\CinemaHall;
 use App\Models\Session;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 
 class SeatController extends Controller
 {
@@ -26,9 +25,9 @@ class SeatController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \App\Http\Requests\SeatRequest $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function store(SeatRequest $request): Response
+    public function store(SeatRequest $request): JsonResponse
     {
         $req = $request->validated();
         
@@ -61,9 +60,9 @@ class SeatController extends Controller
      * Update the specified resource in storage.
      *
      * @param \App\Http\Requests\SeatRequest $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function updateMany(SeatRequest $request): Response
+    public function updateMany(SeatRequest $request): JsonResponse
     {
         $req = $request->validated();
         
