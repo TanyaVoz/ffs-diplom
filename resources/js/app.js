@@ -3,7 +3,10 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Main from "./components/Admin/Main";
 import Login from "./components/Admin/Login/login";
 import Auth from "./components/Admin/Auth/auth";
-
+import MovieCard from "./components/Client/MovieCard";
+import SeanceCard from "./components/Client/SeanceCard";
+import MainPayment from "./components/Client/PaymentCard";
+import MainTicket from "./components/Client/TicketCard";
 
 export default function App() {
     return (
