@@ -25,19 +25,8 @@ body {
   margin: 0;
   font-weight: 900;
   font-size: 3.4rem;
-  color: #283997;
+  color: #FFFFFF;
   text-transform: uppercase;
-}
-
-.knopka {
-  display: inline-block !important;
-  padding: 10px 20px !important;
-  background-color: #f0f0f0 !important;
-  color: #333 !important;
-  text-decoration: none !important;
-  border: none !important;
-  border-radius: 4px !important;
-  cursor: pointer !important;
 }
 .page-header__title span {
   font-weight: 100;

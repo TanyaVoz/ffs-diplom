@@ -5,7 +5,7 @@ export default function Header() {
         <header className="page-header">
             
 
-            <Link to={"/admin"}><h1 className="page-header__title">Идём<span>в</span>кино</h1></Link>
+            <h1 className="page-header__title">Идём<span>в</span>кино</h1>
 
      
     

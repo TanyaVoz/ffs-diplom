@@ -123,3 +123,4 @@ CinemaHallConfig.propTypes = {
 };
 
 export default CinemaHallConfig;
+
