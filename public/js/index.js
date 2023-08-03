@@ -6137,55 +6137,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Buttons_btn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Buttons/btn */ "./resources/js/components/Admin/Buttons/btn.js");
 /* harmony import */ var _editMovieAction__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editMovieAction */ "./resources/js/components/Admin/Actions/editMovieAction.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-// import { useDispatch, useSelector } from "react-redux";
-// import { useEffect } from "react";
-// import { createAdminSlice } from "../../../reducers/createAdminSlice";
-// import { createPopupSlice } from "../../../reducers/createPopupSlice";
-// import Button from "../Buttons/btn";
-// import EditMovieAction from "./editMovieAction";
-
-// export default function AddMovieAction() {
-//   const { movies, loading } = useSelector((state) => state.admin);
-//   const dispatch = useDispatch();
-
-//   useEffect(() => {
-//     dispatch(createAdminSlice.actions.getMovies());
-//   }, []);
-
-//   return (
-//     <>
-//       <p className="conf-step__paragraph">
-//         <Button
-//           text={"Добавить фильм"}
-//           callback={() =>
-//             dispatch(
-//               createPopupSlice.actions.showPopup({
-//                 title: "Добавление фильма",
-//                 form: "addMovie",
-//               })
-//             )
-//           }
-//         />
-//       </p>
-//       <div className="conf-step__movies">
-//         {movies.length === 0 ? (
-//           <p>Нет доступных фильмов.</p>
-//         ) : (
-//           movies.map((movie) => (
-//             <EditMovieAction
-//               id={movie.id}
-//               img={movie.poster}
-//               title={movie.title}
-//               duration={movie.duration}
-//               key={movie.id}
-//             />
-//           ))
-//         )}
-//       </div>
-//     </>
-//   );
-// }
-
 
 
 
@@ -6203,6 +6154,7 @@ function AddMovieAction() {
     loading = _useSelector.loading;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    // Получаем список фильмов при загрузке компонента
     dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.getMovies)());
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
@@ -6423,146 +6375,19 @@ EditMovieAction.propTypes = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ CinemaHallConfig)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/createAdminSlice */ "./resources/js/reducers/createAdminSlice.js");
-/* harmony import */ var _Buttons_actionBtn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Buttons/actionBtn */ "./resources/js/components/Admin/Buttons/actionBtn.js");
-/* harmony import */ var _Buttons_chooseHallBtn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Buttons/chooseHallBtn */ "./resources/js/components/Admin/Buttons/chooseHallBtn.js");
-/* harmony import */ var _Seats_seatStatus__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Seats/seatStatus */ "./resources/js/components/Admin/Seats/seatStatus.js");
-/* harmony import */ var _Seats_seatsScheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Seats/seatsScheme */ "./resources/js/components/Admin/Seats/seatsScheme.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../reducers/createAdminSlice */ "./resources/js/reducers/createAdminSlice.js");
+/* harmony import */ var _Buttons_actionBtn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Buttons/actionBtn */ "./resources/js/components/Admin/Buttons/actionBtn.js");
+/* harmony import */ var _Buttons_chooseHallBtn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Buttons/chooseHallBtn */ "./resources/js/components/Admin/Buttons/chooseHallBtn.js");
+/* harmony import */ var _Seats_seatStatus__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Seats/seatStatus */ "./resources/js/components/Admin/Seats/seatStatus.js");
+/* harmony import */ var _Seats_seatsScheme__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Seats/seatsScheme */ "./resources/js/components/Admin/Seats/seatsScheme.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-// import React, { useEffect, useMemo, useCallback } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import PropTypes from "prop-types";
-// import {
-//   createScheme,
-//   selectCinemaHallScheme,
-//   changeHallSize,
-//   getSeats,
-//   updateSeats,
-//   createSeats,
-//   updateHall,
-//   getHalls,
-// } from "../../../reducers/createAdminSlice";
-// import ActionBtn from "../Buttons/actionBtn";
-// import ChooseHallBtn from "../Buttons/chooseHallBtn";
-// import SeatStatus from "../Seats/seatStatus";
-// import SeatsScheme from "../Seats/seatsScheme";
-
-// const CinemaHallConfig = () => {
-//   const { cinemaHalls, selectedCinemaHallScheme } = useSelector((state) => state.admin);
-//   const dispatch = useDispatch();
-
-//   // Memoized callback for handleSelect
-//   const handleSelect = useCallback((id) => {
-//     dispatch(selectCinemaHallScheme(cinemaHalls.find((cinemaHall) => cinemaHall.id === id)));
-//     dispatch(getSeats(id));
-//   }, [cinemaHalls, dispatch]);
-
-//   // Memoized callback for handleChange
-//   const handleChange = useCallback(({ target }) => {
-//     const name = target.name;
-//     const value = target.value;
-
-//     const hallSize = {
-//       row: selectedCinemaHallScheme.row,
-//       chair: selectedCinemaHallScheme.chair,
-//       [name]: value,
-//     };
-//     dispatch(changeHallSize(hallSize));
-
-//     const seats = Array.from({ length: hallSize.row * hallSize.chair }, (_, i) => ({
-//       id: i + 1,
-//       number: i + 1,
-//       status: "standard",
-//       cinema_hall_id: selectedCinemaHallScheme.id,
-//     }));
-//     dispatch(createScheme(seats));
-//   }, [dispatch, selectedCinemaHallScheme]);
-
-//   const handleSave = () => {
-//     const hallSource = cinemaHalls.find((cinemaHall) => cinemaHall.id === selectedCinemaHallScheme.id);
-//     if (hallSource.row === selectedCinemaHallScheme.row && hallSource.chair === selectedCinemaHallScheme.chair) {
-//       dispatch(updateSeats());
-//     } else {
-//       dispatch(updateHall(selectedCinemaHallScheme));
-//       dispatch(createSeats());
-//       dispatch(getHalls());
-//     }
-//     dispatch(selectCinemaHallScheme({}));
-//   };
-
-//   // Memoized JSX for hallOptions
-//   const hallOptions = useMemo(() =>
-//     cinemaHalls.map((cinemaHall) => (
-//       <ChooseHallBtn
-//         key={cinemaHall.id}
-//         name={cinemaHall.name}
-//         checked={selectedCinemaHallScheme ? cinemaHall.id === selectedCinemaHallScheme.id : false}
-//         callback={() => handleSelect(cinemaHall.id)}
-//       />
-//     ))
-//   , [cinemaHalls, selectedCinemaHallScheme, handleSelect]);
-
-//   return (
-//     <div className="conf-step__wrapper">
-//       <p className="conf-step__paragraph">Выберите зал для конфигурации:</p>
-//       <ul className="conf-step__selectors-box">
-//         {hallOptions}
-//       </ul>
-//       {selectedCinemaHallScheme.id && (
-//         <>
-//           <p className="conf-step__paragraph">Укажите количество рядов и максимальное количество кресел в ряду:</p>
-//           <div className="conf-step__legend">
-//             <label className="conf-step__label">Рядов, шт
-//               <input
-//                 type="text"
-//                 className="conf-step__input"
-//                 name="row"
-//                 value={selectedCinemaHallScheme.row}
-//                 onChange={handleChange}
-//               />
-//             </label>
-//             <span className="multiplier">x</span>
-//             <label className="conf-step__label">Мест, шт
-//               <input
-//                 type="text"
-//                 className="conf-step__input"
-//                 name="chair"
-//                 value={selectedCinemaHallScheme.chair}
-//                 onChange={handleChange}
-//               />
-//             </label>
-//           </div>
-//           <p className="conf-step__paragraph">Теперь вы можете указать типы кресел на схеме зала:</p>
-//           <div className="conf-step__legend">
-//             <SeatStatus status="standard" /> — обычные кресла
-//             <SeatStatus status="vip" /> — VIP кресла
-//             <SeatStatus status="disabled" /> — заблокированные (нет кресла)
-//             <p className="conf-step__hint">Чтобы изменить вид кресла, нажмите по нему левой кнопкой мыши</p>
-//           </div>
-
-//           <SeatsScheme place={selectedCinemaHallScheme.row} />
-//           <ActionBtn cancel={() => dispatch(selectCinemaHallScheme({}))} save={() => handleSave()} />
-//         </>
-//       )}
-//     </div>
-//   );
-// };
-
-// CinemaHallConfig.propTypes = {
-//   cinemaHalls: PropTypes.array.isRequired,
-//   selectedCinemaHallScheme: PropTypes.object.isRequired,
-// };
-
-// export default CinemaHallConfig;
 
 
 
@@ -6572,100 +6397,90 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 
-
-var CinemaHallConfig = function CinemaHallConfig() {
-  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+function CinemaHallConfig() {
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.admin;
     }),
     cinemaHalls = _useSelector.cinemaHalls,
     selectedCinemaHallScheme = _useSelector.selectedCinemaHallScheme;
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-
-  // Memoized callback for handleSelect
-  var handleSelect = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (id) {
-    dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.selectCinemaHallScheme)(cinemaHalls.find(function (cinemaHall) {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+  var handleSelect = function handleSelect(id) {
+    dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.selectCinemaHallScheme)(cinemaHalls.find(function (cinemaHall) {
       return cinemaHall.id === id;
     })));
-    dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.getSeats)(id));
-  }, [cinemaHalls, dispatch]);
-
-  // Memoized callback for handleChange
-  var handleChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (_ref) {
+    dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.getSeats)(id));
+  };
+  var handleChange = function handleChange(_ref) {
     var target = _ref.target;
     var name = target.name;
     var value = target.value;
     var hallSize = _defineProperty({
-      row: selectedCinemaHallScheme.row,
-      chair: selectedCinemaHallScheme.chair
+      "row": selectedCinemaHallScheme.row,
+      "chair": selectedCinemaHallScheme.chair
     }, name, value);
-    dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.changeHallSize)(hallSize));
+    dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.changeHallSize)(hallSize));
     var seats = Array.from({
       length: hallSize.row * hallSize.chair
     }, function (_, i) {
       return {
-        id: i + 1,
-        number: i + 1,
-        status: "standard",
-        cinema_hall_id: selectedCinemaHallScheme.id
+        "id": i + 1,
+        "number": i + 1,
+        "status": "standard",
+        "cinema_hall_id": selectedCinemaHallScheme.id
       };
     });
-    dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.createScheme)(seats));
-  }, [dispatch, selectedCinemaHallScheme]);
+    dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.createScheme)(seats));
+  };
   var handleSave = function handleSave() {
     var hallSource = cinemaHalls.find(function (cinemaHall) {
       return cinemaHall.id === selectedCinemaHallScheme.id;
     });
     if (hallSource.row === selectedCinemaHallScheme.row && hallSource.chair === selectedCinemaHallScheme.chair) {
-      dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.updateSeats)());
+      dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.updateSeats)());
     } else {
-      dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.updateHall)(selectedCinemaHallScheme));
-      dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.createSeats)());
-      dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.getHalls)());
+      dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.updateHall)(selectedCinemaHallScheme));
+      dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.createSeats)());
+      dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.getHalls)());
     }
-    dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.selectCinemaHallScheme)({}));
+    dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.selectCinemaHallScheme)({}));
   };
-
-  // Memoized JSX for hallOptions
-  var hallOptions = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    return cinemaHalls.map(function (cinemaHall) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Buttons_chooseHallBtn__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        name: cinemaHall.name,
-        checked: selectedCinemaHallScheme ? cinemaHall.id === selectedCinemaHallScheme.id : false,
-        callback: function callback() {
-          return handleSelect(cinemaHall.id);
-        }
-      }, cinemaHall.id);
-    });
-  }, [cinemaHalls, selectedCinemaHallScheme, handleSelect]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "conf-step__wrapper",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
       className: "conf-step__paragraph",
       children: "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0437\u0430\u043B \u0434\u043B\u044F \u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438:"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("ul", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
       className: "conf-step__selectors-box",
-      children: hallOptions
-    }), selectedCinemaHallScheme.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+      children: cinemaHalls.map(function (cinemaHall) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Buttons_chooseHallBtn__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          name: cinemaHall.name,
+          checked: selectedCinemaHallScheme ? cinemaHall.id === selectedCinemaHallScheme.id : false,
+          callback: function callback() {
+            return handleSelect(cinemaHall.id);
+          }
+        }, cinemaHall.id);
+      })
+    }), selectedCinemaHallScheme.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
         className: "conf-step__paragraph",
         children: "\u0423\u043A\u0430\u0436\u0438\u0442\u0435 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0440\u044F\u0434\u043E\u0432 \u0438 \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0435 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043A\u0440\u0435\u0441\u0435\u043B \u0432 \u0440\u044F\u0434\u0443:"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "conf-step__legend",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("label", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("label", {
           className: "conf-step__label",
-          children: ["\u0420\u044F\u0434\u043E\u0432, \u0448\u0442", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+          children: ["\u0420\u044F\u0434\u043E\u0432, \u0448\u0442", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
             type: "text",
             className: "conf-step__input",
             name: "row",
             value: selectedCinemaHallScheme.row,
             onChange: handleChange
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
           className: "multiplier",
           children: "x"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("label", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("label", {
           className: "conf-step__label",
-          children: ["\u041C\u0435\u0441\u0442, \u0448\u0442", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+          children: ["\u041C\u0435\u0441\u0442, \u0448\u0442", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
             type: "text",
             className: "conf-step__input",
             name: "chair",
@@ -6673,26 +6488,26 @@ var CinemaHallConfig = function CinemaHallConfig() {
             onChange: handleChange
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
         className: "conf-step__paragraph",
         children: "\u0422\u0435\u043F\u0435\u0440\u044C \u0432\u044B \u043C\u043E\u0436\u0435\u0442\u0435 \u0443\u043A\u0430\u0437\u0430\u0442\u044C \u0442\u0438\u043F\u044B \u043A\u0440\u0435\u0441\u0435\u043B \u043D\u0430 \u0441\u0445\u0435\u043C\u0435 \u0437\u0430\u043B\u0430:"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "conf-step__legend",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Seats_seatStatus__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Seats_seatStatus__WEBPACK_IMPORTED_MODULE_4__["default"], {
           status: "standard"
-        }), " \u2014 \u043E\u0431\u044B\u0447\u043D\u044B\u0435 \u043A\u0440\u0435\u0441\u043B\u0430", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Seats_seatStatus__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        }), " \u2014 \u043E\u0431\u044B\u0447\u043D\u044B\u0435 \u043A\u0440\u0435\u0441\u043B\u0430", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Seats_seatStatus__WEBPACK_IMPORTED_MODULE_4__["default"], {
           status: "vip"
-        }), " \u2014 VIP \u043A\u0440\u0435\u0441\u043B\u0430", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Seats_seatStatus__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        }), " \u2014 VIP \u043A\u0440\u0435\u0441\u043B\u0430", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Seats_seatStatus__WEBPACK_IMPORTED_MODULE_4__["default"], {
           status: "disabled"
-        }), " \u2014 \u0437\u0430\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0435 (\u043D\u0435\u0442 \u043A\u0440\u0435\u0441\u043B\u0430)", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+        }), " \u2014 \u0437\u0430\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0435 (\u043D\u0435\u0442 \u043A\u0440\u0435\u0441\u043B\u0430)", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
           className: "conf-step__hint",
           children: "\u0427\u0442\u043E\u0431\u044B \u0438\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u0432\u0438\u0434 \u043A\u0440\u0435\u0441\u043B\u0430, \u043D\u0430\u0436\u043C\u0438\u0442\u0435 \u043F\u043E \u043D\u0435\u043C\u0443 \u043B\u0435\u0432\u043E\u0439 \u043A\u043D\u043E\u043F\u043A\u043E\u0439 \u043C\u044B\u0448\u0438"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Seats_seatsScheme__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Seats_seatsScheme__WEBPACK_IMPORTED_MODULE_5__["default"], {
         place: selectedCinemaHallScheme.row
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Buttons_actionBtn__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Buttons_actionBtn__WEBPACK_IMPORTED_MODULE_2__["default"], {
         cancel: function cancel() {
-          return dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.selectCinemaHallScheme)({}));
+          return dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.selectCinemaHallScheme)({}));
         },
         save: function save() {
           return handleSave();
@@ -6700,8 +6515,7 @@ var CinemaHallConfig = function CinemaHallConfig() {
       })]
     })]
   });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CinemaHallConfig);
+}
 
 /***/ }),
 
@@ -7124,34 +6938,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/createPopupSlice */ "./resources/js/reducers/createPopupSlice.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-// export default function AcceptBtn(props) {
-//     const { text, onDelete } = props;
-//     const dispatch = useDispatch();
-
-//     const handleCancel = (e) => {
-//         e.preventDefault();
-//         dispatch(closePopup());
-//     }
-
-//     return (
-//         <div className="conf-step__buttons text-center">
-//             <input
-//                 type="submit"
-//                 value={onDelete ? "Сохранить" : text}
-//                 className="conf-step__button conf-step__button-accent"
-//             />
-//             <button className="conf-step__button conf-step__button-regular" onClick={handleCancel}>
-//                 Отменить
-//             </button>
-//             {onDelete && (
-//                 <button className="conf-step__button conf-step__button-regular" onClick={onDelete}>
-//                     Удалить
-//                 </button>
-//             )}
-//         </div>
-//     );
-// }
-
 
 
 
@@ -8854,6 +8640,39 @@ function Header() {
     })
   });
 }
+// import React from 'react';
+// import { Link } from 'react-router-dom';
+
+// export default function Header() {
+//     return (
+//         <header className="page-header">
+//             <h1 className="page-header__title">Идём<span>в</span>кино</h1>
+//             <Link to="/admin/login" className="knopka">
+//                 Войти как администратор
+//             </Link>
+//         </header>
+//     );
+// }
+
+// import React from 'react';
+// import { useNavigate } from 'react-router-dom';
+
+// export default function Header() {
+//     const navigate = useNavigate();
+
+//     const handleLogin = () => {
+//         navigate('/admin/login'); // Перенаправляем на страницу /admin/login
+//     };
+
+//     return (
+//         <header className="page-header">
+//             <h1 className="page-header__title">Идём<span>в</span>кино</h1>
+//             <button type="button" className="knopka" onClick={handleLogin}>
+//                   Войти как администратор
+//             </button>
+//         </header>
+//     );
+// }
 
 /***/ }),
 
@@ -9333,55 +9152,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Button_btn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Button/btn */ "./resources/js/components/Client/Button/btn.js");
 /* harmony import */ var _TicketCard_ticketInfo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../TicketCard/ticketInfo */ "./resources/js/components/Client/TicketCard/ticketInfo.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-// import { useSelector } from "react-redux";
-// import { useNavigate } from "react-router-dom";
-// import { useEffect } from "react";
-// import Main from "../Main";
-// import TicketHeader from "../Header/ticketHeader";
-// import Button from "../Button/btn";
-// import TicketInfo from "../TicketCard/ticketInfo";
-
-// export default function MainPayment() {
-//     const { session, seats, ticket } = useSelector((state) => state.seance);
-//     const navigate = useNavigate();
-
-//     const seatsNum = seats
-//         ? seats.filter((seat) => ticket.seats.includes(seat.id)).map((seat) => seat.number)
-//         : [];
-
-//     useEffect(() => {
-//         if (!session?.id || !ticket?.seanceId) {
-//             navigate(-1);
-//         }
-//     }, [session, ticket]);
-
-//     if (!session || !seats || !ticket) {
-//         // Обработка случая, когда данные отсутствуют
-//         return <div>Loading...</div>; // Или другая обработка
-//     }
-
-//     return (
-//         <Main>
-//             <section className="ticket">
-//                 <TicketHeader text={"Вы выбрали билеты:"}/>
-//                 <div className="ticket__info-wrapper">
-//                     <TicketInfo
-//                         film={session.title}
-//                         seats={seatsNum.join(', ')}
-//                         cinemaHall={session.name}
-//                         time={session.datetime}
-//                         cost={ticket.cost}
-//                     />
-//                     <Button text={"Получить код бронирования"} link={`/ticket/${ticket.id}`} />
-//                     <p className="ticket__hint">После оплаты билет будет доступен в этом окне, а также придёт вам на
-//                         почту. Покажите QR-код нашему контроллёру у входа в зал.</p>
-//                     <p className="ticket__hint">Приятного просмотра!</p>
-//                 </div>
-//             </section>
-//         </Main>
-//     );
-// }
-
 
 
 
@@ -9448,7 +9218,7 @@ function MainPayment() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ BuyingScheme)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _seanceSeatStatus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./seanceSeatStatus */ "./resources/js/components/Client/SeanceCard/seanceSeatStatus.js");
@@ -9457,45 +9227,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var groupSeatsByRows = function groupSeatsByRows(seats, chairsPerRow) {
-  return seats.reduce(function (result, seat, i) {
-    var rowIndex = Math.floor(i / chairsPerRow);
-    if (!result[rowIndex]) {
-      result[rowIndex] = [];
-    }
-    result[rowIndex].push(seat);
-    return result;
-  }, []);
-};
-function BuyingScheme(props) {
-  var callback = props.callback;
+var BuyingScheme = function BuyingScheme(props) {
+  var _callback = props.callback;
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.seance;
     }),
     session = _useSelector.session,
     seats = _useSelector.seats;
-  var chairsPerRow = seats.length / session.row;
-  var rowSeats = groupSeatsByRows(seats, chairsPerRow);
-
-  //   if (!session || !seats) {
-  //     // Обработка случая, когда данные отсутствуют
-  //     return <div>Loading...</div>; // Или другая обработка
-  //   }
-
+  var priceStandard = session.price_standard;
+  var priceVIP = session.price_vip;
+  var rowSeats = getRowSeats(seats, session.row);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "buying-scheme",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "buying-scheme__wrapper",
-      children: rowSeats.map(function (row, rowIndex) {
+      children: rowSeats.map(function (row, i) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "buying-scheme__row",
           children: row.map(function (seat) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_seanceSeatStatus__WEBPACK_IMPORTED_MODULE_1__["default"], {
-              seat: seat,
-              callback: callback
+              status: seat.status,
+              callback: function callback() {
+                return _callback(seat.id, seat.status);
+              }
             }, seat.id);
           })
-        }, rowIndex);
+        }, i);
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "buying-scheme__legend",
@@ -9505,17 +9262,17 @@ function BuyingScheme(props) {
           className: "buying-scheme__legend-price",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
             className: "buying-scheme__chair buying-scheme__chair_standart"
-          }), "\u0421\u0432\u043E\u0431\u043E\u0434\u043D\u043E (", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+          }), " \u0421\u0432\u043E\u0431\u043E\u0434\u043D\u043E (", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
             className: "buying-scheme__legend-value",
-            children: session.price_standard
+            children: priceStandard
           }), "\u0440\u0443\u0431)"]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
           className: "buying-scheme__legend-price",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
             className: "buying-scheme__chair buying-scheme__chair_vip"
-          }), "\u0421\u0432\u043E\u0431\u043E\u0434\u043D\u043E VIP (", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+          }), " \u0421\u0432\u043E\u0431\u043E\u0434\u043D\u043E VIP (", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
             className: "buying-scheme__legend-value",
-            children: session.price_vip
+            children: priceVIP
           }), "\u0440\u0443\u0431)"]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -9524,17 +9281,32 @@ function BuyingScheme(props) {
           className: "buying-scheme__legend-price",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
             className: "buying-scheme__chair buying-scheme__chair_taken"
-          }), "\u0417\u0430\u043D\u044F\u0442\u043E"]
+          }), " \u0417\u0430\u043D\u044F\u0442\u043E"]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
           className: "buying-scheme__legend-price",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
             className: "buying-scheme__chair buying-scheme__chair_selected"
-          }), "\u0412\u044B\u0431\u0440\u0430\u043D\u043E"]
+          }), " \u0412\u044B\u0431\u0440\u0430\u043D\u043E"]
         })]
       })]
     })]
   });
-}
+};
+var getRowSeats = function getRowSeats(seats, rowSize) {
+  if (!seats || seats.length === 0) {
+    return [];
+  }
+  var chairs = seats.length / rowSize;
+  return seats.reduce(function (result, seat, i) {
+    var index = Math.floor(i / chairs);
+    if (!result[index]) {
+      result[index] = [];
+    }
+    result[index].push(seat);
+    return result;
+  }, []);
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BuyingScheme);
 
 /***/ }),
 
@@ -9713,20 +9485,25 @@ function SeanceSeatStatus(props) {
     taken = _useState2[0],
     setTaken = _useState2[1];
   var handleClick = function handleClick() {
-    var newTaken = !taken;
-    setTaken(newTaken);
-    callback(newTaken); // Передаем новое значение taken в callback
+    setTaken(!taken);
+    callback();
   };
-
-  var statusToClassName = {
-    'disabled': 'buying-scheme__chair_disabled',
-    'standard': 'buying-scheme__chair_standard',
-    'vip': 'buying-scheme__chair_vip',
-    'sold': 'buying-scheme__chair_taken'
-  };
-  var chairClassName = classnames__WEBPACK_IMPORTED_MODULE_1___default()('buying-scheme__chair', taken ? 'buying-scheme__chair_selected' : statusToClassName[status]);
+  var activeClass = "buying-scheme__chair_disabled";
+  switch (status) {
+    case 'standard':
+      activeClass = "buying-scheme__chair_standart";
+      break;
+    case 'vip':
+      activeClass = "buying-scheme__chair_vip";
+      break;
+    case 'sold':
+      activeClass = "buying-scheme__chair_taken";
+      break;
+    default:
+      activeClass = "buying-scheme__chair_disabled";
+  }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-    className: chairClassName,
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('buying-scheme__chair', taken ? 'buying-scheme__chair_selected' : activeClass),
     onClick: function onClick() {
       return status === 'disabled' || status === 'sold' ? false : handleClick();
     }
@@ -9907,46 +9684,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordsEndings_rubEnd__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../wordsEndings/rubEnd */ "./resources/js/components/Client/wordsEndings/rubEnd.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-// import getNoun from "../wordsEndings/rubEnd";
-// import classnames from 'classnames';
-
-// export default function TicketInfo(props) {
-//     const { film, seats, cinemaHall, time, cost } = props;
-//     const defineEnd = getNoun(cost);
-//     const datetime = new Date(time);
-
-//     // Форматирование стоимости
-//     const formattedCost = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB' }).format(cost);
-
-//     return (
-//         <>
-//             <p className="ticket__info">На фильм: <span className="ticket__details ticket__title">{film}</span></p>
-//             <p className="ticket__info">Места: <span className="ticket__details ticket__chairs">{seats}</span></p>
-//             <p className="ticket__info">В зале: <span className="ticket__details ticket__hall">{cinemaHall}</span></p>
-//             <p className="ticket__info">Начало сеанса:
-//                 {" "}
-//                 <span className="ticket__details ticket__start">
-//                     {time && datetime.toLocaleDateString('ru-RU', { hour: '2-digit', minute: '2-digit' })}
-//                 </span>
-//             </p>
-//             <p className="ticket__info">Стоимость: <span className={classnames("ticket__details", "ticket__cost")}>
-//                 {formattedCost} {defineEnd}
-//             </span></p>
-//         </>
-//     );
-// }
-
 
 
 
 
 function TicketInfo(props) {
+  // Деструктурируем свойства из объекта props
   var film = props.film,
     seats = props.seats,
     cinemaHall = props.cinemaHall,
     time = props.time,
     cost = props.cost;
-  var defineEnd = (0,_wordsEndings_rubEnd__WEBPACK_IMPORTED_MODULE_0__["default"])(cost);
+
+  // Получаем окончание для слова "рубль" в зависимости от стоимости
+  var costEnding = (0,_wordsEndings_rubEnd__WEBPACK_IMPORTED_MODULE_0__["default"])(cost);
+
+  // Преобразуем строку времени в объект Date
   var datetime = new Date(time);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
@@ -9981,7 +9734,7 @@ function TicketInfo(props) {
       children: ["\u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
         className: "ticket__details ticket__cost",
         children: cost
-      }), " ", defineEnd]
+      }), " ", costEnding]
     })]
   });
 }
@@ -10061,18 +9814,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-// import React from 'react';
-// import App from './app';
-// import {Provider} from "react-redux";
-// import {store} from "./store";
-
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(
-//     <Provider store={store}>
-//         <App/>
-//     </Provider>
-// );
-
 
  // Изменили импорт на "react-dom/client"
 

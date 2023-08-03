@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ИдёмВКино</title>
-    <a href="/" class="knopka">Дополнительная кнопка</a>
     <link href="{{mix('css/admin/normalize.css')}}" rel="stylesheet">
     <link href="{{mix('css/admin/styles.css')}}" rel="stylesheet">
     <link
