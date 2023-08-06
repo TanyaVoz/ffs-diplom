@@ -15,6 +15,7 @@ class TicketRequest extends FormRequest
      * @return bool
      */
     public function authorize()
+    // В данном случае разрешаем доступ для всех пользователей.
     {
         return true;
     }
@@ -26,15 +27,17 @@ class TicketRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'session_id' => ['required', 'integer'],
-            'seats' => ['required', 'array'],
-            'seats.*' => ['required', 'integer']
+         // Указание правил валидации для каждого поля запроса.
+         return [
+            'session_id' => ['required', 'integer'], // Обязательное поле с типом "целое число".
+            'seats' => ['required', 'array'], // Обязательное поле с типом "массив".
+            'seats.*' => ['required', 'integer'], // Обязательное поле с типом "целое число".
         ];
     }
 
     protected function failedValidation(Validator $validator): void
     {
+        // Если валидация не прошла, выбрасываем исключение с ответом содержащим ошибки валидации и кодом состояния HTTP 422 (Непроцессируемый экземпляр).
         throw new HttpResponseException(
             response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY)
         );

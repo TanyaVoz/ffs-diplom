@@ -15,6 +15,7 @@ class CinemaHallRequest extends FormRequest
      * @return bool
      */
     public function authorize()
+    // В данном случае разрешаем доступ для всех пользователей.
     {
         return true;
     }
@@ -26,18 +27,20 @@ class CinemaHallRequest extends FormRequest
      */
     public function rules()
     {
+        // Указание правил валидации для каждого поля запроса.
         return [
-            'name' => ['required', 'string'],
-            'row' => ['integer'],
-            'chair' => ['integer'],
-            'price_standard' => ['integer'],
-            'price_vip' => ['integer'],
-            'free' => ['boolean'],
+            'name' => ['required', 'string'], // Обязательное поле с типом "строка".
+            'row' => ['integer'], // Поле с типом "целое число".
+            'chair' => ['integer'], // Поле с типом "целое число".
+            'price_standard' => ['integer'], // Поле с типом "целое число".
+            'price_vip' => ['integer'], // Поле с типом "целое число".
+            'free' => ['boolean'], // Поле с типом "логическое значение" (true или false).
         ];
     }
 
     protected function failedValidation(Validator $validator): void
     {
+         // Если валидация не прошла, выбрасываем исключение с ответом содержащим ошибки валидации и кодом состояния HTTP 422 (Непроцессируемый экземпляр).
         throw new HttpResponseException(
             response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY)
         );

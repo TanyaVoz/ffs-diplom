@@ -15,6 +15,7 @@ class SessionRequest extends FormRequest
      * @return bool
      */
     public function authorize()
+    // В данном случае разрешаем доступ для всех пользователей.
     {
         return true;
     }
@@ -26,15 +27,17 @@ class SessionRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'datetime' => ['required', 'string'],
-            'cinema_hall_id' => ['integer'],
-            'film_id' => ['integer'],
-        ];
+       // Указание правил валидации для каждого поля запроса.
+       return [
+        'datetime' => ['required', 'string'], // Обязательное поле с типом "строка".
+        'cinema_hall_id' => ['integer'], // Поле с типом "целое число".
+        'film_id' => ['integer'], // Поле с типом "целое число".
+    ];
     }
 
     protected function failedValidation(Validator $validator): void
     {
+        // Если валидация не прошла, выбрасываем исключение с ответом содержащим ошибки валидации и кодом состояния HTTP 422 (Непроцессируемый экземпляр).
         throw new HttpResponseException(
             response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY)
         );
