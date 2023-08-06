@@ -6100,36 +6100,6 @@ __webpack_require__.r(__webpack_exports__);
 //     );
 // }
 
-// import React, { lazy, Suspense } from 'react';
-// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
-// const Main = lazy(() => import('./components/Admin/Main')); 
-// const Auth = lazy(() => import('./components/Admin/Auth/auth')); 
-// const MovieCard = lazy(() => import('./components/Client/MovieCard')); 
-// const SeanceCard = lazy(() => import('./components/Client/SeanceCard')); 
-// const MainPayment = lazy(() => import('./components/Client/PaymentCard')); 
-// const MainTicket = lazy(() => import('./components/Client/TicketCard')); 
-// const Login = lazy(() => import('./components/Admin/Login/login')); 
-
-// export default function App() {
-//   return (
-//     <Router>
-//       <Routes>
-//         <Route path="/" element={<MovieCard />} />
-//         <Route path="seance/:seanceId" element={<SeanceCard />} />
-//         <Route path="payment" element={<MainPayment />} />
-//         <Route path="ticket" element={<MainTicket />} />
-
-//         {/* Оберните только нужные маршруты в Suspense */}
-//         <Suspense fallback={<div>Loading...</div>}>
-//           <Route path="admin/login" element={<Login />} /> {/* (8) Динамический рендеринг Login компонента */}
-//           <Route path="admin" element={<Auth><Main /></Auth>} /> {/* (9) Динамический рендеринг Auth и Main компонентов */}
-//         </Suspense>
-//       </Routes>
-//     </Router>
-//   );
-// }
-
  //  Импортируем необходимые зависимости
 
 

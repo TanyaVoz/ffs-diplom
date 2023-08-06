@@ -777,37 +777,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ AcceptBtn)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/createPopupSlice */ "./resources/js/reducers/createPopupSlice.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../reducers/createPopupSlice */ "./resources/js/reducers/createPopupSlice.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 
 function AcceptBtn(props) {
   var text = props.text,
-    onDelete = props.onDelete;
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+    handleDelete = props.handleDelete;
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
   var handleCancel = function handleCancel(e) {
     e.preventDefault();
-    dispatch((0,_reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_2__.closePopup)());
+    dispatch((0,_reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_1__.closePopup)());
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "conf-step__buttons text-center",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
       type: "submit",
-      value: onDelete ? "Сохранить" : text,
+      value: handleDelete ? "Сохранить" : text,
       className: "conf-step__button conf-step__button-accent"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
       className: "conf-step__button conf-step__button-regular",
       onClick: handleCancel,
       children: "\u041E\u0442\u043C\u0435\u043D\u0438\u0442\u044C"
-    }), onDelete && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+    }), handleDelete && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
       className: "conf-step__button conf-step__button-regular",
-      onClick: onDelete,
+      onClick: handleDelete,
       children: "\u0423\u0434\u0430\u043B\u0438\u0442\u044C"
     })]
   });
@@ -1555,7 +1552,7 @@ function AddMovie() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ DeleteMovie)
+/* harmony export */   "default": () => (/* binding */ CustomDeleteMovie)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../reducers/createAdminSlice */ "./resources/js/reducers/createAdminSlice.js");
@@ -1568,7 +1565,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function DeleteMovie() {
+function CustomDeleteMovie() {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.popup;
     }),

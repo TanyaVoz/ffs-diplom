@@ -14,6 +14,8 @@ class CinemaHallController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+    // Возвращает JSON-ответ, содержащий список всех кинозалов из базы данных.
+    
     public function index(): JsonResponse
     {
         return response()->json(CinemaHall::all());
@@ -25,6 +27,8 @@ class CinemaHallController extends Controller
      * @param \App\Http\Requests\CinemaHallRequest $request
      * @return \App\Models\CinemaHall
      */
+
+    // Создает новый кинозал на основе валидированных данных из запроса и сохраняет его в базе данных.
     public function store(CinemaHallRequest $request): CinemaHall
     {
         return CinemaHall::create($request->validated());
@@ -36,6 +40,8 @@ class CinemaHallController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
+            // Ищет кинозал с указанным идентификатором в базе данных.
+        
     public function show(int $id): Response
     {
         return CinemaHall::findOrFail($id);
@@ -60,6 +66,9 @@ class CinemaHallController extends Controller
      * @param \App\Models\CinemaHall $cinemaHall
      * @return \Illuminate\Http\Response
      */
+    // Пытается удалить кинозал из базы данных.
+        // Если удаление прошло успешно, возвращает HTTP-ответ с кодом 204 (No Content).
+        // Если удаление не удалось, возвращает HTTP-ответ с кодом 500 (Internal Server Error) и сообщением об ошибке.
     public function destroy(CinemaHall $cinemaHall): Response
     {
         if ($cinemaHall->delete()) {
@@ -68,3 +77,4 @@ class CinemaHallController extends Controller
         return response()->json(['error' => 'Failed to delete cinema hall.'], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }
+
