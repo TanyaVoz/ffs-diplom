@@ -1,5 +1,5 @@
 import Header from "./Header";
-import Navigate from "./Navigation/nav";
+import Navigate from "./additionalComponents/formDate/nav";
 
 export default function Main(props) {
     return (

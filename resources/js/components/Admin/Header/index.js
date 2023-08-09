@@ -1,4 +1,4 @@
-import Exit from "../Auth/exit";
+import Exit from "../Verify/Auth/exit";
 
 export default function Header() {
     return (

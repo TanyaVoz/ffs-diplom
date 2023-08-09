@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { showPopup } from "../../../reducers/createPopupSlice";
 import PropTypes from "prop-types";
-import getNoun from "../../Client/wordsEndings/minEnd";
+import getNoun from "../../Client/additionalComponents/formWords/minEnd";
 
 export default function EditMovieAction(props) {
     const { id, img, title, duration } = props;

@@ -5,7 +5,7 @@ import CinemaHallConfig from "./AdminPanel/cinemaHallConfig";
 import PriceConfig from "./AdminPanel/priceConfig";
 import SessionGrid from "./AdminPanel/sessionGrid";
 import OpenSales from "./AdminPanel/openSales";
-import Popup from "./Popup";
+import Popup from "./allPopup/Popup";
 
 export default function Main() {
     return (
