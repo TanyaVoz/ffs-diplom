@@ -9,7 +9,7 @@ const initialState = {
     chosenDate: `${today.getFullYear()}-${('0' + (today.getMonth() + 1)).slice(-2)}-${('0' + today.getDate()).slice(-2)}`,
     seances: [],
 };
-
+// Определение асинхронных операций 
 export const getHalls = createAsyncThunk(
     "admin/getHalls",
     async (_, {getState}) => {
@@ -283,7 +283,7 @@ const createAdminSlice = createSlice({
             })
     },
 });
-
+// Дополнительные действия (actions)
 export const {
     createScheme,
     selectCinemaHallScheme,
@@ -291,4 +291,6 @@ export const {
     changeSeatStatus,
     chooseDate
 } = createAdminSlice.actions;
+
+// Редуктор состояния
 export default createAdminSlice.reducer;

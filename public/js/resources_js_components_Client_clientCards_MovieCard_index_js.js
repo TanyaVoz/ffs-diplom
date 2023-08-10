@@ -14,17 +14,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+// Компонент для отображения заголовка страницы
+
 
 function Header() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
-    className: "page-header",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
-      className: "page-header__title",
-      children: ["\u0418\u0434\u0451\u043C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-        children: "\u0432"
-      }), "\u043A\u0438\u043D\u043E"]
+  return (
+    /*#__PURE__*/
+    // Основной контейнер заголовка страницы
+    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
+      className: "page-header",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
+        className: "page-header__title",
+        children: ["\u0418\u0434\u0451\u043C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+          children: "\u0432"
+        }), "\u043A\u0438\u043D\u043E"]
+      })
     })
-  });
+  );
 }
 
 /***/ }),
@@ -45,6 +51,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+
+// Главный компонент страницы
 
 
 
@@ -142,50 +150,50 @@ function Navigate() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(new Date()),
     _useState2 = _slicedToArray(_useState, 2),
     start = _useState2[0],
-    setStart = _useState2[1];
+    setStart = _useState2[1]; // Состояние для отслеживания начальной даты
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.calendar;
     }),
-    chosenDate = _useSelector.chosenDate;
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-  var today = new Date();
-  var handleDateChange = function handleDateChange(day, offset) {
-    var newDate = new Date(day);
-    newDate.setDate(newDate.getDate() + offset);
-    return newDate;
-  };
-  var handleClick = function handleClick(day) {
+    chosenDate = _useSelector.chosenDate; // Получение выбранной даты из состояния Redux
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)(); // Получение функции dispatch из Redux
+  var today = new Date(); // Текущая дата
+  var _handleClick = function handleClick(day) {
     dispatch((0,_reducers_createCalendarSlice__WEBPACK_IMPORTED_MODULE_2__.chooseDate)("".concat(day.getFullYear(), "-").concat(day.getMonth() + 1, "-").concat(day.getDate())));
   };
-  var handlePrevClick = function handlePrevClick() {
-    setStart(function (prevStart) {
-      return handleDateChange(prevStart, -6);
-    });
+  // Обработчик для переключения даты назад или вперед
+  var handleStart = function handleStart(day, arg) {
+    setStart(new Date(day.setDate(day.getDate() + arg)));
   };
-  var handleNextClick = function handleNextClick() {
-    setStart(function (prevStart) {
-      return handleDateChange(prevStart, 6);
-    });
-  };
-  var days = Array.from({
-    length: 7
-  }, function (_, index) {
-    return handleDateChange(start, index);
-  });
+  // Создание массива дней для отображения
+  var days = [new Date(start.getTime())];
+  for (var i = 0; i < 5; i++) {
+    var next = new Date(days[i].getTime());
+    next.setDate(next.getDate() + 1);
+    days.push(next);
+  }
+  //Отображение дней и переключатель на следующую неделю
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("nav", {
     className: "page-nav",
-    children: [!today.setHours(0, 0, 0, 0) === start.setHours(0, 0, 0, 0) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+    children: [start.setHours(0, 0, 0, 0) === today.setHours(0, 0, 0, 0) || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
       className: "page-nav__day page-nav__day_prev",
-      onClick: handlePrevClick
+      onClick: function onClick() {
+        return handleStart(start, -6);
+      },
+      href: "#"
     }), days.map(function (day) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
         date: day,
         chosen: chosenDate,
-        handleClick: handleClick
-      }, day.getTime());
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+        handleClick: function handleClick() {
+          return _handleClick(day);
+        }
+      }, day);
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
       className: "page-nav__day page-nav__day_next",
-      onClick: handleNextClick
+      onClick: function onClick() {
+        return handleStart(start, 6);
+      },
+      href: "#"
     })]
   });
 }
@@ -252,18 +260,11 @@ function MainMovie() {
     }),
     chosenDate = _useSelector.chosenDate,
     films = _useSelector.films,
-    loading = _useSelector.loading,
     error = _useSelector.error;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     dispatch((0,_reducers_createCalendarSlice__WEBPACK_IMPORTED_MODULE_2__.getCalendar)(chosenDate));
   }, [chosenDate]);
-
-  // if (loading) {
-  //     // Обработка состояния загрузки
-  //     return <div>Loading...</div>;
-  // }
-
   if (error) {
     // Обработка ошибки
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -293,34 +294,42 @@ function MainMovie() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Movie)
+/* harmony export */   "default": () => (/* binding */ MovieComponent)
 /* harmony export */ });
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _movieInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./movieInfo */ "./resources/js/components/Client/clientCards/MovieCard/movieInfo.js");
-/* harmony import */ var _movieHall__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./movieHall */ "./resources/js/components/Client/clientCards/MovieCard/movieHall.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _movieInfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./movieInfo */ "./resources/js/components/Client/clientCards/MovieCard/movieInfo.js");
+/* harmony import */ var _movieHall__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./movieHall */ "./resources/js/components/Client/clientCards/MovieCard/movieHall.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 
 
-function Movie(props) {
-  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
+
+function MovieComponent(props) {
+  // Получение данных о зале из состояния
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.calendar;
     }),
     cinemaHalls = _useSelector.cinemaHalls;
+
+  // Получение идентификатора фильма из пропсов
   var id = props.id;
+
+  // Фильтрация залов, где идет выбранный фильм
   var movieHalls = cinemaHalls.filter(function (cinemaHall) {
     return cinemaHall.sessions.find(function (session) {
       return +session.film_id === id;
     });
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("section", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("section", {
     className: "movie",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_movieInfo__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_movieInfo__WEBPACK_IMPORTED_MODULE_2__["default"], {
       id: id
     }), movieHalls.map(function (cinemaHall) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_movieHall__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_movieHall__WEBPACK_IMPORTED_MODULE_3__["default"], {
         cinemaHallId: cinemaHall.id,
         filmId: id
       }, cinemaHall.id);
@@ -349,15 +358,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function MovieHall(props) {
+  // Получение данных о залах из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.calendar;
     }),
     cinemaHalls = _useSelector.cinemaHalls;
+
+  // Получение идентификаторов зала и фильма из пропсов
   var cinemaHallId = props.cinemaHallId,
     filmId = props.filmId;
+
+  // Поиск информации о конкретном кинозале
   var cinemaHall = cinemaHalls.find(function (cinemaHall) {
     return cinemaHall.id === cinemaHallId;
   });
+
+  // Фильтрация сеансов в выбранном кинозале для конкретного фильма
   var cinemaHallSeances = cinemaHall.sessions.filter(function (session) {
     return +session.film_id === filmId;
   });

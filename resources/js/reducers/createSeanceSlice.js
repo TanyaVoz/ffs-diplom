@@ -1,16 +1,19 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
+// Начальное состояние хранилища сеанса
 const initialState = {
     session: {},
     seats: [],
     ticket: {},
 };
 
+// Создание асинхронного действия для получения информации о сеансе
 export const getSeance = createAsyncThunk("seance/getSeats", async (id) => {
     const response = await fetch(`/api/client/seats/${id}`);
     return await response.json();
 });
 
+// Создание асинхронного действия для покупки билета
 export const buyTicket = createAsyncThunk(
     "seance/buyTicket",
     async (_, {getState}) => {
@@ -24,6 +27,7 @@ export const buyTicket = createAsyncThunk(
     }
 );
 
+// Создание среза состояния и связанных с ним действий для сеанса
 const createSeanceSlice = createSlice({
     name: "seance",
     initialState,
@@ -50,5 +54,6 @@ const createSeanceSlice = createSlice({
     },
 });
 
+// Экспорт действий и редуктора из среза
 export const {createTicket, resetSeance} = createSeanceSlice.actions;
 export default createSeanceSlice.reducer;

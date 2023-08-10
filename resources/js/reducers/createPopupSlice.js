@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 
+// Начальное состояние хранилища попапа
 const initialState = {
     active: false,
     title: "",
@@ -7,6 +8,7 @@ const initialState = {
     id: -1,
 };
 
+// Создание среза состояния и связанных с ним действий для попапа
 const createPopupSlice = createSlice({
     name: "popup",
     initialState,
@@ -24,5 +26,7 @@ const createPopupSlice = createSlice({
     },
 });
 
+
+// Экспорт действий и редуктора из среза
 export const {showPopup, closePopup} = createPopupSlice.actions;
 export default createPopupSlice.reducer;

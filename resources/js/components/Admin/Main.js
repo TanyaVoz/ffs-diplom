@@ -10,29 +10,39 @@ import Popup from "./allPopup/Popup";
 export default function Main() {
     return (
         <>
-            <Popup/>
-            <Header/>
+            {/* Отображение всплывающего окна */}
+            <Popup />
+            
+            {/* Отображение заголовка страницы */}
+            <Header />
+            
             <main className="conf-steps">
+                {/* Первый шаг: Управление залами */}
                 <StepHeader title={'Управление залами'}>
-                    <CinemaHallControl/>
+                    <CinemaHallControl />
                 </StepHeader>
-
+                
+                {/* Второй шаг: Конфигурация залов */}
                 <StepHeader title={'Конфигурация залов'}>
-                    <CinemaHallConfig/>
+                    <CinemaHallConfig />
                 </StepHeader>
-
+                
+                {/* Третий шаг: Конфигурация цен */}
                 <StepHeader title={'Конфигурация цен'}>
-                    <PriceConfig/>
+                    <PriceConfig />
                 </StepHeader>
-
+                
+                {/* Четвёртый шаг: Сетка сеансов */}
                 <StepHeader title={'Сетка сеансов'}>
-                    <SessionGrid/>
+                    <SessionGrid />
                 </StepHeader>
-
+                
+                {/* Пятый шаг: Открыть продажи */}
                 <StepHeader title={'Открыть продажи'}>
-                    <OpenSales/>
+                    <OpenSales />
                 </StepHeader>
             </main>
         </>
     );
 }
+

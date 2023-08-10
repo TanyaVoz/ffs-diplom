@@ -6,20 +6,28 @@ import ChooseHallBtn from "../Buttons/chooseHallBtn";
 import SeatStatus from "../Seats/seatStatus";
 
 export default function PriceConfig() {
+  // Получение данных о залах из глобального состояния с использованием useSelector
   const { cinemaHalls } = useSelector((state) => state.admin);
+
+  // Локальное состояние для хранения выбранного зала
   const [selectedCinemaHall, setSelectedCinemaHall] = useState(null);
+
+  // Получение диспатча из React Redux
   const dispatch = useDispatch();
 
+  // Обработчик выбора зала для конфигурации
   const handleSelect = (id) => {
     setSelectedCinemaHall(cinemaHalls.find((cinemaHall) => cinemaHall.id === id));
   }
 
+  // Обработчик изменения данных о ценах
   const handleChange = ({ target }) => {
     const name = target.name;
     const value = target.value;
     setSelectedCinemaHall((prevState) => ({ ...prevState, [name]: value }));
   };
 
+  // Обработчик сохранения изменений
   const handleSave = () => {
     if (selectedCinemaHall) {
       dispatch(updateHall(selectedCinemaHall));
@@ -76,6 +84,7 @@ export default function PriceConfig() {
             за <SeatStatus status={"vip"} /> VIP кресла
           </div>
 
+          {/* Кнопки для отмены и сохранения изменений */}
           <ActionBtn cancel={() => setSelectedCinemaHall(null)} save={() => handleSave()} />
         </>
       )}

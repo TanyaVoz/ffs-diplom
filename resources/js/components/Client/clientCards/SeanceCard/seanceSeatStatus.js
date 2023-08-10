@@ -2,14 +2,22 @@ import { useState } from "react";
 import classnames from 'classnames';
 
 export default function SeanceSeatStatus(props) {
+  // Получение свойств из пропсов: статус и колбэк
   const { status, callback } = props;
+
+  // Инициализация состояния для состояния выбора места
   const [taken, setTaken] = useState(false);
 
+  // Обработчик клика на место
   const handleClick = () => {
+    // Изменение состояния выбора места
     setTaken(!taken);
+
+    // Вызов переданной функции колбэка
     callback();
   }
 
+  // Определение CSS-класса в зависимости от статуса
   let activeClass = "buying-scheme__chair_disabled";
   switch (status) {
     case 'standard':
@@ -35,4 +43,6 @@ export default function SeanceSeatStatus(props) {
     />
   );
 }
+
+
 

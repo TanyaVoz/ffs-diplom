@@ -51,11 +51,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Exit() {
+  // Извлечение информации о токене из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.auth;
     }),
     token = _useSelector.token;
+
+  // Получение диспетчера Redux
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+
+  // Обработчик для выхода из системы (вызов действия logout)
   var handleClick = function handleClick() {
     dispatch((0,_reducers_createAuthSlice__WEBPACK_IMPORTED_MODULE_1__.logout)());
   };
@@ -108,28 +113,42 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Login() {
+  // Извлечение информации о статусе аутентификации из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.auth;
     }),
     status = _useSelector.status;
+
+  // Изначальное состояние формы для входа
   var EMPTY_STATE = {
     mail: "",
     pwd: ""
   };
+
+  // Состояние формы для входа
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(EMPTY_STATE),
     _useState2 = _slicedToArray(_useState, 2),
     loginForm = _useState2[0],
     setLoginForm = _useState2[1];
+
+  // Получение диспетчера Redux
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+
+  // Получение функции навигации
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    // При изменении статуса аутентификации
     if (status === "success") {
+      // Сброс статуса аутентификации и переход на главную страницу администратора
       dispatch((0,_reducers_createAuthSlice__WEBPACK_IMPORTED_MODULE_2__.resetAuthStatus)());
       navigate('/admin');
     } else if (status === "error") {
+      // Если статус - ошибка, сбрасываем данные формы
       setLoginForm(EMPTY_STATE);
     }
   }, [status]);
+
+  // Обработчик изменения полей формы
   var handleChange = function handleChange(_ref) {
     var target = _ref.target;
     var name = target.name;
@@ -138,8 +157,11 @@ function Login() {
       return _objectSpread(_objectSpread({}, prevState), {}, _defineProperty({}, name, value));
     });
   };
+
+  // Обработчик отправки формы
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
+    // Вызываем действие для получения токена с указанными данными
     dispatch((0,_reducers_createAuthSlice__WEBPACK_IMPORTED_MODULE_2__.getToken)({
       email: loginForm.mail,
       password: loginForm.pwd
@@ -166,7 +188,7 @@ function Login() {
               htmlFor: "mail",
               children: ["E-mail", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
                 className: "login__input",
-                type: "mail",
+                type: "email",
                 placeholder: "example@domain.xyz",
                 name: "mail",
                 value: loginForm.mail,

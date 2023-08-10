@@ -3,15 +3,21 @@ import SeanceSeatStatus from "./seanceSeatStatus";
 
 const BuyingScheme = (props) => {
     const { callback } = props;
+
+    // Получение данных о сеансе и местах из состояния
     const { session, seats } = useSelector((state) => state.seance);
+
+    // Получение цен для стандартных и VIP мест из данных сеанса
     const priceStandard = session.price_standard;
     const priceVIP = session.price_vip;
 
+    // Получение массива мест, разбитых на ряды
     const rowSeats = getRowSeats(seats, session.row);
 
     return (
         <div className="buying-scheme">
             <div className="buying-scheme__wrapper">
+                {/* Отображение мест в рядах */}
                 {rowSeats.map((row, i) => (
                     <div className="buying-scheme__row" key={i}>
                         {row.map((seat) => (
@@ -27,11 +33,13 @@ const BuyingScheme = (props) => {
 
             <div className="buying-scheme__legend">
                 <div className="col">
+                    {/* Легенда для свободных стандартных мест */}
                     <p className="buying-scheme__legend-price">
                         <span className="buying-scheme__chair buying-scheme__chair_standart" /> Свободно (
                         <span className="buying-scheme__legend-value">{priceStandard}</span>руб)
                     </p>
 
+                    {/* Легенда для свободных VIP мест */}
                     <p className="buying-scheme__legend-price">
                         <span className="buying-scheme__chair buying-scheme__chair_vip" /> Свободно VIP (
                         <span className="buying-scheme__legend-value">{priceVIP}</span>руб)
@@ -39,10 +47,12 @@ const BuyingScheme = (props) => {
                 </div>
 
                 <div className="col">
+                    {/* Легенда для занятых мест */}
                     <p className="buying-scheme__legend-price">
                         <span className="buying-scheme__chair buying-scheme__chair_taken" /> Занято
                     </p>
 
+                    {/* Легенда для выбранных мест */}
                     <p className="buying-scheme__legend-price">
                         <span className="buying-scheme__chair buying-scheme__chair_selected" /> Выбрано
                     </p>
@@ -52,6 +62,7 @@ const BuyingScheme = (props) => {
     );
 };
 
+// Функция для разбиения мест на ряды
 const getRowSeats = (seats, rowSize) => {
     if (!seats || seats.length === 0) {
         return [];
@@ -72,3 +83,4 @@ const getRowSeats = (seats, rowSize) => {
 };
 
 export default BuyingScheme;
+

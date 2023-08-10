@@ -453,6 +453,7 @@ body {
   }
 }
 
+
 /* ~~~~~~~~~~~~ Загрузка ~~~~~~~~~~~~ */
 :root {
 	--sp: 2.5s; /* change speed */
@@ -584,4 +585,3 @@ body {
 	0%, 10% { transform: rotate(-280deg); }
 	90%, 100% { transform: rotate(-640deg); }
 }
-

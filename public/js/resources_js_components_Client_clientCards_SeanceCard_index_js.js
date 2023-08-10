@@ -14,17 +14,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+// Компонент для отображения заголовка страницы
+
 
 function Header() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
-    className: "page-header",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
-      className: "page-header__title",
-      children: ["\u0418\u0434\u0451\u043C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-        children: "\u0432"
-      }), "\u043A\u0438\u043D\u043E"]
+  return (
+    /*#__PURE__*/
+    // Основной контейнер заголовка страницы
+    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
+      className: "page-header",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
+        className: "page-header__title",
+        children: ["\u0418\u0434\u0451\u043C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+          children: "\u0432"
+        }), "\u043A\u0438\u043D\u043E"]
+      })
     })
-  });
+  );
 }
 
 /***/ }),
@@ -45,6 +51,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+
+// Главный компонент страницы
 
 
 
@@ -182,50 +190,50 @@ function Navigate() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(new Date()),
     _useState2 = _slicedToArray(_useState, 2),
     start = _useState2[0],
-    setStart = _useState2[1];
+    setStart = _useState2[1]; // Состояние для отслеживания начальной даты
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.calendar;
     }),
-    chosenDate = _useSelector.chosenDate;
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-  var today = new Date();
-  var handleDateChange = function handleDateChange(day, offset) {
-    var newDate = new Date(day);
-    newDate.setDate(newDate.getDate() + offset);
-    return newDate;
-  };
-  var handleClick = function handleClick(day) {
+    chosenDate = _useSelector.chosenDate; // Получение выбранной даты из состояния Redux
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)(); // Получение функции dispatch из Redux
+  var today = new Date(); // Текущая дата
+  var _handleClick = function handleClick(day) {
     dispatch((0,_reducers_createCalendarSlice__WEBPACK_IMPORTED_MODULE_2__.chooseDate)("".concat(day.getFullYear(), "-").concat(day.getMonth() + 1, "-").concat(day.getDate())));
   };
-  var handlePrevClick = function handlePrevClick() {
-    setStart(function (prevStart) {
-      return handleDateChange(prevStart, -6);
-    });
+  // Обработчик для переключения даты назад или вперед
+  var handleStart = function handleStart(day, arg) {
+    setStart(new Date(day.setDate(day.getDate() + arg)));
   };
-  var handleNextClick = function handleNextClick() {
-    setStart(function (prevStart) {
-      return handleDateChange(prevStart, 6);
-    });
-  };
-  var days = Array.from({
-    length: 7
-  }, function (_, index) {
-    return handleDateChange(start, index);
-  });
+  // Создание массива дней для отображения
+  var days = [new Date(start.getTime())];
+  for (var i = 0; i < 5; i++) {
+    var next = new Date(days[i].getTime());
+    next.setDate(next.getDate() + 1);
+    days.push(next);
+  }
+  //Отображение дней и переключатель на следующую неделю
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("nav", {
     className: "page-nav",
-    children: [!today.setHours(0, 0, 0, 0) === start.setHours(0, 0, 0, 0) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+    children: [start.setHours(0, 0, 0, 0) === today.setHours(0, 0, 0, 0) || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
       className: "page-nav__day page-nav__day_prev",
-      onClick: handlePrevClick
+      onClick: function onClick() {
+        return handleStart(start, -6);
+      },
+      href: "#"
     }), days.map(function (day) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
         date: day,
         chosen: chosenDate,
-        handleClick: handleClick
-      }, day.getTime());
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+        handleClick: function handleClick() {
+          return _handleClick(day);
+        }
+      }, day);
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
       className: "page-nav__day page-nav__day_next",
-      onClick: handleNextClick
+      onClick: function onClick() {
+        return handleStart(start, 6);
+      },
+      href: "#"
     })]
   });
 }
@@ -252,13 +260,19 @@ __webpack_require__.r(__webpack_exports__);
 
 var BuyingScheme = function BuyingScheme(props) {
   var _callback = props.callback;
+
+  // Получение данных о сеансе и местах из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.seance;
     }),
     session = _useSelector.session,
     seats = _useSelector.seats;
+
+  // Получение цен для стандартных и VIP мест из данных сеанса
   var priceStandard = session.price_standard;
   var priceVIP = session.price_vip;
+
+  // Получение массива мест, разбитых на ряды
   var rowSeats = getRowSeats(seats, session.row);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "buying-scheme",
@@ -315,6 +329,8 @@ var BuyingScheme = function BuyingScheme(props) {
     })]
   });
 };
+
+// Функция для разбиения мест на ряды
 var getRowSeats = function getRowSeats(seats, rowSize) {
   if (!seats || seats.length === 0) {
     return [];
@@ -365,16 +381,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function MainSeance() {
+  // Получение данных о сеансе из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.seance;
     }),
     session = _useSelector.session;
+
+  // Получение идентификатора сеанса из параметров URL
   var seanceId = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useParams)().seanceId;
+
+  // Получение функции для диспетчера Redux
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+
+  // Массив для выбранных мест
   var selectedSeats = [];
+
+  // Загрузка данных о сеансе при монтировании компонента
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     dispatch((0,_reducers_createSeanceSlice__WEBPACK_IMPORTED_MODULE_2__.getSeance)(seanceId));
   }, []);
+
+  // Обработчик выбора места
   var selectHandle = function selectHandle(id, status) {
     var price = status === 'vip' ? session.price_vip : session.price_standard;
     var hasSeat = selectedSeats.findIndex(function (seat) {
@@ -389,6 +416,8 @@ function MainSeance() {
       });
     }
   };
+
+  // Обработчик бронирования мест
   var submitHandle = function submitHandle() {
     var ticket = selectedSeats.reduce(function (res, seat) {
       res.seats.push(seat.id);
@@ -398,6 +427,8 @@ function MainSeance() {
       seats: [],
       cost: 0
     });
+
+    // Создание билета с выбранными местами и стоимостью
     dispatch((0,_reducers_createSeanceSlice__WEBPACK_IMPORTED_MODULE_2__.createTicket)({
       seanceId: seanceId,
       seats: ticket.seats,
@@ -501,16 +532,26 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function SeanceSeatStatus(props) {
+  // Получение свойств из пропсов: статус и колбэк
   var status = props.status,
     callback = props.callback;
+
+  // Инициализация состояния для состояния выбора места
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     taken = _useState2[0],
     setTaken = _useState2[1];
+
+  // Обработчик клика на место
   var handleClick = function handleClick() {
+    // Изменение состояния выбора места
     setTaken(!taken);
+
+    // Вызов переданной функции колбэка
     callback();
   };
+
+  // Определение CSS-класса в зависимости от статуса
   var activeClass = "buying-scheme__chair_disabled";
   switch (status) {
     case 'standard':

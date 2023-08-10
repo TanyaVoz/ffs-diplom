@@ -1,10 +1,10 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-
+// Начальное состояние хранилища
 const initialState = {
     token: "",
     status: "idle",
 };
-
+// Определение асинхронной операции для получения токена
 export const getToken = createAsyncThunk(
     "auth/getToken",
     async ({email, password}) => {
@@ -19,7 +19,7 @@ export const getToken = createAsyncThunk(
         return await response.json();
     }
 );
-
+// Создание среза состояния и связанных с ним действий
 const createAuthSlice = createSlice({
     name: "auth",
     initialState,
@@ -29,6 +29,7 @@ const createAuthSlice = createSlice({
             state.status = "idle";
         }
     },
+    // Обработка результатов выполнения асинхронных операций
     extraReducers: (builder) => {
         builder
             .addCase(getToken.rejected, (state) => {
@@ -41,5 +42,6 @@ const createAuthSlice = createSlice({
     },
 });
 
+// Экспорт действий и редуктора из среза
 export const {logout, resetAuthStatus} = createAuthSlice.actions;
 export default createAuthSlice.reducer;

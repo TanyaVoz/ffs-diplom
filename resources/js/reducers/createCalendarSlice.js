@@ -1,6 +1,10 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
+
+// Получение текущей даты
 const today = new Date();
+
+// Начальное состояние хранилища
 const initialState = {
     chosenDate: `${today.getFullYear()}-${('0' + (today.getMonth() + 1)).slice(-2)}-${('0' + today.getDate()).slice(-2)}`,
     cinemaHalls: [],
@@ -12,6 +16,8 @@ export const getCalendar = createAsyncThunk("calendar/getCalendar", async (date)
     return await response.json();
 });
 
+
+// Создание среза состояния и связанных с ним действий
 const createCalendarSlice = createSlice({
     name: "calendar",
     initialState,
@@ -20,6 +26,7 @@ const createCalendarSlice = createSlice({
             state.chosenDate = action.payload;
         },
     },
+    // Обработка результатов выполнения асинхронных операций
     extraReducers: (builder) => {
         builder
             .addCase(getCalendar.fulfilled, (state, action) => {
@@ -35,5 +42,7 @@ const createCalendarSlice = createSlice({
     },
 });
 
+
+// Экспорт действий и редуктора из среза
 export const {chooseDate} = createCalendarSlice.actions;
 export default createCalendarSlice.reducer;

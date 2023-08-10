@@ -96,12 +96,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// Компонент для добавления сеанса
+
 
 var AddSeanceAction = function AddSeanceAction(_ref) {
   var cinemaHallId = _ref.cinemaHallId,
     name = _ref.name;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+
+  // Обработчик добавления сеанса
   var handleAddSeance = function handleAddSeance() {
+    // Диспатч действия для показа всплывающего окна
     dispatch((0,_reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_2__.showPopup)({
       title: "Добавление сеанса",
       form: "addSeance",
@@ -122,6 +127,8 @@ var AddSeanceAction = function AddSeanceAction(_ref) {
     })]
   });
 };
+
+// Пропсы компонента
 AddSeanceAction.propTypes = {
   cinemaHallId: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number.isRequired),
   name: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().string.isRequired)
@@ -150,10 +157,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// Компонент для действия удаления зала
+
 
 function DeleteHallAction(props) {
+  // Извлечение данных из пропсов
   var id = props.id,
     name = props.name;
+
+  // Получение диспатча из React Redux
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
@@ -178,10 +190,34 @@ function DeleteHallAction(props) {
     })]
   });
 }
+
+// Пропсы компонента
 DeleteHallAction.propTypes = {
   id: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().number.isRequired),
   name: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string.isRequired)
 };
+
+// import {useDispatch} from "react-redux";
+// import {showPopup} from "../../../reducers/createPopupSlice";
+
+// export default function DeleteHallAction(props) {
+//     const {id, name} = props;
+//     const dispatch = useDispatch();
+
+//     return (
+//         <li>
+//             <span
+//                 className="conf-step__edit-hall"
+//                 onClick={() => dispatch(showPopup({title: "Редактирование зала", form: "editHall", id}))}>
+//                 {name}
+//             </span>
+//             <button
+//                 className="conf-step__button conf-step__button-trash"
+//                 onClick={() => dispatch(showPopup({title: "Удаление зала", form: "deleteHall", id}))}
+//             />
+//         </li>
+//     );
+// }
 
 /***/ }),
 
@@ -207,13 +243,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// Компонент для действия редактирования фильма
+
 
 function EditMovieAction(props) {
+  // Извлечение данных из пропсов
   var id = props.id,
     img = props.img,
     title = props.title,
     duration = props.duration;
+
+  // Получение продолжительности фильма в соответствии с числом
   var filmDuration = (0,_Client_additionalComponents_formWords_minEnd__WEBPACK_IMPORTED_MODULE_2__["default"])(duration);
+
+  // Получение диспатча из React Redux
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "conf-step__movie",
@@ -239,6 +282,8 @@ function EditMovieAction(props) {
     })]
   });
 }
+
+// Пропсы компонента
 EditMovieAction.propTypes = {
   id: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().number.isRequired),
   img: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string.isRequired),
@@ -280,18 +325,25 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 function CinemaHallConfig() {
+  // Получение данных из глобального состояния с использованием useSelector
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.admin;
     }),
     cinemaHalls = _useSelector.cinemaHalls,
     selectedCinemaHallScheme = _useSelector.selectedCinemaHallScheme;
+
+  // Получение диспатча из React Redux
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+
+  // Обработчик выбора зала
   var handleSelect = function handleSelect(id) {
     dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.selectCinemaHallScheme)(cinemaHalls.find(function (cinemaHall) {
       return cinemaHall.id === id;
     })));
     dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.getSeats)(id));
   };
+
+  // Обработчик изменения размеров зала
   var handleChange = function handleChange(_ref) {
     var target = _ref.target;
     var name = target.name;
@@ -313,6 +365,8 @@ function CinemaHallConfig() {
     });
     dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.createScheme)(seats));
   };
+
+  // Обработчик сохранения изменений
   var handleSave = function handleSave() {
     var hallSource = cinemaHalls.find(function (cinemaHall) {
       return cinemaHall.id === selectedCinemaHallScheme.id;
@@ -430,11 +484,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function CinemaHallControl() {
+  // Получение данных из глобального состояния с использованием useSelector
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.admin;
     }),
     cinemaHalls = _useSelector.cinemaHalls;
+
+  // Получение диспатча из React Redux
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+
+  // Загрузка списка залов при монтировании компонента
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_3__.getHalls)());
   }, []);
@@ -503,18 +562,27 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function CinemaHallStatusManager() {
+  // Получение данных о залах из глобального состояния с использованием useSelector
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.admin;
     }),
     cinemaHalls = _useSelector.cinemaHalls;
+
+  // Локальное состояние для хранения измененных данных о залах
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     changedCinemaHalls = _useState2[0],
     setChangedCinemaHalls = _useState2[1];
+
+  // Получение диспатча из React Redux
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+
+  // Обновление локального состояния при изменении данных о залах
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     setChangedCinemaHalls(cinemaHalls);
   }, [cinemaHalls]);
+
+  // Обработчик изменения состояния зала (открыт/закрыт)
   var handleChange = function handleChange(cinemaHall) {
     setChangedCinemaHalls(function (prevState) {
       return prevState.map(function (item) {
@@ -524,11 +592,14 @@ function CinemaHallStatusManager() {
       });
     });
   };
+
+  // Обработчик сохранения изменений
   var handleSubmit = function handleSubmit() {
     changedCinemaHalls.forEach(function (item) {
       var originalCinemaHall = cinemaHalls.find(function (cinemaHall) {
         return cinemaHall.id === item.id;
       });
+      // Проверка на изменение состояния зала и отправка обновления в хранилище
       if (originalCinemaHall && originalCinemaHall.free !== item.free) {
         dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.updateHall)(item));
       }
@@ -606,20 +677,29 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function PriceConfig() {
+  // Получение данных о залах из глобального состояния с использованием useSelector
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.admin;
     }),
     cinemaHalls = _useSelector.cinemaHalls;
+
+  // Локальное состояние для хранения выбранного зала
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
     _useState2 = _slicedToArray(_useState, 2),
     selectedCinemaHall = _useState2[0],
     setSelectedCinemaHall = _useState2[1];
+
+  // Получение диспатча из React Redux
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+
+  // Обработчик выбора зала для конфигурации
   var handleSelect = function handleSelect(id) {
     setSelectedCinemaHall(cinemaHalls.find(function (cinemaHall) {
       return cinemaHall.id === id;
     }));
   };
+
+  // Обработчик изменения данных о ценах
   var handleChange = function handleChange(_ref) {
     var target = _ref.target;
     var name = target.name;
@@ -628,6 +708,8 @@ function PriceConfig() {
       return _objectSpread(_objectSpread({}, prevState), {}, _defineProperty({}, name, value));
     });
   };
+
+  // Обработчик сохранения изменений
   var handleSave = function handleSave() {
     if (selectedCinemaHall) {
       dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.updateHall)(selectedCinemaHall));
@@ -720,6 +802,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function SessionGrid() {
+  // Отображение списка фильмов для добавления сеансов
+  // и выбора даты сеанса
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "conf-step__wrapper",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Actions_addMovieAction__WEBPACK_IMPORTED_MODULE_0__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Seances_chooseSessionDate__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Seances_seancesHall__WEBPACK_IMPORTED_MODULE_1__["default"], {})]
@@ -749,11 +833,14 @@ __webpack_require__.r(__webpack_exports__);
 function AcceptBtn(props) {
   var text = props.text,
     handleDelete = props.handleDelete;
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)(); // Получение функции dispatch из Redux
+
+  // Обработчик для отмены (закрытия попапа)
   var handleCancel = function handleCancel(e) {
     e.preventDefault();
-    dispatch((0,_reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_1__.closePopup)());
+    dispatch((0,_reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_1__.closePopup)()); // Вызов экшена для закрытия попапа
   };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "conf-step__buttons text-center",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -801,7 +888,7 @@ function ActionBtn(props) {
       type: "submit",
       value: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C",
       className: "conf-step__button conf-step__button-accent",
-      onClick: save
+      onClick: save // Вызов функции save при клике на кнопку
     })]
   });
 }
@@ -822,14 +909,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 function Button(props) {
+  // Извлечение пропсов
   var text = props.text,
     callback = props.callback,
     className = props.className;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-    className: "conf-step__button conf-step__button-accent ".concat(className || ''),
-    onClick: callback,
-    children: text
-  });
+  return (
+    /*#__PURE__*/
+    // Отображение кнопки с классами и текстом из пропсов
+    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("button", {
+      className: "conf-step__button conf-step__button-accent ".concat(className || ''),
+      onClick: callback // Вызов функции callback при клике на кнопку
+      ,
+      children: [text, " "]
+    })
+  );
 }
 
 /***/ }),
@@ -849,6 +942,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function ChooseHallBtn(props) {
+  // Извлечение пропсов
   var name = props.name,
     checked = props.checked,
     callback = props.callback;
@@ -856,9 +950,11 @@ function ChooseHallBtn(props) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
       type: "radio",
       className: "conf-step__radio",
-      value: name,
-      checked: checked,
-      onChange: callback // Просто передаем функцию обработчика непосредственно
+      value: name // Значение для радио-кнопки
+      ,
+      checked: checked // Проверка, выбрана ли радио-кнопка
+      ,
+      onChange: callback // Вызов функции обработчика при изменении состояния
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
       className: "conf-step__selector",
       children: name
@@ -928,6 +1024,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function StepHeader(props) {
+  // Состояние для открытия/закрытия раздела
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
     _useState2 = _slicedToArray(_useState, 2),
     opened = _useState2[0],
@@ -1031,15 +1128,17 @@ function ChooseOpenHalls(props) {
     callback = props.callback;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-      id: "cinemaHallCheck".concat(id),
+      id: "cinemaHallCheck".concat(id) // Уникальный идентификатор для связи с label
+      ,
       className: "conf-step__custom-checkbox",
       type: "checkbox",
-      checked: free,
-      onChange: callback
+      checked: free // Определение состояния выбора (true/false)
+      ,
+      onChange: callback // Обработчик изменения состояния
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
       htmlFor: "cinemaHallCheck".concat(id),
       children: name
-    })]
+    }), " "]
   });
 }
 
@@ -1070,10 +1169,13 @@ function ChooseSessionDate() {
     chosenDate = _useSelector.chosenDate;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
   var today = new Date();
+
+  // Обработчик изменения выбранной даты
   var handleChange = function handleChange(_ref) {
     var target = _ref.target;
-    dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.chooseDate)(target.value));
+    dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.chooseDate)(target.value)); // Диспетчер для обновления выбранной даты в хранилище
   };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("label", {
       className: "conf-step__label conf-step__label-fullsize",
@@ -1081,11 +1183,16 @@ function ChooseSessionDate() {
       children: ["\u0414\u0430\u0442\u0430 \u0441\u0435\u0430\u043D\u0441\u043E\u0432:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
         className: "conf-step__input",
         type: "date",
-        name: "datepicker",
+        name: "datepicker"
+        // Устанавливаем минимальную дату как текущую дату
+        ,
         min: "".concat(today.getFullYear(), "-").concat(('0' + (today.getMonth() + 1)).slice(-2), "-").concat(('0' + today.getDate()).slice(-2)),
-        value: chosenDate,
-        onChange: handleChange,
-        pattern: "[0-9]{4}-[0-9]{2}-[0-9]{2}",
+        value: chosenDate // Установка значения даты
+        ,
+        onChange: handleChange // Привязка обработчика изменения
+        ,
+        pattern: "[0-9]{4}-[0-9]{2}-[0-9]{2}" // Паттерн для ввода даты
+        ,
         required: true
       })]
     })
@@ -1109,14 +1216,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _movieTime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./movieTime */ "./resources/js/components/Admin/Seances/movieTime.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
-
+ // Импорт компонента для отображения времени сеанса
 
 function HallTime(props) {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.admin;
     }),
-    seances = _useSelector.seances;
-  var cinemaHall = props.cinemaHall;
+    seances = _useSelector.seances; // Получение данных о сеансах из Redux
+  var cinemaHall = props.cinemaHall; // Получение ID кинозала из входных параметров
+
+  // Фильтрация и сортировка сеансов для указанного кинозала
   var cinemaHallSeances = seances.filter(function (seance) {
     return +seance.cinema_hall_id === cinemaHall;
   });
@@ -1159,18 +1268,21 @@ function MovieTime(props) {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.admin;
     }),
-    movies = _useSelector.movies;
+    movies = _useSelector.movies; // Получение данных о фильмах из Redux
   var id = props.id,
     seance = props.seance,
-    time = props.time;
+    time = props.time; // Получение данных о времени сеанса и фильме из входных параметров
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+
+  // Поиск индекса фильма в массиве по его ID
   var index = movies.findIndex(function (movie) {
     return movie.id === +id;
   });
-  var movie = movies[index];
-  var width = movie.duration / 60 * 30;
-  var datetime = new Date(time);
-  var shift = (datetime.getHours() + datetime.getMinutes() / 60) * 30;
+  var movie = movies[index]; // Выбранный фильм
+  var width = movie.duration / 60 * 30; // Вычисление ширины блока сеанса в пикселях на основе длительности фильма
+  var datetime = new Date(time); // Преобразование времени сеанса в объект типа Date
+  var shift = (datetime.getHours() + datetime.getMinutes() / 60) * 30; // Вычисление сдвига блока сеанса по горизонтали
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "conf-step__seances-movie conf-step__seances-movie-".concat(index + 1),
     style: {
@@ -1226,10 +1338,10 @@ function SeancesHall() {
       return state.admin;
     }),
     cinemaHalls = _useSelector.cinemaHalls,
-    chosenDate = _useSelector.chosenDate;
+    chosenDate = _useSelector.chosenDate; // Получение данных о залах и выбранной дате из Redux
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.getSeances)());
+    dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.getSeances)()); // Получение списка сеансов при изменении выбранной даты
   }, [chosenDate]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "conf-step__seances",
@@ -1262,20 +1374,21 @@ __webpack_require__.r(__webpack_exports__);
 
 function SeatStatus(props) {
   var status = props.status,
-    callback = props.callback;
+    callback = props.callback; // Получение статуса места и функции обратного вызова из входных свойств
+
   var active;
   switch (status) {
     case "standard":
-      active = "conf-step__chair_standart";
+      active = "conf-step__chair_standart"; // Присваивание класса в зависимости от статуса
       break;
     case "disabled":
-      active = "conf-step__chair_disabled";
+      active = "conf-step__chair_disabled"; // Присваивание класса в зависимости от статуса
       break;
     case "vip":
-      active = "conf-step__chair_vip";
+      active = "conf-step__chair_vip"; // Присваивание класса в зависимости от статуса
       break;
     default:
-      active = "conf-step__chair_standart";
+      active = "conf-step__chair_standart"; // По умолчанию используется стандартный класс
       break;
   }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
@@ -1312,14 +1425,18 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 function SeatsScheme(props) {
-  var place = props.place;
+  var place = props.place; // Получение количества мест в ряду из входных свойств
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.admin;
     }),
-    seats = _useSelector.seats;
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
-  var allStatus = ["standard", "vip", "disabled"];
-  var chair = seats.length / place;
+    seats = _useSelector.seats; // Получение данных о местах из Redux
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)(); // Получение функции dispatch из Redux для отправки действий
+
+  var allStatus = ["standard", "vip", "disabled"]; // Список доступных статусов мест
+
+  var chair = seats.length / place; // Расчет количества мест в ряду
+
+  // Группировка мест по рядам
   var rowSeats = seats.reduce(function (result, seat, i) {
     var index = Math.floor(i / chair);
     if (!result[index]) {
@@ -1330,6 +1447,8 @@ function SeatsScheme(props) {
     }));
     return result;
   }, []);
+
+  // Обработчик клика по месту для изменения его статуса
   var handleClick = function handleClick(id) {
     var seatStatus = seats.find(function (seat) {
       return seat.id === id;
@@ -1382,11 +1501,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Exit() {
+  // Извлечение информации о токене из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.auth;
     }),
     token = _useSelector.token;
+
+  // Получение диспетчера Redux
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+
+  // Обработчик для выхода из системы (вызов действия logout)
   var handleClick = function handleClick() {
     dispatch((0,_reducers_createAuthSlice__WEBPACK_IMPORTED_MODULE_1__.logout)());
   };
@@ -1439,6 +1563,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function MovieCard(props) {
+  // Извлечение данных из пропсов с использованием значений по умолчанию
   var _props$title = props.title,
     title = _props$title === void 0 ? "" : _props$title,
     _props$description = props.description,
@@ -1450,6 +1575,8 @@ function MovieCard(props) {
     poster = props.poster,
     callbackSubmit = props.callbackSubmit,
     callbackDelete = props.callbackDelete;
+
+  // Начальное состояние формы
   var INIT_STATE = {
     title: title,
     description: description,
@@ -1460,8 +1587,14 @@ function MovieCard(props) {
     _useState2 = _slicedToArray(_useState, 2),
     form = _useState2[0],
     setForm = _useState2[1];
+
+  // Получение диспатча из React Redux
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+
+  // Создание рефа для файла
   var fileInput = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+
+  // Обработчик изменения полей формы
   var handleChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (_ref) {
     var target = _ref.target;
     var name = target.name,
@@ -1470,10 +1603,16 @@ function MovieCard(props) {
       return _objectSpread(_objectSpread({}, prevState), {}, _defineProperty({}, name, value));
     });
   }, []);
+
+  // Обработчик отправки формы
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
+
+    // Проверка наличия файла в инпуте
     if (fileInput.current && fileInput.current.files.length > 0) {
+      // Вызов коллбэка для добавления фильма
       callbackSubmit(form.title, form.description, form.duration, form.country, fileInput.current.files[0]).then(function () {
+        // Закрытие всплывающего окна и обновление списка фильмов
         dispatch((0,_reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_3__.closePopup)());
         dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.getMovies)());
       });
@@ -1587,18 +1726,25 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function SeanceCard(props) {
+  // Получение данных из глобального состояния с использованием useSelector
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.admin;
     }),
     cinemaHalls = _useSelector.cinemaHalls,
     movies = _useSelector.movies;
+
+  // Извлечение данных из пропсов с использованием значений по умолчанию
   var cinema_hall_id = props.cinema_hall_id,
     film_id = props.film_id,
     date = props.date,
     time = props.time,
     callbackSubmit = props.callbackSubmit,
     callbackDelete = props.callbackDelete;
+
+  // Получение текущей даты
   var today = new Date();
+
+  // Начальное состояние формы
   var INIT_STATE = {
     date: date,
     time: time,
@@ -1609,7 +1755,11 @@ function SeanceCard(props) {
     _useState2 = _slicedToArray(_useState, 2),
     form = _useState2[0],
     setForm = _useState2[1];
+
+  // Получение диспатча из React Redux
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+
+  // Обработчик изменения полей формы
   var handleChange = function handleChange(_ref) {
     var target = _ref.target;
     var name = target.name;
@@ -1618,11 +1768,18 @@ function SeanceCard(props) {
       return _objectSpread(_objectSpread({}, prevState), {}, _defineProperty({}, name, value));
     });
   };
+
+  // Обработчик отправки формы
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
+
+    // Форматирование даты и времени для запроса
     var datetime = new Date(form.date);
     var datetimeFormatted = "".concat(datetime.getFullYear(), "-").concat(('0' + (datetime.getMonth() + 1)).slice(-2), "-").concat(('0' + datetime.getDate()).slice(-2), " ").concat(form.time);
+
+    // Вызов коллбэка для добавления сеанса
     callbackSubmit(datetimeFormatted, form.cinemaHall, form.movie).then(function () {
+      // Закрытие всплывающего окна и обновление списка сеансов
       dispatch((0,_reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_2__.closePopup)());
       dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_3__.getSeances)());
     });
@@ -1735,6 +1892,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function AddHall(props) {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var edit = props.edit;
+
+  // Инициализация состояния формы
   var INIT_STATE = {
     name: ""
   };
@@ -1743,6 +1902,8 @@ function AddHall(props) {
     }),
     cinemaHalls = _useSelector.cinemaHalls;
   var cinemaHall = {};
+
+  // Если режим редактирования, получаем информацию о зале
   if (edit) {
     var _useSelector2 = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
         return state.popup;
@@ -1753,10 +1914,14 @@ function AddHall(props) {
     });
     INIT_STATE.name = cinemaHall.name;
   }
+
+  // Состояние формы
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(INIT_STATE),
     _useState2 = _slicedToArray(_useState, 2),
     form = _useState2[0],
     setForm = _useState2[1];
+
+  // Обработчик изменений в полях формы
   var handleChange = function handleChange(_ref) {
     var target = _ref.target;
     var name = target.name;
@@ -1765,9 +1930,12 @@ function AddHall(props) {
       return _objectSpread(_objectSpread({}, prevState), {}, _defineProperty({}, name, value));
     });
   };
+
+  // Обработчик отправки формы
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
     if (edit) {
+      // Обновление информации о зале
       dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.updateHall)(_objectSpread(_objectSpread({}, cinemaHall), {}, {
         name: form.name
       }))).then(function () {
@@ -1775,6 +1943,7 @@ function AddHall(props) {
         dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.getHalls)());
       });
     } else {
+      // Создание нового зала
       dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.createHall)(form.name)).then(function () {
         dispatch((0,_reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_3__.closePopup)());
         dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.getHalls)());
@@ -1836,11 +2005,17 @@ function DeleteHall() {
     }),
     cinemaHalls = _useSelector2.cinemaHalls;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+
+  // Получение имени зала по его id
   var name = cinemaHalls.find(function (cinemaHall) {
     return cinemaHall.id === id;
   }).name;
+
+  // Обработчик отправки формы удаления
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
+
+    // Удаление зала и обновление списка
     dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.deleteHall)(id)).then(function () {
       dispatch((0,_reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_2__.closePopup)());
       dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.getHalls)());
@@ -1882,17 +2057,23 @@ __webpack_require__.r(__webpack_exports__);
 
 function AddMovie() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_adminCards_movieCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    callbackSubmit: function callbackSubmit(title, description, duration, country, poster) {
-      return dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.createMovie)({
-        title: title,
-        description: description,
-        duration: duration,
-        country: country,
-        poster: poster
-      }));
-    }
-  });
+  return (
+    /*#__PURE__*/
+    // Рендеринг компонента MovieCard для добавления фильма
+    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_adminCards_movieCard__WEBPACK_IMPORTED_MODULE_2__["default"]
+    // Callback-функция для создания фильма при отправке формы
+    , {
+      callbackSubmit: function callbackSubmit(title, description, duration, country, poster) {
+        return dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.createMovie)({
+          title: title,
+          description: description,
+          duration: duration,
+          country: country,
+          poster: poster
+        }));
+      }
+    })
+  );
 }
 
 /***/ }),
@@ -1906,20 +2087,56 @@ function AddMovie() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ CustomDeleteMovie)
+/* harmony export */   "default": () => (/* binding */ DeleteMovie)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../reducers/createAdminSlice */ "./resources/js/reducers/createAdminSlice.js");
 /* harmony import */ var _reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/createPopupSlice */ "./resources/js/reducers/createPopupSlice.js");
 /* harmony import */ var _Buttons_acceptBtn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Buttons/acceptBtn */ "./resources/js/components/Admin/Buttons/acceptBtn.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+// import { useDispatch as deleteMovieUseDispatch, useSelector } from "react-redux"; 
+// import { deleteMovie, getMovies, getSeances } from "../../../../reducers/createAdminSlice";
+// import { closePopup } from "../../../../reducers/createPopupSlice";
+// import AcceptBtn from "../../Buttons/acceptBtn"; 
+
+// export default function CustomDeleteMovie() { 
+//     const { id } = useSelector((state) => state.popup);
+//     const { movies } = useSelector((state) => state.admin);
+//     const dispatch = deleteMovieUseDispatch(); 
+
+//     // Получение названия фильма для вывода в сообщении
+//     const title = movies.find((movie) => movie.id === id).title;
+
+//     const handleSubmit = (event) => {
+//         event.preventDefault();
+
+//         // Выполнение удаления фильма и дополнительных действий
+//         dispatch(deleteMovie(id)).then(() => {
+//             dispatch(closePopup());
+//             dispatch(getSeances()); // Обновление сеансов
+//             dispatch(getMovies());  // Обновление списка фильмов
+//         });
+//     };
+
+//     return (
+//         // Форма для подтверждения удаления фильма
+//         <form onSubmit={handleSubmit}>
+//             <p className="conf-step__paragraph">
+//                 Вы действительно хотите удалить фильм <span>{title}</span>?
+//             </p>
+//             {/* Кнопка подтверждения удаления */}
+//             <AcceptBtn text={"Удалить"} /> 
+//         </form>
+//     );
+// }
 
 
 
 
 
 
-function CustomDeleteMovie() {
+
+function DeleteMovie() {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.popup;
     }),
@@ -1978,23 +2195,34 @@ __webpack_require__.r(__webpack_exports__);
 
 function EditMovie() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+
+  // Получаем ID фильма из состояния всплывающего окна
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.popup;
     }),
     id = _useSelector.id;
+
+  // Получаем список фильмов из состояния
   var _useSelector2 = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.admin;
     }),
     movies = _useSelector2.movies;
+
+  // Находим фильм по ID из состояния всплывающего окна
   var movie = movies.find(function (movie) {
     return movie.id === id;
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_adminCards_movieCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_adminCards_movieCard__WEBPACK_IMPORTED_MODULE_3__["default"]
+  // Передаем данные о фильме в компонент MovieCard для редактирования
+  , {
     title: movie.title,
     description: movie.description,
     duration: movie.duration,
     country: movie.country,
-    poster: movie.poster,
+    poster: movie.poster
+
+    // Callback-функция для обновления информации о фильме
+    ,
     callbackSubmit: function callbackSubmit(title, description, duration, country, poster) {
       return dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.updateMovie)({
         id: id,
@@ -2004,7 +2232,10 @@ function EditMovie() {
         country: country,
         poster: poster
       }));
-    },
+    }
+
+    // Callback-функция для показа всплывающего окна удаления фильма
+    ,
     callbackDelete: function callbackDelete() {
       return dispatch((0,_reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_1__.showPopup)({
         title: "Удаление фильма",
@@ -2134,29 +2365,45 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function AddSeance() {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+
+  // Получение списка фильмов и выбранной даты из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.admin;
     }),
     movies = _useSelector.movies,
     chosenDate = _useSelector.chosenDate;
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+
+  // Получение ID зала из состояния всплывающего окна
   var _useSelector2 = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.popup;
     }),
     id = _useSelector2.id;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_adminCards_seanceCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    callbackSubmit: function callbackSubmit(datetime, cinema_hall_id, film_id) {
-      return dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.createSeance)({
-        datetime: datetime,
-        cinema_hall_id: cinema_hall_id,
-        film_id: film_id
-      }));
-    },
-    cinema_hall_id: id,
-    film_id: movies[0].id,
-    date: chosenDate,
-    time: "00:00"
-  });
+  return (
+    /*#__PURE__*/
+    // Компонент SeanceCard для добавления сеанса
+    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_adminCards_seanceCard__WEBPACK_IMPORTED_MODULE_2__["default"]
+    // Передача callback-функции для создания сеанса
+    , {
+      callbackSubmit: function callbackSubmit(datetime, cinema_hall_id, film_id) {
+        return dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.createSeance)({
+          datetime: datetime,
+          cinema_hall_id: cinema_hall_id,
+          film_id: film_id
+        }));
+      }
+      // Передача ID зала
+      ,
+      cinema_hall_id: id
+      // Передача ID первого фильма в списке
+      ,
+      film_id: movies[0].id
+      // Передача выбранной даты и времени сеанса
+      ,
+      date: chosenDate,
+      time: "00:00"
+    })
+  );
 }
 
 /***/ }),
@@ -2194,14 +2441,22 @@ function DeleteSeance() {
     seances = _useSelector2.seances,
     movies = _useSelector2.movies;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+
+  // Находим сеанс по ID из состояния всплывающего окна
   var seance = seances.find(function (seance) {
     return +seance.id === id;
   });
+
+  // Находим название фильма для данного сеанса
   var title = movies.find(function (movie) {
     return movie.id === +seance.film_id;
   }).title;
+
+  // Обработчик для удаления сеанса
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
+
+    // Диспатчим действие удаления сеанса, после чего обновляем список сеансов
     dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.deleteSeance)(id)).then(function () {
       dispatch((0,_reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_2__.closePopup)());
       dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.getSeances)());
@@ -2253,15 +2508,21 @@ function EditSeance() {
       return state.admin;
     }),
     seances = _useSelector2.seances;
+
+  // Находим сеанс по ID из состояния всплывающего окна
   var session = seances.find(function (session) {
     return session.id === id;
   });
+
+  // Преобразуем дату и время сеанса в соответствующие форматы
   var datetime = new Date(session.datetime);
+  var date = "".concat(datetime.getFullYear(), "-").concat(('0' + (datetime.getMonth() + 1)).slice(-2), "-").concat(('0' + datetime.getDate()).slice(-2));
+  var time = "".concat(('0' + datetime.getHours()).slice(-2), ":").concat(('0' + datetime.getMinutes()).slice(-2));
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_adminCards_seanceCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
     cinema_hall_id: session.cinema_hall_id,
     film_id: session.film_id,
-    date: "".concat(datetime.getFullYear(), "-").concat(('0' + (datetime.getMonth() + 1)).slice(-2), "-").concat(('0' + datetime.getDate()).slice(-2)),
-    time: "".concat(('0' + datetime.getHours()).slice(-2), ":").concat(('0' + datetime.getMinutes()).slice(-2)),
+    date: date,
+    time: time,
     callbackSubmit: function callbackSubmit(datetime, cinema_hall_id, film_id) {
       return dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.updateSeance)({
         id: id,

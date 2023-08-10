@@ -6071,35 +6071,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _components_Placeholder_CustomLoadingPlaceholder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Placeholder/CustomLoadingPlaceholder */ "./resources/js/components/Placeholder/CustomLoadingPlaceholder.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-// import React from "react";
-// import {BrowserRouter, Route, Routes} from "react-router-dom";
-// import Main from "./components/Admin/Main";
-// import Login from "./components/Admin/Login/login";
-// import Auth from "./components/Admin/Auth/auth";
-// import MovieCard from "./components/Client/MovieCard";
-// import SeanceCard from "./components/Client/SeanceCard";
-// import MainPayment from "./components/Client/PaymentCard";
-// import MainTicket from "./components/Client/TicketCard";
-
-// export default function App() {
-//     return (
-//         <BrowserRouter>
-//             <Routes>
-//                 <Route path="/" element={<MovieCard/>}/>
-//                 <Route path="seance/:seanceId" element={<SeanceCard/>}/>
-//                 <Route path="payment" element={<MainPayment/>}/>
-//                 <Route path="ticket" element={<MainTicket/>}/>
-//                 <Route path="admin/login" element={<Login/>}/>
-//                 <Route path="admin" element={
-//                     <Auth>
-//                         <Main/>
-//                     </Auth>
-//                 }/>
-//             </Routes>
-//         </BrowserRouter>
-//     );
-// }
-
  //  Импортируем необходимые зависимости
 
 
@@ -6157,7 +6128,6 @@ function App() {
     })
   });
 }
-//CustomLoadingPlaceholder
 
 /***/ }),
 
@@ -6181,39 +6151,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var CustomLoadingPlaceholder = function CustomLoadingPlaceholder() {
-  return (
-    /*#__PURE__*/
-    // <div className="loading-placeholder">
-    //   <div className="loading-animation">Loading...</div>
-    // </div>
-    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "content",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "circle"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "circle"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "circle"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "circle"
-      })]
-    })
-  );
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "content",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "circle"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "circle"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "circle"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "circle"
+    })]
+  });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CustomLoadingPlaceholder);
-
-// import React from 'react';
-
-// // Компонент загрузки с анимацией
-// const CustomLoadingPlaceholder = () => {
-//   return (
-//     <div className="loading-placeholder">
-//       <div className="loading-animation"></div>
-//     </div>
-//   );
-// };
-
-// export default CustomLoadingPlaceholder;
 
 /***/ }),
 
@@ -6233,7 +6184,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
- // Изменили импорт на "react-dom/client"
+
 
 
 
@@ -6292,6 +6243,7 @@ var initialState = {
   chosenDate: "".concat(today.getFullYear(), "-").concat(('0' + (today.getMonth() + 1)).slice(-2), "-").concat(('0' + today.getDate()).slice(-2)),
   seances: []
 };
+// Определение асинхронных операций 
 var getHalls = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThunk)("admin/getHalls", /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(_, _ref) {
     var getState, token, response;
@@ -6812,12 +6764,15 @@ var createAdminSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSl
     });
   }
 });
+// Дополнительные действия (actions)
 var _createAdminSlice$act = createAdminSlice.actions,
   createScheme = _createAdminSlice$act.createScheme,
   selectCinemaHallScheme = _createAdminSlice$act.selectCinemaHallScheme,
   changeHallSize = _createAdminSlice$act.changeHallSize,
   changeSeatStatus = _createAdminSlice$act.changeSeatStatus,
   chooseDate = _createAdminSlice$act.chooseDate;
+
+// Редуктор состояния
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createAdminSlice.reducer);
 
@@ -6843,10 +6798,12 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+// Начальное состояние хранилища
 var initialState = {
   token: "",
   status: "idle"
 };
+// Определение асинхронной операции для получения токена
 var getToken = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThunk)("auth/getToken", /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(_ref) {
     var email, password, response;
@@ -6887,6 +6844,7 @@ var getToken = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThunk
     return _ref2.apply(this, arguments);
   };
 }());
+// Создание среза состояния и связанных с ним действий
 var createAuthSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
   name: "auth",
   initialState: initialState,
@@ -6898,6 +6856,7 @@ var createAuthSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSli
       state.status = "idle";
     }
   },
+  // Обработка результатов выполнения асинхронных операций
   extraReducers: function extraReducers(builder) {
     builder.addCase(getToken.rejected, function (state) {
       state.status = "error";
@@ -6907,6 +6866,8 @@ var createAuthSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSli
     });
   }
 });
+
+// Экспорт действий и редуктора из среза
 var _createAuthSlice$acti = createAuthSlice.actions,
   logout = _createAuthSlice$acti.logout,
   resetAuthStatus = _createAuthSlice$acti.resetAuthStatus;
@@ -6939,7 +6900,11 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+
+// Получение текущей даты
 var today = new Date();
+
+// Начальное состояние хранилища
 var initialState = {
   chosenDate: "".concat(today.getFullYear(), "-").concat(('0' + (today.getMonth() + 1)).slice(-2), "-").concat(('0' + today.getDate()).slice(-2)),
   cinemaHalls: [],
@@ -6969,6 +6934,8 @@ var getCalendar = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncTh
     return _ref.apply(this, arguments);
   };
 }());
+
+// Создание среза состояния и связанных с ним действий
 var createCalendarSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
   name: "calendar",
   initialState: initialState,
@@ -6977,6 +6944,7 @@ var createCalendarSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.creat
       state.chosenDate = action.payload;
     }
   },
+  // Обработка результатов выполнения асинхронных операций
   extraReducers: function extraReducers(builder) {
     builder.addCase(getCalendar.fulfilled, function (state, action) {
       var _action$payload = action.payload,
@@ -6994,6 +6962,8 @@ var createCalendarSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.creat
     });
   }
 });
+
+// Экспорт действий и редуктора из среза
 var chooseDate = createCalendarSlice.actions.chooseDate;
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createCalendarSlice.reducer);
@@ -7015,12 +6985,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
 
+
+// Начальное состояние хранилища попапа
 var initialState = {
   active: false,
   title: "",
   form: "",
   id: -1
 };
+
+// Создание среза состояния и связанных с ним действий для попапа
 var createPopupSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
   name: "popup",
   initialState: initialState,
@@ -7041,6 +7015,8 @@ var createPopupSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSl
     }
   }
 });
+
+// Экспорт действий и редуктора из среза
 var _createPopupSlice$act = createPopupSlice.actions,
   showPopup = _createPopupSlice$act.showPopup,
   closePopup = _createPopupSlice$act.closePopup;
@@ -7070,11 +7046,15 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+
+// Начальное состояние хранилища сеанса
 var initialState = {
   session: {},
   seats: [],
   ticket: {}
 };
+
+// Создание асинхронного действия для получения информации о сеансе
 var getSeance = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThunk)("seance/getSeats", /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(id) {
     var response;
@@ -7099,6 +7079,8 @@ var getSeance = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThun
     return _ref.apply(this, arguments);
   };
 }());
+
+// Создание асинхронного действия для покупки билета
 var buyTicket = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThunk)("seance/buyTicket", /*#__PURE__*/function () {
   var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(_, _ref2) {
     var getState, ticket, response;
@@ -7134,6 +7116,8 @@ var buyTicket = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThun
     return _ref3.apply(this, arguments);
   };
 }());
+
+// Создание среза состояния и связанных с ним действий для сеанса
 var createSeanceSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
   name: "seance",
   initialState: initialState,
@@ -7166,6 +7150,8 @@ var createSeanceSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createS
     });
   }
 });
+
+// Экспорт действий и редуктора из среза
 var _createSeanceSlice$ac = createSeanceSlice.actions,
   createTicket = _createSeanceSlice$ac.createTicket,
   resetSeance = _createSeanceSlice$ac.resetSeance;

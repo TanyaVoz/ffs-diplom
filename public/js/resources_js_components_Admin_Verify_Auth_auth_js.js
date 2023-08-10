@@ -19,12 +19,18 @@ __webpack_require__.r(__webpack_exports__);
 
 function Auth(_ref) {
   var children = _ref.children;
+  // Извлечение информации о токене из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.auth;
     }),
     token = _useSelector.token;
+
+  // Получение текущего маршрута
   var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useLocation)();
+
+  // Проверка наличия токена
   if (!token) {
+    // Если токена нет, перенаправление на страницу входа с сохранением текущего маршрута
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Navigate, {
       to: "/admin/login",
       state: {
@@ -33,6 +39,8 @@ function Auth(_ref) {
       replace: true
     });
   }
+
+  // Если токен есть, отображение дочерних компонентов (переданных через пропсы)
   return children;
 }
 

@@ -3,13 +3,15 @@ import { changeSeatStatus } from "../../../reducers/createAdminSlice";
 import SeatStatus from "./seatStatus";
 
 export default function SeatsScheme(props) {
-    const { place } = props;
-    const { seats } = useSelector((state) => state.admin);
-    const dispatch = useDispatch();
-    const allStatus = ["standard", "vip", "disabled"];
+    const { place } = props; // Получение количества мест в ряду из входных свойств
+    const { seats } = useSelector((state) => state.admin); // Получение данных о местах из Redux
+    const dispatch = useDispatch(); // Получение функции dispatch из Redux для отправки действий
 
-    const chair = seats.length / place;
+    const allStatus = ["standard", "vip", "disabled"]; // Список доступных статусов мест
 
+    const chair = seats.length / place; // Расчет количества мест в ряду
+
+    // Группировка мест по рядам
     const rowSeats = seats.reduce((result, seat, i) => {
         const index = Math.floor(i / chair);
         if (!result[index]) {
@@ -19,6 +21,7 @@ export default function SeatsScheme(props) {
         return result;
     }, []);
 
+    // Обработчик клика по месту для изменения его статуса
     const handleClick = (id) => {
         const seatStatus = seats.find((seat) => seat.id === id).status;
         const statusIndex = allStatus.indexOf(seatStatus);
@@ -28,6 +31,7 @@ export default function SeatsScheme(props) {
     return (
         <div className="conf-step__hall">
             <div className="conf-step__hall-wrapper">
+                {/* Отображение мест в рядах с использованием компонента SeatStatus */}
                 {rowSeats.map((row, i) => (
                     <div className="conf-step__row" key={`row_${i}`}>
                         {row.map((seat) => (
