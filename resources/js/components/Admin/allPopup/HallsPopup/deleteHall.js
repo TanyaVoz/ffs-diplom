@@ -14,7 +14,7 @@ export default function DeleteHall() {
     // Обработчик отправки формы удаления
     const handleSubmit = (event) => {
         event.preventDefault();
-        
+
         // Удаление зала и обновление списка
         dispatch(deleteHall(id)).then(() => {
             dispatch(closePopup());

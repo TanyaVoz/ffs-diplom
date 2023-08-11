@@ -1,7 +1,7 @@
 export default function Button(props) {
     // Извлечение пропсов
     const { text, callback, className } = props;
-    
+
     return (
         // Отображение кнопки с классами и текстом из пропсов
         <button

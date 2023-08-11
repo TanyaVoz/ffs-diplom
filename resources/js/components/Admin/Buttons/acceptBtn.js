@@ -19,12 +19,12 @@ export default function AcceptBtn(props) {
                 value={handleDelete ? "Сохранить" : text}
                 className="conf-step__button conf-step__button-accent"
             />
-            
+
             {/* Кнопка "Отменить" для закрытия попапа */}
             <button className="conf-step__button conf-step__button-regular" onClick={handleCancel}>
                 Отменить
             </button>
-            
+
             {/* Опциональная кнопка "Удалить", если есть обработчик handleDelete */}
             {handleDelete && (
                 <button className="conf-step__button conf-step__button-regular" onClick={handleDelete}>

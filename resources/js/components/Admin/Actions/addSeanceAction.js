@@ -32,7 +32,7 @@ const AddSeanceAction = ({ cinemaHallId, name }) => {
           callback={handleAddSeance}
         />
       </div>
-      
+
       {/* Компонент для выбора времени сеанса */}
       <HallTime cinemaHall={cinemaHallId} />
     </div>

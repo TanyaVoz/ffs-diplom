@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 // Начальное состояние хранилища попапа
 const initialState = {
@@ -14,7 +14,7 @@ const createPopupSlice = createSlice({
     initialState,
     reducers: {
         showPopup: (state, action) => {
-            const {form, title, id = -1} = action.payload;
+            const { form, title, id = -1 } = action.payload;
             state.form = form;
             state.title = title;
             state.id = id;
@@ -28,5 +28,5 @@ const createPopupSlice = createSlice({
 
 
 // Экспорт действий и редуктора из среза
-export const {showPopup, closePopup} = createPopupSlice.actions;
+export const { showPopup, closePopup } = createPopupSlice.actions;
 export default createPopupSlice.reducer;

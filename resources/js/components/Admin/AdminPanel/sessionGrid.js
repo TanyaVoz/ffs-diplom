@@ -8,13 +8,13 @@ export default function SessionGrid() {
     return (
         <div className="conf-step__wrapper">
             {/* Компонент для добавления нового фильма */}
-            <AddMovieAction/>
+            <AddMovieAction />
 
             {/* Компонент для выбора даты сеанса */}
-            <ChooseSessionDate/>
+            <ChooseSessionDate />
 
             {/* Компонент для отображения залов и сеансов */}
-            <SeancesHall/>
+            <SeancesHall />
         </div>
     );
 }

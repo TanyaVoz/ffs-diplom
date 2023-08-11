@@ -4,7 +4,7 @@ import { logout } from "../../../../reducers/createAuthSlice";
 export default function Exit() {
     // Извлечение информации о токене из состояния
     const { token } = useSelector((state) => state.auth);
-    
+
     // Получение диспетчера Redux
     const dispatch = useDispatch();
 

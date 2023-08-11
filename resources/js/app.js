@@ -16,7 +16,7 @@ const Login = lazy(() => import('./components/Admin/Verify/Login/login'));
 export default function App() {
   return (
     <Router>
-      <Suspense fallback={<CustomLoadingPlaceholder />}> 
+      <Suspense fallback={<CustomLoadingPlaceholder />}>
         <Routes>
           <Route path="/" element={<MovieCard />} />
           <Route path="seance/:seanceId" element={<SeanceCard />} />

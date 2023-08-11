@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // Начальное состояние хранилища
 const initialState = {
     token: "",
@@ -7,11 +7,11 @@ const initialState = {
 // Определение асинхронной операции для получения токена
 export const getToken = createAsyncThunk(
     "auth/getToken",
-    async ({email, password}) => {
+    async ({ email, password }) => {
         const response = await fetch(`/api/tokens/create`, {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({email, password}),
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
         });
         if (response.status !== 200) {
             throw response.statusText;
@@ -43,5 +43,5 @@ const createAuthSlice = createSlice({
 });
 
 // Экспорт действий и редуктора из среза
-export const {logout, resetAuthStatus} = createAuthSlice.actions;
+export const { logout, resetAuthStatus } = createAuthSlice.actions;
 export default createAuthSlice.reducer;

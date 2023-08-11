@@ -17,7 +17,7 @@ export default function DeleteSeance() {
     // Обработчик для удаления сеанса
     const handleSubmit = (event) => {
         event.preventDefault();
-        
+
         // Диспатчим действие удаления сеанса, после чего обновляем список сеансов
         dispatch(deleteSeance(id)).then(() => {
             dispatch(closePopup());

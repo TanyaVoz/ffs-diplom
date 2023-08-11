@@ -9,7 +9,7 @@ import React from "react";
 export default function CinemaHallControl() {
   // Получение данных из глобального состояния с использованием useSelector
   const { cinemaHalls } = useSelector((state) => state.admin);
-  
+
   // Получение диспатча из React Redux
   const dispatch = useDispatch();
 
@@ -31,7 +31,7 @@ export default function CinemaHallControl() {
           />
         ))}
       </ul>
-      
+
       {/* Кнопка для создания нового зала */}
       <Button
         text={"Создать зал"}

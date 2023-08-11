@@ -80,36 +80,36 @@ export default function CinemaHallConfig() {
                     <div className="conf-step__legend">
                         <label className="conf-step__label">Рядов, шт
                             <input type="text"
-                                   className="conf-step__input"
-                                   name="row"
-                                   value={selectedCinemaHallScheme.row}
-                                   onChange={handleChange}
+                                className="conf-step__input"
+                                name="row"
+                                value={selectedCinemaHallScheme.row}
+                                onChange={handleChange}
                             />
                         </label>
                         <span className="multiplier">x</span>
                         <label className="conf-step__label">Мест, шт
                             <input type="text"
-                                   className="conf-step__input"
-                                   name="chair"
-                                   value={selectedCinemaHallScheme.chair}
-                                   onChange={handleChange}
+                                className="conf-step__input"
+                                name="chair"
+                                value={selectedCinemaHallScheme.chair}
+                                onChange={handleChange}
                             />
                         </label>
                     </div>
                     {/* Информация о типах кресел */}
                     <p className="conf-step__paragraph">Теперь вы можете указать типы кресел на схеме зала:</p>
                     <div className="conf-step__legend">
-                        <SeatStatus status={"standard"}/> — обычные кресла
-                        <SeatStatus status={"vip"}/> — VIP кресла
-                        <SeatStatus status={"disabled"}/> — заблокированные (нет кресла)
+                        <SeatStatus status={"standard"} /> — обычные кресла
+                        <SeatStatus status={"vip"} /> — VIP кресла
+                        <SeatStatus status={"disabled"} /> — заблокированные (нет кресла)
                         <p className="conf-step__hint">Чтобы изменить вид кресла, нажмите по нему левой кнопкой мыши</p>
                     </div>
 
                     {/* Визуализация схемы зала */}
-                    <SeatsScheme place={selectedCinemaHallScheme.row}/>
+                    <SeatsScheme place={selectedCinemaHallScheme.row} />
 
                     {/* Кнопки отмены и сохранения */}
-                    <ActionBtn cancel={() => dispatch(selectCinemaHallScheme({}))} save={() => handleSave()}/>
+                    <ActionBtn cancel={() => dispatch(selectCinemaHallScheme({}))} save={() => handleSave()} />
                 </>
             }
         </div>

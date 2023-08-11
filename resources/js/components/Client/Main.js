@@ -6,10 +6,10 @@ export default function Main(props) {
     return (
         <>
             {/* Включение компонента заголовка */}
-            <Header/>
+            <Header />
 
             {/* Включение компонента навигации (если передана пропс nav) */}
-            {props.nav && <Navigate/>}
+            {props.nav && <Navigate />}
 
             {/* Основной контент страницы */}
             <main>

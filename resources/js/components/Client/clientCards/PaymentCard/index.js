@@ -27,7 +27,7 @@ export default function MainPayment() {
         <Main>
             <section className="ticket">
                 {/* Заголовок с информацией о выбранных билетах */}
-                <TicketHeader text={"Вы выбрали билеты:"}/>
+                <TicketHeader text={"Вы выбрали билеты:"} />
 
                 <div className="ticket__info-wrapper">
                     {/* Отображение информации о билете */}
@@ -40,7 +40,7 @@ export default function MainPayment() {
                     />
 
                     {/* Кнопка для получения кода бронирования */}
-                    <Button text={"Получить код бронирования"} link={"/ticket"}/>
+                    <Button text={"Получить код бронирования"} link={"/ticket"} />
 
                     <p className="ticket__hint">
                         {/* Подсказка о доступности билета после оплаты */}

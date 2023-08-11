@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 
 // Получение текущей даты
@@ -30,7 +30,7 @@ const createCalendarSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getCalendar.fulfilled, (state, action) => {
-                const {cinemaHalls, sessions, films} = action.payload;
+                const { cinemaHalls, sessions, films } = action.payload;
                 state.cinemaHalls = cinemaHalls.map((cinemaHall) => {
                     return {
                         ...cinemaHall,
@@ -44,5 +44,5 @@ const createCalendarSlice = createSlice({
 
 
 // Экспорт действий и редуктора из среза
-export const {chooseDate} = createCalendarSlice.actions;
+export const { chooseDate } = createCalendarSlice.actions;
 export default createCalendarSlice.reducer;

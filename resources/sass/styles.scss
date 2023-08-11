@@ -30,21 +30,26 @@ body {
 .page-header__title {
     margin: 0;
     font-weight: 900;
-    font-size: 3.4rem;
-    color: $white;
+    font-size: 4.5rem;
+    color: #FFFFFF;
     text-transform: uppercase;
-
-    span {
-        font-weight: 100;
-    }
-}
+    text-shadow: 1.41px 1.41px black, 2px 0 black, 1.41px -1.41px black,
+      0 -2px black, -1.41px -1.41px black, -2px 0 black,
+     -1.41px 1.41px black, 0 2px black;
+  }
+  .page-header__title .page-header__title {
+    margin: 0;
+    font-weight: 900;
+    font-size: 4.5rem;
+    color: #FFFFFF;
+    text-transform: uppercase;
+  }
 
 .page-header a {
     text-decoration: none;
 }
 
 /* ~~~~~~~~~~~~ Главная ~~~~~~~~~~~~ */
-
 .page-nav {
     position: sticky;
     top: 2px;
@@ -52,181 +57,147 @@ body {
     display: flex;
     flex-wrap: nowrap;
     align-items: stretch;
-    color: $black;
+    color: #000000;
     z-index: 10;
-
-    .page-nav__day {
-        flex-basis: calc(100% / 8);
-        font-size: 1.2rem;
-        padding: 1rem;
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
-        border-radius: 2px;
-        text-decoration: none;
-        color: $black;
-
-        & + .page-nav__day {
-            margin-left: 1px;
-        }
-
-        .page-nav__day-week::after {
-            content: ',';
-        }
-
-        .page-nav__day-number::before {
-            content: ' ';
-        }
-
-        .page-nav__day-week, .page-nav__day-number {
-            display: block;
-        }
-    }
-
-    .page-nav__day_chosen {
-        flex-grow: 1;
-        background-color: $white;
-        font-weight: 700;
-        transform: scale(1.1);
-    }
-
-    .page-nav__day_weekend {
-        color: #DE2121;
-    }
-
-    .page-nav__day_next {
-        text-align: center;
-
-        &::before {
-            content: '>';
-            font-family: monospace;
-            font-weight: 700;
-            font-size: 2.4rem;
-        }
-    }
-
-    .page-nav__day_prev {
-        text-align: center;
-
-        &::before {
-            content: '<';
-            font-family: monospace;
-            font-weight: 700;
-            font-size: 2.4rem;
-        }
-    }
-
-    .page-nav__day_today {
-        .page-nav__day-week::before {
-            content: 'Сегодня';
-            display: block;
-        }
-
-        .page-nav__day-week, .page-nav__day-number {
-            display: inline;
-        }
-    }
-}
-
-.acceptin-button {
+  }
+  .page-nav .page-nav__day {
+    flex-basis: 12.5%;
+    font-size: 1.5rem;
+    padding: 1rem;
+    background: rgba(249, 245, 245, 0.9);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    text-decoration: none;
+    color: #000000;
+  }
+  .page-nav .page-nav__day + .page-nav__day {
+    margin-left: 1px;
+  }
+  .page-nav .page-nav__day .page-nav__day-week::after {
+    content: ",";
+  }
+  .page-nav .page-nav__day .page-nav__day-number::before {
+    content: " ";
+  }
+  .page-nav .page-nav__day .page-nav__day-week, .page-nav .page-nav__day .page-nav__day-number {
+    display: block;
+  }
+  .page-nav .page-nav__day_chosen {
+    flex-grow: 1;
+    background-color: #d5d2d2;
+    font-weight: 700;
+    transform: scale(1.1);
+  }
+  .page-nav .page-nav__day_weekend {
+    color: #DE2121;
+  }
+  .page-nav .page-nav__day_next {
+    text-align: center;
+  }
+  .page-nav .page-nav__day_next::before {
+    content: ">";
+    font-family: monospace;
+    font-weight: 700;
+    font-size: 4rem;
+  }
+  .page-nav .page-nav__day_prev {
+    text-align: center;
+  }
+  .page-nav .page-nav__day_prev::before {
+    content: "<";
+    font-family: monospace;
+    font-weight: 700;
+    font-size: 2.4rem;
+  }
+  .page-nav .page-nav__day_today .page-nav__day-week::before {
+    content: "Сегодня";
+    display: block;
+  }
+  .page-nav .page-nav__day_today .page-nav__day-week, .page-nav .page-nav__day_today .page-nav__day-number {
+    display: inline;
+  }
+  
+  .acceptin-button {
     cursor: pointer;
-}
-
-.movie {
+  }
+  
+  .movie {
     position: relative;
     padding: 1.5rem;
     margin-top: 3rem;
     background: rgba(241, 235, 230, 0.95);
-    color: $black;
-
-    .movie__info {
-        display: flex;
-    }
-
-    .movie__poster {
-        position: relative;
-        width: 12.5rem;
-        height: 17.5rem;
-        /*    left: 1.5rem;
-            top: -1.5rem;*/
-
-        .movie__poster-image {
-            position: relative;
-            top: -3rem;
-            width: 12.5rem;
-            height: 17.5rem;
-        }
-
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            right: -0.7rem;
-            top: -3rem;
-            border: 1.5rem solid transparent;
-            border-bottom: 0 solid transparent;
-            border-right: 0 solid transparent;
-            border-left: 0.7rem solid rgb(119, 39, 32);
-        }
-    }
-
-    .movie__description {
-        flex-grow: 1;
-        padding-left: 1.5rem;
-    }
-
-    .movie__title {
-        font-weight: 700;
-        font-size: 1.6rem;
-    }
-
-    .movie__synopsis {
-        font-size: 1.4rem;
-        margin-top: 1rem;
-    }
-
-    .movie__data {
-        font-size: 1.4rem;
-        font-weight: 300;
-        margin-top: 1rem;
-    }
-
-    .movie-seances__hall {
-
-        & + .movie-seances__hall {
-            margin-top: 2rem;
-        }
-
-        .movie-seances__hall-title {
-            font-weight: 700;
-            font-size: 1.6rem;
-        }
-
-        .movie-seances__list {
-            margin-top: 0.7rem;
-            font-size: 0;
-        }
-
-        .movie-seances__time-block {
-            display: inline-block;
-            margin-bottom: 4px;
-
-            &:nth-last-of-type(n + 1) {
-                margin-right: 4px;
-            }
-        }
-
-        .movie-seances__time {
-            display: block;
-            padding: 8px;
-            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
-            border-radius: 2px;
-            background-color: $white;
-            color: $black;
-            text-decoration: none;
-            font-size: 1.5rem;
-        }
-    }
-}
+    color: #000000;
+  }
+  .movie .movie__info {
+    display: flex;
+  }
+  .movie .movie__poster {
+    position: relative;
+    width: 12.5rem;
+    height: 17.5rem;
+  }
+  .movie .movie__poster .movie__poster-image {
+    position: relative;
+    top: -3rem;
+    width: 12.5rem;
+    height: 17.5rem;
+  }
+  .movie .movie__poster::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: -0.7rem;
+    top: -3rem;
+    border: 1.5rem solid transparent;
+    border-bottom: 0 solid transparent;
+    border-right: 0 solid transparent;
+    border-left: 0.7rem solid rgb(119, 39, 32);
+  }
+  .movie .movie__description {
+    flex-grow: 1;
+    padding-left: 1.5rem;
+  }
+  .movie .movie__title {
+    font-weight: 700;
+    font-size: 1.6rem;
+  }
+  .movie .movie__synopsis {
+    font-size: 1.4rem;
+    margin-top: 1rem;
+  }
+  .movie .movie__data {
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-top: 1rem;
+  }
+  .movie .movie-seances__hall + .movie-seances__hall {
+    margin-top: 2rem;
+  }
+  .movie .movie-seances__hall .movie-seances__hall-title {
+    font-weight: 700;
+    font-size: 1.6rem;
+  }
+  .movie .movie-seances__hall .movie-seances__list {
+    margin-top: 0.7rem;
+    font-size: 0;
+  }
+  .movie .movie-seances__hall .movie-seances__time-block {
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+  .movie .movie-seances__hall .movie-seances__time-block:nth-last-of-type(n + 1) {
+    margin-right: 4px;
+  }
+  .movie .movie-seances__hall .movie-seances__time {
+    display: block;
+    padding: 8px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    background-color: #FFFFFF;
+    color: #000000;
+    text-decoration: none;
+    font-size: 1.5rem;
+  }
 
 /* ~~~~~~~~~~~~ Кинозал ~~~~~~~~~~~~ */
 
@@ -518,4 +489,115 @@ body {
     .buying__info-hint {
         display: none;
     }
+}
+
+
+/* ~~~~~~~~~~~~ Загрузка ~~~~~~~~~~~~ */
+:root {
+	--sp: 2.5s; /* change speed */
+}	
+
+
+
+
+.content {
+  position: fixed;
+  top: 20%;
+  left: 35%;
+  transform: translate(-50%, -50%) scale(0.65);
+  width: 50vmin;
+  height: 50vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin-all calc(var(--sp) * 2) linear 0s infinite;
+}
+
+
+
+.circle {
+  --in: 80%;
+  --ar: #ff6a00;
+  --dt: #ffea03;
+  --shadow: drop-shadow(0vmin 0vmin 0.5vmin #000) drop-shadow(0vmin 1vmin 0.5vmin #0004);
+  --cross: linear-gradient(0deg, #fff0 calc(50% - 2px), #000 calc(50% - 1px) calc(50% + 1px), #fff0 calc(50% + 2px)), linear-gradient(90deg, #fff0 calc(50% - 2px), #000 calc(50% - 1px) calc(50% + 1px), #fff0 calc(50% + 2px));
+  border: 6vmin solid var(--ar);
+  width: var(--in);
+  height: var(--in);
+  border-radius: 100%;
+  position: absolute;
+  box-sizing: border-box;
+  border-top-color: #fff0;
+  border-left-color: #fff0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin-bot var(--sp) ease 0s infinite;
+  background-image: var(--cross), radial-gradient(var(--dt) 5.5vmin, #fff0 calc(5.5vmin + 1px));
+  background-repeat: no-repeat;
+  background-size: 3vmin 1vmin, 1vmin 3vmin, 100% 100%;
+  background-position: center center;
+  filter: var(--shadow);
+}
+
+.circle:nth-child(2) {
+    --in: 60%;
+    top: -2vmin;
+    animation: spin-top var(--sp) ease 0s infinite;
+    transform: rotate(-45deg);
+    background-image: var(--cross), radial-gradient(var(--dt) 1.25vmin, #fff0 calc(1.25vmin + 1px));
+    right: -4vmin;
+	filter: hue-rotate(10deg) var(--shadow);
+    background-size: 1.4vmin 1vmin, 1vmin 1.4vmin, 100% 100%;
+}
+
+.circle:nth-child(3) {
+    --in: 100%;
+    top: -5vmin;
+    left: -13vmin;
+    transform: rotate(175deg);
+    animation: spin-left var(--sp) ease calc(var(--sp) / 4) infinite;
+    background-image: var(--cross), radial-gradient(var(--dt) 9vmin, #fff0 calc(9vmin + 1px));
+	filter: hue-rotate(20deg) var(--shadow);
+    background-size: 5vmin 1vmin, 1vmin 5vmin, 100% 100%;
+}
+
+.circle:nth-child(4) {
+    --in: 60%;
+    top: 35vmin;
+    left: -6vmin;
+    transform: rotate(-280deg);
+    animation: spin-last var(--sp) ease calc(calc(calc(var(--sp) / 4) + var(--sp)) * -1) infinite;
+    background-image: var(--cross), radial-gradient(var(--dt) 2.5vmin, #fff0 calc(2.5vmin + 1px));
+	filter: hue-rotate(30deg) var(--shadow);
+    background-size: 2vmin 1vmin, 1vmin 2vmin, 100% 100%;
+}
+
+
+@keyframes spin-all {
+	0% { transform: rotate(0deg) scale(0.65); }
+	100% { transform: rotate(360deg) scale(0.65); }
+}
+
+
+
+
+@keyframes spin-top {
+	0% { transform: rotate(-45deg); }
+	100% { transform: rotate(315deg); }
+}
+
+@keyframes spin-bot {
+	0%, 35% { transform: rotate(0deg); }
+	80%, 100% { transform: rotate(-360deg); }
+}
+
+@keyframes spin-left {
+	0%, 35% { transform: rotate(175deg); }
+	80%, 100% { transform: rotate(535deg); }
+}
+
+@keyframes spin-last {
+	0%, 10% { transform: rotate(-280deg); }
+	90%, 100% { transform: rotate(-640deg); }
 }

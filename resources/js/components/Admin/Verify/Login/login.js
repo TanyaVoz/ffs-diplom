@@ -7,16 +7,16 @@ import Header from "../../Header";
 export default function Login() {
     // Извлечение информации о статусе аутентификации из состояния
     const { status } = useSelector((state) => state.auth);
-    
+
     // Изначальное состояние формы для входа
     const EMPTY_STATE = { mail: "", pwd: "" };
-    
+
     // Состояние формы для входа
     const [loginForm, setLoginForm] = useState(EMPTY_STATE);
-    
+
     // Получение диспетчера Redux
     const dispatch = useDispatch();
-    
+
     // Получение функции навигации
     const navigate = useNavigate();
 

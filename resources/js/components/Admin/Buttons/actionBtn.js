@@ -7,7 +7,7 @@ export default function ActionBtn(props) {
             <button className="conf-step__button conf-step__button-regular" onClick={cancel}>
                 Отмена
             </button>
-            
+
             {/* Кнопка "Сохранить" для выполнения операции сохранения */}
             <input
                 type="submit"

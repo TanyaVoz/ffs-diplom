@@ -197,28 +197,6 @@ DeleteHallAction.propTypes = {
   name: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string.isRequired)
 };
 
-// import {useDispatch} from "react-redux";
-// import {showPopup} from "../../../reducers/createPopupSlice";
-
-// export default function DeleteHallAction(props) {
-//     const {id, name} = props;
-//     const dispatch = useDispatch();
-
-//     return (
-//         <li>
-//             <span
-//                 className="conf-step__edit-hall"
-//                 onClick={() => dispatch(showPopup({title: "Редактирование зала", form: "editHall", id}))}>
-//                 {name}
-//             </span>
-//             <button
-//                 className="conf-step__button conf-step__button-trash"
-//                 onClick={() => dispatch(showPopup({title: "Удаление зала", form: "deleteHall", id}))}
-//             />
-//         </li>
-//     );
-// }
-
 /***/ }),
 
 /***/ "./resources/js/components/Admin/Actions/editMovieAction.js":
@@ -2087,56 +2065,20 @@ function AddMovie() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ DeleteMovie)
+/* harmony export */   "default": () => (/* binding */ CustomDeleteMovie)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../reducers/createAdminSlice */ "./resources/js/reducers/createAdminSlice.js");
 /* harmony import */ var _reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/createPopupSlice */ "./resources/js/reducers/createPopupSlice.js");
 /* harmony import */ var _Buttons_acceptBtn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Buttons/acceptBtn */ "./resources/js/components/Admin/Buttons/acceptBtn.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-// import { useDispatch as deleteMovieUseDispatch, useSelector } from "react-redux"; 
-// import { deleteMovie, getMovies, getSeances } from "../../../../reducers/createAdminSlice";
-// import { closePopup } from "../../../../reducers/createPopupSlice";
-// import AcceptBtn from "../../Buttons/acceptBtn"; 
-
-// export default function CustomDeleteMovie() { 
-//     const { id } = useSelector((state) => state.popup);
-//     const { movies } = useSelector((state) => state.admin);
-//     const dispatch = deleteMovieUseDispatch(); 
-
-//     // Получение названия фильма для вывода в сообщении
-//     const title = movies.find((movie) => movie.id === id).title;
-
-//     const handleSubmit = (event) => {
-//         event.preventDefault();
-
-//         // Выполнение удаления фильма и дополнительных действий
-//         dispatch(deleteMovie(id)).then(() => {
-//             dispatch(closePopup());
-//             dispatch(getSeances()); // Обновление сеансов
-//             dispatch(getMovies());  // Обновление списка фильмов
-//         });
-//     };
-
-//     return (
-//         // Форма для подтверждения удаления фильма
-//         <form onSubmit={handleSubmit}>
-//             <p className="conf-step__paragraph">
-//                 Вы действительно хотите удалить фильм <span>{title}</span>?
-//             </p>
-//             {/* Кнопка подтверждения удаления */}
-//             <AcceptBtn text={"Удалить"} /> 
-//         </form>
-//     );
-// }
 
 
 
 
 
 
-
-function DeleteMovie() {
+function CustomDeleteMovie() {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.popup;
     }),
@@ -2146,28 +2088,37 @@ function DeleteMovie() {
     }),
     movies = _useSelector2.movies;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+
+  // Получение названия фильма для вывода в сообщении
   var title = movies.find(function (movie) {
     return movie.id === id;
   }).title;
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
+
+    // Выполнение удаления фильма и дополнительных действий
     dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.deleteMovie)(id)).then(function () {
       dispatch((0,_reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_2__.closePopup)());
-      dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.getSeances)());
-      dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.getMovies)());
+      dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.getSeances)()); // Обновление сеансов
+      dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_1__.getMovies)()); // Обновление списка фильмов
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
-    onSubmit: handleSubmit,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-      className: "conf-step__paragraph",
-      children: ["\u0412\u044B \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0444\u0438\u043B\u044C\u043C ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-        children: title
-      }), "?"]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Buttons_acceptBtn__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      text: "Удалить"
-    })]
-  });
+
+  return (
+    /*#__PURE__*/
+    // Форма для подтверждения удаления фильма
+    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
+      onSubmit: handleSubmit,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+        className: "conf-step__paragraph",
+        children: ["\u0412\u044B \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0444\u0438\u043B\u044C\u043C ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+          children: title
+        }), "?"]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Buttons_acceptBtn__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        text: "Удалить"
+      })]
+    })
+  );
 }
 
 /***/ }),

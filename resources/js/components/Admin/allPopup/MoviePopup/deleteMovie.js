@@ -1,12 +1,12 @@
-import { useDispatch as deleteMovieUseDispatch, useSelector } from "react-redux"; 
+import { useDispatch as deleteMovieUseDispatch, useSelector } from "react-redux";
 import { deleteMovie, getMovies, getSeances } from "../../../../reducers/createAdminSlice";
 import { closePopup } from "../../../../reducers/createPopupSlice";
-import AcceptBtn from "../../Buttons/acceptBtn"; 
+import AcceptBtn from "../../Buttons/acceptBtn";
 
-export default function CustomDeleteMovie() { 
+export default function CustomDeleteMovie() {
     const { id } = useSelector((state) => state.popup);
     const { movies } = useSelector((state) => state.admin);
-    const dispatch = deleteMovieUseDispatch(); 
+    const dispatch = deleteMovieUseDispatch();
 
     // Получение названия фильма для вывода в сообщении
     const title = movies.find((movie) => movie.id === id).title;
@@ -29,7 +29,7 @@ export default function CustomDeleteMovie() {
                 Вы действительно хотите удалить фильм <span>{title}</span>?
             </p>
             {/* Кнопка подтверждения удаления */}
-            <AcceptBtn text={"Удалить"} /> 
+            <AcceptBtn text={"Удалить"} />
         </form>
     );
 }

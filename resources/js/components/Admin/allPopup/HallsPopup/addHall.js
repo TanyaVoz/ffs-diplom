@@ -12,14 +12,14 @@ export default function AddHall(props) {
     const INIT_STATE = { name: "" };
     const { cinemaHalls } = useSelector((state) => state.admin);
     let cinemaHall = {};
-    
+
     // Если режим редактирования, получаем информацию о зале
     if (edit) {
         const { id } = useSelector((state) => state.popup);
         cinemaHall = cinemaHalls.find((cinemaHall) => cinemaHall.id === id);
         INIT_STATE.name = cinemaHall.name;
     }
-    
+
     // Состояние формы
     const [form, setForm] = useState(INIT_STATE);
 

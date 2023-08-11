@@ -10,7 +10,7 @@ export default function Button(props) {
         if (callback && typeof callback === "function") {
             callback();
         }
-        
+
         // Проверяем, есть ли ссылка, прежде чем переходить
         if (link) {
             navigate(link);

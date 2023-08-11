@@ -20,10 +20,10 @@ export default function EditMovieAction(props) {
             onClick={() => dispatch(showPopup({ title: "Редактирование фильма", form: "editMovie", id }))}>
 
             {/* Иконка для закрытия */}
-            <div className="conf-step__close"/>
+            <div className="conf-step__close" />
 
             {/* Постер фильма */}
-            <img className="conf-step__movie-poster" alt="poster" src={`../images/${img}`}/>
+            <img className="conf-step__movie-poster" alt="poster" src={`../images/${img}`} />
 
             {/* Заголовок фильма */}
             <h3 className="conf-step__movie-title">{title}</h3>

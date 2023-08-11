@@ -5,13 +5,13 @@ import MovieCard from "../../adminCards/movieCard";
 
 export default function EditMovie() {
     const dispatch = useDispatch();
-    
+
     // Получаем ID фильма из состояния всплывающего окна
     const { id } = useSelector((state) => state.popup);
-    
+
     // Получаем список фильмов из состояния
     const { movies } = useSelector((state) => state.admin);
-    
+
     // Находим фильм по ID из состояния всплывающего окна
     const movie = movies.find((movie) => movie.id === id);
 
@@ -23,7 +23,7 @@ export default function EditMovie() {
             duration={movie.duration}
             country={movie.country}
             poster={movie.poster}
-            
+
             // Callback-функция для обновления информации о фильме
             callbackSubmit={(title, description, duration, country, poster) => dispatch(updateMovie({
                 id,
@@ -33,7 +33,7 @@ export default function EditMovie() {
                 country,
                 poster
             }))}
-            
+
             // Callback-функция для показа всплывающего окна удаления фильма
             callbackDelete={() => dispatch(showPopup({ title: "Удаление фильма", form: "deleteMovie", id }))}
         />

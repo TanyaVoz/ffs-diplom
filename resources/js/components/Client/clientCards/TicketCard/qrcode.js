@@ -15,9 +15,9 @@ export default function TicketQRCode(props) {
             // Генерация и установка изображения QR-кода
             imgCode.current.src = await QRCode.toDataURL(
                 text, {
-                    errorCorrectionLevel: 'Q',
-                    margin: 3,
-                });
+                errorCorrectionLevel: 'Q',
+                margin: 3,
+            });
         } catch (err) {
             console.error(err);
         }

@@ -32,7 +32,7 @@ export default function MainSeance() {
         if (hasSeat !== -1) {
             selectedSeats.splice(hasSeat, 1);
         } else {
-            selectedSeats.push({id, price});
+            selectedSeats.push({ id, price });
         }
     }
 

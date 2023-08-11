@@ -50,13 +50,13 @@ export default function SeanceCard(props) {
             <label className="conf-step__label conf-step__label-fullsize" htmlFor="cinemaHall">
                 Название зала
                 <select className="conf-step__input"
-                        name="cinemaHall"
-                        defaultValue={cinema_hall_id}
-                        onChange={handleChange}
-                        required>
+                    name="cinemaHall"
+                    defaultValue={cinema_hall_id}
+                    onChange={handleChange}
+                    required>
                     {cinemaHalls.map((cinemaHall) =>
                         <option value={cinemaHall.id}
-                                key={cinemaHall.id}>
+                            key={cinemaHall.id}>
                             {cinemaHall.name}
                         </option>)}
                 </select>
@@ -66,44 +66,44 @@ export default function SeanceCard(props) {
             <label className="conf-step__label conf-step__label-fullsize" htmlFor="date">
                 Дата сеанса
                 <input className="conf-step__input"
-                       type="date"
-                       value={form.date}
-                       onChange={handleChange}
-                       name="date"
-                       pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-                       min={`${today.getFullYear()}-${('0' + (today.getMonth() + 1)).slice(-2)}-${('0' + today.getDate()).slice(-2)}`}
-                       required/>
+                    type="date"
+                    value={form.date}
+                    onChange={handleChange}
+                    name="date"
+                    pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+                    min={`${today.getFullYear()}-${('0' + (today.getMonth() + 1)).slice(-2)}-${('0' + today.getDate()).slice(-2)}`}
+                    required />
             </label>
 
             {/* Инпут для выбора времени */}
             <label className="conf-step__label conf-step__label-fullsize" htmlFor="time">
                 Время начала
                 <input className="conf-step__input"
-                       type="time"
-                       value={form.time}
-                       onChange={handleChange}
-                       name="time"
-                       required/>
+                    type="time"
+                    value={form.time}
+                    onChange={handleChange}
+                    name="time"
+                    required />
             </label>
 
             {/* Инпут для выбора фильма */}
             <label className="conf-step__label conf-step__label-fullsize" htmlFor="movie">
                 Название фильма
                 <select className="conf-step__input"
-                        name="movie"
-                        onChange={handleChange}
-                        defaultValue={film_id}
-                        required>
+                    name="movie"
+                    onChange={handleChange}
+                    defaultValue={film_id}
+                    required>
                     {movies.map((movie) =>
                         <option value={movie.id}
-                                key={movie.id}>
+                            key={movie.id}>
                             {movie.title}
                         </option>)}
                 </select>
             </label>
 
             {/* Кнопка подтверждения добавления сеанса */}
-            <AcceptBtn text={"Добавить сеанс"} handleDelete={callbackDelete}/>
+            <AcceptBtn text={"Добавить сеанс"} handleDelete={callbackDelete} />
         </form>
     );
 }

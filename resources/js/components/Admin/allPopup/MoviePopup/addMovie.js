@@ -9,7 +9,7 @@ export default function AddMovie() {
         // Рендеринг компонента MovieCard для добавления фильма
         <MovieCard
             // Callback-функция для создания фильма при отправке формы
-            callbackSubmit={(title, description, duration, country, poster) => 
+            callbackSubmit={(title, description, duration, country, poster) =>
                 dispatch(createMovie({
                     title,
                     description,
