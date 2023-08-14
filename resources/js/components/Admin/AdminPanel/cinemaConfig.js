@@ -16,29 +16,35 @@ import SeatStatus from "../Seats/seatType";
 import SeatsScheme from "../Seats/seats";
 
 const CinemaHallConfig = () => {
+  // Выбор данных из хранилища Redux с использованием хука useSelector
   const { cinemaHalls, selectedCinemaHallScheme } = useSelector(
     (state) => state.admin
   );
 
   const dispatch = useDispatch();
 
+  // Функция обратного вызова для выбора кинозала
   const handleSelect = useCallback(
     (id) => {
+      // Диспетчеризация действий для обновления выбранной схемы кинозала и получения информации о местах
       dispatch(selectCinemaHallScheme(cinemaHalls.find((hall) => hall.id === id)));
       dispatch(getSeats(id));
     },
     [dispatch, cinemaHalls]
   );
 
+  // Функция обратного вызова для обработки изменений в полях ввода размера зала
   const handleChange = useCallback(
     (event) => {
       const { name, value } = event.target;
 
+      // Диспетчеризация действий для изменения выбранной схемы кинозала и создания новой схемы мест
       dispatch(changeHallSize({
         ...selectedCinemaHallScheme,
         [name]: value,
       }));
 
+      // Создание новой схемы мест на основе обновленного размера зала и диспетчеризация действий
       const seats = Array.from(
         { length: selectedCinemaHallScheme.row * selectedCinemaHallScheme.chair },
         (_, i) => ({
@@ -53,15 +59,21 @@ const CinemaHallConfig = () => {
     [dispatch, selectedCinemaHallScheme]
   );
 
+  // Функция обратного вызова для сохранения изменений конфигурации
   const handleSave = useCallback(() => {
+    // Поиск исходного кинозала и проверка изменения размера зала
     const hallSource = cinemaHalls.find((hall) => hall.id === selectedCinemaHallScheme.id);
     if (hallSource.row === selectedCinemaHallScheme.row && hallSource.chair === selectedCinemaHallScheme.chair) {
+      // Диспетчеризация действия для обновления информации о местах
       dispatch(updateSeats());
     } else {
+      // Диспетчеризация действий для обновления зала, создания новых мест и получения списка залов
       dispatch(updateHall(selectedCinemaHallScheme));
       dispatch(createSeats());
       dispatch(getHalls());
     }
+    
+    // Очистка выбранной схемы кинозала
     dispatch(selectCinemaHallScheme({}));
   }, [dispatch, cinemaHalls, selectedCinemaHallScheme]);
 
@@ -69,6 +81,7 @@ const CinemaHallConfig = () => {
     <div className="conf-step__wrapper">
       <p className="conf-step__paragraph">Выберите зал для конфигурации:</p>
       <ul className="conf-step__selectors-box">
+        {/* Проход по кинозалам и отображение кнопок выбора зала */}
         {cinemaHalls.map((hall) => (
           <ChooseHallBtn
             key={hall.id}
@@ -79,12 +92,15 @@ const CinemaHallConfig = () => {
         ))}
       </ul>
 
+      {/* Отображение опций конфигурации зала, если выбран кинозал */}
       {selectedCinemaHallScheme.id && (
         <>
+          {/* Поля ввода для указания количества рядов и мест в ряду */}
           <p className="conf-step__paragraph">
             Укажите количество рядов и максимальное количество кресел в ряду:
           </p>
           <div className="conf-step__legend">
+            {/* Поле ввода для рядов */}
             <label className="conf-step__label">
               Рядов, шт
               <input
@@ -96,6 +112,7 @@ const CinemaHallConfig = () => {
               />
             </label>
             <span className="multiplier">x</span>
+            {/* Поле ввода для мест */}
             <label className="conf-step__label">
               Мест, шт
               <input
@@ -107,6 +124,7 @@ const CinemaHallConfig = () => {
               />
             </label>
           </div>
+          {/* типы мест */}
           <p className="conf-step__paragraph">Теперь вы можете указать типы кресел на схеме зала:</p>
           <div className="conf-step__legend">
             <SeatStatus status={"standard"} /> — обычные кресла
@@ -114,10 +132,12 @@ const CinemaHallConfig = () => {
             <SeatStatus status={"disabled"} /> — заблокированные (нет кресла)
             <p className="conf-step__hint">Чтобы изменить вид кресла, нажмите по нему левой кнопкой мыши</p>
           </div>
+          {/* Отображение схемы мест */}
           <SeatsScheme place={selectedCinemaHallScheme.row} />
+          {/* Кнопки для отмены изменений или сохранения конфигурации */}
           <ActionBtn
             cancel={() => dispatch(selectCinemaHallScheme({}))}
-            save={handleSave} //  передаем функцию напрямую, без вызова
+            save={handleSave} // Передача функции сохранения напрямую, без вызова
           />
         </>
       )}
