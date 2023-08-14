@@ -28,8 +28,8 @@ class CinemaHallSeeder extends Seeder
             'name' => 'Зал 2',
             'row' => 8,
             'chair' => 12,
-            'price_standard' => 300,
-            'price_vip' => 700,
+            'price_standard' => 200,
+            'price_vip' => 800,
             'free' => true
         ]);
 
@@ -46,7 +46,7 @@ class CinemaHallSeeder extends Seeder
             'name' => 'Зал 4',
             'row' => 8,
             'chair' => 12,
-            'price_standard' => 500,
+            'price_standard' => 700,
             'price_vip' => 1400,
             'free' => true
         ]);
@@ -65,7 +65,7 @@ class CinemaHallSeeder extends Seeder
             'row' => 8,
             'chair' => 12,
             'price_standard' => 500,
-            'price_vip' => 1000,
+            'price_vip' => 1200,
             'free' => true
         ]);
 

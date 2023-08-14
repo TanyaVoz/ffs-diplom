@@ -15,17 +15,39 @@ class SeatSeeder extends Seeder
      */
     public function run()
     {
-        for ($num = 1; $num < 96; $num++) {
-            if ($num === 53 || $num === 54 || $num === 55 || $num === 56) {
+        // Список мест VIP
+        $vipSeats = [53, 54, 55, 56];
+
+        // Количество занятых мест (disabled)
+        $totalDisabledSeats = 20; // Например, установим 20 занятых мест
+
+        // Общее количество мест
+        $totalSeats = 95;
+
+        // Общее количество залов
+        $totalCinemaHalls = 6;
+
+        // Случайное определение занятых мест
+        $disabledSeats = [];
+        while (count($disabledSeats) < $totalDisabledSeats) {
+            $randomSeat = rand(1, $totalSeats);
+            if (!in_array($randomSeat, $vipSeats) && !in_array($randomSeat, $disabledSeats)) {
+                $disabledSeats[] = $randomSeat;
+            }
+        }
+
+        // Заполнение мест для каждого зала
+        for ($num = 1; $num <= $totalSeats; $num++) {
+            if (in_array($num, $vipSeats)) {
                 $status = 'vip';
-            } elseif ($num === 41 || $num === 58 || $num === 74 || $num === 87) {
+            } elseif (in_array($num, $disabledSeats)) {
                 $status = 'disabled';
             } else {
                 $status = 'standard';
             }
 
-            for ($h = 1; $h <= 6; $h++) {
-
+            // Заполнение для каждого зала
+            for ($h = 1; $h <= $totalCinemaHalls; $h++) {
                 DB::table('seats')->insert([
                     'number' => $num,
                     'status' => $status,
@@ -35,3 +57,4 @@ class SeatSeeder extends Seeder
         }
     }
 }
+

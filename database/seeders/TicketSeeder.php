@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 
 class TicketSeeder extends Seeder
 {
@@ -15,16 +15,19 @@ class TicketSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('tickets')->insert([
-            'session_id' => 1,
-        ]);
+        // Получить список всех сеансов
+        $sessions = DB::table('sessions')->pluck('id');
 
-        DB::table('tickets')->insert([
-            'session_id' => 2,
-        ]);
+        foreach ($sessions as $session_id) {
+            // Генерировать случайное количество билетов от 1 до 10
+            $numTickets = random_int(1, 10);
 
-        DB::table('tickets')->insert([
-            'session_id' => 3,
-        ]);
+            // Вставить билеты для текущего сеанса
+            for ($i = 0; $i < $numTickets; $i++) {
+                DB::table('tickets')->insert([
+                    'session_id' => $session_id,
+                ]);
+            }
+        }
     }
 }
