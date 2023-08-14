@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getToken, resetAuthStatus } from "../../../../reducers/createAuthSlice";
-import Header from "../../Header";
+import { getToken, resetAuthStatus } from "../../../../reducers/createAuth";
+import Header from "../../adminHeader";
 
 export default function Login() {
     // Извлечение информации о статусе аутентификации из состояния

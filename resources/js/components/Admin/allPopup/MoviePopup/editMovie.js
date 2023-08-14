@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { showPopup } from "../../../../reducers/createPopupSlice";
-import { updateMovie } from "../../../../reducers/createAdminSlice";
-import MovieCard from "../../adminCards/movieCard";
+import { showPopup } from "../../../../reducers/createPopup";
+import { updateMovie } from "../../../../reducers/createAdmin";
+import MovieCard from "../../adminCardsPanel/movie";
 
 export default function EditMovie() {
     const dispatch = useDispatch();

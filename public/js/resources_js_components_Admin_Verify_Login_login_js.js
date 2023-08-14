@@ -1,38 +1,6 @@
 "use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_Admin_Verify_Login_login_js"],{
 
-/***/ "./resources/js/components/Admin/Header/index.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/components/Admin/Header/index.js ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Header)
-/* harmony export */ });
-/* harmony import */ var _Verify_Auth_exit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Verify/Auth/exit */ "./resources/js/components/Admin/Verify/Auth/exit.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-function Header() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("header", {
-    className: "page-header",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h1", {
-      className: "page-header__title",
-      children: ["\u0418\u0434\u0451\u043C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-        children: "\u0432"
-      }), "\u043A\u0438\u043D\u043E"]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-      className: "page-header__subtitle",
-      children: "\u0410\u0434\u043C\u0438\u043D\u0438\u0441\u0442\u0440\u0430\u0442\u043E\u0440\u0440\u0440\u0441\u043A\u0430\u044F"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_Verify_Auth_exit__WEBPACK_IMPORTED_MODULE_0__["default"], {})]
-  });
-}
-
-/***/ }),
-
 /***/ "./resources/js/components/Admin/Verify/Auth/exit.js":
 /*!***********************************************************!*\
   !*** ./resources/js/components/Admin/Verify/Auth/exit.js ***!
@@ -44,7 +12,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Exit)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createAuthSlice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../reducers/createAuthSlice */ "./resources/js/reducers/createAuthSlice.js");
+/* harmony import */ var _reducers_createAuth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../reducers/createAuth */ "./resources/js/reducers/createAuth.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -62,7 +30,7 @@ function Exit() {
 
   // Обработчик для выхода из системы (вызов действия logout)
   var handleClick = function handleClick() {
-    dispatch((0,_reducers_createAuthSlice__WEBPACK_IMPORTED_MODULE_1__.logout)());
+    dispatch((0,_reducers_createAuth__WEBPACK_IMPORTED_MODULE_1__.logout)());
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: token && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -89,8 +57,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _reducers_createAuthSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/createAuthSlice */ "./resources/js/reducers/createAuthSlice.js");
-/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Header */ "./resources/js/components/Admin/Header/index.js");
+/* harmony import */ var _reducers_createAuth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/createAuth */ "./resources/js/reducers/createAuth.js");
+/* harmony import */ var _adminHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../adminHeader */ "./resources/js/components/Admin/adminHeader/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -140,7 +108,7 @@ function Login() {
     // При изменении статуса аутентификации
     if (status === "success") {
       // Сброс статуса аутентификации и переход на главную страницу администратора
-      dispatch((0,_reducers_createAuthSlice__WEBPACK_IMPORTED_MODULE_2__.resetAuthStatus)());
+      dispatch((0,_reducers_createAuth__WEBPACK_IMPORTED_MODULE_2__.resetAuthStatus)());
       navigate('/admin');
     } else if (status === "error") {
       // Если статус - ошибка, сбрасываем данные формы
@@ -162,13 +130,13 @@ function Login() {
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
     // Вызываем действие для получения токена с указанными данными
-    dispatch((0,_reducers_createAuthSlice__WEBPACK_IMPORTED_MODULE_2__.getToken)({
+    dispatch((0,_reducers_createAuth__WEBPACK_IMPORTED_MODULE_2__.getToken)({
       email: loginForm.mail,
       password: loginForm.pwd
     }));
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("main", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_adminHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("main", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("section", {
         className: "login",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("header", {
@@ -219,6 +187,38 @@ function Login() {
         })]
       })
     })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/adminHeader/index.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/Admin/adminHeader/index.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Header)
+/* harmony export */ });
+/* harmony import */ var _Verify_Auth_exit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Verify/Auth/exit */ "./resources/js/components/Admin/Verify/Auth/exit.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function Header() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("header", {
+    className: "page-header",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h1", {
+      className: "page-header__title",
+      children: ["\u0418\u0434\u0451\u043C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+        children: "\u0432"
+      }), "\u043A\u0438\u043D\u043E"]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+      className: "page-header__subtitle",
+      children: "\u0410\u0434\u043C\u0438\u043D\u0438\u0441\u0442\u0440\u0430\u0442\u043E\u0440\u0440\u0440\u0441\u043A\u0430\u044F"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_Verify_Auth_exit__WEBPACK_IMPORTED_MODULE_0__["default"], {})]
   });
 }
 

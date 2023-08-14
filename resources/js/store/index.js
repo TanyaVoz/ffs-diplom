@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import calendar from '../reducers/createCalendarSlice';
-import seance from '../reducers/createSeanceSlice';
-import popup from '../reducers/createPopupSlice';
-import admin from '../reducers/createAdminSlice';
-import auth from '../reducers/createAuthSlice';
+import calendar from '../reducers/createCalendar';
+import seance from '../reducers/createSeance';
+import popup from '../reducers/createPopup';
+import admin from '../reducers/createAdmin';
+import auth from '../reducers/createAuth';
 
 export const store = configureStore({
     reducer: {

@@ -1,7 +1,7 @@
 import { useDispatch as deleteMovieUseDispatch, useSelector } from "react-redux";
-import { deleteMovie, getMovies, getSeances } from "../../../../reducers/createAdminSlice";
-import { closePopup } from "../../../../reducers/createPopupSlice";
-import AcceptBtn from "../../Buttons/acceptBtn";
+import { deleteMovie, getMovies, getSeances } from "../../../../reducers/createAdmin";
+import { closePopup } from "../../../../reducers/createPopup";
+import AcceptBtn from "../../allButtons/btns";
 
 export default function CustomDeleteMovie() {
     const { id } = useSelector((state) => state.popup);

@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
-import { closePopup } from "../../../../reducers/createPopupSlice";
+import { closePopup } from "../../../../reducers/createPopup";
 import close from "../../../Images/close.png";
 import classNames from "classnames";
-import AddHall from "../HallsPopup/addHall";
-import DeleteHall from "../HallsPopup/deleteHall";
+import AddHall from "../HallsPopup/add";
+import DeleteHall from "../HallsPopup/delete";
 import AddMovie from "../MoviePopup/addMovie";
 import DeleteMovie from "../MoviePopup/deleteMovie";
-import AddSeance from "../SeancePopup/addSeance";
-import DeleteSeance from "../SeancePopup/deleteSeance";
+import AddSeance from "../SeancePopup/addSeanceMovie";
+import DeleteSeance from "../SeancePopup/deleteSeanceMovie";
 import EditMovie from "../MoviePopup/editMovie";
-import EditSeance from "../SeancePopup/editSeance";
+import EditSeance from "../SeancePopup/editSeanceMovie";
 
 export default function Popup() {
   const { active, title, form } = useSelector((state) => state.popup);

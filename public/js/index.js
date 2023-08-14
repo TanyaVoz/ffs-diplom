@@ -6084,16 +6084,16 @@ var Auth = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () 
   return __webpack_require__.e(/*! import() */ "resources_js_components_Admin_Verify_Auth_auth_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Admin/Verify/Auth/auth */ "./resources/js/components/Admin/Verify/Auth/auth.js"));
 });
 var MovieCard = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_Client_clientCards_MovieCard_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Client/clientCards/MovieCard */ "./resources/js/components/Client/clientCards/MovieCard/index.js"));
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Client_clientCardsAct_Movie_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Client/clientCardsAct/Movie */ "./resources/js/components/Client/clientCardsAct/Movie/index.js"));
 });
 var SeanceCard = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_Client_clientCards_SeanceCard_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Client/clientCards/SeanceCard */ "./resources/js/components/Client/clientCards/SeanceCard/index.js"));
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Client_clientCardsAct_Seance_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Client/clientCardsAct/Seance */ "./resources/js/components/Client/clientCardsAct/Seance/index.js"));
 });
 var MainPayment = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_Client_clientCards_PaymentCard_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Client/clientCards/PaymentCard */ "./resources/js/components/Client/clientCards/PaymentCard/index.js"));
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Client_clientCardsAct_Payment_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Client/clientCardsAct/Payment */ "./resources/js/components/Client/clientCardsAct/Payment/index.js"));
 });
 var MainTicket = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_Client_clientCards_TicketCard_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Client/clientCards/TicketCard */ "./resources/js/components/Client/clientCards/TicketCard/index.js"));
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Client_clientCardsAct_Ticket_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Client/clientCardsAct/Ticket */ "./resources/js/components/Client/clientCardsAct/Ticket/index.js"));
 });
 var Login = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_components_Admin_Verify_Login_login_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Admin/Verify/Login/login */ "./resources/js/components/Admin/Verify/Login/login.js"));
@@ -6197,10 +6197,10 @@ root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)
 
 /***/ }),
 
-/***/ "./resources/js/reducers/createAdminSlice.js":
-/*!***************************************************!*\
-  !*** ./resources/js/reducers/createAdminSlice.js ***!
-  \***************************************************/
+/***/ "./resources/js/reducers/createAdmin.js":
+/*!**********************************************!*\
+  !*** ./resources/js/reducers/createAdmin.js ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6778,10 +6778,10 @@ var _createAdminSlice$act = createAdminSlice.actions,
 
 /***/ }),
 
-/***/ "./resources/js/reducers/createAuthSlice.js":
-/*!**************************************************!*\
-  !*** ./resources/js/reducers/createAuthSlice.js ***!
-  \**************************************************/
+/***/ "./resources/js/reducers/createAuth.js":
+/*!*********************************************!*\
+  !*** ./resources/js/reducers/createAuth.js ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6876,10 +6876,10 @@ var _createAuthSlice$acti = createAuthSlice.actions,
 
 /***/ }),
 
-/***/ "./resources/js/reducers/createCalendarSlice.js":
-/*!******************************************************!*\
-  !*** ./resources/js/reducers/createCalendarSlice.js ***!
-  \******************************************************/
+/***/ "./resources/js/reducers/createCalendar.js":
+/*!*************************************************!*\
+  !*** ./resources/js/reducers/createCalendar.js ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6970,10 +6970,10 @@ var chooseDate = createCalendarSlice.actions.chooseDate;
 
 /***/ }),
 
-/***/ "./resources/js/reducers/createPopupSlice.js":
-/*!***************************************************!*\
-  !*** ./resources/js/reducers/createPopupSlice.js ***!
-  \***************************************************/
+/***/ "./resources/js/reducers/createPopup.js":
+/*!**********************************************!*\
+  !*** ./resources/js/reducers/createPopup.js ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7025,10 +7025,10 @@ var _createPopupSlice$act = createPopupSlice.actions,
 
 /***/ }),
 
-/***/ "./resources/js/reducers/createSeanceSlice.js":
-/*!****************************************************!*\
-  !*** ./resources/js/reducers/createSeanceSlice.js ***!
-  \****************************************************/
+/***/ "./resources/js/reducers/createSeance.js":
+/*!***********************************************!*\
+  !*** ./resources/js/reducers/createSeance.js ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7172,11 +7172,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "store": () => (/* binding */ store)
 /* harmony export */ });
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
-/* harmony import */ var _reducers_createCalendarSlice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../reducers/createCalendarSlice */ "./resources/js/reducers/createCalendarSlice.js");
-/* harmony import */ var _reducers_createSeanceSlice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reducers/createSeanceSlice */ "./resources/js/reducers/createSeanceSlice.js");
-/* harmony import */ var _reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reducers/createPopupSlice */ "./resources/js/reducers/createPopupSlice.js");
-/* harmony import */ var _reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../reducers/createAdminSlice */ "./resources/js/reducers/createAdminSlice.js");
-/* harmony import */ var _reducers_createAuthSlice__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../reducers/createAuthSlice */ "./resources/js/reducers/createAuthSlice.js");
+/* harmony import */ var _reducers_createCalendar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../reducers/createCalendar */ "./resources/js/reducers/createCalendar.js");
+/* harmony import */ var _reducers_createSeance__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reducers/createSeance */ "./resources/js/reducers/createSeance.js");
+/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
+/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
+/* harmony import */ var _reducers_createAuth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../reducers/createAuth */ "./resources/js/reducers/createAuth.js");
 
 
 
@@ -7185,11 +7185,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var store = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_5__.configureStore)({
   reducer: {
-    calendar: _reducers_createCalendarSlice__WEBPACK_IMPORTED_MODULE_0__["default"],
-    seance: _reducers_createSeanceSlice__WEBPACK_IMPORTED_MODULE_1__["default"],
-    auth: _reducers_createAuthSlice__WEBPACK_IMPORTED_MODULE_4__["default"],
-    admin: _reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_3__["default"],
-    popup: _reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_2__["default"]
+    calendar: _reducers_createCalendar__WEBPACK_IMPORTED_MODULE_0__["default"],
+    seance: _reducers_createSeance__WEBPACK_IMPORTED_MODULE_1__["default"],
+    auth: _reducers_createAuth__WEBPACK_IMPORTED_MODULE_4__["default"],
+    admin: _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_3__["default"],
+    popup: _reducers_createPopup__WEBPACK_IMPORTED_MODULE_2__["default"]
   }
 });
 
@@ -48894,7 +48894,7 @@ function n(n){for(var r=arguments.length,t=Array(r>1?r-1:0),e=1;e<r;e++)t[e-1]=a
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_Admin_Main_js":1,"resources_js_components_Admin_Verify_Auth_auth_js":1,"resources_js_components_Client_clientCards_MovieCard_index_js":1,"resources_js_components_Client_clientCards_SeanceCard_index_js":1,"resources_js_components_Client_clientCards_PaymentCard_index_js":1,"resources_js_components_Client_clientCards_TicketCard_index_js":1,"resources_js_components_Admin_Verify_Login_login_js":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Admin_Main_js":1,"resources_js_components_Admin_Verify_Auth_auth_js":1,"resources_js_components_Client_clientCardsAct_Movie_index_js":1,"resources_js_components_Client_clientCardsAct_Seance_index_js":1,"resources_js_components_Client_clientCardsAct_Payment_index_js":1,"resources_js_components_Client_clientCardsAct_Ticket_index_js":1,"resources_js_components_Admin_Verify_Login_login_js":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

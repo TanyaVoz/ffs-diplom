@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../../../reducers/createAuthSlice";
+import { logout } from "../../../../reducers/createAuth";
 
 export default function Exit() {
     // Извлечение информации о токене из состояния

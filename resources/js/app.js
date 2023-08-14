@@ -7,10 +7,10 @@ import CustomLoadingPlaceholder from './components/Placeholder/CustomLoadingPlac
 
 const Main = lazy(() => import('./components/Admin/Main')); //  Динамический импорт компонентов
 const Auth = lazy(() => import('./components/Admin/Verify/Auth/auth'));
-const MovieCard = lazy(() => import('./components/Client/clientCards/MovieCard'));
-const SeanceCard = lazy(() => import('./components/Client/clientCards/SeanceCard'));
-const MainPayment = lazy(() => import('./components/Client/clientCards/PaymentCard'));
-const MainTicket = lazy(() => import('./components/Client/clientCards/TicketCard'));
+const MovieCard = lazy(() => import('./components/Client/clientCardsAct/Movie'));
+const SeanceCard = lazy(() => import('./components/Client/clientCardsAct/Seance'));
+const MainPayment = lazy(() => import('./components/Client/clientCardsAct/Payment'));
+const MainTicket = lazy(() => import('./components/Client/clientCardsAct/Ticket'));
 const Login = lazy(() => import('./components/Admin/Verify/Login/login'));
 
 export default function App() {

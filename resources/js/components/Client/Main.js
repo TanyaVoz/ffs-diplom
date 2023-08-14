@@ -1,5 +1,5 @@
 import Header from "./Header";
-import Navigate from "./additionalComponents/formDate/nav";
+import Navigate from "./additionalComponents/formDate/navigDays";
 
 // Главный компонент страницы
 export default function Main(props) {
