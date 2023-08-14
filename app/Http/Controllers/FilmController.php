@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Requests\FilmRequest;
 use App\Models\Film;
 use Illuminate\Http\Response;
@@ -10,23 +11,23 @@ use Illuminate\Support\Facades\Storage;
 class FilmController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the films.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function index(): \Illuminate\Database\Eloquent\Collection
     {
-        // Отображает список всех фильмов из базы данных.
+        // Возвращает список всех фильмов из базы данных.
         return Film::all();
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created film in storage.
      *
      * @param \App\Http\Requests\FilmRequest $request
-     * @return bool
+     * @return bool|int
      */
-    public function store(FilmRequest $request): bool
+    public function store(FilmRequest $request): bool|int
     {
         // Создает новый экземпляр модели Film.
         $film = new Film;
@@ -35,14 +36,14 @@ class FilmController extends Controller
         $film->fill($request->validated());
 
         // Загружает файл постера фильма в директорию 'posters'.
-        $film->poster = $request->poster->store('posters');
+        $film->poster = $this->storePoster($request);
 
         // Сохраняет фильм в базе данных и возвращает результат операции (boolean).
         return $film->save();
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified film.
      *
      * @param int $id
      * @return \App\Models\Film|null
@@ -54,30 +55,30 @@ class FilmController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified film in storage.
      *
      * @param \App\Http\Requests\FilmRequest $request
      * @param \App\Models\Film $film
-     * @return bool
+     * @return bool|int
      */
-    public function update(FilmRequest $request, Film $film): bool
+    public function update(FilmRequest $request, Film $film): bool|int
     {
         // Если в запросе есть новый файл постера, удаляем старый файл из директории 'posters'.
         if ($request->has('poster')) {
             Storage::delete($film->poster);
             // Загружаем новый файл постера в директорию 'posters'.
-            $film->poster = $request->poster->store('posters');
+            $film->poster = $this->storePoster($request);
         }
 
-        // Заполняем модель данными, прошедшими валидацию из запроса (исключая 'poster').
-        $film->fill($request->safe()->except('poster'));
+        // Заполняем модель данными, прошедшими валидацию из запроса.
+        $film->fill($request->validated());
 
         // Сохраняем обновленные данные фильма в базе данных и возвращаем результат операции (boolean).
         return $film->save();
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified film from storage.
      *
      * @param \App\Models\Film $film
      * @return \Illuminate\Http\Response|null
@@ -96,5 +97,17 @@ class FilmController extends Controller
 
         // Возвращаем null, если операция удаления не удалась.
         return null;
+    }
+
+    /**
+     * Store the poster file in the 'posters' directory.
+     *
+     * @param \App\Http\Requests\FilmRequest $request
+     * @return string
+     */
+    protected function storePoster(FilmRequest $request): string
+    {
+        // Загружает файл постера фильма в директорию 'posters'.
+        return $request->poster->store('posters');
     }
 }

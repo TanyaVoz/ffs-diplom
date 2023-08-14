@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -13,6 +12,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        // Применение промежуточного обработчика 'auth' для авторизации.
         $this->middleware('auth');
     }
 
@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index(): \Illuminate\Contracts\Support\Renderable
     {
+        // Отображение представления 'home'.
         return view('home');
     }
 }
+
