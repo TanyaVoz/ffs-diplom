@@ -1,11 +1,11 @@
-import getNoun from "../../additionalComponents/formWords/rubForm";
+import getRussianRublesLabel from "../../additionalComponents/Formatting/moneyFormWords";
 
 export default function TicketInfo(props) {
     // Деструктурируем свойства из объекта props
     const { film, seats, cinemaHall, time, cost } = props;
 
     // Получаем окончание для слова "рубль" в зависимости от стоимости
-    const costEnding = getNoun(cost);
+    const costEnding = getRussianRublesLabel(cost);
 
     // Преобразуем строку времени в объект Date
     const datetime = new Date(time);

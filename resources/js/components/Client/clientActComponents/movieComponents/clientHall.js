@@ -1,27 +1,27 @@
 import { useSelector } from "react-redux";
-import MovieSeance from "./seance";
+import MovieSeanceItem from "./seanceTimeFilms";
 
-export default function MovieHall(props) {
+export default function ClientHall(props) {
     // Получение данных о залах из состояния
     const { cinemaHalls } = useSelector((state) => state.calendar);
 
     // Получение идентификаторов зала и фильма из пропсов
-    const { cinemaHallId, filmId } = props;
+    const { selectedCinemaHallId, selectedFilmId } = props;
 
     // Поиск информации о конкретном кинозале
-    const cinemaHall = cinemaHalls.find((cinemaHall) => cinemaHall.id === cinemaHallId);
+    const selectedCinemaHall = cinemaHalls.find((selectedCinemaHall) => selectedCinemaHall.id === selectedCinemaHallId);
 
     // Фильтрация сеансов в выбранном кинозале для конкретного фильма
-    const cinemaHallSeances = cinemaHall.sessions.filter((session) => +session.film_id === filmId);
+    const selectedCinemaHallSeances = selectedCinemaHall.sessions.filter((session) => +session.film_id === selectedFilmId);
 
     return (
         <div className="movie-seances__hall">
             {/* Отображение названия кинозала */}
-            <h3 className="movie-seances__hall-title">{cinemaHall.name}</h3>
+            <h3 className="movie-seances__hall-title">{selectedCinemaHall.name}</h3>
             <ul className="movie-seances__list">
                 {/* Отображение списка сеансов для данного кинозала и фильма */}
-                {cinemaHallSeances.map((seance) => (
-                    <MovieSeance
+                {selectedCinemaHallSeances.map((seance) => (
+                    <MovieSeanceItem
                         id={seance.id}
                         time={seance.datetime}
                         key={seance.id} // Используем id сеанса как ключ
@@ -31,4 +31,3 @@ export default function MovieHall(props) {
         </div>
     );
 }
-

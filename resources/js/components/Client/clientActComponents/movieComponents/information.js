@@ -1,6 +1,6 @@
 
 import { useSelector } from "react-redux";
-import getNoun from "../../additionalComponents/formWords/minForm";
+import getRussianMinutesLabel from "../../additionalComponents/Formatting/timeFormWords";
 
 export default function MovieInfo(props) {
     const { films } = useSelector((state) => state.calendar);
@@ -12,7 +12,7 @@ export default function MovieInfo(props) {
         return <div>Фильм не найден.</div>;
     }
 
-    const defineEnd = getNoun(film.duration);
+    const processEnd = getRussianMinutesLabel(film.duration);
 
     return (
         <div className="movie__info">
@@ -31,7 +31,7 @@ export default function MovieInfo(props) {
                 <h2 className="movie__title">{film.title}</h2>
                 <p className="movie__synopsis">{film.description}</p>
                 <p className="movie__data">
-                    <span className="movie__data-duration">{film.duration} {defineEnd}</span>
+                    <span className="movie__data-duration">{film.duration} {processEnd}</span>
                     {", "}
                     <span className="movie__data-origin">{film.country}</span>
                 </p>

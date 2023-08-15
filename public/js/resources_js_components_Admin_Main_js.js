@@ -26,124 +26,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-// import { useDispatch, useSelector } from "react-redux";
-// import {
-//     createScheme,
-//     selectCinemaHallScheme,
-//     changeHallSize,
-//     getSeats,
-//     updateSeats,
-//     createSeats,
-//     updateHall,
-//     getHalls,
-// } from "../../../reducers/createAdmin";
-// import ActionBtn from "../allButtons/actionBtn";
-// import ChooseHallBtn from "../allButtons/chooseBtn";
-// import SeatStatus from "../Seats/seatType";
-// import SeatsScheme from "../Seats/seats";
-
-// export default function CinemaHallConfig() {
-//     // Получение данных из глобального состояния с использованием useSelector
-//     const { cinemaHalls, selectedCinemaHallScheme } = useSelector((state) => state.admin);
-
-//     // Получение диспатча из React Redux
-//     const dispatch = useDispatch();
-
-//     // Обработчик выбора зала
-//     const handleSelect = (id) => {
-//         dispatch(selectCinemaHallScheme(cinemaHalls.find((cinemaHall) => cinemaHall.id === id)));
-//         dispatch(getSeats(id));
-//     };
-
-//     // Обработчик изменения размеров зала
-//     const handleChange = ({ target }) => {
-//         const name = target.name;
-//         const value = target.value;
-
-//         const hallSize = {
-//             "row": selectedCinemaHallScheme.row,
-//             "chair": selectedCinemaHallScheme.chair,
-//             [name]: value
-//         };
-//         dispatch(changeHallSize(hallSize));
-
-//         const seats = Array.from({ length: hallSize.row * hallSize.chair }, (_, i) => {
-//             return { "id": i + 1, "number": i + 1, "status": "standard", "cinema_hall_id": selectedCinemaHallScheme.id };
-//         });
-//         dispatch(createScheme(seats));
-//     };
-
-//     // Обработчик сохранения изменений
-//     const handleSave = () => {
-//         const hallSource = cinemaHalls.find((cinemaHall) => cinemaHall.id === selectedCinemaHallScheme.id);
-//         if (hallSource.row === selectedCinemaHallScheme.row && hallSource.chair === selectedCinemaHallScheme.chair) {
-//             dispatch(updateSeats());
-//         } else {
-//             dispatch(updateHall(selectedCinemaHallScheme));
-//             dispatch(createSeats());
-//             dispatch(getHalls());
-//         }
-//         dispatch(selectCinemaHallScheme({}));
-//     };
-
-//     return (
-//         <div className="conf-step__wrapper">
-//             {/* Вывод списка доступных залов */}
-//             <p className="conf-step__paragraph">Выберите зал для конфигурации:</p>
-//             <ul className="conf-step__selectors-box">
-//                 {cinemaHalls.map((cinemaHall) =>
-//                     <ChooseHallBtn
-//                         name={cinemaHall.name}
-//                         checked={selectedCinemaHallScheme ? cinemaHall.id === selectedCinemaHallScheme.id : false}
-//                         callback={() => handleSelect(cinemaHall.id)}
-//                         key={cinemaHall.id}
-//                     />
-//                 )}
-//             </ul>
-
-//             {/* Редактирование параметров выбранного зала */}
-//             {selectedCinemaHallScheme.id &&
-//                 <>
-//                     <p className="conf-step__paragraph">Укажите количество рядов и максимальное количество кресел в ряду:</p>
-//                     <div className="conf-step__legend">
-//                         <label className="conf-step__label">Рядов, шт
-//                             <input type="text"
-//                                 className="conf-step__input"
-//                                 name="row"
-//                                 value={selectedCinemaHallScheme.row}
-//                                 onChange={handleChange}
-//                             />
-//                         </label>
-//                         <span className="multiplier">x</span>
-//                         <label className="conf-step__label">Мест, шт
-//                             <input type="text"
-//                                 className="conf-step__input"
-//                                 name="chair"
-//                                 value={selectedCinemaHallScheme.chair}
-//                                 onChange={handleChange}
-//                             />
-//                         </label>
-//                     </div>
-//                     {/* Информация о типах кресел */}
-//                     <p className="conf-step__paragraph">Теперь вы можете указать типы кресел на схеме зала:</p>
-//                     <div className="conf-step__legend">
-//                         <SeatStatus status={"standard"} /> — обычные кресла
-//                         <SeatStatus status={"vip"} /> — VIP кресла
-//                         <SeatStatus status={"disabled"} /> — заблокированные (нет кресла)
-//                         <p className="conf-step__hint">Чтобы изменить вид кресла, нажмите по нему левой кнопкой мыши</p>
-//                     </div>
-
-//                     {/* Визуализация схемы зала */}
-//                     <SeatsScheme place={selectedCinemaHallScheme.row} />
-
-//                     {/* Кнопки отмены и сохранения */}
-//                     <ActionBtn cancel={() => dispatch(selectCinemaHallScheme({}))} save={() => handleSave()} />
-//                 </>
-//             }
-//         </div>
-//     );
-// }
-
 
 
 
@@ -155,23 +37,33 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 var CinemaHallConfig = function CinemaHallConfig() {
+  // Выбор данных из хранилища Redux с использованием хука useSelector
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.admin;
     }),
     cinemaHalls = _useSelector.cinemaHalls,
     selectedCinemaHallScheme = _useSelector.selectedCinemaHallScheme;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+
+  // Функция обратного вызова для выбора кинозала
   var handleSelect = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (id) {
+    // Диспетчеризация действий для обновления выбранной схемы кинозала и получения информации о местах
     dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.selectCinemaHallScheme)(cinemaHalls.find(function (hall) {
       return hall.id === id;
     })));
     dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.getSeats)(id));
   }, [dispatch, cinemaHalls]);
+
+  // Функция обратного вызова для обработки изменений в полях ввода размера зала
   var handleChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {
     var _event$target = event.target,
       name = _event$target.name,
       value = _event$target.value;
+
+    // Диспетчеризация действий для изменения выбранной схемы кинозала и создания новой схемы мест
     dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.changeHallSize)(_objectSpread(_objectSpread({}, selectedCinemaHallScheme), {}, _defineProperty({}, name, value))));
+
+    // Создание новой схемы мест на основе обновленного размера зала и диспетчеризация действий
     var seats = Array.from({
       length: selectedCinemaHallScheme.row * selectedCinemaHallScheme.chair
     }, function (_, i) {
@@ -184,17 +76,24 @@ var CinemaHallConfig = function CinemaHallConfig() {
     });
     dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.createScheme)(seats));
   }, [dispatch, selectedCinemaHallScheme]);
+
+  // Функция обратного вызова для сохранения изменений конфигурации
   var handleSave = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    // Поиск исходного кинозала и проверка изменения размера зала
     var hallSource = cinemaHalls.find(function (hall) {
       return hall.id === selectedCinemaHallScheme.id;
     });
     if (hallSource.row === selectedCinemaHallScheme.row && hallSource.chair === selectedCinemaHallScheme.chair) {
+      // Диспетчеризация действия для обновления информации о местах
       dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.updateSeats)());
     } else {
+      // Диспетчеризация действий для обновления зала, создания новых мест и получения списка залов
       dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.updateHall)(selectedCinemaHallScheme));
       dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.createSeats)());
       dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.getHalls)());
     }
+
+    // Очистка выбранной схемы кинозала
     dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.selectCinemaHallScheme)({}));
   }, [dispatch, cinemaHalls, selectedCinemaHallScheme]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
@@ -262,7 +161,7 @@ var CinemaHallConfig = function CinemaHallConfig() {
         cancel: function cancel() {
           return dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.selectCinemaHallScheme)({}));
         },
-        save: handleSave //  передаем функцию напрямую, без вызова
+        save: handleSave // Передача функции сохранения напрямую, без вызова
       })]
     })]
   });
@@ -2547,7 +2446,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _Client_additionalComponents_formWords_minForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Client/additionalComponents/formWords/minForm */ "./resources/js/components/Client/additionalComponents/formWords/minForm.js");
+/* harmony import */ var _Client_additionalComponents_Formatting_timeFormWords__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Client/additionalComponents/Formatting/timeFormWords */ "./resources/js/components/Client/additionalComponents/Formatting/timeFormWords.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -2565,7 +2464,7 @@ function EditMovieAction(props) {
     duration = props.duration;
 
   // Получение продолжительности фильма в соответствии с числом
-  var filmDuration = (0,_Client_additionalComponents_formWords_minForm__WEBPACK_IMPORTED_MODULE_2__["default"])(duration);
+  var filmDuration = (0,_Client_additionalComponents_Formatting_timeFormWords__WEBPACK_IMPORTED_MODULE_2__["default"])(duration);
 
   // Получение диспатча из React Redux
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
@@ -2604,28 +2503,28 @@ EditMovieAction.propTypes = {
 
 /***/ }),
 
-/***/ "./resources/js/components/Client/additionalComponents/formWords/minForm.js":
-/*!**********************************************************************************!*\
-  !*** ./resources/js/components/Client/additionalComponents/formWords/minForm.js ***!
-  \**********************************************************************************/
+/***/ "./resources/js/components/Client/additionalComponents/Formatting/timeFormWords.js":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/Client/additionalComponents/Formatting/timeFormWords.js ***!
+  \*****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ getNoun)
+/* harmony export */   "default": () => (/* binding */ getRussianMinutesLabel)
 /* harmony export */ });
-function getNoun(number) {
-  var n = Math.abs(number);
-  n %= 100;
-  if (n >= 5 && n <= 20) {
+function getRussianMinutesLabel(number) {
+  var num = Math.abs(number);
+  var remainder100 = num % 100;
+  var remainder10 = num % 10;
+  if (remainder100 >= 5 && remainder100 <= 20) {
     return 'минут';
   }
-  n %= 10;
-  if (n === 1) {
+  if (remainder10 === 1) {
     return 'минута';
   }
-  if (n >= 2 && n <= 4) {
+  if (remainder10 >= 2 && remainder10 <= 4) {
     return 'минуты';
   }
   return 'минут';

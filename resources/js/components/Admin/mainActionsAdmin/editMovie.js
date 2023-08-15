@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { showPopup } from "../../../reducers/createPopup";
 import PropTypes from "prop-types";
-import getNoun from "../../Client/additionalComponents/formWords/minForm";
+import getRussianMinutesLabel from "../../Client/additionalComponents/Formatting/timeFormWords";
 
 // Компонент для действия редактирования фильма
 export default function EditMovieAction(props) {
@@ -9,7 +9,7 @@ export default function EditMovieAction(props) {
     const { id, img, title, duration } = props;
 
     // Получение продолжительности фильма в соответствии с числом
-    const filmDuration = getNoun(duration);
+    const filmDuration = getRussianMinutesLabel(duration);
 
     // Получение диспатча из React Redux
     const dispatch = useDispatch();

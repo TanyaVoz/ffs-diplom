@@ -2,9 +2,9 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Main from "../../Main";
-import TicketHeader from "../../Header/ticketHeaderClient";
-import Button from "../../additionalComponents/Button/btn";
-import TicketInfo from "../Ticket/info";
+import TicketHeader from "../../additionalComponents/clientHeader/ticketHeaderClient";
+import Button from "../../additionalComponents/Button/buttonClients";
+import TicketInfo from "../ticketComponents/info";
 
 export default function MainPayment() {
     // Получение данных о сеансе, местах и билете из состояния

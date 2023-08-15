@@ -5,7 +5,7 @@ import { createTicket, getSeance } from "../../../../reducers/createSeance";
 import Main from "../../Main";
 import SeanceInfo from "./info";
 import BuyingScheme from "./buying";
-import Button from '../../additionalComponents/Button/btn';
+import Button from '../../additionalComponents/Button/buttonClients';
 
 export default function MainSeance() {
     // Получение данных о сеансе из состояния

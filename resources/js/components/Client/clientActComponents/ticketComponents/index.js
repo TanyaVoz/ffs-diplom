@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { buyTicket, resetSeance } from "../../../../reducers/createSeance";
 import Main from "../../Main";
-import TicketHeader from "../../Header/ticketHeaderClient";
+import TicketHeader from "../../additionalComponents/clientHeader/ticketHeaderClient";
 import TicketInfo from "./info";
 import TicketQRCode from "./qrcode";
 

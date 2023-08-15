@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import MovieInfo from "./Info";
-import MovieHall from "./hall";
+import MovieInfo from "./information";
+import ClientHall from "./clientHall";
 
 export default function MovieComponent(props) {
     // Получение данных о зале из состояния
@@ -11,8 +11,8 @@ export default function MovieComponent(props) {
     const { id } = props;
 
     // Фильтрация залов, где идет выбранный фильм
-    const movieHalls = cinemaHalls.filter((cinemaHall) => {
-        return cinemaHall.sessions.find((session) => +session.film_id === id);
+    const movieHalls = cinemaHalls.filter((selectedCinemaHall) => {
+        return selectedCinemaHall.sessions.find((session) => +session.film_id === id);
     });
 
     return (
@@ -21,15 +21,13 @@ export default function MovieComponent(props) {
             <MovieInfo id={id} />
 
             {/* Отображение залов, в которых идет фильм */}
-            {movieHalls.map((cinemaHall) => (
-                <MovieHall
-                    cinemaHallId={cinemaHall.id}
-                    filmId={id}
-                    key={cinemaHall.id} // Используем id зала как ключ
+            {movieHalls.map((selectedCinemaHall) => (
+                <ClientHall
+                selectedCinemaHallId={selectedCinemaHall.id}
+                selectedFilmId={id}
+                key={selectedCinemaHall.id} // Используем id зала как ключ
                 />
             ))}
         </section>
     );
 }
-
-

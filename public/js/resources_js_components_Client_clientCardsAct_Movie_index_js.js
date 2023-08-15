@@ -1,40 +1,5 @@
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_Client_clientCardsAct_Movie_index_js"],{
 
-/***/ "./resources/js/components/Client/Header/index.js":
-/*!********************************************************!*\
-  !*** ./resources/js/components/Client/Header/index.js ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Header)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-// Компонент для отображения заголовка страницы
-
-
-function Header() {
-  return (
-    /*#__PURE__*/
-    // Основной контейнер заголовка страницы
-    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
-      className: "page-header",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
-        className: "page-header__title",
-        children: ["\u0418\u0434\u0451\u043C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-          children: "\u0432"
-        }), "\u043A\u0438\u043D\u043E"]
-      })
-    })
-  );
-}
-
-/***/ }),
-
 /***/ "./resources/js/components/Client/Main.js":
 /*!************************************************!*\
   !*** ./resources/js/components/Client/Main.js ***!
@@ -46,8 +11,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Main)
 /* harmony export */ });
-/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Client/Header/index.js");
-/* harmony import */ var _additionalComponents_formDate_navigDays__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./additionalComponents/formDate/navigDays */ "./resources/js/components/Client/additionalComponents/formDate/navigDays.js");
+/* harmony import */ var _clientHeader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./clientHeader */ "./resources/js/components/Client/clientHeader/index.js");
+/* harmony import */ var _additionalComponents_Formatting_formDays__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./additionalComponents/Formatting/formDays */ "./resources/js/components/Client/additionalComponents/Formatting/formDays.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -58,7 +23,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function Main(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_0__["default"], {}), props.nav && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_additionalComponents_formDate_navigDays__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("main", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_clientHeader__WEBPACK_IMPORTED_MODULE_0__["default"], {}), props.nav && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_additionalComponents_Formatting_formDays__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("main", {
       children: props.children
     })]
   });
@@ -66,10 +31,93 @@ function Main(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Client/additionalComponents/formDate/index.js":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/Client/additionalComponents/formDate/index.js ***!
-  \*******************************************************************************/
+/***/ "./resources/js/components/Client/additionalComponents/Formatting/formDays.js":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/Client/additionalComponents/Formatting/formDays.js ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Navigate)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_createCalendar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/createCalendar */ "./resources/js/reducers/createCalendar.js");
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index */ "./resources/js/components/Client/additionalComponents/Formatting/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function Navigate() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(new Date()),
+    _useState2 = _slicedToArray(_useState, 2),
+    start = _useState2[0],
+    setStartDays = _useState2[1]; // Состояние для отслеживания начальной даты
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+      return state.calendar;
+    }),
+    chosenDate = _useSelector.chosenDate; // Получение выбранной даты из состояния Redux
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)(); // Получение функции dispatch из Redux
+  var todayDayWeek = new Date(); // Текущая дата
+  var _handleDateClick = function handleDateClick(day) {
+    dispatch((0,_reducers_createCalendar__WEBPACK_IMPORTED_MODULE_2__.chooseDate)("".concat(day.getFullYear(), "-").concat(day.getMonth() + 1, "-").concat(day.getDate())));
+  };
+  // Обработчик для переключения даты назад или вперед
+  var handleDateChange = function handleDateChange(day, arg) {
+    setStartDays(new Date(day.setDate(day.getDate() + arg)));
+  };
+  // Создание массива дней для отображения
+  var weekDates = [new Date(start.getTime())];
+  for (var i = 0; i < 5; i++) {
+    var next = new Date(weekDates[i].getTime());
+    next.setDate(next.getDate() + 1);
+    weekDates.push(next);
+  }
+  //Отображение дней и переключатель на следующую неделю
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("nav", {
+    className: "page-nav",
+    children: [start.setHours(0, 0, 0, 0) === todayDayWeek.setHours(0, 0, 0, 0) || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+      className: "page-nav__day page-nav__day_prev",
+      onClick: function onClick() {
+        return handleDateChange(start, -6);
+      },
+      href: "#"
+    }), weekDates.map(function (day) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        date: day,
+        chosen: chosenDate,
+        handleDateClick: function handleDateClick() {
+          return _handleDateClick(day);
+        }
+      }, day);
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+      className: "page-nav__day page-nav__day_next",
+      onClick: function onClick() {
+        return handleDateChange(start, 6);
+      },
+      href: "#"
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Client/additionalComponents/Formatting/index.js":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/Client/additionalComponents/Formatting/index.js ***!
+  \*********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -117,111 +165,28 @@ function Navigation(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Client/additionalComponents/formDate/navigDays.js":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/components/Client/additionalComponents/formDate/navigDays.js ***!
-  \***********************************************************************************/
+/***/ "./resources/js/components/Client/additionalComponents/Formatting/timeFormWords.js":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/Client/additionalComponents/Formatting/timeFormWords.js ***!
+  \*****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Navigate)
+/* harmony export */   "default": () => (/* binding */ getRussianMinutesLabel)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createCalendar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/createCalendar */ "./resources/js/reducers/createCalendar.js");
-/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index */ "./resources/js/components/Client/additionalComponents/formDate/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-function Navigate() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(new Date()),
-    _useState2 = _slicedToArray(_useState, 2),
-    start = _useState2[0],
-    setStart = _useState2[1]; // Состояние для отслеживания начальной даты
-  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
-      return state.calendar;
-    }),
-    chosenDate = _useSelector.chosenDate; // Получение выбранной даты из состояния Redux
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)(); // Получение функции dispatch из Redux
-  var today = new Date(); // Текущая дата
-  var _handleClick = function handleClick(day) {
-    dispatch((0,_reducers_createCalendar__WEBPACK_IMPORTED_MODULE_2__.chooseDate)("".concat(day.getFullYear(), "-").concat(day.getMonth() + 1, "-").concat(day.getDate())));
-  };
-  // Обработчик для переключения даты назад или вперед
-  var handleStart = function handleStart(day, arg) {
-    setStart(new Date(day.setDate(day.getDate() + arg)));
-  };
-  // Создание массива дней для отображения
-  var days = [new Date(start.getTime())];
-  for (var i = 0; i < 5; i++) {
-    var next = new Date(days[i].getTime());
-    next.setDate(next.getDate() + 1);
-    days.push(next);
-  }
-  //Отображение дней и переключатель на следующую неделю
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("nav", {
-    className: "page-nav",
-    children: [start.setHours(0, 0, 0, 0) === today.setHours(0, 0, 0, 0) || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
-      className: "page-nav__day page-nav__day_prev",
-      onClick: function onClick() {
-        return handleStart(start, -6);
-      },
-      href: "#"
-    }), days.map(function (day) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        date: day,
-        chosen: chosenDate,
-        handleClick: function handleClick() {
-          return _handleClick(day);
-        }
-      }, day);
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
-      className: "page-nav__day page-nav__day_next",
-      onClick: function onClick() {
-        return handleStart(start, 6);
-      },
-      href: "#"
-    })]
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/Client/additionalComponents/formWords/minForm.js":
-/*!**********************************************************************************!*\
-  !*** ./resources/js/components/Client/additionalComponents/formWords/minForm.js ***!
-  \**********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ getNoun)
-/* harmony export */ });
-function getNoun(number) {
-  var n = Math.abs(number);
-  n %= 100;
-  if (n >= 5 && n <= 20) {
+function getRussianMinutesLabel(number) {
+  var num = Math.abs(number);
+  var remainder100 = num % 100;
+  var remainder10 = num % 10;
+  if (remainder100 >= 5 && remainder100 <= 20) {
     return 'минут';
   }
-  n %= 10;
-  if (n === 1) {
+  if (remainder10 === 1) {
     return 'минута';
   }
-  if (n >= 2 && n <= 4) {
+  if (remainder10 >= 2 && remainder10 <= 4) {
     return 'минуты';
   }
   return 'минут';
@@ -241,7 +206,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ MovieInfo)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _additionalComponents_formWords_minForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../additionalComponents/formWords/minForm */ "./resources/js/components/Client/additionalComponents/formWords/minForm.js");
+/* harmony import */ var _additionalComponents_Formatting_timeFormWords__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../additionalComponents/Formatting/timeFormWords */ "./resources/js/components/Client/additionalComponents/Formatting/timeFormWords.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -262,7 +227,7 @@ function MovieInfo(props) {
       children: "\u0424\u0438\u043B\u044C\u043C \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D."
     });
   }
-  var defineEnd = (0,_additionalComponents_formWords_minForm__WEBPACK_IMPORTED_MODULE_1__["default"])(film.duration);
+  var processEnd = (0,_additionalComponents_Formatting_timeFormWords__WEBPACK_IMPORTED_MODULE_1__["default"])(film.duration);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "movie__info",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -288,7 +253,7 @@ function MovieInfo(props) {
         className: "movie__data",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
           className: "movie__data-duration",
-          children: [film.duration, " ", defineEnd]
+          children: [film.duration, " ", processEnd]
         }), ", ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
           className: "movie__data-origin",
           children: film.country
@@ -300,16 +265,16 @@ function MovieInfo(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Client/clientCardsAct/Movie/hall.js":
-/*!*********************************************************************!*\
-  !*** ./resources/js/components/Client/clientCardsAct/Movie/hall.js ***!
-  \*********************************************************************/
+/***/ "./resources/js/components/Client/clientCardsAct/Movie/clientHall.js":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Client/clientCardsAct/Movie/clientHall.js ***!
+  \***************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ MovieHall)
+/* harmony export */   "default": () => (/* binding */ ClientHall)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _seance__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./seance */ "./resources/js/components/Client/clientCardsAct/Movie/seance.js");
@@ -318,7 +283,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function MovieHall(props) {
+function ClientHall(props) {
   // Получение данных о залах из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.calendar;
@@ -326,26 +291,26 @@ function MovieHall(props) {
     cinemaHalls = _useSelector.cinemaHalls;
 
   // Получение идентификаторов зала и фильма из пропсов
-  var cinemaHallId = props.cinemaHallId,
-    filmId = props.filmId;
+  var selectedCinemaHallId = props.selectedCinemaHallId,
+    selectedFilmId = props.selectedFilmId;
 
   // Поиск информации о конкретном кинозале
-  var cinemaHall = cinemaHalls.find(function (cinemaHall) {
-    return cinemaHall.id === cinemaHallId;
+  var selectedCinemaHall = cinemaHalls.find(function (selectedCinemaHall) {
+    return selectedCinemaHall.id === selectedCinemaHallId;
   });
 
   // Фильтрация сеансов в выбранном кинозале для конкретного фильма
-  var cinemaHallSeances = cinemaHall.sessions.filter(function (session) {
-    return +session.film_id === filmId;
+  var selectedCinemaHallSeances = selectedCinemaHall.sessions.filter(function (session) {
+    return +session.film_id === selectedFilmId;
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "movie-seances__hall",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
       className: "movie-seances__hall-title",
-      children: cinemaHall.name
+      children: selectedCinemaHall.name
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("ul", {
       className: "movie-seances__list",
-      children: cinemaHallSeances.map(function (seance) {
+      children: selectedCinemaHallSeances.map(function (seance) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_seance__WEBPACK_IMPORTED_MODULE_1__["default"], {
           id: seance.id,
           time: seance.datetime
@@ -372,7 +337,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _reducers_createCalendar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/createCalendar */ "./resources/js/reducers/createCalendar.js");
-/* harmony import */ var _movie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./movie */ "./resources/js/components/Client/clientCardsAct/Movie/movie.js");
+/* harmony import */ var _showBillboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./showBillboard */ "./resources/js/components/Client/clientCardsAct/Movie/showBillboard.js");
 /* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Main */ "./resources/js/components/Client/Main.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
@@ -402,7 +367,7 @@ function MainMovie() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_Main__WEBPACK_IMPORTED_MODULE_4__["default"], {
     nav: true,
     children: [films && films.map(function (film) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_movie__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_showBillboard__WEBPACK_IMPORTED_MODULE_3__["default"], {
         id: film.id
       }, film.id);
     }), !films && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
@@ -413,10 +378,47 @@ function MainMovie() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Client/clientCardsAct/Movie/movie.js":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/Client/clientCardsAct/Movie/movie.js ***!
-  \**********************************************************************/
+/***/ "./resources/js/components/Client/clientCardsAct/Movie/seance.js":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/Client/clientCardsAct/Movie/seance.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ MovieSeanceItem)
+/* harmony export */ });
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+// Создаем константу с путем к странице сеанса
+
+var SEANCE_PATH = "/seance";
+function MovieSeanceItem(props) {
+  var id = props.id,
+    time = props.time;
+  var datetime = new Date(time);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+    className: "movie-seances__time-block",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      className: "movie-seances__time",
+      to: "".concat(SEANCE_PATH, "/").concat(id),
+      children: datetime.toLocaleTimeString('ru-RU', {
+        hour: '2-digit',
+        minute: '2-digit'
+      })
+    })
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Client/clientCardsAct/Movie/showBillboard.js":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/Client/clientCardsAct/Movie/showBillboard.js ***!
+  \******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -428,7 +430,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _Info__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Info */ "./resources/js/components/Client/clientCardsAct/Movie/Info.js");
-/* harmony import */ var _hall__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./hall */ "./resources/js/components/Client/clientCardsAct/Movie/hall.js");
+/* harmony import */ var _clientHall__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./clientHall */ "./resources/js/components/Client/clientCardsAct/Movie/clientHall.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -447,8 +449,8 @@ function MovieComponent(props) {
   var id = props.id;
 
   // Фильтрация залов, где идет выбранный фильм
-  var movieHalls = cinemaHalls.filter(function (cinemaHall) {
-    return cinemaHall.sessions.find(function (session) {
+  var movieHalls = cinemaHalls.filter(function (selectedCinemaHall) {
+    return selectedCinemaHall.sessions.find(function (session) {
       return +session.film_id === id;
     });
   });
@@ -456,50 +458,48 @@ function MovieComponent(props) {
     className: "movie",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Info__WEBPACK_IMPORTED_MODULE_2__["default"], {
       id: id
-    }), movieHalls.map(function (cinemaHall) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_hall__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        cinemaHallId: cinemaHall.id,
-        filmId: id
-      }, cinemaHall.id);
+    }), movieHalls.map(function (selectedCinemaHall) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_clientHall__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        selectedCinemaHallId: selectedCinemaHall.id,
+        selectedFilmId: id
+      }, selectedCinemaHall.id);
     })]
   });
 }
 
 /***/ }),
 
-/***/ "./resources/js/components/Client/clientCardsAct/Movie/seance.js":
-/*!***********************************************************************!*\
-  !*** ./resources/js/components/Client/clientCardsAct/Movie/seance.js ***!
-  \***********************************************************************/
+/***/ "./resources/js/components/Client/clientHeader/index.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/Client/clientHeader/index.js ***!
+  \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ MovieSeance)
+/* harmony export */   "default": () => (/* binding */ Header)
 /* harmony export */ });
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-// Создаем константу с путем к странице сеанса
+// Компонент для отображения заголовка страницы
 
-var SEANCE_PATH = "/seance";
-function MovieSeance(props) {
-  var id = props.id,
-    time = props.time;
-  var datetime = new Date(time);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-    className: "movie-seances__time-block",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      className: "movie-seances__time",
-      to: "".concat(SEANCE_PATH, "/").concat(id),
-      children: datetime.toLocaleTimeString('ru-RU', {
-        hour: '2-digit',
-        minute: '2-digit'
+
+function Header() {
+  return (
+    /*#__PURE__*/
+    // Основной контейнер заголовка страницы
+    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
+      className: "page-header",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
+        className: "page-header__title",
+        children: ["\u0418\u0434\u0451\u043C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+          children: "\u0432"
+        }), "\u043A\u0438\u043D\u043E"]
       })
     })
-  });
+  );
 }
 
 /***/ }),

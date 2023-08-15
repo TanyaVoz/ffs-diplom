@@ -1,5 +1,5 @@
-import Header from "./Header";
-import Navigate from "./additionalComponents/formDate/navigDays";
+import Header from "./additionalComponents/clientHeader";
+import CalendarNavigation from "./additionalComponents/Formatting/formDays";
 
 // Главный компонент страницы
 export default function Main(props) {
@@ -9,7 +9,7 @@ export default function Main(props) {
             <Header />
 
             {/* Включение компонента навигации (если передана пропс nav) */}
-            {props.nav && <Navigate />}
+            {props.nav && <CalendarNavigation />}
 
             {/* Основной контент страницы */}
             <main>
