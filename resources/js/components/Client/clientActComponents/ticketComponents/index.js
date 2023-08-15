@@ -3,16 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { buyTicket, resetSeance } from "../../../../reducers/createSeance";
 import Main from "../../Main";
+import QRCodeTicket from "./qrcode";
 import TicketHeader from "../../additionalComponents/clientHeader/ticketHeaderClient";
-import TicketInfo from "./info";
-import TicketQRCode from "./qrcode";
+import TicketInformation from "./informationTicket";
 
 // Компонент для отображения информации о билете
 function TicketContent({ session, seats, ticket }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    // Фильтрация и получение номеров выбранных мест
     const seatsNum = seats.filter((seat) => ticket.seats.includes(seat.id)).map((seat) => seat.number);
 
     useEffect(() => {
@@ -34,7 +33,7 @@ function TicketContent({ session, seats, ticket }) {
             <TicketHeader text={"Электронный билет"} />
             <div className="ticket__info-wrapper">
                 {/* Информация о билете */}
-                <TicketInfo
+                <TicketInformation
                     film={session.title}
                     seats={seatsNum.join(', ')}
                     cinemaHall={session.name}
@@ -44,7 +43,7 @@ function TicketContent({ session, seats, ticket }) {
 
                 {/* Отображение QR-кода только если есть идентификатор билета */}
                 {ticket.id &&
-                    <TicketQRCode
+                    <QRCodeTicket
                         code={`Билет: ${ticket.id}. Зал: ${session.name}. Время: ${session.time}. Места: ${seatsNum.join(', ')}`}
                     />
                 }

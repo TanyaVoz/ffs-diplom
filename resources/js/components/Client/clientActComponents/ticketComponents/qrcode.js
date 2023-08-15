@@ -1,36 +1,35 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import QRCode from "qrcode";
 
 // Компонент для отображения QR-кода билета
-export default function TicketQRCode(props) {
-    // Получение кода для генерации QR-кода из пропсов
+export default function QRCodeTicket(props) {
     const { code } = props;
-
-    // Создание рефа для изображения QR-кода
-    const imgCode = useRef(null);
+    const qrImageRef = useRef(null);
 
     // Функция для генерации QR-кода
-    const generateQR = async (text) => {
+    const generateQRCode = async (text) => {
         try {
-            // Генерация и установка изображения QR-кода
-            imgCode.current.src = await QRCode.toDataURL(
-                text, {
-                errorCorrectionLevel: 'Q',
+            // Генерация изображения QR-кода и установка его в реф
+            const qrDataURL = await QRCode.toDataURL(text, {
+                errorCorrectionLevel: "Q",
                 margin: 3,
             });
-        } catch (err) {
-            console.error(err);
+            qrImageRef.current.src = qrDataURL;
+        } catch (error) {
+            console.error(error);
         }
     }
 
     // Эффект для генерации QR-кода при изменении кода
     useEffect(() => {
-        generateQR(code);
+        generateQRCode(code);
     }, [code]);
 
+    // Отображение изображения QR-кода
     return (
-        <img ref={imgCode} className="ticket__info-qr" alt="QRCode" />
+        <img ref={qrImageRef} className="ticket__info-qr" alt="QR Code" />
     );
 }
+
 
 

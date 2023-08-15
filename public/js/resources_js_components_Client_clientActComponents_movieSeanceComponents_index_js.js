@@ -1,4 +1,4 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_Client_clientCardsAct_Payment_index_js"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_Client_clientActComponents_movieSeanceComponents_index_js"],{
 
 /***/ "./resources/js/components/Client/Main.js":
 /*!************************************************!*\
@@ -11,7 +11,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Main)
 /* harmony export */ });
-/* harmony import */ var _clientHeader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./clientHeader */ "./resources/js/components/Client/clientHeader/index.js");
+/* harmony import */ var _additionalComponents_clientHeader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./additionalComponents/clientHeader */ "./resources/js/components/Client/additionalComponents/clientHeader/index.js");
 /* harmony import */ var _additionalComponents_Formatting_formDays__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./additionalComponents/Formatting/formDays */ "./resources/js/components/Client/additionalComponents/Formatting/formDays.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
@@ -23,7 +23,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function Main(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_clientHeader__WEBPACK_IMPORTED_MODULE_0__["default"], {}), props.nav && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_additionalComponents_Formatting_formDays__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("main", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_additionalComponents_clientHeader__WEBPACK_IMPORTED_MODULE_0__["default"], {}), props.nav && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_additionalComponents_Formatting_formDays__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("main", {
       children: props.children
     })]
   });
@@ -205,193 +205,10 @@ function Navigation(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Client/additionalComponents/Formatting/moneyFormWords.js":
-/*!******************************************************************************************!*\
-  !*** ./resources/js/components/Client/additionalComponents/Formatting/moneyFormWords.js ***!
-  \******************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ getRussianRublesLabel)
-/* harmony export */ });
-function getRussianRublesLabel(number) {
-  var num = Math.abs(number);
-  var remainder100 = num % 100;
-  var remainder10 = num % 10;
-  if (remainder100 >= 5 && remainder100 <= 20) {
-    return 'рублей';
-  }
-  if (remainder10 === 1) {
-    return 'рубль';
-  }
-  if (remainder10 >= 2 && remainder10 <= 4) {
-    return 'рубля';
-  }
-  return 'рублей';
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/Client/clientCardsAct/Payment/index.js":
-/*!************************************************************************!*\
-  !*** ./resources/js/components/Client/clientCardsAct/Payment/index.js ***!
-  \************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ MainPayment)
-/* harmony export */ });
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Main */ "./resources/js/components/Client/Main.js");
-/* harmony import */ var _clientHeader_ticketHeaderClient__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../clientHeader/ticketHeaderClient */ "./resources/js/components/Client/clientHeader/ticketHeaderClient.js");
-/* harmony import */ var _additionalComponents_Button_buttonClients__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../additionalComponents/Button/buttonClients */ "./resources/js/components/Client/additionalComponents/Button/buttonClients.js");
-/* harmony import */ var _Ticket_info__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Ticket/info */ "./resources/js/components/Client/clientCardsAct/Ticket/info.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-
-
-
-function MainPayment() {
-  // Получение данных о сеансе, местах и билете из состояния
-  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
-      return state.seance;
-    }),
-    session = _useSelector.session,
-    seats = _useSelector.seats,
-    ticket = _useSelector.ticket;
-
-  // Получение функции для навигации
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useNavigate)();
-
-  // Фильтрация выбранных мест и получение их номеров
-  var seatsNum = seats.filter(function (seat) {
-    return ticket.seats.includes(seat.id);
-  }).map(function (seat) {
-    return seat.number;
-  });
-
-  // Проверка наличия необходимых данных сеанса и билета, редирект при их отсутствии
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (!session.id || !ticket.seanceId) {
-      navigate(-1);
-    }
-  }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Main__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("section", {
-      className: "ticket",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_clientHeader_ticketHeaderClient__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        text: "Вы выбрали билеты:"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "ticket__info-wrapper",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Ticket_info__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          film: session.title,
-          seats: seatsNum.join(', '),
-          cinemaHall: session.name,
-          time: session.datetime,
-          cost: ticket.cost
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_additionalComponents_Button_buttonClients__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          text: "Получить код бронирования",
-          link: "/ticket"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-          className: "ticket__hint",
-          children: "\u041F\u043E\u0441\u043B\u0435 \u043E\u043F\u043B\u0430\u0442\u044B \u0431\u0438\u043B\u0435\u0442 \u0431\u0443\u0434\u0435\u0442 \u0434\u043E\u0441\u0442\u0443\u043F\u0435\u043D \u0432 \u044D\u0442\u043E\u043C \u043E\u043A\u043D\u0435, \u0430 \u0442\u0430\u043A\u0436\u0435 \u043F\u0440\u0438\u0434\u0451\u0442 \u0432\u0430\u043C \u043D\u0430 \u043F\u043E\u0447\u0442\u0443. \u041F\u043E\u043A\u0430\u0436\u0438\u0442\u0435 QR-\u043A\u043E\u0434 \u043D\u0430\u0448\u0435\u043C\u0443 \u043A\u043E\u043D\u0442\u0440\u043E\u043B\u043B\u0451\u0440\u0443 \u0443 \u0432\u0445\u043E\u0434\u0430 \u0432 \u0437\u0430\u043B."
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-          className: "ticket__hint",
-          children: "\u041F\u0440\u0438\u044F\u0442\u043D\u043E\u0433\u043E \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430!"
-        })]
-      })]
-    })
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/Client/clientCardsAct/Ticket/info.js":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/Client/clientCardsAct/Ticket/info.js ***!
-  \**********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ TicketInfo)
-/* harmony export */ });
-/* harmony import */ var _additionalComponents_Formatting_moneyFormWords__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../additionalComponents/Formatting/moneyFormWords */ "./resources/js/components/Client/additionalComponents/Formatting/moneyFormWords.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-function TicketInfo(props) {
-  // Деструктурируем свойства из объекта props
-  var film = props.film,
-    seats = props.seats,
-    cinemaHall = props.cinemaHall,
-    time = props.time,
-    cost = props.cost;
-
-  // Получаем окончание для слова "рубль" в зависимости от стоимости
-  var costEnding = (0,_additionalComponents_Formatting_moneyFormWords__WEBPACK_IMPORTED_MODULE_0__["default"])(cost);
-
-  // Преобразуем строку времени в объект Date
-  var datetime = new Date(time);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
-      className: "ticket__info",
-      children: ["\u041D\u0430 \u0444\u0438\u043B\u044C\u043C: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-        className: "ticket__details ticket__title",
-        children: film
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
-      className: "ticket__info",
-      children: ["\u041C\u0435\u0441\u0442\u0430: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-        className: "ticket__details ticket__chairs",
-        children: seats
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
-      className: "ticket__info",
-      children: ["\u0412 \u0437\u0430\u043B\u0435: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-        className: "ticket__details ticket__hall",
-        children: cinemaHall
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
-      className: "ticket__info",
-      children: ["\u041D\u0430\u0447\u0430\u043B\u043E \u0441\u0435\u0430\u043D\u0441\u0430:", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-        className: "ticket__details ticket__start",
-        children: time && datetime.toLocaleDateString('ru-RU', {
-          hour: '2-digit',
-          minute: '2-digit'
-        })
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
-      className: "ticket__info",
-      children: ["\u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-        className: "ticket__details ticket__cost",
-        children: cost
-      }), " ", costEnding]
-    })]
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/Client/clientHeader/index.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/Client/clientHeader/index.js ***!
-  \**************************************************************/
+/***/ "./resources/js/components/Client/additionalComponents/clientHeader/index.js":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/Client/additionalComponents/clientHeader/index.js ***!
+  \***********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -423,34 +240,338 @@ function Header() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Client/clientHeader/ticketHeaderClient.js":
-/*!***************************************************************************!*\
-  !*** ./resources/js/components/Client/clientHeader/ticketHeaderClient.js ***!
-  \***************************************************************************/
+/***/ "./resources/js/components/Client/clientActComponents/movieSeanceComponents/buying.js":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/Client/clientActComponents/movieSeanceComponents/buying.js ***!
+  \********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ TicketHeader)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _seatStatus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./seatStatus */ "./resources/js/components/Client/clientActComponents/movieSeanceComponents/seatStatus.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
-// Компонент для отображения заголовка билета
-function TicketHeader(props) {
-  // Получение текста заголовка из пропсов
-  var text = props.text;
-  return (
-    /*#__PURE__*/
-    // Основной контейнер заголовка билета
-    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
-      className: "tichet__check",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
-        className: "ticket__check-title",
-        children: text
+
+
+
+var BuyingScheme = function BuyingScheme(props) {
+  var _callback = props.callback;
+
+  // Получение данных о сеансе и местах из состояния
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
+      return state.seance;
+    }),
+    session = _useSelector.session,
+    seats = _useSelector.seats;
+
+  // Получение цен для стандартных и VIP мест из данных сеанса
+  var priceStandard = session.price_standard;
+  var priceVIP = session.price_vip;
+
+  // Получение массива мест, разбитых на ряды
+  var rowSeats = getRowSeats(seats, session.row);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "buying-scheme",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "buying-scheme__wrapper",
+      children: rowSeats.map(function (row, i) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "buying-scheme__row",
+          children: row.map(function (seat) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_seatStatus__WEBPACK_IMPORTED_MODULE_1__["default"], {
+              status: seat.status,
+              callback: function callback() {
+                return _callback(seat.id, seat.status);
+              }
+            }, seat.id);
+          })
+        }, i);
       })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "buying-scheme__legend",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "col",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
+          className: "buying-scheme__legend-price",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            className: "buying-scheme__chair buying-scheme__chair_standart"
+          }), " \u0421\u0432\u043E\u0431\u043E\u0434\u043D\u043E (", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            className: "buying-scheme__legend-value",
+            children: priceStandard
+          }), "\u0440\u0443\u0431)"]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
+          className: "buying-scheme__legend-price",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            className: "buying-scheme__chair buying-scheme__chair_vip"
+          }), " \u0421\u0432\u043E\u0431\u043E\u0434\u043D\u043E VIP (", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            className: "buying-scheme__legend-value",
+            children: priceVIP
+          }), "\u0440\u0443\u0431)"]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "col",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
+          className: "buying-scheme__legend-price",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            className: "buying-scheme__chair buying-scheme__chair_taken"
+          }), " \u0417\u0430\u043D\u044F\u0442\u043E"]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
+          className: "buying-scheme__legend-price",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            className: "buying-scheme__chair buying-scheme__chair_selected"
+          }), " \u0412\u044B\u0431\u0440\u0430\u043D\u043E"]
+        })]
+      })]
+    })]
+  });
+};
+
+// Функция для разбиения мест на ряды
+var getRowSeats = function getRowSeats(seats, rowSize) {
+  if (!seats || seats.length === 0) {
+    return [];
+  }
+  var chairs = seats.length / rowSize;
+  return seats.reduce(function (result, seat, i) {
+    var index = Math.floor(i / chairs);
+    if (!result[index]) {
+      result[index] = [];
+    }
+    result[index].push(seat);
+    return result;
+  }, []);
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BuyingScheme);
+
+/***/ }),
+
+/***/ "./resources/js/components/Client/clientActComponents/movieSeanceComponents/index.js":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/Client/clientActComponents/movieSeanceComponents/index.js ***!
+  \*******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ MainSeance)
+/* harmony export */ });
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _reducers_createSeance__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/createSeance */ "./resources/js/reducers/createSeance.js");
+/* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Main */ "./resources/js/components/Client/Main.js");
+/* harmony import */ var _info__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./info */ "./resources/js/components/Client/clientActComponents/movieSeanceComponents/info.js");
+/* harmony import */ var _buying__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./buying */ "./resources/js/components/Client/clientActComponents/movieSeanceComponents/buying.js");
+/* harmony import */ var _additionalComponents_Button_buttonClients__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../additionalComponents/Button/buttonClients */ "./resources/js/components/Client/additionalComponents/Button/buttonClients.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+
+
+function MainSeance() {
+  // Получение данных о сеансе из состояния
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
+      return state.seance;
+    }),
+    session = _useSelector.session;
+
+  // Получение идентификатора сеанса из параметров URL
+  var seanceId = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useParams)().seanceId;
+
+  // Получение функции для диспетчера Redux
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+
+  // Массив для выбранных мест
+  var selectedSeats = [];
+
+  // Загрузка данных о сеансе при монтировании компонента
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    dispatch((0,_reducers_createSeance__WEBPACK_IMPORTED_MODULE_2__.getSeance)(seanceId));
+  }, []);
+
+  // Обработчик выбора места
+  var selectHandle = function selectHandle(id, status) {
+    var price = status === 'vip' ? session.price_vip : session.price_standard;
+    var hasSeat = selectedSeats.findIndex(function (seat) {
+      return seat.id === id;
+    });
+    if (hasSeat !== -1) {
+      selectedSeats.splice(hasSeat, 1);
+    } else {
+      selectedSeats.push({
+        id: id,
+        price: price
+      });
+    }
+  };
+
+  // Обработчик бронирования мест
+  var submitHandle = function submitHandle() {
+    var ticket = selectedSeats.reduce(function (res, seat) {
+      res.seats.push(seat.id);
+      res.cost += +seat.price;
+      return res;
+    }, {
+      seats: [],
+      cost: 0
+    });
+
+    // Создание билета с выбранными местами и стоимостью
+    dispatch((0,_reducers_createSeance__WEBPACK_IMPORTED_MODULE_2__.createTicket)({
+      seanceId: seanceId,
+      seats: ticket.seats,
+      cost: ticket.cost
+    }));
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Main__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("section", {
+      className: "buying",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_info__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_buying__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        callback: selectHandle
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_additionalComponents_Button_buttonClients__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        text: "Забронировать",
+        link: "/payment",
+        callback: submitHandle
+      })]
     })
-  );
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Client/clientActComponents/movieSeanceComponents/info.js":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/Client/clientActComponents/movieSeanceComponents/info.js ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SeanceInfo)
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function SeanceInfo() {
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
+      return state.seance;
+    }),
+    session = _useSelector.session;
+  if (!session) {
+    // Обработка случая, когда информация о сеансе недоступна
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      children: "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 \u043E \u0441\u0435\u0430\u043D\u0441\u0435..."
+    });
+  }
+  var datetime = new Date(session.datetime);
+
+  // Форматирование даты и времени для отображения отдельно
+  var formattedDate = datetime.toLocaleDateString('ru-RU');
+  var formattedTime = datetime.toLocaleTimeString('ru-RU', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "buying__info",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "buying__info-description",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+        className: "buying__info-title",
+        children: session.title
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
+        className: "buying__info-start",
+        children: ["\u041D\u0430\u0447\u0430\u043B\u043E \u0441\u0435\u0430\u043D\u0441\u0430: ", formattedDate, ", ", formattedTime]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        className: "buying__info-hall",
+        children: session.name
+      })]
+    })
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Client/clientActComponents/movieSeanceComponents/seatStatus.js":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/Client/clientActComponents/movieSeanceComponents/seatStatus.js ***!
+  \************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SeanceSeatStatus)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+function SeanceSeatStatus(props) {
+  // Получение свойств из пропсов: статус и колбэк
+  var status = props.status,
+    callback = props.callback;
+
+  // Инициализация состояния для состояния выбора места
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    taken = _useState2[0],
+    setTaken = _useState2[1];
+
+  // Обработчик клика на место
+  var handleClick = function handleClick() {
+    // Изменение состояния выбора места
+    setTaken(!taken);
+
+    // Вызов переданной функции колбэка
+    callback();
+  };
+
+  // Определение CSS-класса в зависимости от статуса
+  var activeClass = "buying-scheme__chair_disabled";
+  switch (status) {
+    case 'standard':
+      activeClass = "buying-scheme__chair_standart";
+      break;
+    case 'vip':
+      activeClass = "buying-scheme__chair_vip";
+      break;
+    case 'sold':
+      activeClass = "buying-scheme__chair_taken";
+      break;
+    default:
+      activeClass = "buying-scheme__chair_disabled";
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('buying-scheme__chair', taken ? 'buying-scheme__chair_selected' : activeClass),
+    onClick: function onClick() {
+      return status === 'disabled' || status === 'sold' ? false : handleClick();
+    }
+  });
 }
 
 /***/ }),

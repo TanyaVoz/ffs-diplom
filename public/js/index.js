@@ -6084,16 +6084,16 @@ var Auth = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () 
   return __webpack_require__.e(/*! import() */ "resources_js_components_Admin_Verify_Auth_auth_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Admin/Verify/Auth/auth */ "./resources/js/components/Admin/Verify/Auth/auth.js"));
 });
 var MovieCard = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_Client_clientCardsAct_Movie_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Client/clientCardsAct/Movie */ "./resources/js/components/Client/clientCardsAct/Movie/index.js"));
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Client_clientActComponents_movieComponents_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Client/clientActComponents/movieComponents */ "./resources/js/components/Client/clientActComponents/movieComponents/index.js"));
 });
 var SeanceCard = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_Client_clientCardsAct_Seance_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Client/clientCardsAct/Seance */ "./resources/js/components/Client/clientCardsAct/Seance/index.js"));
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Client_clientActComponents_movieSeanceComponents_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Client/clientActComponents/movieSeanceComponents */ "./resources/js/components/Client/clientActComponents/movieSeanceComponents/index.js"));
 });
 var MainPayment = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_Client_clientCardsAct_Payment_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Client/clientCardsAct/Payment */ "./resources/js/components/Client/clientCardsAct/Payment/index.js"));
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Client_clientActComponents_payComponents_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Client/clientActComponents/payComponents */ "./resources/js/components/Client/clientActComponents/payComponents/index.js"));
 });
 var MainTicket = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_Client_clientCardsAct_Ticket_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Client/clientCardsAct/Ticket */ "./resources/js/components/Client/clientCardsAct/Ticket/index.js"));
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Client_clientActComponents_ticketComponents_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Client/clientActComponents/ticketComponents */ "./resources/js/components/Client/clientActComponents/ticketComponents/index.js"));
 });
 var Login = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_components_Admin_Verify_Login_login_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Admin/Verify/Login/login */ "./resources/js/components/Admin/Verify/Login/login.js"));
@@ -48894,7 +48894,7 @@ function n(n){for(var r=arguments.length,t=Array(r>1?r-1:0),e=1;e<r;e++)t[e-1]=a
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_Admin_Main_js":1,"resources_js_components_Admin_Verify_Auth_auth_js":1,"resources_js_components_Client_clientCardsAct_Movie_index_js":1,"resources_js_components_Client_clientCardsAct_Seance_index_js":1,"resources_js_components_Client_clientCardsAct_Payment_index_js":1,"resources_js_components_Client_clientCardsAct_Ticket_index_js":1,"resources_js_components_Admin_Verify_Login_login_js":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Admin_Main_js":1,"resources_js_components_Admin_Verify_Auth_auth_js":1,"resources_js_components_Client_clientActComponents_movieComponents_index_js":1,"resources_js_components_Client_clientActComponents_movieSeanceComponents_index_js":1,"resources_js_components_Client_clientActComponents_payComponents_index_js":1,"resources_js_components_Client_clientActComponents_ticketComponents_index_js":1,"resources_js_components_Admin_Verify_Login_login_js":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
