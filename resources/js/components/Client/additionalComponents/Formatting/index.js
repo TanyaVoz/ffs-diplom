@@ -1,9 +1,9 @@
-
 import classNames from "classnames";
 import { format } from "date-fns"; // Используем библиотеку date-fns для работы с датами
 
 export default function Navigation(props) {
-  const { handleClick, date, chosen } = props;
+  const { handleDateClick
+    , date, chosen } = props;
   const shortWeekdays = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
   const today = new Date();
 
@@ -18,7 +18,8 @@ export default function Navigation(props) {
   });
 
   return (
-    <button className={dayClass} onClick={() => handleClick(date)}>
+    <button className={dayClass} onClick={() => handleDateClick
+      (date)}>
       <span className="page-nav__day-week">{shortWeekdays[new Date(date).getDay()]}</span>
       <span className="page-nav__day-number">{formattedDate}</span>
     </button>

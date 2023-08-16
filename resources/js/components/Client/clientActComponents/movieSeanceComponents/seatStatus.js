@@ -9,7 +9,7 @@ export default function SeanceSeatStatus(props) {
   const [taken, setTaken] = useState(false);
 
   // Обработчик клика на место
-  const handleClick = () => {
+  const handleClickSeats = () => {
     // Изменение состояния выбора места
     setTaken(!taken);
 
@@ -39,7 +39,7 @@ export default function SeanceSeatStatus(props) {
         'buying-scheme__chair',
         taken ? 'buying-scheme__chair_selected' : activeClass
       )}
-      onClick={() => (status === 'disabled' || status === 'sold') ? false : handleClick()}
+      onClick={() => (status === 'disabled' || status === 'sold') ? false : handleClickSeats()}
     />
   );
 }

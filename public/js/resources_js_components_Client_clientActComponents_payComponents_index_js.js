@@ -174,7 +174,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Navigation(props) {
-  var handleClick = props.handleClick,
+  var handleDateClick = props.handleDateClick,
     date = props.date,
     chosen = props.chosen;
   var shortWeekdays = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
@@ -191,7 +191,7 @@ function Navigation(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
     className: dayClass,
     onClick: function onClick() {
-      return handleClick(date);
+      return handleDateClick(date);
     },
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
       className: "page-nav__day-week",
@@ -247,8 +247,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
-
-// Компонент для отображения заголовка страницы
 
 
 function Header() {

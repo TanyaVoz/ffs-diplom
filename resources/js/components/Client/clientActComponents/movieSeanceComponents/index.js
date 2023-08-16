@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { createTicket, getSeance } from "../../../../reducers/createSeance";
 import Main from "../../Main";
-import SeanceInfo from "./info";
+import SeanceInformation from "./information";
 import BuyingScheme from "./buying";
 import Button from '../../additionalComponents/Button/buttonClients';
 
@@ -26,18 +26,18 @@ export default function MainSeance() {
     }, []);
 
     // Обработчик выбора места
-    const selectHandle = (id, status) => {
+    const handleSeatSelection = (id, status) => {
         const price = status === 'vip' ? session.price_vip : session.price_standard;
-        const hasSeat = selectedSeats.findIndex((seat) => seat.id === id);
-        if (hasSeat !== -1) {
-            selectedSeats.splice(hasSeat, 1);
+        const seatIndex = selectedSeats.findIndex((seat) => seat.id === id);
+        if (seatIndex !== -1) {
+            selectedSeats.splice(seatIndex, 1);
         } else {
             selectedSeats.push({ id, price });
         }
     }
 
     // Обработчик бронирования мест
-    const submitHandle = () => {
+    const handleSeatBooking = () => {
         const ticket = selectedSeats.reduce((res, seat) => {
             res.seats.push(seat.id);
             res.cost += +seat.price;
@@ -52,13 +52,13 @@ export default function MainSeance() {
         <Main>
             <section className="buying">
                 {/* Отображение информации о сеансе */}
-                <SeanceInfo />
+                <SeanceInformation />
 
                 {/* Отображение схемы выбора мест */}
-                <BuyingScheme callback={selectHandle} />
+                <BuyingScheme callback={handleSeatSelection} />
 
                 {/* Кнопка для бронирования мест */}
-                <Button text={"Забронировать"} link={"/payment"} callback={submitHandle} />
+                <Button text={"Забронировать"} link={"/payment"} callback={handleSeatBooking} />
             </section>
         </Main>
     );

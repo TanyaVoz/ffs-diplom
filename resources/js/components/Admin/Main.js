@@ -1,11 +1,11 @@
-import Header from "./adminHeader";
-import StepHeader from "./adminHeader/header";
-import CinemaHallControl from "./AdminPanel/cinemaControl";
-import CinemaHallConfig from "./AdminPanel/cinemaConfig";
-import PriceConfig from "./AdminPanel/price";
-import SessionGrid from "./AdminPanel/session";
-import OpenSales from "./AdminPanel/filmsSales";
-import Popup from "./allPopup/Popup";
+import Header from "./AdminPanelComponents/adminHeader";
+import StepHeader from "./AdminPanelComponents/adminHeader/header";
+import CinemaHallControl from "./AdminConfigurationsComponents/cinemaControl";
+import CinemaHallConfig from "./AdminConfigurationsComponents/cinemaConfig";
+import PriceConfig from "./AdminConfigurationsComponents/price";
+import SessionGrid from "./AdminConfigurationsComponents/session";
+import OpenSales from "./AdminConfigurationsComponents/filmsSales";
+import Popup from "./AdminPanelComponents/allPopup/Popup";
 
 export default function Main() {
     return (

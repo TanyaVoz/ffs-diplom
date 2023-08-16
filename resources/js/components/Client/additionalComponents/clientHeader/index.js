@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-// Компонент для отображения заголовка страницы
+
 export default function Header() {
     return (
         // Основной контейнер заголовка страницы
