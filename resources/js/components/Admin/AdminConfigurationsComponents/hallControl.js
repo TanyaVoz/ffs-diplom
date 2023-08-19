@@ -5,7 +5,7 @@ import { getHalls } from "../../../reducers/adminReducer";
 import Button from "../AdminPanelComponents/allButtons/button";
 import DeleteHallAction from "../AdminActComponents/MainAct/deleteHall";
 
-export default function CinemaHallControl() {
+export default function HallControl() {
   // Получение данных из глобального состояния с использованием useSelector
   const { cinemaHalls } = useSelector((state) => state.admin);
 

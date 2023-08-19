@@ -15,7 +15,7 @@ import ChooseHall from "../AdminPanelComponents/allButtons/choose";
 import SeatStatus from "../AdminActComponents/SeatsAct/seatType";
 import SeatsScheme from "../AdminActComponents/SeatsAct/seats";
 
-function CinemaHallConfig() {
+function HallConfig() {
   const { cinemaHalls, selectedCinemaHallScheme } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
   const [updatedSize, setUpdatedSize] = useState({ row: 0, chair: 0 });
@@ -116,5 +116,5 @@ function CinemaHallConfig() {
   );
 }
 
-export default CinemaHallConfig;
+export default HallConfig;
 

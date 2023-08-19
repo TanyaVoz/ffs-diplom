@@ -1,10 +1,10 @@
 import React from "react";
 import Header from "./AdminPanelComponents/adminHeader";
 import CustomStepHeader from "./AdminPanelComponents/adminHeader/header";
-import CinemaHallControl from "./AdminConfigurationsComponents/cinemaControl";
-import CinemaHallConfig from "./AdminConfigurationsComponents/cinemaConfig";
+import HallControl from "./AdminConfigurationsComponents/hallControl";
+import HallConfig from "./AdminConfigurationsComponents/hallConfig";
 import PriceConfig from "./AdminConfigurationsComponents/price";
-import SessionGrid from "./AdminConfigurationsComponents/session";
+import Session from "./AdminConfigurationsComponents/session";
 import OpenSales from "./AdminConfigurationsComponents/filmsSales";
 import Popup from "./AdminPanelComponents/allPopup/Popup";
 
@@ -20,12 +20,12 @@ const Main = () => {
       <main className="conf-steps">
         {/* Первый шаг: Управление залами */}
         <CustomStepHeader title={'Управление залами'}>
-          <CinemaHallControl />
+          <HallControl />
         </CustomStepHeader>
 
         {/* Второй шаг: Конфигурация залов */}
         <CustomStepHeader title={'Конфигурация залов'}>
-          <CinemaHallConfig />
+          <HallConfig />
         </CustomStepHeader>
 
         {/* Третий шаг: Конфигурация цен */}
@@ -35,7 +35,7 @@ const Main = () => {
 
         {/* Четвёртый шаг: Сетка сеансов */}
         <CustomStepHeader title={'Сетка сеансов'}>
-          <SessionGrid />
+          <Session />
         </CustomStepHeader>
 
         {/* Пятый шаг: Открыть продажи */}

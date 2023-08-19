@@ -50,7 +50,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-// import { logout } from "../../../../reducers/authReducer";
 
 
 var Exit = function Exit() {
@@ -111,7 +110,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-//import { getToken, resetAuthStatus } from "../../../../reducers/authReducer";
 
 
 

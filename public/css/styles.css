@@ -503,8 +503,8 @@ body {
 
 .circle {
   --in: 80%;
-  --ar: #ff6a00;
-  --dt: #ffea03;
+  --ar: #95e4dea6;
+  --dt: #f0bed8c4;
   --shadow: drop-shadow(0vmin 0vmin 0.5vmin #000) drop-shadow(0vmin 1vmin 0.5vmin #0004);
   --cross: linear-gradient(0deg, #fff0 calc(50% - 2px), #000 calc(50% - 1px) calc(50% + 1px), #fff0 calc(50% + 2px)), linear-gradient(90deg, #fff0 calc(50% - 2px), #000 calc(50% - 1px) calc(50% + 1px), #fff0 calc(50% + 2px));
   border: 6vmin solid var(--ar);

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-//import { getToken, resetAuthStatus } from "../../../../reducers/authReducer";
 import { adminAuth, resetAuthStatusAdmin } from "../../../../reducers/authReducer";
 import Header from "../../AdminPanelComponents/adminHeader";
 

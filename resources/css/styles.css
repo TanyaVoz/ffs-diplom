@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  background-image: url(/images/background.jpg?8057f0e543a33be5a8962328a5b7840b);
+  background-image: url(/images/background.jpg?72f56b11b3352388dd41ed64b3e41bc0);
   background-size: cover;
   background-attachment: fixed;
   background-position: right;
@@ -27,12 +27,15 @@ body {
   font-size: 4.5rem;
   color: #FFFFFF;
   text-transform: uppercase;
-  text-shadow: 1.41px 1.41px black, 2px 0 black, 1.41px -1.41px black,
-    0 -2px black, -1.41px -1.41px black, -2px 0 black,
-   -1.41px 1.41px black, 0 2px black;
+  text-shadow: 1.41px 1.41px black, 2px 0 black, 1.41px -1.41px black, 0 -2px black, -1.41px -1.41px black, -2px 0 black, -1.41px 1.41px black, 0 2px black;
 }
-.page-header__title span {
-  font-weight: 100;
+
+.page-header__title .page-header__title {
+  margin: 0;
+  font-weight: 900;
+  font-size: 4.5rem;
+  color: #FFFFFF;
+  text-transform: uppercase;
 }
 
 .page-header a {
@@ -50,6 +53,7 @@ body {
   color: #000000;
   z-index: 10;
 }
+
 .page-nav .page-nav__day {
   flex-basis: 12.5%;
   font-size: 1.5rem;
@@ -60,49 +64,61 @@ body {
   text-decoration: none;
   color: #000000;
 }
+
 .page-nav .page-nav__day + .page-nav__day {
   margin-left: 1px;
 }
+
 .page-nav .page-nav__day .page-nav__day-week::after {
   content: ",";
 }
+
 .page-nav .page-nav__day .page-nav__day-number::before {
   content: " ";
 }
+
 .page-nav .page-nav__day .page-nav__day-week, .page-nav .page-nav__day .page-nav__day-number {
   display: block;
 }
+
 .page-nav .page-nav__day_chosen {
   flex-grow: 1;
   background-color: #d5d2d2;
   font-weight: 700;
   transform: scale(1.1);
 }
+
 .page-nav .page-nav__day_weekend {
   color: #DE2121;
 }
+
 .page-nav .page-nav__day_next {
   text-align: center;
 }
+
 .page-nav .page-nav__day_next::before {
   content: ">";
   font-family: monospace;
   font-weight: 700;
   font-size: 4rem;
 }
+
 .page-nav .page-nav__day_prev {
   text-align: center;
 }
+
 .page-nav .page-nav__day_prev::before {
   content: "<";
   font-family: monospace;
   font-weight: 700;
   font-size: 2.4rem;
 }
+
 .page-nav .page-nav__day_today .page-nav__day-week::before {
   content: "Сегодня";
   display: block;
 }
+
 .page-nav .page-nav__day_today .page-nav__day-week, .page-nav .page-nav__day_today .page-nav__day-number {
   display: inline;
 }
@@ -118,20 +134,24 @@ body {
   background: rgba(241, 235, 230, 0.95);
   color: #000000;
 }
+
 .movie .movie__info {
   display: flex;
 }
+
 .movie .movie__poster {
   position: relative;
   width: 12.5rem;
   height: 17.5rem;
 }
+
 .movie .movie__poster .movie__poster-image {
   position: relative;
   top: -3rem;
   width: 12.5rem;
   height: 17.5rem;
 }
+
 .movie .movie__poster::after {
   content: "";
   display: block;
@@ -143,41 +163,51 @@ body {
   border-right: 0 solid transparent;
   border-left: 0.7rem solid rgb(119, 39, 32);
 }
+
 .movie .movie__description {
   flex-grow: 1;
   padding-left: 1.5rem;
 }
+
 .movie .movie__title {
   font-weight: 700;
   font-size: 1.6rem;
 }
+
 .movie .movie__synopsis {
   font-size: 1.4rem;
   margin-top: 1rem;
 }
+
 .movie .movie__data {
   font-size: 1.4rem;
   font-weight: 300;
   margin-top: 1rem;
 }
+
 .movie .movie-seances__hall + .movie-seances__hall {
   margin-top: 2rem;
 }
+
 .movie .movie-seances__hall .movie-seances__hall-title {
   font-weight: 700;
   font-size: 1.6rem;
 }
+
 .movie .movie-seances__hall .movie-seances__list {
   margin-top: 0.7rem;
   font-size: 0;
 }
+
 .movie .movie-seances__hall .movie-seances__time-block {
   display: inline-block;
   margin-bottom: 4px;
 }
+
 .movie .movie-seances__hall .movie-seances__time-block:nth-last-of-type(n + 1) {
   margin-right: 4px;
 }
+
 .movie .movie-seances__hall .movie-seances__time {
   display: block;
   padding: 8px;
@@ -473,8 +503,8 @@ body {
 
 .circle {
   --in: 80%;
-  --ar: #ff6a00;
-  --dt: #ffea03;
+  --ar: #95e4dea6;
+  --dt: #f0bed8c4;
   --shadow: drop-shadow(0vmin 0vmin 0.5vmin #000) drop-shadow(0vmin 1vmin 0.5vmin #0004);
   --cross: linear-gradient(0deg, #fff0 calc(50% - 2px), #000 calc(50% - 1px) calc(50% + 1px), #fff0 calc(50% + 2px)), linear-gradient(90deg, #fff0 calc(50% - 2px), #000 calc(50% - 1px) calc(50% + 1px), #fff0 calc(50% + 2px));
   border: 6vmin solid var(--ar);

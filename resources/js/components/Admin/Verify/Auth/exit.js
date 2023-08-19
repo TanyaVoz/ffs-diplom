@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { logout } from "../../../../reducers/authReducer";
  import { logoutAdmin } from "../../../../reducers/authReducer";
 
 const Exit = () => {

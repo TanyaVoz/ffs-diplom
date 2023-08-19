@@ -685,10 +685,122 @@ function SeatsScheme(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Admin/AdminConfigurationsComponents/cinemaConfig.js":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/Admin/AdminConfigurationsComponents/cinemaConfig.js ***!
-  \*************************************************************************************/
+/***/ "./resources/js/components/Admin/AdminConfigurationsComponents/filmsSales.js":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/Admin/AdminConfigurationsComponents/filmsSales.js ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ CinemaHallStatusManager)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
+/* harmony import */ var _AdminActComponents_SeancesAct_choose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AdminActComponents/SeancesAct/choose */ "./resources/js/components/Admin/AdminActComponents/SeancesAct/choose.js");
+/* harmony import */ var _AdminPanelComponents_allButtons_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AdminPanelComponents/allButtons/button */ "./resources/js/components/Admin/AdminPanelComponents/allButtons/button.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+function CinemaHallStatusManager() {
+  // Получение данных о залах из глобального состояния
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+      return state.admin;
+    }),
+    cinemaHalls = _useSelector.cinemaHalls;
+
+  // Локальное состояние для хранения измененных данных о залах
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    modifiedHalls = _useState2[0],
+    setModifiedHalls = _useState2[1];
+
+  // Получение диспатча из React Redux
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+
+  // Обновление локального состояния при изменении данных о залах
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setModifiedHalls(cinemaHalls);
+  }, [cinemaHalls]);
+
+  // Обработчик изменения состояния зала (открыт/закрыт)
+  var toggleHallState = function toggleHallState(hall) {
+    setModifiedHalls(function (prevHalls) {
+      return prevHalls.map(function (item) {
+        return item.id === hall.id ? _objectSpread(_objectSpread({}, item), {}, {
+          free: !item.free
+        }) : item;
+      });
+    });
+  };
+
+  // Обработчик сохранения изменений
+  var handleSaveChanges = function handleSaveChanges() {
+    modifiedHalls.forEach(function (hall) {
+      var originalHall = cinemaHalls.find(function (item) {
+        return item.id === hall.id;
+      });
+      if (originalHall && originalHall.free !== hall.free) {
+        dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.updateHall)(hall)); // Отправка обновления состояния зала в хранилище
+      }
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    className: "conf-step__wrapper text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+      className: "conf-step__paragraph",
+      children: "\u0423\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435 \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435\u043C \u0437\u0430\u043B\u043E\u0432:"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
+      className: "conf-step__list conf-step__list_start",
+      children: modifiedHalls.map(function (hall) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_AdminActComponents_SeancesAct_choose__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            id: hall.id,
+            name: hall.name,
+            free: hall.free,
+            callback: function callback() {
+              return toggleHallState(hall);
+            }
+          })
+        }, hall.id);
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+      className: "conf-step__paragraph",
+      children: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u0435 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F:"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_AdminPanelComponents_allButtons_button__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      text: "Сохранить изменения",
+      callback: handleSaveChanges
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/AdminConfigurationsComponents/hallConfig.js":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/Admin/AdminConfigurationsComponents/hallConfig.js ***!
+  \***********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -727,7 +839,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function CinemaHallConfig() {
+function HallConfig() {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.admin;
     }),
@@ -866,20 +978,20 @@ function CinemaHallConfig() {
     })]
   });
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CinemaHallConfig);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HallConfig);
 
 /***/ }),
 
-/***/ "./resources/js/components/Admin/AdminConfigurationsComponents/cinemaControl.js":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/Admin/AdminConfigurationsComponents/cinemaControl.js ***!
-  \**************************************************************************************/
+/***/ "./resources/js/components/Admin/AdminConfigurationsComponents/hallControl.js":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/Admin/AdminConfigurationsComponents/hallControl.js ***!
+  \************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ CinemaHallControl)
+/* harmony export */   "default": () => (/* binding */ HallControl)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -897,7 +1009,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function CinemaHallControl() {
+function HallControl() {
   // Получение данных из глобального состояния с использованием useSelector
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.admin;
@@ -935,118 +1047,6 @@ function CinemaHallControl() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_AdminPanelComponents_allButtons_button__WEBPACK_IMPORTED_MODULE_4__["default"], {
       text: "Создать зал",
       callback: handleCreateHall
-    })]
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/Admin/AdminConfigurationsComponents/filmsSales.js":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/components/Admin/AdminConfigurationsComponents/filmsSales.js ***!
-  \***********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ CinemaHallStatusManager)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
-/* harmony import */ var _AdminActComponents_SeancesAct_choose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AdminActComponents/SeancesAct/choose */ "./resources/js/components/Admin/AdminActComponents/SeancesAct/choose.js");
-/* harmony import */ var _AdminPanelComponents_allButtons_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AdminPanelComponents/allButtons/button */ "./resources/js/components/Admin/AdminPanelComponents/allButtons/button.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-function CinemaHallStatusManager() {
-  // Получение данных о залах из глобального состояния
-  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
-      return state.admin;
-    }),
-    cinemaHalls = _useSelector.cinemaHalls;
-
-  // Локальное состояние для хранения измененных данных о залах
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState2 = _slicedToArray(_useState, 2),
-    modifiedHalls = _useState2[0],
-    setModifiedHalls = _useState2[1];
-
-  // Получение диспатча из React Redux
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-
-  // Обновление локального состояния при изменении данных о залах
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    setModifiedHalls(cinemaHalls);
-  }, [cinemaHalls]);
-
-  // Обработчик изменения состояния зала (открыт/закрыт)
-  var toggleHallState = function toggleHallState(hall) {
-    setModifiedHalls(function (prevHalls) {
-      return prevHalls.map(function (item) {
-        return item.id === hall.id ? _objectSpread(_objectSpread({}, item), {}, {
-          free: !item.free
-        }) : item;
-      });
-    });
-  };
-
-  // Обработчик сохранения изменений
-  var handleSaveChanges = function handleSaveChanges() {
-    modifiedHalls.forEach(function (hall) {
-      var originalHall = cinemaHalls.find(function (item) {
-        return item.id === hall.id;
-      });
-      if (originalHall && originalHall.free !== hall.free) {
-        dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.updateHall)(hall)); // Отправка обновления состояния зала в хранилище
-      }
-    });
-  };
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-    className: "conf-step__wrapper text-center",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
-      className: "conf-step__paragraph",
-      children: "\u0423\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435 \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435\u043C \u0437\u0430\u043B\u043E\u0432:"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
-      className: "conf-step__list conf-step__list_start",
-      children: modifiedHalls.map(function (hall) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_AdminActComponents_SeancesAct_choose__WEBPACK_IMPORTED_MODULE_3__["default"], {
-            id: hall.id,
-            name: hall.name,
-            free: hall.free,
-            callback: function callback() {
-              return toggleHallState(hall);
-            }
-          })
-        }, hall.id);
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
-      className: "conf-step__paragraph",
-      children: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u0435 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F:"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_AdminPanelComponents_allButtons_button__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      text: "Сохранить изменения",
-      callback: handleSaveChanges
     })]
   });
 }
@@ -1545,7 +1545,7 @@ function SeanceCard(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ SessionGrid)
+/* harmony export */   "default": () => (/* binding */ Session)
 /* harmony export */ });
 /* harmony import */ var _AdminActComponents_MainAct_addMovie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../AdminActComponents/MainAct/addMovie */ "./resources/js/components/Admin/AdminActComponents/MainAct/addMovie.js");
 /* harmony import */ var _AdminActComponents_SeancesAct_seances__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../AdminActComponents/SeancesAct/seances */ "./resources/js/components/Admin/AdminActComponents/SeancesAct/seances.js");
@@ -1556,7 +1556,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function SessionGrid() {
+function Session() {
   // Отображение списка фильмов для добавления сеансов
   // и выбора даты сеанса
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -2562,8 +2562,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _AdminPanelComponents_adminHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdminPanelComponents/adminHeader */ "./resources/js/components/Admin/AdminPanelComponents/adminHeader/index.js");
 /* harmony import */ var _AdminPanelComponents_adminHeader_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AdminPanelComponents/adminHeader/header */ "./resources/js/components/Admin/AdminPanelComponents/adminHeader/header.js");
-/* harmony import */ var _AdminConfigurationsComponents_cinemaControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AdminConfigurationsComponents/cinemaControl */ "./resources/js/components/Admin/AdminConfigurationsComponents/cinemaControl.js");
-/* harmony import */ var _AdminConfigurationsComponents_cinemaConfig__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AdminConfigurationsComponents/cinemaConfig */ "./resources/js/components/Admin/AdminConfigurationsComponents/cinemaConfig.js");
+/* harmony import */ var _AdminConfigurationsComponents_hallControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AdminConfigurationsComponents/hallControl */ "./resources/js/components/Admin/AdminConfigurationsComponents/hallControl.js");
+/* harmony import */ var _AdminConfigurationsComponents_hallConfig__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AdminConfigurationsComponents/hallConfig */ "./resources/js/components/Admin/AdminConfigurationsComponents/hallConfig.js");
 /* harmony import */ var _AdminConfigurationsComponents_price__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AdminConfigurationsComponents/price */ "./resources/js/components/Admin/AdminConfigurationsComponents/price.js");
 /* harmony import */ var _AdminConfigurationsComponents_session__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AdminConfigurationsComponents/session */ "./resources/js/components/Admin/AdminConfigurationsComponents/session.js");
 /* harmony import */ var _AdminConfigurationsComponents_filmsSales__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AdminConfigurationsComponents/filmsSales */ "./resources/js/components/Admin/AdminConfigurationsComponents/filmsSales.js");
@@ -2586,10 +2586,10 @@ var Main = function Main() {
       className: "conf-steps",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminPanelComponents_adminHeader_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
         title: 'Управление залами',
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminConfigurationsComponents_cinemaControl__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminConfigurationsComponents_hallControl__WEBPACK_IMPORTED_MODULE_3__["default"], {})
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminPanelComponents_adminHeader_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
         title: 'Конфигурация залов',
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminConfigurationsComponents_cinemaConfig__WEBPACK_IMPORTED_MODULE_4__["default"], {})
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminConfigurationsComponents_hallConfig__WEBPACK_IMPORTED_MODULE_4__["default"], {})
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminPanelComponents_adminHeader_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
         title: 'Конфигурация цен',
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminConfigurationsComponents_price__WEBPACK_IMPORTED_MODULE_5__["default"], {})
@@ -2625,7 +2625,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-// import { logout } from "../../../../reducers/authReducer";
 
 
 var Exit = function Exit() {

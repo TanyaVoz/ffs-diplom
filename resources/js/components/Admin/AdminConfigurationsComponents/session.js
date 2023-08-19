@@ -2,7 +2,7 @@ import AddMovieAction from "../AdminActComponents/MainAct/addMovie";
 import SeancesHall from "../AdminActComponents/SeancesAct/seances";
 import ChooseSessionDate from "../AdminActComponents/SeancesAct/chooseSession";
 
-export default function SessionGrid() {
+export default function Session() {
     // Отображение списка фильмов для добавления сеансов
     // и выбора даты сеанса
     return (
