@@ -1,26 +1,27 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../../../reducers/createAuth";
+// import { logout } from "../../../../reducers/authReducer";
+ import { logoutAdmin } from "../../../../reducers/authReducer";
 
-export default function Exit() {
+const Exit = () => {
     // Извлечение информации о токене из состояния
-    const { token } = useSelector((state) => state.auth);
+  const { token } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
-    // Получение диспетчера Redux
-    const dispatch = useDispatch();
+  // Обработчик для выхода из системы (вызов действия logout)
+  const handleLogout = () => {
+    dispatch(logoutAdmin());
+  };
 
-    // Обработчик для выхода из системы (вызов действия logout)
-    const handleClick = () => {
-        dispatch(logout());
-    }
+  if (!token) {
+    return null; // Не отображаем компонент, если нет токена
+  }
 
-    return (
-        <>
-            {/* Если есть токен, отображаем компонент выхода */}
-            {token &&
-                <div className="page-header__exit" onClick={handleClick}>
-                    Выход
-                </div>
-            }
-        </>
-    );
-}
+  return (
+    <div className="page-header__exit" onClick={handleLogout}>
+      Выход
+    </div>
+  );
+};
+
+export default Exit;

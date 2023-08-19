@@ -1,15 +1,15 @@
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { getHalls, updateHall } from "../../../reducers/createAdmin";
+import { getHalls, updateHall } from "../../../reducers/adminReducer";
 import SaveButton from "../AdminPanelComponents/allButtons/saveButton";
 import ChooseHall from "../AdminPanelComponents/allButtons/choose";
 import SeatStatus from "../AdminActComponents/SeatsAct/seatType";
 
 export default function PriceConfig() {
-  // Получение данных о залах из глобального состояния с использованием useSelector
+  // Получение данных о залах из глобального состояния
   const { cinemaHalls } = useSelector((state) => state.admin);
 
-  // Локальное состояние для хранения выбранного зала
+  // Локальное состояние для хранения выбранного зала и цен
   const [selectedCinemaHall, setSelectedCinemaHall] = useState(null);
 
   // Получение диспатча из React Redux
@@ -17,14 +17,16 @@ export default function PriceConfig() {
 
   // Обработчик выбора зала для конфигурации
   const handleSelect = (id) => {
-    setSelectedCinemaHall(cinemaHalls.find((cinemaHall) => cinemaHall.id === id));
-  }
+    const selectedHall = cinemaHalls.find((cinemaHall) => cinemaHall.id === id);
+    setSelectedCinemaHall(selectedHall);
+  };
 
-  // Обработчик изменения данных о ценах
-  const handleChange = ({ target }) => {
-    const name = target.name;
-    const value = target.value;
-    setSelectedCinemaHall((prevState) => ({ ...prevState, [name]: value }));
+  // Обработчик изменения цены
+  const handlePriceChange = (priceType, value) => {
+    setSelectedCinemaHall((prevHall) => ({
+      ...prevHall,
+      [priceType]: value,
+    }));
   };
 
   // Обработчик сохранения изменений
@@ -34,7 +36,24 @@ export default function PriceConfig() {
       setSelectedCinemaHall(null);
       dispatch(getHalls());
     }
-  }
+  };
+
+  // Генерация контента для выбора цены
+  const generatePriceInput = (priceType, label) => (
+    <div className="conf-step__legend">
+      <label className="conf-step__label">
+        {label}, рублей
+        <input
+          type="number"
+          className="conf-step__input"
+          name={priceType}
+          value={selectedCinemaHall[priceType]}
+          onChange={(e) => handlePriceChange(priceType, e.target.value)}
+        />
+      </label>
+      за <SeatStatus status={priceType} /> {label.toLowerCase()}
+    </div>
+  );
 
   return (
     <div className="conf-step__wrapper">
@@ -57,37 +76,14 @@ export default function PriceConfig() {
       {selectedCinemaHall && (
         <>
           <p className="conf-step__paragraph">Установите цены для типов кресел:</p>
-          <div className="conf-step__legend">
-            <label className="conf-step__label">
-              Цена, рублей
-              <input
-                type="number"
-                className="conf-step__input"
-                name="price_standard"
-                value={selectedCinemaHall.price_standard}
-                onChange={handleChange}
-              />
-            </label>
-            за <SeatStatus status={"standard"} /> обычные кресла
-          </div>
-          <div className="conf-step__legend">
-            <label className="conf-step__label">
-              Цена, рублей
-              <input
-                type="number"
-                className="conf-step__input"
-                name="price_vip"
-                value={selectedCinemaHall.price_vip}
-                onChange={handleChange}
-              />
-            </label>
-            за <SeatStatus status={"vip"} /> VIP кресла
-          </div>
+          {generatePriceInput("price_standard", "Обычные кресла")}
+          {generatePriceInput("price_vip", "VIP кресла")}
 
           {/* Кнопки для отмены и сохранения изменений */}
-          <SaveButton cancel={() => setSelectedCinemaHall(null)} save={() => handleSave()} />
+          <SaveButton cancel={() => setSelectedCinemaHall(null)} save={handleSave} />
         </>
       )}
     </div>
   );
 }
+

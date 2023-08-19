@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { buyTicket, resetSeance } from "../../../../reducers/createSeance";
+import { buyTicket, resetSeance } from "../../../../reducers/seanceReducer";
 import Main from "../../Main";
 import QRCodeTicket from "./qrcode";
 import TicketHeader from "../../additionalComponents/clientHeader/ticketHeaderClient";

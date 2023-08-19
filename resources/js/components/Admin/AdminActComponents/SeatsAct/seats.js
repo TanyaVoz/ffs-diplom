@@ -1,15 +1,21 @@
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { changeSeatStatus } from "../../../../reducers/createAdmin";
+import { changeSeatStatus } from "../../../../reducers/adminReducer";
 import SeatStatus from "./seatType";
 
 export default function SeatsScheme(props) {
     const { place } = props; // Получение количества мест в ряду из входных свойств
-    const { seats } = useSelector((state) => state.admin); // Получение данных о местах из Redux
-    const dispatch = useDispatch(); // Получение функции dispatch из Redux для отправки действий
+
+    // Получение данных о местах из Redux-состояния
+    const { seats } = useSelector((state) => state.admin);
+
+    // Получение функции dispatch из Redux для отправки действий
+    const dispatch = useDispatch();
 
     const allStatus = ["standard", "vip", "disabled"]; // Список доступных статусов мест
 
-    const chair = seats.length / place; // Расчет количества мест в ряду
+    // Вычисление количества мест в ряду
+    const chair = seats.length / place;
 
     // Группировка мест по рядам
     const rowSeats = seats.reduce((result, seat, i) => {
@@ -25,7 +31,9 @@ export default function SeatsScheme(props) {
     const handleClick = (id) => {
         const seatStatus = seats.find((seat) => seat.id === id).status;
         const statusIndex = allStatus.indexOf(seatStatus);
-        dispatch(changeSeatStatus({ id, status: allStatus[(statusIndex + 1) % allStatus.length] }));
+        const nextStatusIndex = (statusIndex + 1) % allStatus.length;
+        const nextStatus = allStatus[nextStatusIndex];
+        dispatch(changeSeatStatus({ id, status: nextStatus }));
     };
 
     return (
@@ -47,3 +55,4 @@ export default function SeatsScheme(props) {
         </div>
     );
 }
+

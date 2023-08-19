@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { showPopup } from "../../../../../reducers/createPopup";
-import { updateSeance } from "../../../../../reducers/createAdmin";
+import { showPopup } from "../../../../../reducers/popupReducer";
+import { updateSeance } from "../../../../../reducers/adminReducer";
 import SeanceCard from "../../../AdminConfigurationsComponents/seance";
 
 export default function EditSeance() {

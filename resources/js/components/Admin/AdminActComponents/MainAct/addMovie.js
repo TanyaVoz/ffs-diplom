@@ -1,52 +1,52 @@
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getMovies } from "../../../../reducers/createAdmin";
-import { showPopup } from "../../../../reducers/createPopup";
+import { getMovies } from "../../../../reducers/adminReducer";
+import { showPopup } from "../../../../reducers/popupReducer";
 import Button from "../../AdminPanelComponents/allButtons/button";
 import EditMovieAction from "./editMovie";
 
-export default function AddMovieAction() {
+const AddMovieAction = () => {
   const { movies, loading } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Получаем список фильмов при загрузке компонента
-    dispatch(getMovies());
-  }, []);
+    const fetchMovies = () => {
+      dispatch(getMovies());
+    };
+    fetchMovies();
+  }, [dispatch]);
+
+  const handleAddMovieClick = () => {
+    dispatch(
+      showPopup({
+        title: "Добавление фильма",
+        form: "addMovie",
+      })
+    );
+  };
 
   return (
-    <>
-      {/* Кнопка для добавления нового фильма */}
+    <div>
       <p className="conf-step__paragraph">
-        <Button
-          text={"Добавить фильм"}
-          callback={() =>
-            dispatch(
-              showPopup({
-                title: "Добавление фильма",
-                form: "addMovie",
-              })
-            )
-          }
-        />
+        <Button text={"Добавить фильм"} callback={handleAddMovieClick} />
       </p>
-
-      {/* Список фильмов */}
       <div className="conf-step__movies">
         {movies.length === 0 ? (
           <p>Нет доступных фильмов.</p>
         ) : (
           movies.map((movie) => (
             <EditMovieAction
+              key={movie.id}
               id={movie.id}
               img={movie.poster}
               title={movie.title}
               duration={movie.duration}
-              key={movie.id}
             />
           ))
         )}
       </div>
-    </>
+    </div>
   );
-}
+};
+
+export default AddMovieAction;

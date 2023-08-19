@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { showPopup } from "../../../../../reducers/createPopup";
-import { updateMovie } from "../../../../../reducers/createAdmin";
+import { showPopup } from "../../../../../reducers/popupReducer";
+import { updateMovie } from "../../../../../reducers/adminReducer";
 import MovieCard from "../../../AdminConfigurationsComponents/movie";
 
 export default function EditMovie() {

@@ -13,14 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Маршрут для администраторской страницы входа
 Route::get('/admin/login', function () {
-    return view('admin');
-})->name('login');
+    return view('admin'); 
+})->name('login'); 
 
-Route::get('/admin/{path?}', function () {
-    return view('admin');
-})->where('path', '.*');
+// Группа маршрутов для администраторской панели
+Route::prefix('admin')->group(function () {
+    // Маршрут для всех страниц администраторской панели
+    Route::get('/{path?}', function () {
+        return view('admin'); 
+    })->where('path', '.*'); 
+});
 
+// Маршрут для основной части 
 Route::get('/{path?}', function () {
-    return view('welcome');
-})->where('path', '.*');
+    return view('welcome'); 
+})->where('path', '.*'); 

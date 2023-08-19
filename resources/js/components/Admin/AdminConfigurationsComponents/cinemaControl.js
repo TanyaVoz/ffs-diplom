@@ -1,10 +1,9 @@
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { showPopup } from "../../../reducers/createPopup";
-import { getHalls } from "../../../reducers/createAdmin";
+import { showPopup } from "../../../reducers/popupReducer";
+import { getHalls } from "../../../reducers/adminReducer";
 import Button from "../AdminPanelComponents/allButtons/button";
 import DeleteHallAction from "../AdminActComponents/MainAct/deleteHall";
-import React from "react";
 
 export default function CinemaHallControl() {
   // Получение данных из глобального состояния с использованием useSelector
@@ -17,6 +16,11 @@ export default function CinemaHallControl() {
   useEffect(() => {
     dispatch(getHalls());
   }, []);
+
+  // Функция обработки создания зала
+  const handleCreateHall = () => {
+    dispatch(showPopup({ title: "Добавление зала", form: "addHall" }));
+  };
 
   return (
     <div className="conf-step__wrapper">
@@ -33,11 +37,7 @@ export default function CinemaHallControl() {
       </ul>
 
       {/* Кнопка для создания нового зала */}
-      <Button
-        text={"Создать зал"}
-        callback={() => dispatch(showPopup({ title: "Добавление зала", form: "addHall" }))}
-      />
+      <Button text={"Создать зал"} callback={handleCreateHall} />
     </div>
   );
 }
-

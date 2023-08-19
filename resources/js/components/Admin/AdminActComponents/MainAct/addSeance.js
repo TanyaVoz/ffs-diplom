@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { showPopup } from "../../../../reducers/createPopup";
+import { showPopup } from "../../../../reducers/popupReducer";
 import ChooseHall from "../../AdminPanelComponents/allButtons/choose";
 import HallTime from "../../AdminActComponents/SeancesAct/hallTime";
 

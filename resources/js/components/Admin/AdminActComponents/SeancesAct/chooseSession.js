@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { chooseDate } from "../../../../reducers/createAdmin";
+import { chooseDate } from "../../../../reducers/adminReducer";
 
 export default function ChooseSessionDate() {
     const { chosenDate } = useSelector((state) => state.admin);
@@ -11,17 +11,17 @@ export default function ChooseSessionDate() {
         dispatch(chooseDate(target.value)); // Диспетчер для обновления выбранной даты в хранилище
     };
 
+    const minDate = `${today.getFullYear()}-${('0' + (today.getMonth() + 1)).slice(-2)}-${('0' + today.getDate()).slice(-2)}`;
+
     return (
-        <div>
-            {/* Форма выбора даты сеансов */}
+        <div className="conf-step__session-date">
             <label className="conf-step__label conf-step__label-fullsize" htmlFor="datepicker">
                 Дата сеансов:
                 <input
                     className="conf-step__input"
                     type="date"
                     name="datepicker"
-                    // Устанавливаем минимальную дату как текущую дату
-                    min={`${today.getFullYear()}-${('0' + (today.getMonth() + 1)).slice(-2)}-${('0' + today.getDate()).slice(-2)}`}
+                    min={minDate} // Устанавливаем минимальную дату как текущую дату
                     value={chosenDate} // Установка значения даты
                     onChange={handleChange} // Привязка обработчика изменения
                     pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" // Паттерн для ввода даты
@@ -31,4 +31,5 @@ export default function ChooseSessionDate() {
         </div>
     );
 }
+
 

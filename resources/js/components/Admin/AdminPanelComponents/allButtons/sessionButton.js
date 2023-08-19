@@ -1,5 +1,5 @@
 import { useDispatch as acceptBtnUseDispatch } from "react-redux";
-import { closePopup } from "../../../../reducers/createPopup";
+import { closePopup } from "../../../../reducers/popupReducer";
 
 export default function SessionButton(props) {
     const { text, handleDelete } = props;

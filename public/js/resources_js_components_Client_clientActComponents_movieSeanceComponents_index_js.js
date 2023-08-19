@@ -85,7 +85,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createCalendar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/createCalendar */ "./resources/js/reducers/createCalendar.js");
+/* harmony import */ var _reducers_calendarReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/calendarReducer */ "./resources/js/reducers/calendarReducer.js");
 /* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index */ "./resources/js/components/Client/additionalComponents/Formatting/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -112,7 +112,7 @@ function Navigate() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)(); // Получение функции dispatch из Redux
   var todayDayWeek = new Date(); // Текущая дата
   var _handleDateClick = function handleDateClick(day) {
-    dispatch((0,_reducers_createCalendar__WEBPACK_IMPORTED_MODULE_2__.chooseDate)("".concat(day.getFullYear(), "-").concat(day.getMonth() + 1, "-").concat(day.getDate())));
+    dispatch((0,_reducers_calendarReducer__WEBPACK_IMPORTED_MODULE_2__.chooseDate)("".concat(day.getFullYear(), "-").concat(day.getMonth() + 1, "-").concat(day.getDate())));
   };
   // Обработчик для переключения даты назад или вперед
   var handleDateChange = function handleDateChange(day, arg) {
@@ -362,7 +362,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _reducers_createSeance__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/createSeance */ "./resources/js/reducers/createSeance.js");
+/* harmony import */ var _reducers_seanceReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/seanceReducer */ "./resources/js/reducers/seanceReducer.js");
 /* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Main */ "./resources/js/components/Client/Main.js");
 /* harmony import */ var _information__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./information */ "./resources/js/components/Client/clientActComponents/movieSeanceComponents/information.js");
 /* harmony import */ var _buying__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./buying */ "./resources/js/components/Client/clientActComponents/movieSeanceComponents/buying.js");
@@ -396,7 +396,7 @@ function MainSeance() {
 
   // Загрузка данных о сеансе при монтировании компонента
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    dispatch((0,_reducers_createSeance__WEBPACK_IMPORTED_MODULE_2__.getSeance)(seanceId));
+    dispatch((0,_reducers_seanceReducer__WEBPACK_IMPORTED_MODULE_2__.getSeance)(seanceId));
   }, []);
 
   // Обработчик выбора места
@@ -427,7 +427,7 @@ function MainSeance() {
     });
 
     // Создание билета с выбранными местами и стоимостью
-    dispatch((0,_reducers_createSeance__WEBPACK_IMPORTED_MODULE_2__.createTicket)({
+    dispatch((0,_reducers_seanceReducer__WEBPACK_IMPORTED_MODULE_2__.createTicket)({
       seanceId: seanceId,
       seats: ticket.seats,
       cost: ticket.cost

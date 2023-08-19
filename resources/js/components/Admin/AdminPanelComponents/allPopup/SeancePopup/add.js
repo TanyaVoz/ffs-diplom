@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createSeance } from "../../../../../reducers/createAdmin";
+import { createSeance } from "../../../../../reducers/adminReducer";
 import SeanceCard from "../../../AdminConfigurationsComponents/seance";
 
 export default function AddSeance() {

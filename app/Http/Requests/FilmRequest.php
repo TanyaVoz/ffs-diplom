@@ -8,6 +8,12 @@ use Illuminate\Contracts\Validation\Validator;
 
 class FilmRequest extends FormRequest
 {
+
+    private mixed $name;
+private mixed $description;
+private mixed $duration;
+private mixed $country;
+private mixed $poster;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -46,8 +52,10 @@ class FilmRequest extends FormRequest
     {
         // Если валидация не прошла, выбрасываем исключение с ответом, содержащим ошибки валидации, и кодом состояния HTTP 422 (Непроцессируемый экземпляр).
         throw new HttpResponseException(
-            response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY)
+           
+            response()->json(['errors' => $validator->errors()], Response::HTTP_UNPROCESSABLE_ENTITY)
+            
         );
     }
-}
 
+}

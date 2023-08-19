@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Http\Requests\FilmRequest;
 use App\Models\Film;
 use Illuminate\Http\Response;
@@ -17,8 +16,9 @@ class FilmController extends Controller
      */
     public function index(): \Illuminate\Database\Eloquent\Collection
     {
-        // Возвращает список всех фильмов из базы данных.
-        return Film::all();
+        // Получаем список всех фильмов из базы данных.
+        $films = Film::all();
+        return $films;
     }
 
     /**
@@ -29,16 +29,16 @@ class FilmController extends Controller
      */
     public function store(FilmRequest $request): bool|int
     {
-        // Создает новый экземпляр модели Film.
+        // Создаем новый экземпляр модели Film.
         $film = new Film;
 
-        // Заполняет модель данными, прошедшими валидацию из запроса.
+        // Заполняем модель данными, прошедшими валидацию из запроса.
         $film->fill($request->validated());
 
-        // Загружает файл постера фильма в директорию 'posters'.
+        // Загружаем файл постера фильма в директорию 'posters'.
         $film->poster = $this->storePoster($request);
 
-        // Сохраняет фильм в базе данных и возвращает результат операции (boolean).
+        // Сохраняем фильм в базе данных и возвращаем результат операции (boolean).
         return $film->save();
     }
 
@@ -50,8 +50,9 @@ class FilmController extends Controller
      */
     public function show($id): ?\App\Models\Film
     {
-        // Отображает информацию о конкретном фильме на основе переданного идентификатора $id.
-        return Film::findOrFail($id);
+        // Отображаем информацию о конкретном фильме на основе переданного идентификатора $id.
+        $film = Film::findOrFail($id);
+        return $film;
     }
 
     /**
@@ -107,7 +108,7 @@ class FilmController extends Controller
      */
     protected function storePoster(FilmRequest $request): string
     {
-        // Загружает файл постера фильма в директорию 'posters'.
+        // Загружаем файл постера фильма в директорию 'posters'.
         return $request->poster->store('posters');
     }
 }

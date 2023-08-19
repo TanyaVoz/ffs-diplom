@@ -42,9 +42,9 @@ class SessionRequest extends FormRequest
      */
     protected function failedValidation(Validator $validator): void
     {
-        // Если валидация не прошла, выбрасываем исключение с ответом, содержащим ошибки валидации, и кодом состояния HTTP 422 (Непроцессируемый экземпляр).
+       // Если валидация не прошла, выбрасываем исключение с ответом, содержащим ошибки валидации, и кодом состояния HTTP 422 (Непроцессируемый экземпляр).
         throw new HttpResponseException(
-            response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY)
+            response()->json(['errors' => $validator->errors()], Response::HTTP_UNPROCESSABLE_ENTITY)
         );
     }
 }

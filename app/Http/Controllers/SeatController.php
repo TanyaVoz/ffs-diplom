@@ -5,95 +5,84 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SeatRequest;
 use App\Models\Seat;
 use App\Models\CinemaHall;
-use App\Models\Session;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 
 class SeatController extends Controller
 {
     /**
-     * Отображение списка всех мест в кинозале.
+     * Display a list of all seats in a cinema hall.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function index(): Collection
+    public function index(): JsonResponse
     {
-        // Получение всех мест из базы данных и возврат их в виде коллекции.
-        return Seat::all();
+         // Получение всех мест из модели Seat
+        $seats = Seat::all();
+
+        return response()->json($seats, 200);
     }
 
     /**
-     * Сохранение новых мест в базе данных.
+     * Store new seats in the database.
      *
      * @param \App\Http\Requests\SeatRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(SeatRequest $request): JsonResponse
     {
-        // Проверка и валидация данных из запроса.
-        $req = $request->validated();
+        // Проверка входных данных запроса с использованием правил валидации из SeatRequest
+        $validatedData = $request->validated();
         
-        // Проверка наличия данных о местах в запросе.
-        if (isset($req['seats'])) {
-            // Получение ID кинозала из первого элемента данных о месте.
-            $cinemaHallId = $req['seats'][0]['cinema_hall_id'];
-            
-            // Поиск кинозала по указанному ID или выброс исключения, если кинозал не найден.
+        if (isset($validatedData['seats'])) {
+            // Получение ID кинозала из данных первого места
+            $cinemaHallId = $validatedData['seats'][0]['cinema_hall_id'];
             $cinemaHall = CinemaHall::findOrFail($cinemaHallId);
             
-            // Удаление всех существующих мест и сеансов, связанных с данным кинозалом.
             Seat::whereCinemaHallId($cinemaHall->id)->delete();
-            Session::whereCinemaHallId($cinemaHall->id)->delete();
 
-            // Создание новых мест на основе полученных данных.
-            foreach ($req['seats'] as $seat) {
-                Seat::create($seat);
+            // Перебор данных каждого места и создание нового экземпляра модели Seat
+            foreach ($validatedData['seats'] as $seatData) {
+                Seat::create($seatData);
             }
         }
 
-        // Возврат JSON-ответа с указанием успешного выполнения (true) и кодом состояния HTTP 201 (Создано).
-        return response()->json(true, 201);
+        return response()->json(['success' => true], 201);
     }
 
     /**
-     * Отображение списка мест для указанного кинозала.
+     * Display a list of seats for the specified cinema hall.
      *
      * @param int $id
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function show($id): Collection
+    public function show($id): JsonResponse
     {
-        // Получение всех мест, связанных с указанным ID кинозала, и возврат их в виде коллекции.
-        return Seat::where('cinema_hall_id', $id)->get();
+        // Получение мест, принадлежащих указанному ID кинозала
+        $seats = Seat::where('cinema_hall_id', $id)->get();
+
+        return response()->json($seats, 200);
     }
 
     /**
-     * Обновление информации о нескольких местах в базе данных.
+     * Update information for multiple seats in the database.
      *
      * @param \App\Http\Requests\SeatRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function updateMany(SeatRequest $request): JsonResponse
     {
-        // Проверка и валидация данных из запроса.
-        $req = $request->validated();
+        // Проверка входных данных запроса с использованием правил валидации из SeatRequest
+        $validatedData = $request->validated();
         
-        // Проверка наличия данных о местах в запросе.
-        if (isset($req['seats'])) {
-            // Итерация по полученным местам и обновление каждого из них в базе данных.
-            foreach ($req['seats'] as $seat) {
-                // Поиск места по указанному ID или выброс исключения, если место не найдено.
-                $cinemaSeat = Seat::findOrFail($seat['id']);
-                
-                // Заполнение места обновленными значениями.
-                $cinemaSeat->fill($seat);
-                
-                // Сохранение обновленного места в базе данных.
+        if (isset($validatedData['seats'])) {
+            foreach ($validatedData['seats'] as $seatData) {
+                $cinemaSeat = Seat::findOrFail($seatData['id']);
+                $cinemaSeat->fill($seatData);
                 $cinemaSeat->save();
             }
         }
 
-        // Возврат JSON-ответа с указанием успешного выполнения (true) и кодом состояния HTTP 201 (Создано).
-        return response()->json(true, 201);
+         // Возврат успешного ответа с кодом статуса 200
+        return response()->json(['success' => true], 200);
     }
 }

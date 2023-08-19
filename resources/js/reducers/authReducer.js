@@ -5,7 +5,7 @@ const initialState = {
     status: "idle",
 };
 // Определение асинхронной операции для получения токена
-export const getToken = createAsyncThunk(
+export const adminAuth = createAsyncThunk(
     "auth/getToken",
     async ({ email, password }) => {
         const response = await fetch(`/api/tokens/create`, {
@@ -20,22 +20,22 @@ export const getToken = createAsyncThunk(
     }
 );
 // Создание среза состояния и связанных с ним действий
-const createAuthSlice = createSlice({
+const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        logout: (state) => initialState,
-        resetAuthStatus: (state) => {
+        logoutAdmin: (state) => initialState,
+        resetAuthStatusAdmin: (state) => {
             state.status = "idle";
         }
     },
     // Обработка результатов выполнения асинхронных операций
     extraReducers: (builder) => {
         builder
-            .addCase(getToken.rejected, (state) => {
+            .addCase(adminAuth.rejected, (state) => {
                 state.status = "error";
             })
-            .addCase(getToken.fulfilled, (state, action) => {
+            .addCase(adminAuth.fulfilled, (state, action) => {
                 state.token = action.payload.token;
                 state.status = "success";
             })
@@ -43,5 +43,6 @@ const createAuthSlice = createSlice({
 });
 
 // Экспорт действий и редуктора из среза
-export const { logout, resetAuthStatus } = createAuthSlice.actions;
-export default createAuthSlice.reducer;
+export const { logoutAdmin, resetAuthStatusAdmin } = authSlice.actions;
+export default authSlice.reducer;
+

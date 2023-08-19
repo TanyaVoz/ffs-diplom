@@ -11,18 +11,18 @@ use Illuminate\Http\Response;
 class SessionController extends Controller
 {
     /**
-     * Отображение списка всех сеансов.
+     * Display a list of all sessions.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function index(): Collection
     {
-        // Получение всех сеансов из базы данных и возврат их в виде коллекции.
+
         return Session::all();
     }
 
     /**
-     * Сохранение нового сеанса в базе данных.
+     * Store a new session record in the database.
      *
      * @param \Illuminate\Http\Request $request
      * @return \App\Models\Session
@@ -34,22 +34,21 @@ class SessionController extends Controller
     }
 
     /**
-     * Отображение списка сеансов по указанной дате.
+     * Display a list of sessions for the specified date.
      *
-     * @param string $datetime
+     * @param string $date
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function show($datetime): Collection
+    public function show($date): Collection
     {
         // Преобразование даты из формата 'Y-m-d' в объект DateTime.
-        $timeSeance = DateTime::createFromFormat('Y-m-d', $datetime)->format('Y-m-d');
+        $formattedDate = DateTime::createFromFormat('Y-m-d', $date)->format('Y-m-d');
         
-        // Получение всех сеансов, у которых дата соответствует указанной дате, и возврат их в виде коллекции.
-        return Session::whereDate('datetime', $timeSeance)->get();
+        return Session::whereDate('datetime', $formattedDate)->get();
     }
 
     /**
-     * Обновление информации о сеансе в базе данных.
+     * Update session information in the database.
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Session $session
@@ -57,28 +56,27 @@ class SessionController extends Controller
      */
     public function update(SessionRequest $request, Session $session): bool
     {
-        // Заполнение информации о сеансе обновленными данными из запроса.
+       // Заполнение информации о сеансе обновленными данными из запроса.
         $session->fill($request->validated());
         
-        // Сохранение обновленных данных о сеансе в базе данных.
+       
         return $session->save();
     }
 
     /**
-     * Удаление сеанса из базы данных.
+     * Remove a session entry from the database.
      *
      * @param \App\Models\Session $session
      * @return \Illuminate\Http\Response|\Illuminate\Http\JsonResponse
      */
     public function destroy(Session $session)
     {
-        // Попытка удаления сеанса из базы данных.
+       // Попытка удаления сеанса из базы данных.
         if ($session->delete()) {
-            // Возврат успешного ответа без содержимого и кода состояния HTTP 204 (Нет содержимого).
+         
             return response(null, Response::HTTP_NO_CONTENT);
         }
-        
-        // Возврат JSON-ответа с сообщением об ошибке, если удаление не удалось, и кодом состояния HTTP 500 (Внутренняя ошибка сервера).
-        return response()->json(['message' => 'Не удалось удалить сеанс.'], Response::HTTP_INTERNAL_SERVER_ERROR);
+     // Возврат JSON-ответа с сообщением об ошибке, если удаление не удалось, и кодом состояния HTTP 500 (Внутренняя ошибка сервера).
+        return response()->json(['message' => 'Failed to delete the session.'], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }

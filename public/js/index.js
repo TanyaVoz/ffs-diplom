@@ -6197,10 +6197,10 @@ root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)
 
 /***/ }),
 
-/***/ "./resources/js/reducers/createAdmin.js":
-/*!**********************************************!*\
-  !*** ./resources/js/reducers/createAdmin.js ***!
-  \**********************************************/
+/***/ "./resources/js/reducers/adminReducer.js":
+/*!***********************************************!*\
+  !*** ./resources/js/reducers/adminReducer.js ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6778,19 +6778,19 @@ var _createAdminSlice$act = createAdminSlice.actions,
 
 /***/ }),
 
-/***/ "./resources/js/reducers/createAuth.js":
-/*!*********************************************!*\
-  !*** ./resources/js/reducers/createAuth.js ***!
-  \*********************************************/
+/***/ "./resources/js/reducers/authReducer.js":
+/*!**********************************************!*\
+  !*** ./resources/js/reducers/authReducer.js ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "adminAuth": () => (/* binding */ adminAuth),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   "getToken": () => (/* binding */ getToken),
-/* harmony export */   "logout": () => (/* binding */ logout),
-/* harmony export */   "resetAuthStatus": () => (/* binding */ resetAuthStatus)
+/* harmony export */   "logoutAdmin": () => (/* binding */ logoutAdmin),
+/* harmony export */   "resetAuthStatusAdmin": () => (/* binding */ resetAuthStatusAdmin)
 /* harmony export */ });
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -6804,7 +6804,7 @@ var initialState = {
   status: "idle"
 };
 // Определение асинхронной операции для получения токена
-var getToken = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThunk)("auth/getToken", /*#__PURE__*/function () {
+var adminAuth = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThunk)("auth/getToken", /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(_ref) {
     var email, password, response;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -6845,22 +6845,22 @@ var getToken = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThunk
   };
 }());
 // Создание среза состояния и связанных с ним действий
-var createAuthSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
+var authSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
   name: "auth",
   initialState: initialState,
   reducers: {
-    logout: function logout(state) {
+    logoutAdmin: function logoutAdmin(state) {
       return initialState;
     },
-    resetAuthStatus: function resetAuthStatus(state) {
+    resetAuthStatusAdmin: function resetAuthStatusAdmin(state) {
       state.status = "idle";
     }
   },
   // Обработка результатов выполнения асинхронных операций
   extraReducers: function extraReducers(builder) {
-    builder.addCase(getToken.rejected, function (state) {
+    builder.addCase(adminAuth.rejected, function (state) {
       state.status = "error";
-    }).addCase(getToken.fulfilled, function (state, action) {
+    }).addCase(adminAuth.fulfilled, function (state, action) {
       state.token = action.payload.token;
       state.status = "success";
     });
@@ -6868,18 +6868,18 @@ var createAuthSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSli
 });
 
 // Экспорт действий и редуктора из среза
-var _createAuthSlice$acti = createAuthSlice.actions,
-  logout = _createAuthSlice$acti.logout,
-  resetAuthStatus = _createAuthSlice$acti.resetAuthStatus;
+var _authSlice$actions = authSlice.actions,
+  logoutAdmin = _authSlice$actions.logoutAdmin,
+  resetAuthStatusAdmin = _authSlice$actions.resetAuthStatusAdmin;
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createAuthSlice.reducer);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (authSlice.reducer);
 
 /***/ }),
 
-/***/ "./resources/js/reducers/createCalendar.js":
-/*!*************************************************!*\
-  !*** ./resources/js/reducers/createCalendar.js ***!
-  \*************************************************/
+/***/ "./resources/js/reducers/calendarReducer.js":
+/*!**************************************************!*\
+  !*** ./resources/js/reducers/calendarReducer.js ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6970,10 +6970,10 @@ var chooseDate = createCalendarSlice.actions.chooseDate;
 
 /***/ }),
 
-/***/ "./resources/js/reducers/createPopup.js":
-/*!**********************************************!*\
-  !*** ./resources/js/reducers/createPopup.js ***!
-  \**********************************************/
+/***/ "./resources/js/reducers/popupReducer.js":
+/*!***********************************************!*\
+  !*** ./resources/js/reducers/popupReducer.js ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7025,10 +7025,10 @@ var _createPopupSlice$act = createPopupSlice.actions,
 
 /***/ }),
 
-/***/ "./resources/js/reducers/createSeance.js":
-/*!***********************************************!*\
-  !*** ./resources/js/reducers/createSeance.js ***!
-  \***********************************************/
+/***/ "./resources/js/reducers/seanceReducer.js":
+/*!************************************************!*\
+  !*** ./resources/js/reducers/seanceReducer.js ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7172,25 +7172,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "store": () => (/* binding */ store)
 /* harmony export */ });
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
-/* harmony import */ var _reducers_createCalendar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../reducers/createCalendar */ "./resources/js/reducers/createCalendar.js");
-/* harmony import */ var _reducers_createSeance__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reducers/createSeance */ "./resources/js/reducers/createSeance.js");
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
-/* harmony import */ var _reducers_createAuth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../reducers/createAuth */ "./resources/js/reducers/createAuth.js");
+/* harmony import */ var _reducers_calendarReducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../reducers/calendarReducer */ "./resources/js/reducers/calendarReducer.js");
+/* harmony import */ var _reducers_seanceReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reducers/seanceReducer */ "./resources/js/reducers/seanceReducer.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
+/* harmony import */ var _reducers_authReducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../reducers/authReducer */ "./resources/js/reducers/authReducer.js");
 
 
 
 
 
 
+var rootReducer = {
+  calendar: _reducers_calendarReducer__WEBPACK_IMPORTED_MODULE_0__["default"],
+  seance: _reducers_seanceReducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  auth: _reducers_authReducer__WEBPACK_IMPORTED_MODULE_4__["default"],
+  admin: _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  popup: _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+};
 var store = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_5__.configureStore)({
-  reducer: {
-    calendar: _reducers_createCalendar__WEBPACK_IMPORTED_MODULE_0__["default"],
-    seance: _reducers_createSeance__WEBPACK_IMPORTED_MODULE_1__["default"],
-    auth: _reducers_createAuth__WEBPACK_IMPORTED_MODULE_4__["default"],
-    admin: _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_3__["default"],
-    popup: _reducers_createPopup__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }
+  reducer: rootReducer
 });
 
 /***/ }),

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { createTicket, getSeance } from "../../../../reducers/createSeance";
+import { createTicket, getSeance } from "../../../../reducers/seanceReducer";
 import Main from "../../Main";
 import SeanceInformation from "./information";
 import BuyingScheme from "./buying";

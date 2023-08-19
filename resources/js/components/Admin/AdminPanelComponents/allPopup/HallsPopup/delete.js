@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteHall, getHalls } from "../../../../../reducers/createAdmin";
-import { closePopup } from "../../../../../reducers/createPopup";
+import { deleteHall, getHalls } from "../../../../../reducers/adminReducer";
+import { closePopup } from "../../../../../reducers/popupReducer";
 import SessionButton from "../../allButtons/sessionButton";
 
 export default function DeleteHall() {

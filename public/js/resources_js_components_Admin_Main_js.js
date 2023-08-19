@@ -9,13 +9,13 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ AddMovieAction)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
 /* harmony import */ var _AdminPanelComponents_allButtons_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../AdminPanelComponents/allButtons/button */ "./resources/js/components/Admin/AdminPanelComponents/allButtons/button.js");
 /* harmony import */ var _editMovie__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editMovie */ "./resources/js/components/Admin/AdminActComponents/MainAct/editMovie.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -27,29 +27,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-function AddMovieAction() {
-  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
+var AddMovieAction = function AddMovieAction() {
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.admin;
     }),
     movies = _useSelector.movies,
     loading = _useSelector.loading;
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    // Получаем список фильмов при загрузке компонента
-    dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.getMovies)());
-  }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var fetchMovies = function fetchMovies() {
+      dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.getMovies)());
+    };
+    fetchMovies();
+  }, [dispatch]);
+  var handleAddMovieClick = function handleAddMovieClick() {
+    dispatch((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_3__.showPopup)({
+      title: "Добавление фильма",
+      form: "addMovie"
+    }));
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
       className: "conf-step__paragraph",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_AdminPanelComponents_allButtons_button__WEBPACK_IMPORTED_MODULE_4__["default"], {
         text: "Добавить фильм",
-        callback: function callback() {
-          return dispatch((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_3__.showPopup)({
-            title: "Добавление фильма",
-            form: "addMovie"
-          }));
-        }
+        callback: handleAddMovieClick
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "conf-step__movies",
@@ -65,7 +67,8 @@ function AddMovieAction() {
       })
     })]
   });
-}
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddMovieAction);
 
 /***/ }),
 
@@ -85,7 +88,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
 /* harmony import */ var _AdminPanelComponents_allButtons_choose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../AdminPanelComponents/allButtons/choose */ "./resources/js/components/Admin/AdminPanelComponents/allButtons/choose.js");
 /* harmony import */ var _AdminActComponents_SeancesAct_hallTime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../AdminActComponents/SeancesAct/hallTime */ "./resources/js/components/Admin/AdminActComponents/SeancesAct/hallTime.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -107,7 +110,7 @@ var AddSeanceAction = function AddSeanceAction(_ref) {
   // Обработчик добавления сеанса
   var handleAddSeance = function handleAddSeance() {
     // Диспатч действия для показа всплывающего окна
-    dispatch((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_2__.showPopup)({
+    dispatch((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__.showPopup)({
       title: "Добавление сеанса",
       form: "addSeance",
       id: cinemaHallId
@@ -146,56 +149,63 @@ AddSeanceAction.propTypes = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ DeleteHallAction)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 
-// Компонент для действия удаления зала
 
 
-function DeleteHallAction(props) {
-  // Извлечение данных из пропсов
-  var id = props.id,
-    name = props.name;
+var DeleteHallAction = function DeleteHallAction(_ref) {
+  var id = _ref.id,
+    name = _ref.name;
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
-  // Получение диспатча из React Redux
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+  // Обработчик клика на кнопке редактирования зала
+  var handleEditHallClick = function handleEditHallClick() {
+    dispatch((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__.showPopup)({
+      title: "Редактирование зала",
+      form: "editHall",
+      id: id
+    }));
+  };
+
+  // Обработчик клика на кнопке удаления зала
+  var handleDeleteHallClick = function handleDeleteHallClick() {
+    dispatch((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__.showPopup)({
+      title: "Удаление зала",
+      form: "deleteHall",
+      id: id
+    }));
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
       className: "conf-step__edit-hall",
-      onClick: function onClick() {
-        return dispatch((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_1__.showPopup)({
-          title: "Редактирование зала",
-          form: "editHall",
-          id: id
-        }));
-      },
+      onClick: handleEditHallClick,
       children: name
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
       className: "conf-step__button conf-step__button-trash",
-      onClick: function onClick() {
-        return dispatch((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_1__.showPopup)({
-          title: "Удаление зала",
-          form: "deleteHall",
-          id: id
-        }));
-      }
+      onClick: handleDeleteHallClick
     })]
   });
-}
+};
 
 // Пропсы компонента
 DeleteHallAction.propTypes = {
-  id: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().number.isRequired),
-  name: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string.isRequired)
+  id: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().number.isRequired),
+  // Обязательный номер (ID) зала
+  name: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string.isRequired) // Обязательное имя зала
 };
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DeleteHallAction);
 
 /***/ }),
 
@@ -208,14 +218,17 @@ DeleteHallAction.propTypes = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ EditMovieAction)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _Client_additionalComponents_Formatting_timeFormWords__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Client/additionalComponents/Formatting/timeFormWords */ "./resources/js/components/Client/additionalComponents/Formatting/timeFormWords.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Client_additionalComponents_Formatting_timeFormWords__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Client/additionalComponents/Formatting/timeFormWords */ "./resources/js/components/Client/additionalComponents/Formatting/timeFormWords.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -224,50 +237,57 @@ __webpack_require__.r(__webpack_exports__);
 // Компонент для действия редактирования фильма
 
 
-function EditMovieAction(props) {
-  // Извлечение данных из пропсов
-  var id = props.id,
-    img = props.img,
-    title = props.title,
-    duration = props.duration;
-
+var EditMovieAction = function EditMovieAction(_ref) {
+  var id = _ref.id,
+    img = _ref.img,
+    title = _ref.title,
+    duration = _ref.duration;
   // Получение продолжительности фильма в соответствии с числом
-  var filmDuration = (0,_Client_additionalComponents_Formatting_timeFormWords__WEBPACK_IMPORTED_MODULE_2__["default"])(duration);
+  var filmDuration = (0,_Client_additionalComponents_Formatting_timeFormWords__WEBPACK_IMPORTED_MODULE_3__["default"])(duration);
 
   // Получение диспатча из React Redux
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+
+  // Обработчик клика по компоненту фильма
+  var handleMovieClick = function handleMovieClick() {
+    // Диспатч действия для отображения попапа с формой редактирования фильма
+    dispatch((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__.showPopup)({
+      title: "Редактирование фильма",
+      form: "editMovie",
+      id: id
+    }));
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "conf-step__movie",
-    onClick: function onClick() {
-      return dispatch((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_1__.showPopup)({
-        title: "Редактирование фильма",
-        form: "editMovie",
-        id: id
-      }));
-    },
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    onClick: handleMovieClick,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "conf-step__close"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
       className: "conf-step__movie-poster",
       alt: "poster",
       src: "../images/".concat(img)
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
       className: "conf-step__movie-title",
       children: title
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
       className: "conf-step__movie-duration",
-      children: [duration, " ", " ", " ", filmDuration]
+      children: [duration, " \u043C\u0438\u043D\u0443\u0442 ", filmDuration]
     })]
   });
-}
+};
 
 // Пропсы компонента
 EditMovieAction.propTypes = {
-  id: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().number.isRequired),
-  img: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string.isRequired),
-  title: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string.isRequired),
-  duration: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().number.isRequired)
+  id: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().number.isRequired),
+  // Обязательный номер (ID) фильма
+  img: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().string.isRequired),
+  // Обязательный путь к изображению постера фильма
+  title: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().string.isRequired),
+  // Обязательное название фильма
+  duration: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().number.isRequired) // Обязательная продолжительность фильма в минутах
 };
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EditMovieAction);
 
 /***/ }),
 
@@ -285,25 +305,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-
 function ChooseOpenHalls(props) {
   var id = props.id,
     name = props.name,
     free = props.free,
     callback = props.callback;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  var uniqueCheckboxId = "cinemaHallCheck".concat(id); // Уникальный идентификатор 
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    className: "conf-step__hall-checkbox",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-      id: "cinemaHallCheck".concat(id) // Уникальный идентификатор для связи с label
-      ,
+      id: uniqueCheckboxId,
       className: "conf-step__custom-checkbox",
       type: "checkbox",
       checked: free // Определение состояния выбора (true/false)
       ,
       onChange: callback // Обработчик изменения состояния
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-      htmlFor: "cinemaHallCheck".concat(id),
+      htmlFor: uniqueCheckboxId,
       children: name
-    }), " "]
+    })]
   });
 }
 
@@ -321,7 +342,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ ChooseSessionDate)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -338,20 +359,21 @@ function ChooseSessionDate() {
   // Обработчик изменения выбранной даты
   var handleChange = function handleChange(_ref) {
     var target = _ref.target;
-    dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_1__.chooseDate)(target.value)); // Диспетчер для обновления выбранной даты в хранилище
+    dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_1__.chooseDate)(target.value)); // Диспетчер для обновления выбранной даты в хранилище
   };
 
+  var minDate = "".concat(today.getFullYear(), "-").concat(('0' + (today.getMonth() + 1)).slice(-2), "-").concat(('0' + today.getDate()).slice(-2));
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    className: "conf-step__session-date",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("label", {
       className: "conf-step__label conf-step__label-fullsize",
       htmlFor: "datepicker",
       children: ["\u0414\u0430\u0442\u0430 \u0441\u0435\u0430\u043D\u0441\u043E\u0432:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
         className: "conf-step__input",
         type: "date",
-        name: "datepicker"
-        // Устанавливаем минимальную дату как текущую дату
+        name: "datepicker",
+        min: minDate // Устанавливаем минимальную дату как текущую дату
         ,
-        min: "".concat(today.getFullYear(), "-").concat(('0' + (today.getMonth() + 1)).slice(-2), "-").concat(('0' + today.getDate()).slice(-2)),
         value: chosenDate // Установка значения даты
         ,
         onChange: handleChange // Привязка обработчика изменения
@@ -384,10 +406,9 @@ __webpack_require__.r(__webpack_exports__);
  // Импорт компонента для отображения времени сеанса
 
 function HallTime(props) {
-  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
-      return state.admin;
-    }),
-    seances = _useSelector.seances; // Получение данных о сеансах из Redux
+  var seances = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
+    return state.admin.seances;
+  }); // Получение данных о сеансах из Redux
   var cinemaHall = props.cinemaHall; // Получение ID кинозала из входных параметров
 
   // Фильтрация и сортировка сеансов для указанного кинозала
@@ -423,7 +444,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ MovieTime)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -440,22 +461,23 @@ function MovieTime(props) {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
 
   // Поиск индекса фильма в массиве по его ID
-  var index = movies.findIndex(function (movie) {
+  var movie = movies.find(function (movie) {
     return movie.id === +id;
-  });
-  var movie = movies[index]; // Выбранный фильм
+  }); // Выбранный фильм
   var width = movie.duration / 60 * 30; // Вычисление ширины блока сеанса в пикселях на основе длительности фильма
   var datetime = new Date(time); // Преобразование времени сеанса в объект типа Date
   var shift = (datetime.getHours() + datetime.getMinutes() / 60) * 30; // Вычисление сдвига блока сеанса по горизонтали
 
+  var movieTitle = movie ? movie.title : "Фильм не найден"; // Обработка случая, если фильм не найден
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "conf-step__seances-movie conf-step__seances-movie-".concat(index + 1),
+    className: "conf-step__seances-movie conf-step__seances-movie-".concat(id),
     style: {
       width: "".concat(width, "px"),
       left: "".concat(shift, "px")
     },
     onClick: function onClick() {
-      return dispatch((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_1__.showPopup)({
+      return dispatch((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_1__.showPopup)({
         title: "Редактирование сеанса",
         form: "editSeance",
         id: seance
@@ -463,7 +485,7 @@ function MovieTime(props) {
     },
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
       className: "conf-step__seances-movie-title",
-      children: movie.title
+      children: movieTitle
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
       className: "conf-step__seances-movie-start",
       children: datetime.toLocaleTimeString('ru-RU', {
@@ -490,7 +512,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
 /* harmony import */ var _MainAct_addSeance__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../MainAct/addSeance */ "./resources/js/components/Admin/AdminActComponents/MainAct/addSeance.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
@@ -498,24 +520,33 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 function SeancesHall() {
+  // Получение данных о залах и выбранной дате из Redux
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.admin;
     }),
     cinemaHalls = _useSelector.cinemaHalls,
-    chosenDate = _useSelector.chosenDate; // Получение данных о залах и выбранной дате из Redux
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+    chosenDate = _useSelector.chosenDate;
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)(); // Получение функции dispatch из Redux для отправки действий
+
+  // Эффект useEffect, который выполняется при изменении выбранной даты
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.getSeances)()); // Получение списка сеансов при изменении выбранной даты
+    dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.getSeances)()); // Получение списка сеансов при изменении выбранной даты
   }, [chosenDate]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-    className: "conf-step__seances",
-    children: cinemaHalls.map(function (cinemaHall) {
+
+  // Функция для отображения кнопок добавления сеансов для каждого кинозала
+  var renderCinemaHalls = function renderCinemaHalls() {
+    return cinemaHalls.map(function (cinemaHall) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_MainAct_addSeance__WEBPACK_IMPORTED_MODULE_3__["default"], {
         cinemaHallId: cinemaHall.id,
         name: cinemaHall.name
       }, cinemaHall.id);
-    })
+    });
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    className: "conf-step__seances",
+    children: [renderCinemaHalls(), " "]
   });
 }
 
@@ -541,23 +572,21 @@ function SeatStatus(props) {
   var status = props.status,
     callback = props.callback; // Получение статуса места и функции обратного вызова из входных свойств
 
-  var active;
-  switch (status) {
-    case "standard":
-      active = "conf-step__chair_standart"; // Присваивание класса в зависимости от статуса
-      break;
-    case "disabled":
-      active = "conf-step__chair_disabled"; // Присваивание класса в зависимости от статуса
-      break;
-    case "vip":
-      active = "conf-step__chair_vip"; // Присваивание класса в зависимости от статуса
-      break;
-    default:
-      active = "conf-step__chair_standart"; // По умолчанию используется стандартный класс
-      break;
-  }
+  var getStatusClassName = function getStatusClassName(status) {
+    switch (status) {
+      case "standard":
+        return "conf-step__chair_standart";
+      case "disabled":
+        return "conf-step__chair_disabled";
+      case "vip":
+        return "conf-step__chair_vip";
+      default:
+        return "conf-step__chair_standart";
+    }
+  };
+  var seatClassName = classnames__WEBPACK_IMPORTED_MODULE_0___default()("conf-step__chair", getStatusClassName(status));
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-    className: classnames__WEBPACK_IMPORTED_MODULE_0___default()("conf-step__chair", active),
+    className: seatClassName,
     onClick: callback
   });
 }
@@ -575,10 +604,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ SeatsScheme)
 /* harmony export */ });
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
-/* harmony import */ var _seatType__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./seatType */ "./resources/js/components/Admin/AdminActComponents/SeatsAct/seatType.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
+/* harmony import */ var _seatType__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./seatType */ "./resources/js/components/Admin/AdminActComponents/SeatsAct/seatType.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -589,17 +620,22 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 
+
 function SeatsScheme(props) {
   var place = props.place; // Получение количества мест в ряду из входных свойств
-  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
+
+  // Получение данных о местах из Redux-состояния
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.admin;
     }),
-    seats = _useSelector.seats; // Получение данных о местах из Redux
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)(); // Получение функции dispatch из Redux для отправки действий
+    seats = _useSelector.seats;
 
+  // Получение функции dispatch из Redux для отправки действий
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var allStatus = ["standard", "vip", "disabled"]; // Список доступных статусов мест
 
-  var chair = seats.length / place; // Расчет количества мест в ряду
+  // Вычисление количества мест в ряду
+  var chair = seats.length / place;
 
   // Группировка мест по рядам
   var rowSeats = seats.reduce(function (result, seat, i) {
@@ -619,20 +655,22 @@ function SeatsScheme(props) {
       return seat.id === id;
     }).status;
     var statusIndex = allStatus.indexOf(seatStatus);
-    dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_1__.changeSeatStatus)({
+    var nextStatusIndex = (statusIndex + 1) % allStatus.length;
+    var nextStatus = allStatus[nextStatusIndex];
+    dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.changeSeatStatus)({
       id: id,
-      status: allStatus[(statusIndex + 1) % allStatus.length]
+      status: nextStatus
     }));
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "conf-step__hall",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "conf-step__hall-wrapper",
       children: rowSeats.map(function (row, i) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "conf-step__row",
           children: row.map(function (seat) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_seatType__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_seatType__WEBPACK_IMPORTED_MODULE_3__["default"], {
               status: seat.status,
               callback: function callback() {
                 return handleClick(seat.id);
@@ -661,7 +699,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
 /* harmony import */ var _AdminPanelComponents_allButtons_saveButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AdminPanelComponents/allButtons/saveButton */ "./resources/js/components/Admin/AdminPanelComponents/allButtons/saveButton.js");
 /* harmony import */ var _AdminPanelComponents_allButtons_choose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AdminPanelComponents/allButtons/choose */ "./resources/js/components/Admin/AdminPanelComponents/allButtons/choose.js");
 /* harmony import */ var _AdminActComponents_SeatsAct_seatType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../AdminActComponents/SeatsAct/seatType */ "./resources/js/components/Admin/AdminActComponents/SeatsAct/seatType.js");
@@ -673,6 +711,12 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -683,36 +727,45 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 
-var CinemaHallConfig = function CinemaHallConfig() {
-  // Выбор данных из хранилища Redux с использованием хука useSelector
+function CinemaHallConfig() {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.admin;
     }),
     cinemaHalls = _useSelector.cinemaHalls,
     selectedCinemaHallScheme = _useSelector.selectedCinemaHallScheme;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      row: 0,
+      chair: 0
+    }),
+    _useState2 = _slicedToArray(_useState, 2),
+    updatedSize = _useState2[0],
+    setUpdatedSize = _useState2[1];
 
-  // Функция обратного вызова для выбора кинозала
-  var handleSelect = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (id) {
-    // Диспетчеризация действий для обновления выбранной схемы кинозала и получения информации о местах
-    dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.selectCinemaHallScheme)(cinemaHalls.find(function (hall) {
-      return hall.id === id;
-    })));
-    dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.getSeats)(id));
-  }, [dispatch, cinemaHalls]);
+  // Обработчик выбора зала
+  var handleSelect = function handleSelect(id) {
+    var selectedHall = cinemaHalls.find(function (cinemaHall) {
+      return cinemaHall.id === id;
+    });
+    dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.selectCinemaHallScheme)(selectedHall)); // Выбор текущего зала
+    dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.getSeats)(id)); // Получение информации о местах в зале
+    setUpdatedSize({
+      row: selectedHall.row,
+      chair: selectedHall.chair
+    }); // Обновление размеров зала
+  };
 
-  // Функция обратного вызова для обработки изменений в полях ввода размера зала
-  var handleChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {
-    var _event$target = event.target,
-      name = _event$target.name,
-      value = _event$target.value;
+  // Обработчик изменения размеров зала
+  var handleChange = function handleChange(_ref) {
+    var target = _ref.target;
+    var name = target.name,
+      value = target.value;
+    var newSize = _objectSpread(_objectSpread({}, updatedSize), {}, _defineProperty({}, name, value));
+    setUpdatedSize(newSize); // Обновление размеров зала
 
-    // Диспетчеризация действий для изменения выбранной схемы кинозала и создания новой схемы мест
-    dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.changeHallSize)(_objectSpread(_objectSpread({}, selectedCinemaHallScheme), {}, _defineProperty({}, name, value))));
-
-    // Создание новой схемы мест на основе обновленного размера зала и диспетчеризация действий
-    var seats = Array.from({
-      length: selectedCinemaHallScheme.row * selectedCinemaHallScheme.chair
+    // Создание новых мест в зале с обновленными размерами
+    var updatedSeats = Array.from({
+      length: newSize.row * newSize.chair
     }, function (_, i) {
       return {
         id: i + 1,
@@ -721,28 +774,26 @@ var CinemaHallConfig = function CinemaHallConfig() {
         cinema_hall_id: selectedCinemaHallScheme.id
       };
     });
-    dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.createScheme)(seats));
-  }, [dispatch, selectedCinemaHallScheme]);
+    dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.changeHallSize)(newSize)); // Обновление размеров зала в хранилище
+    dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.createScheme)(updatedSeats)); // Создание новой схемы мест в зале
+  };
 
-  // Функция обратного вызова для сохранения изменений конфигурации
-  var handleSave = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
-    // Поиск исходного кинозала и проверка изменения размера зала
-    var hallSource = cinemaHalls.find(function (hall) {
-      return hall.id === selectedCinemaHallScheme.id;
+  // Обработчик сохранения изменений
+  var handleSave = function handleSave() {
+    var sourceHall = cinemaHalls.find(function (cinemaHall) {
+      return cinemaHall.id === selectedCinemaHallScheme.id;
     });
-    if (hallSource.row === selectedCinemaHallScheme.row && hallSource.chair === selectedCinemaHallScheme.chair) {
-      // Диспетчеризация действия для обновления информации о местах
-      dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.updateSeats)());
+    if (sourceHall.row === updatedSize.row && sourceHall.chair === updatedSize.chair) {
+      dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.updateSeats)()); // Обновление информации о местах в зале
     } else {
-      // Диспетчеризация действий для обновления зала, создания новых мест и получения списка залов
-      dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.updateHall)(selectedCinemaHallScheme));
-      dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.createSeats)());
-      dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.getHalls)());
+      dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.updateHall)(selectedCinemaHallScheme)); // Обновление информации о зале
+      dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.createSeats)()); // Создание мест в зале с новыми размерами
+      dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.getHalls)()); // Получение обновленной информации о залах
     }
 
-    // Очистка выбранной схемы кинозала
-    dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.selectCinemaHallScheme)({}));
-  }, [dispatch, cinemaHalls, selectedCinemaHallScheme]);
+    dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.selectCinemaHallScheme)({})); // Сброс выбранного зала
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
     className: "conf-step__wrapper",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
@@ -750,14 +801,14 @@ var CinemaHallConfig = function CinemaHallConfig() {
       children: "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0437\u0430\u043B \u0434\u043B\u044F \u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438:"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("ul", {
       className: "conf-step__selectors-box",
-      children: cinemaHalls.map(function (hall) {
+      children: cinemaHalls.map(function (cinemaHall) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_AdminPanelComponents_allButtons_choose__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          name: hall.name,
-          checked: selectedCinemaHallScheme ? hall.id === selectedCinemaHallScheme.id : false,
+          name: cinemaHall.name,
+          checked: selectedCinemaHallScheme ? cinemaHall.id === selectedCinemaHallScheme.id : false,
           callback: function callback() {
-            return handleSelect(hall.id);
+            return handleSelect(cinemaHall.id);
           }
-        }, hall.id);
+        }, cinemaHall.id);
       })
     }), selectedCinemaHallScheme.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
@@ -771,7 +822,7 @@ var CinemaHallConfig = function CinemaHallConfig() {
             type: "text",
             className: "conf-step__input",
             name: "row",
-            value: selectedCinemaHallScheme.row,
+            value: updatedSize.row,
             onChange: handleChange
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
@@ -783,7 +834,7 @@ var CinemaHallConfig = function CinemaHallConfig() {
             type: "text",
             className: "conf-step__input",
             name: "chair",
-            value: selectedCinemaHallScheme.chair,
+            value: updatedSize.chair,
             onChange: handleChange
           })]
         })]
@@ -803,17 +854,18 @@ var CinemaHallConfig = function CinemaHallConfig() {
           children: "\u0427\u0442\u043E\u0431\u044B \u0438\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u0432\u0438\u0434 \u043A\u0440\u0435\u0441\u043B\u0430, \u043D\u0430\u0436\u043C\u0438\u0442\u0435 \u043F\u043E \u043D\u0435\u043C\u0443 \u043B\u0435\u0432\u043E\u0439 \u043A\u043D\u043E\u043F\u043A\u043E\u0439 \u043C\u044B\u0448\u0438"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_AdminActComponents_SeatsAct_seats__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        place: selectedCinemaHallScheme.row
+        place: updatedSize.row
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_AdminPanelComponents_allButtons_saveButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
         cancel: function cancel() {
-          return dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.selectCinemaHallScheme)({}));
+          return dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.selectCinemaHallScheme)({}));
         },
-        save: handleSave // Передача функции сохранения напрямую, без вызова
+        save: function save() {
+          return handleSave();
+        }
       })]
     })]
   });
-};
-
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CinemaHallConfig);
 
 /***/ }),
@@ -829,11 +881,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ CinemaHallControl)
 /* harmony export */ });
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
 /* harmony import */ var _AdminPanelComponents_allButtons_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AdminPanelComponents/allButtons/button */ "./resources/js/components/Admin/AdminPanelComponents/allButtons/button.js");
 /* harmony import */ var _AdminActComponents_MainAct_deleteHall__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../AdminActComponents/MainAct/deleteHall */ "./resources/js/components/Admin/AdminActComponents/MainAct/deleteHall.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -845,21 +897,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 function CinemaHallControl() {
   // Получение данных из глобального состояния с использованием useSelector
-  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.admin;
     }),
     cinemaHalls = _useSelector.cinemaHalls;
 
   // Получение диспатча из React Redux
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
   // Загрузка списка залов при монтировании компонента
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_3__.getHalls)());
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_3__.getHalls)());
   }, []);
+
+  // Функция обработки создания зала
+  var handleCreateHall = function handleCreateHall() {
+    dispatch((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__.showPopup)({
+      title: "Добавление зала",
+      form: "addHall"
+    }));
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "conf-step__wrapper",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
@@ -875,12 +934,7 @@ function CinemaHallControl() {
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_AdminPanelComponents_allButtons_button__WEBPACK_IMPORTED_MODULE_4__["default"], {
       text: "Создать зал",
-      callback: function callback() {
-        return dispatch((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_2__.showPopup)({
-          title: "Добавление зала",
-          form: "addHall"
-        }));
-      }
+      callback: handleCreateHall
     })]
   });
 }
@@ -898,10 +952,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ CinemaHallStatusManager)
 /* harmony export */ });
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
 /* harmony import */ var _AdminActComponents_SeancesAct_choose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AdminActComponents/SeancesAct/choose */ "./resources/js/components/Admin/AdminActComponents/SeancesAct/choose.js");
 /* harmony import */ var _AdminPanelComponents_allButtons_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AdminPanelComponents/allButtons/button */ "./resources/js/components/Admin/AdminPanelComponents/allButtons/button.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -925,31 +979,31 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function CinemaHallStatusManager() {
-  // Получение данных о залах из глобального состояния с использованием useSelector
-  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
+  // Получение данных о залах из глобального состояния
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.admin;
     }),
     cinemaHalls = _useSelector.cinemaHalls;
 
   // Локальное состояние для хранения измененных данных о залах
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
-    changedCinemaHalls = _useState2[0],
-    setChangedCinemaHalls = _useState2[1];
+    modifiedHalls = _useState2[0],
+    setModifiedHalls = _useState2[1];
 
   // Получение диспатча из React Redux
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
   // Обновление локального состояния при изменении данных о залах
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    setChangedCinemaHalls(cinemaHalls);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setModifiedHalls(cinemaHalls);
   }, [cinemaHalls]);
 
   // Обработчик изменения состояния зала (открыт/закрыт)
-  var handleChange = function handleChange(cinemaHall) {
-    setChangedCinemaHalls(function (prevState) {
-      return prevState.map(function (item) {
-        return item.id === cinemaHall.id ? _objectSpread(_objectSpread({}, item), {}, {
+  var toggleHallState = function toggleHallState(hall) {
+    setModifiedHalls(function (prevHalls) {
+      return prevHalls.map(function (item) {
+        return item.id === hall.id ? _objectSpread(_objectSpread({}, item), {}, {
           free: !item.free
         }) : item;
       });
@@ -957,42 +1011,42 @@ function CinemaHallStatusManager() {
   };
 
   // Обработчик сохранения изменений
-  var handleSubmit = function handleSubmit() {
-    changedCinemaHalls.forEach(function (item) {
-      var originalCinemaHall = cinemaHalls.find(function (cinemaHall) {
-        return cinemaHall.id === item.id;
+  var handleSaveChanges = function handleSaveChanges() {
+    modifiedHalls.forEach(function (hall) {
+      var originalHall = cinemaHalls.find(function (item) {
+        return item.id === hall.id;
       });
-      // Проверка на изменение состояния зала и отправка обновления в хранилище
-      if (originalCinemaHall && originalCinemaHall.free !== item.free) {
-        dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.updateHall)(item));
+      if (originalHall && originalHall.free !== hall.free) {
+        dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.updateHall)(hall)); // Отправка обновления состояния зала в хранилище
       }
     });
   };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "conf-step__wrapper text-center",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
       className: "conf-step__paragraph",
-      children: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0437\u0430\u043B:"
+      children: "\u0423\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435 \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435\u043C \u0437\u0430\u043B\u043E\u0432:"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
       className: "conf-step__list conf-step__list_start",
-      children: changedCinemaHalls.map(function (cinemaHall) {
+      children: modifiedHalls.map(function (hall) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_AdminActComponents_SeancesAct_choose__WEBPACK_IMPORTED_MODULE_3__["default"], {
-            id: cinemaHall.id,
-            name: cinemaHall.name,
-            free: cinemaHall.free,
+            id: hall.id,
+            name: hall.name,
+            free: hall.free,
             callback: function callback() {
-              return handleChange(cinemaHall);
+              return toggleHallState(hall);
             }
           })
-        }, cinemaHall.id);
+        }, hall.id);
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
       className: "conf-step__paragraph",
-      children: "\u0412\u0441\u0451 \u0433\u043E\u0442\u043E\u0432\u043E, \u0442\u0435\u043F\u0435\u0440\u044C \u043C\u043E\u0436\u043D\u043E:"
+      children: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u0435 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F:"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_AdminPanelComponents_allButtons_button__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      text: "Открыть продажу билетов",
-      callback: handleSubmit
+      text: "Сохранить изменения",
+      callback: handleSaveChanges
     })]
   });
 }
@@ -1013,8 +1067,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
 /* harmony import */ var _AdminPanelComponents_allButtons_sessionButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AdminPanelComponents/allButtons/sessionButton */ "./resources/js/components/Admin/AdminPanelComponents/allButtons/sessionButton.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -1084,8 +1138,8 @@ function MovieCard(props) {
         callbackSubmit(form.title, form.description, form.duration, form.country, fileInput.current.files[0]);
 
         // Закрытие всплывающего окна и обновление списка фильмов
-        dispatch((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_3__.closePopup)());
-        dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.getMovies)());
+        dispatch((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_3__.closePopup)());
+        dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.getMovies)());
       } catch (error) {
         // Обработка ошибок при добавлении фильма
         console.error("Ошибка при добавлении фильма:", error);
@@ -1173,10 +1227,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ PriceConfig)
 /* harmony export */ });
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
 /* harmony import */ var _AdminPanelComponents_allButtons_saveButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AdminPanelComponents/allButtons/saveButton */ "./resources/js/components/Admin/AdminPanelComponents/allButtons/saveButton.js");
 /* harmony import */ var _AdminPanelComponents_allButtons_choose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AdminPanelComponents/allButtons/choose */ "./resources/js/components/Admin/AdminPanelComponents/allButtons/choose.js");
 /* harmony import */ var _AdminActComponents_SeatsAct_seatType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../AdminActComponents/SeatsAct/seatType */ "./resources/js/components/Admin/AdminActComponents/SeatsAct/seatType.js");
@@ -1203,45 +1257,64 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function PriceConfig() {
-  // Получение данных о залах из глобального состояния с использованием useSelector
-  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
+  // Получение данных о залах из глобального состояния
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.admin;
     }),
     cinemaHalls = _useSelector.cinemaHalls;
 
-  // Локальное состояние для хранения выбранного зала
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  // Локальное состояние для хранения выбранного зала и цен
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState2 = _slicedToArray(_useState, 2),
     selectedCinemaHall = _useState2[0],
     setSelectedCinemaHall = _useState2[1];
 
   // Получение диспатча из React Redux
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
   // Обработчик выбора зала для конфигурации
   var handleSelect = function handleSelect(id) {
-    setSelectedCinemaHall(cinemaHalls.find(function (cinemaHall) {
+    var selectedHall = cinemaHalls.find(function (cinemaHall) {
       return cinemaHall.id === id;
-    }));
+    });
+    setSelectedCinemaHall(selectedHall);
   };
 
-  // Обработчик изменения данных о ценах
-  var handleChange = function handleChange(_ref) {
-    var target = _ref.target;
-    var name = target.name;
-    var value = target.value;
-    setSelectedCinemaHall(function (prevState) {
-      return _objectSpread(_objectSpread({}, prevState), {}, _defineProperty({}, name, value));
+  // Обработчик изменения цены
+  var handlePriceChange = function handlePriceChange(priceType, value) {
+    setSelectedCinemaHall(function (prevHall) {
+      return _objectSpread(_objectSpread({}, prevHall), {}, _defineProperty({}, priceType, value));
     });
   };
 
   // Обработчик сохранения изменений
   var handleSave = function handleSave() {
     if (selectedCinemaHall) {
-      dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.updateHall)(selectedCinemaHall));
+      dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.updateHall)(selectedCinemaHall));
       setSelectedCinemaHall(null);
-      dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.getHalls)());
+      dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.getHalls)());
     }
+  };
+
+  // Генерация контента для выбора цены
+  var generatePriceInput = function generatePriceInput(priceType, label) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      className: "conf-step__legend",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("label", {
+        className: "conf-step__label",
+        children: [label, ", \u0440\u0443\u0431\u043B\u0435\u0439", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+          type: "number",
+          className: "conf-step__input",
+          name: priceType,
+          value: selectedCinemaHall[priceType],
+          onChange: function onChange(e) {
+            return handlePriceChange(priceType, e.target.value);
+          }
+        })]
+      }), "\u0437\u0430 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_AdminActComponents_SeatsAct_seatType__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        status: priceType
+      }), " ", label.toLowerCase()]
+    });
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "conf-step__wrapper",
@@ -1265,41 +1338,11 @@ function PriceConfig() {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
         className: "conf-step__paragraph",
         children: "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u0435 \u0446\u0435\u043D\u044B \u0434\u043B\u044F \u0442\u0438\u043F\u043E\u0432 \u043A\u0440\u0435\u0441\u0435\u043B:"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "conf-step__legend",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("label", {
-          className: "conf-step__label",
-          children: ["\u0426\u0435\u043D\u0430, \u0440\u0443\u0431\u043B\u0435\u0439", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
-            type: "number",
-            className: "conf-step__input",
-            name: "price_standard",
-            value: selectedCinemaHall.price_standard,
-            onChange: handleChange
-          })]
-        }), "\u0437\u0430 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_AdminActComponents_SeatsAct_seatType__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          status: "standard"
-        }), " \u043E\u0431\u044B\u0447\u043D\u044B\u0435 \u043A\u0440\u0435\u0441\u043B\u0430"]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "conf-step__legend",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("label", {
-          className: "conf-step__label",
-          children: ["\u0426\u0435\u043D\u0430, \u0440\u0443\u0431\u043B\u0435\u0439", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
-            type: "number",
-            className: "conf-step__input",
-            name: "price_vip",
-            value: selectedCinemaHall.price_vip,
-            onChange: handleChange
-          })]
-        }), "\u0437\u0430 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_AdminActComponents_SeatsAct_seatType__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          status: "vip"
-        }), " VIP \u043A\u0440\u0435\u0441\u043B\u0430"]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_AdminPanelComponents_allButtons_saveButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), generatePriceInput("price_standard", "Обычные кресла"), generatePriceInput("price_vip", "VIP кресла"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_AdminPanelComponents_allButtons_saveButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
         cancel: function cancel() {
           return setSelectedCinemaHall(null);
         },
-        save: function save() {
-          return handleSave();
-        }
+        save: handleSave
       })]
     })]
   });
@@ -1318,14 +1361,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ SeanceCard)
 /* harmony export */ });
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
 /* harmony import */ var _AdminPanelComponents_allButtons_sessionButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AdminPanelComponents/allButtons/sessionButton */ "./resources/js/components/Admin/AdminPanelComponents/allButtons/sessionButton.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1346,13 +1392,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function SeanceCard(props) {
   // Получение данных из глобального состояния с использованием useSelector
-  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.admin;
     }),
     cinemaHalls = _useSelector.cinemaHalls,
     movies = _useSelector.movies;
 
-  // Извлечение данных из пропсов с использованием значений по умолчанию
+  // Извлечение данных из пропсов с использованием деструктуризации
   var cinema_hall_id = props.cinema_hall_id,
     film_id = props.film_id,
     date = props.date,
@@ -1364,45 +1410,65 @@ function SeanceCard(props) {
   var today = new Date();
 
   // Начальное состояние формы
-  var INIT_STATE = {
+  var initialFormState = {
     date: date,
     time: time,
     cinemaHall: cinema_hall_id,
     movie: film_id
   };
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(INIT_STATE),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialFormState),
     _useState2 = _slicedToArray(_useState, 2),
     form = _useState2[0],
     setForm = _useState2[1];
 
   // Получение диспатча из React Redux
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
   // Обработчик изменения полей формы
-  var handleChange = function handleChange(_ref) {
-    var target = _ref.target;
-    var name = target.name;
-    var value = target.value;
-    setForm(function (prevState) {
-      return _objectSpread(_objectSpread({}, prevState), {}, _defineProperty({}, name, value));
+  var handleInputChange = function handleInputChange(event) {
+    var _event$target = event.target,
+      name = _event$target.name,
+      value = _event$target.value;
+    setForm(function (prevForm) {
+      return _objectSpread(_objectSpread({}, prevForm), {}, _defineProperty({}, name, value));
     });
   };
 
   // Обработчик отправки формы
-  var handleSubmit = function handleSubmit(event) {
-    event.preventDefault();
+  var handleSubmit = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
+      var datetime, formattedDatetime;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            event.preventDefault();
 
-    // Форматирование даты и времени для запроса
-    var datetime = new Date(form.date);
-    var datetimeFormatted = "".concat(datetime.getFullYear(), "-").concat(('0' + (datetime.getMonth() + 1)).slice(-2), "-").concat(('0' + datetime.getDate()).slice(-2), " ").concat(form.time);
-
-    // Вызов коллбэка для добавления сеанса
-    callbackSubmit(datetimeFormatted, form.cinemaHall, form.movie).then(function () {
-      // Закрытие всплывающего окна и обновление списка сеансов
-      dispatch((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_2__.closePopup)());
-      dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_3__.getSeances)());
-    });
-  };
+            // Форматирование даты и времени для запроса
+            datetime = new Date(form.date);
+            formattedDatetime = "".concat(datetime.getFullYear(), "-").concat(('0' + (datetime.getMonth() + 1)).slice(-2), "-").concat(('0' + datetime.getDate()).slice(-2), " ").concat(form.time);
+            _context.prev = 3;
+            _context.next = 6;
+            return callbackSubmit(formattedDatetime, form.cinemaHall, form.movie);
+          case 6:
+            // Закрытие всплывающего окна и обновление списка сеансов
+            dispatch((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__.closePopup)());
+            dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_3__.getSeances)());
+            _context.next = 13;
+            break;
+          case 10:
+            _context.prev = 10;
+            _context.t0 = _context["catch"](3);
+            console.error("Ошибка при отправке сеанса:", _context.t0);
+          case 13:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee, null, [[3, 10]]);
+    }));
+    return function handleSubmit(_x2) {
+      return _ref.apply(this, arguments);
+    };
+  }();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
     acceptCharset: "utf-8",
     onSubmit: handleSubmit,
@@ -1412,8 +1478,8 @@ function SeanceCard(props) {
       children: ["\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u0437\u0430\u043B\u0430", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("select", {
         className: "conf-step__input",
         name: "cinemaHall",
-        defaultValue: cinema_hall_id,
-        onChange: handleChange,
+        value: form.cinemaHall,
+        onChange: handleInputChange,
         required: true,
         children: cinemaHalls.map(function (cinemaHall) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
@@ -1429,9 +1495,8 @@ function SeanceCard(props) {
         className: "conf-step__input",
         type: "date",
         value: form.date,
-        onChange: handleChange,
+        onChange: handleInputChange,
         name: "date",
-        pattern: "[0-9]{4}-[0-9]{2}-[0-9]{2}",
         min: "".concat(today.getFullYear(), "-").concat(('0' + (today.getMonth() + 1)).slice(-2), "-").concat(('0' + today.getDate()).slice(-2)),
         required: true
       })]
@@ -1442,7 +1507,7 @@ function SeanceCard(props) {
         className: "conf-step__input",
         type: "time",
         value: form.time,
-        onChange: handleChange,
+        onChange: handleInputChange,
         name: "time",
         required: true
       })]
@@ -1452,8 +1517,8 @@ function SeanceCard(props) {
       children: ["\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u0444\u0438\u043B\u044C\u043C\u0430", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("select", {
         className: "conf-step__input",
         name: "movie",
-        onChange: handleChange,
-        defaultValue: film_id,
+        value: form.movie,
+        onChange: handleInputChange,
         required: true,
         children: movies.map(function (movie) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
@@ -1699,7 +1764,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ SessionButton)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -1713,7 +1778,7 @@ function SessionButton(props) {
   // Обработчик для отмены (закрытия попапа)
   var CancelPopup = function CancelPopup(e) {
     e.preventDefault();
-    dispatch((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_1__.closePopup)()); // Вызов экшена для закрытия попапа
+    dispatch((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_1__.closePopup)()); // Вызов экшена для закрытия попапа
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -1750,8 +1815,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
 /* harmony import */ var _allButtons_sessionButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../allButtons/sessionButton */ "./resources/js/components/Admin/AdminPanelComponents/allButtons/sessionButton.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -1810,15 +1875,15 @@ function AddHall(props) {
       var updatedHallData = _objectSpread(_objectSpread({}, targetHall), {}, {
         hallName: formData.hallName
       });
-      dispatcher((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.updateHall)(updatedHallData)).then(function () {
-        dispatcher((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_3__.closePopup)());
-        dispatcher((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.getHalls)());
+      dispatcher((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.updateHall)(updatedHallData)).then(function () {
+        dispatcher((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_3__.closePopup)());
+        dispatcher((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.getHalls)());
       });
     } else {
       // Создание нового зала
-      dispatcher((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.createHall)(formData.hallName)).then(function () {
-        dispatcher((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_3__.closePopup)());
-        dispatcher((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.getHalls)());
+      dispatcher((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.createHall)(formData.hallName)).then(function () {
+        dispatcher((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_3__.closePopup)());
+        dispatcher((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.getHalls)());
       });
     }
   };
@@ -1859,8 +1924,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
 /* harmony import */ var _allButtons_sessionButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../allButtons/sessionButton */ "./resources/js/components/Admin/AdminPanelComponents/allButtons/sessionButton.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -1897,9 +1962,9 @@ function DeleteHall() {
             event.preventDefault();
             try {
               // Удаление зала и обновление списка
-              dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.deleteHall)(id));
-              dispatch((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_3__.closePopup)());
-              dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.getHalls)());
+              dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.deleteHall)(id));
+              dispatch((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_3__.closePopup)());
+              dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.getHalls)());
             } catch (error) {
               console.error("Ошибка при удалении фильма:", error);
               // Дополнительная обработка ошибок, вывод сообщений и т.д.
@@ -1943,7 +2008,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
 /* harmony import */ var _AdminConfigurationsComponents_movie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../AdminConfigurationsComponents/movie */ "./resources/js/components/Admin/AdminConfigurationsComponents/movie.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
@@ -1958,7 +2023,7 @@ function AddMovie() {
   // Обработчик создания нового фильма
   var handleMovieCreation = function handleMovieCreation(title, description, duration, country, poster) {
     // Диспетчеризация действия создания фильма с переданными данными
-    dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.createMovie)({
+    dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.createMovie)({
       title: title,
       description: description,
       duration: duration,
@@ -1992,8 +2057,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
 /* harmony import */ var _allButtons_sessionButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../allButtons/sessionButton */ "./resources/js/components/Admin/AdminPanelComponents/allButtons/sessionButton.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -2033,10 +2098,10 @@ function CustomDeleteMovie() {
             event.preventDefault();
             try {
               // await dispatch(deleteMovie(id));
-              dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.deleteMovie)(id)); // Удаление фильма
-              dispatch((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_3__.closePopup)()); // Закрытие всплывающего окна
-              dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.getSeances)()); // Обновление списка сеансов
-              dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.getMovies)()); // Обновление списка фильмов
+              dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.deleteMovie)(id)); // Удаление фильма
+              dispatch((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_3__.closePopup)()); // Закрытие всплывающего окна
+              dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.getSeances)()); // Обновление списка сеансов
+              dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.getMovies)()); // Обновление списка фильмов
             } catch (error) {
               console.error("Ошибка при удалении фильма:", error);
               // Дополнительная обработка ошибок, вывод сообщений и т.д.
@@ -2080,8 +2145,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
 /* harmony import */ var _AdminConfigurationsComponents_movie__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../AdminConfigurationsComponents/movie */ "./resources/js/components/Admin/AdminConfigurationsComponents/movie.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
@@ -2105,7 +2170,7 @@ function EditMovie() {
     return movie.id === id;
   });
   var handleUpdateMovie = function handleUpdateMovie(title, description, duration, country, poster) {
-    dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_3__.updateMovie)({
+    dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_3__.updateMovie)({
       id: id,
       title: title,
       description: description,
@@ -2115,7 +2180,7 @@ function EditMovie() {
     }));
   };
   var handleDeleteMovie = function handleDeleteMovie() {
-    dispatch((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_2__.showPopup)({
+    dispatch((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__.showPopup)({
       title: "Удаление фильма",
       form: "deleteMovie",
       id: id
@@ -2151,7 +2216,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Popup)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
 /* harmony import */ var _Images_close_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../Images/close.png */ "./resources/js/components/Images/close.png");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
@@ -2217,7 +2282,7 @@ function Popup() {
             children: [title, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("a", {
               className: "popup__dismiss",
               onClick: function onClick() {
-                return dispatch((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_1__.closePopup)());
+                return dispatch((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_1__.closePopup)());
               },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("img", {
                 src: _Images_close_png__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -2250,7 +2315,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
 /* harmony import */ var _AdminConfigurationsComponents_seance__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../AdminConfigurationsComponents/seance */ "./resources/js/components/Admin/AdminConfigurationsComponents/seance.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -2285,7 +2350,7 @@ function AddSeance() {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             _context.prev = 0;
-            dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.createSeance)({
+            dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.createSeance)({
               datetime: datetime,
               cinema_hall_id: cinema_hall_id,
               film_id: film_id
@@ -2343,8 +2408,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ DeleteSeance)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
 /* harmony import */ var _allButtons_sessionButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../allButtons/sessionButton */ "./resources/js/components/Admin/AdminPanelComponents/allButtons/sessionButton.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -2384,9 +2449,9 @@ function DeleteSeance() {
             event.preventDefault();
             try {
               // Диспатчим действие удаления сеанса, после чего обновляем список сеансов
-              dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_1__.deleteSeance)(id));
-              dispatch((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_2__.closePopup)());
-              dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_1__.getSeances)());
+              dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_1__.deleteSeance)(id));
+              dispatch((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_2__.closePopup)());
+              dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_1__.getSeances)());
             } catch (error) {
               console.error("Ошибка при удалении фильма:", error);
               // Дополнительная обработка ошибок, вывод сообщений и т.д.
@@ -2428,8 +2493,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ EditSeance)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createPopup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../reducers/createPopup */ "./resources/js/reducers/createPopup.js");
-/* harmony import */ var _reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../reducers/createAdmin */ "./resources/js/reducers/createAdmin.js");
+/* harmony import */ var _reducers_popupReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../reducers/popupReducer */ "./resources/js/reducers/popupReducer.js");
+/* harmony import */ var _reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../reducers/adminReducer */ "./resources/js/reducers/adminReducer.js");
 /* harmony import */ var _AdminConfigurationsComponents_seance__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../AdminConfigurationsComponents/seance */ "./resources/js/components/Admin/AdminConfigurationsComponents/seance.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
@@ -2463,7 +2528,7 @@ function EditSeance() {
     date: date,
     time: time,
     callbackSubmit: function callbackSubmit(datetime, cinema_hall_id, film_id) {
-      return dispatch((0,_reducers_createAdmin__WEBPACK_IMPORTED_MODULE_2__.updateSeance)({
+      return dispatch((0,_reducers_adminReducer__WEBPACK_IMPORTED_MODULE_2__.updateSeance)({
         id: id,
         datetime: datetime,
         cinema_hall_id: cinema_hall_id,
@@ -2471,7 +2536,7 @@ function EditSeance() {
       }));
     },
     callbackDelete: function callbackDelete() {
-      return dispatch((0,_reducers_createPopup__WEBPACK_IMPORTED_MODULE_1__.showPopup)({
+      return dispatch((0,_reducers_popupReducer__WEBPACK_IMPORTED_MODULE_1__.showPopup)({
         title: "Удаление сеанса",
         form: "deleteSeance",
         id: id
@@ -2491,17 +2556,19 @@ function EditSeance() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Main)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _AdminPanelComponents_adminHeader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AdminPanelComponents/adminHeader */ "./resources/js/components/Admin/AdminPanelComponents/adminHeader/index.js");
-/* harmony import */ var _AdminPanelComponents_adminHeader_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdminPanelComponents/adminHeader/header */ "./resources/js/components/Admin/AdminPanelComponents/adminHeader/header.js");
-/* harmony import */ var _AdminConfigurationsComponents_cinemaControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AdminConfigurationsComponents/cinemaControl */ "./resources/js/components/Admin/AdminConfigurationsComponents/cinemaControl.js");
-/* harmony import */ var _AdminConfigurationsComponents_cinemaConfig__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AdminConfigurationsComponents/cinemaConfig */ "./resources/js/components/Admin/AdminConfigurationsComponents/cinemaConfig.js");
-/* harmony import */ var _AdminConfigurationsComponents_price__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AdminConfigurationsComponents/price */ "./resources/js/components/Admin/AdminConfigurationsComponents/price.js");
-/* harmony import */ var _AdminConfigurationsComponents_session__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AdminConfigurationsComponents/session */ "./resources/js/components/Admin/AdminConfigurationsComponents/session.js");
-/* harmony import */ var _AdminConfigurationsComponents_filmsSales__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AdminConfigurationsComponents/filmsSales */ "./resources/js/components/Admin/AdminConfigurationsComponents/filmsSales.js");
-/* harmony import */ var _AdminPanelComponents_allPopup_Popup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AdminPanelComponents/allPopup/Popup */ "./resources/js/components/Admin/AdminPanelComponents/allPopup/Popup/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _AdminPanelComponents_adminHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdminPanelComponents/adminHeader */ "./resources/js/components/Admin/AdminPanelComponents/adminHeader/index.js");
+/* harmony import */ var _AdminPanelComponents_adminHeader_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AdminPanelComponents/adminHeader/header */ "./resources/js/components/Admin/AdminPanelComponents/adminHeader/header.js");
+/* harmony import */ var _AdminConfigurationsComponents_cinemaControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AdminConfigurationsComponents/cinemaControl */ "./resources/js/components/Admin/AdminConfigurationsComponents/cinemaControl.js");
+/* harmony import */ var _AdminConfigurationsComponents_cinemaConfig__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AdminConfigurationsComponents/cinemaConfig */ "./resources/js/components/Admin/AdminConfigurationsComponents/cinemaConfig.js");
+/* harmony import */ var _AdminConfigurationsComponents_price__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AdminConfigurationsComponents/price */ "./resources/js/components/Admin/AdminConfigurationsComponents/price.js");
+/* harmony import */ var _AdminConfigurationsComponents_session__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AdminConfigurationsComponents/session */ "./resources/js/components/Admin/AdminConfigurationsComponents/session.js");
+/* harmony import */ var _AdminConfigurationsComponents_filmsSales__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AdminConfigurationsComponents/filmsSales */ "./resources/js/components/Admin/AdminConfigurationsComponents/filmsSales.js");
+/* harmony import */ var _AdminPanelComponents_allPopup_Popup__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./AdminPanelComponents/allPopup/Popup */ "./resources/js/components/Admin/AdminPanelComponents/allPopup/Popup/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -2513,29 +2580,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function Main() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_AdminPanelComponents_allPopup_Popup__WEBPACK_IMPORTED_MODULE_7__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_AdminPanelComponents_adminHeader__WEBPACK_IMPORTED_MODULE_0__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("main", {
+var Main = function Main() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminPanelComponents_allPopup_Popup__WEBPACK_IMPORTED_MODULE_8__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminPanelComponents_adminHeader__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("main", {
       className: "conf-steps",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_AdminPanelComponents_adminHeader_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminPanelComponents_adminHeader_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
         title: 'Управление залами',
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_AdminConfigurationsComponents_cinemaControl__WEBPACK_IMPORTED_MODULE_2__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_AdminPanelComponents_adminHeader_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminConfigurationsComponents_cinemaControl__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminPanelComponents_adminHeader_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
         title: 'Конфигурация залов',
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_AdminConfigurationsComponents_cinemaConfig__WEBPACK_IMPORTED_MODULE_3__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_AdminPanelComponents_adminHeader_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminConfigurationsComponents_cinemaConfig__WEBPACK_IMPORTED_MODULE_4__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminPanelComponents_adminHeader_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
         title: 'Конфигурация цен',
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_AdminConfigurationsComponents_price__WEBPACK_IMPORTED_MODULE_4__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_AdminPanelComponents_adminHeader_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminConfigurationsComponents_price__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminPanelComponents_adminHeader_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
         title: 'Сетка сеансов',
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_AdminConfigurationsComponents_session__WEBPACK_IMPORTED_MODULE_5__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_AdminPanelComponents_adminHeader_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminConfigurationsComponents_session__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminPanelComponents_adminHeader_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
         title: 'Открыть продажи',
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_AdminConfigurationsComponents_filmsSales__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AdminConfigurationsComponents_filmsSales__WEBPACK_IMPORTED_MODULE_7__["default"], {})
       })]
     })]
   });
-}
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Main);
 
 /***/ }),
 
@@ -2548,37 +2616,41 @@ function Main() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Exit)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createAuth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../reducers/createAuth */ "./resources/js/reducers/createAuth.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_authReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/authReducer */ "./resources/js/reducers/authReducer.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+// import { logout } from "../../../../reducers/authReducer";
 
 
-function Exit() {
+var Exit = function Exit() {
   // Извлечение информации о токене из состояния
-  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.auth;
     }),
     token = _useSelector.token;
-
-  // Получение диспетчера Redux
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
   // Обработчик для выхода из системы (вызов действия logout)
-  var handleClick = function handleClick() {
-    dispatch((0,_reducers_createAuth__WEBPACK_IMPORTED_MODULE_1__.logout)());
+  var handleLogout = function handleLogout() {
+    dispatch((0,_reducers_authReducer__WEBPACK_IMPORTED_MODULE_2__.logoutAdmin)());
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: token && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "page-header__exit",
-      onClick: handleClick,
-      children: "\u0412\u044B\u0445\u043E\u0434"
-    })
+  if (!token) {
+    return null; // Не отображаем компонент, если нет токена
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    className: "page-header__exit",
+    onClick: handleLogout,
+    children: "\u0412\u044B\u0445\u043E\u0434"
   });
-}
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Exit);
 
 /***/ }),
 

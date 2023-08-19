@@ -1,18 +1,19 @@
 export default function ChooseOpenHalls(props) {
     const { id, name, free, callback } = props;
 
+    const uniqueCheckboxId = `cinemaHallCheck${id}`;// Уникальный идентификатор 
+
     return (
-        <>
-            {/* Пользовательский чекбокс для выбора открытого зала */}
+        <div className="conf-step__hall-checkbox">
             <input
-                id={`cinemaHallCheck${id}`} // Уникальный идентификатор для связи с label
+                id={uniqueCheckboxId}
                 className="conf-step__custom-checkbox"
                 type="checkbox"
-                checked={free} // Определение состояния выбора (true/false)
-                onChange={callback} // Обработчик изменения состояния
+                checked={free}// Определение состояния выбора (true/false)
+                onChange={callback}// Обработчик изменения состояния
             />
-            <label htmlFor={`cinemaHallCheck${id}`}>{name}</label> {/* Метка для чекбокса */}
-        </>
+            <label htmlFor={uniqueCheckboxId}>{name}</label>
+        </div>
     );
 }
 

@@ -25,7 +25,7 @@ class SeatSeeder extends Seeder
         $totalSeats = 95;
 
         // Общее количество залов
-        $totalCinemaHalls = 6;
+        $totalCinemaHalls = 3;
 
         // Случайное определение занятых мест
         $disabledSeats = [];

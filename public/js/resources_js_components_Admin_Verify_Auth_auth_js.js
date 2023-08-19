@@ -24,9 +24,8 @@ function Auth(_ref) {
       return state.auth;
     }),
     token = _useSelector.token;
-
   // Получение текущего маршрута
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useLocation)();
+  var currentLocation = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useLocation)();
 
   // Проверка наличия токена
   if (!token) {
@@ -34,7 +33,7 @@ function Auth(_ref) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Navigate, {
       to: "/admin/login",
       state: {
-        from: location
+        from: currentLocation
       },
       replace: true
     });

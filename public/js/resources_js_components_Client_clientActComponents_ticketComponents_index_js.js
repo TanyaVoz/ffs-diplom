@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createCalendar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/createCalendar */ "./resources/js/reducers/createCalendar.js");
+/* harmony import */ var _reducers_calendarReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/calendarReducer */ "./resources/js/reducers/calendarReducer.js");
 /* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index */ "./resources/js/components/Client/additionalComponents/Formatting/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -72,7 +72,7 @@ function Navigate() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)(); // Получение функции dispatch из Redux
   var todayDayWeek = new Date(); // Текущая дата
   var _handleDateClick = function handleDateClick(day) {
-    dispatch((0,_reducers_createCalendar__WEBPACK_IMPORTED_MODULE_2__.chooseDate)("".concat(day.getFullYear(), "-").concat(day.getMonth() + 1, "-").concat(day.getDate())));
+    dispatch((0,_reducers_calendarReducer__WEBPACK_IMPORTED_MODULE_2__.chooseDate)("".concat(day.getFullYear(), "-").concat(day.getMonth() + 1, "-").concat(day.getDate())));
   };
   // Обработчик для переключения даты назад или вперед
   var handleDateChange = function handleDateChange(day, arg) {
@@ -274,7 +274,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _reducers_createSeance__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/createSeance */ "./resources/js/reducers/createSeance.js");
+/* harmony import */ var _reducers_seanceReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/seanceReducer */ "./resources/js/reducers/seanceReducer.js");
 /* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Main */ "./resources/js/components/Client/Main.js");
 /* harmony import */ var _qrcode__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./qrcode */ "./resources/js/components/Client/clientActComponents/ticketComponents/qrcode.js");
 /* harmony import */ var _additionalComponents_clientHeader_ticketHeaderClient__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../additionalComponents/clientHeader/ticketHeaderClient */ "./resources/js/components/Client/additionalComponents/clientHeader/ticketHeaderClient.js");
@@ -310,11 +310,11 @@ function TicketContent(_ref) {
     }
 
     // Вызов Redux-экшена для покупки билета
-    dispatch((0,_reducers_createSeance__WEBPACK_IMPORTED_MODULE_2__.buyTicket)());
+    dispatch((0,_reducers_seanceReducer__WEBPACK_IMPORTED_MODULE_2__.buyTicket)());
 
     // Очистка данных о сеансе после завершения компонента
     return function () {
-      return dispatch((0,_reducers_createSeance__WEBPACK_IMPORTED_MODULE_2__.resetSeance)());
+      return dispatch((0,_reducers_seanceReducer__WEBPACK_IMPORTED_MODULE_2__.resetSeance)());
     };
   }, [dispatch, navigate, session.id, ticket.seanceId]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("section", {

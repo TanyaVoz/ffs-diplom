@@ -1,5 +1,6 @@
+import React from "react";
 import Header from "./AdminPanelComponents/adminHeader";
-import StepHeader from "./AdminPanelComponents/adminHeader/header";
+import CustomStepHeader from "./AdminPanelComponents/adminHeader/header";
 import CinemaHallControl from "./AdminConfigurationsComponents/cinemaControl";
 import CinemaHallConfig from "./AdminConfigurationsComponents/cinemaConfig";
 import PriceConfig from "./AdminConfigurationsComponents/price";
@@ -7,42 +8,44 @@ import SessionGrid from "./AdminConfigurationsComponents/session";
 import OpenSales from "./AdminConfigurationsComponents/filmsSales";
 import Popup from "./AdminPanelComponents/allPopup/Popup";
 
-export default function Main() {
-    return (
-        <>
-            {/* Отображение всплывающего окна */}
-            <Popup />
+const Main = () => {
+  return (
+    <div>
+      {/* Отображение всплывающего окна */}
+      <Popup />
 
-            {/* Отображение заголовка страницы */}
-            <Header />
+      {/* Отображение заголовка страницы */}
+      <Header />
 
-            <main className="conf-steps">
-                {/* Первый шаг: Управление залами */}
-                <StepHeader title={'Управление залами'}>
-                    <CinemaHallControl />
-                </StepHeader>
+      <main className="conf-steps">
+        {/* Первый шаг: Управление залами */}
+        <CustomStepHeader title={'Управление залами'}>
+          <CinemaHallControl />
+        </CustomStepHeader>
 
-                {/* Второй шаг: Конфигурация залов */}
-                <StepHeader title={'Конфигурация залов'}>
-                    <CinemaHallConfig />
-                </StepHeader>
+        {/* Второй шаг: Конфигурация залов */}
+        <CustomStepHeader title={'Конфигурация залов'}>
+          <CinemaHallConfig />
+        </CustomStepHeader>
 
-                {/* Третий шаг: Конфигурация цен */}
-                <StepHeader title={'Конфигурация цен'}>
-                    <PriceConfig />
-                </StepHeader>
+        {/* Третий шаг: Конфигурация цен */}
+        <CustomStepHeader title={'Конфигурация цен'}>
+          <PriceConfig />
+        </CustomStepHeader>
 
-                {/* Четвёртый шаг: Сетка сеансов */}
-                <StepHeader title={'Сетка сеансов'}>
-                    <SessionGrid />
-                </StepHeader>
+        {/* Четвёртый шаг: Сетка сеансов */}
+        <CustomStepHeader title={'Сетка сеансов'}>
+          <SessionGrid />
+        </CustomStepHeader>
 
-                {/* Пятый шаг: Открыть продажи */}
-                <StepHeader title={'Открыть продажи'}>
-                    <OpenSales />
-                </StepHeader>
-            </main>
-        </>
-    );
-}
+        {/* Пятый шаг: Открыть продажи */}
+        <CustomStepHeader title={'Открыть продажи'}>
+          <OpenSales />
+        </CustomStepHeader>
+      </main>
+    </div>
+  );
+};
+
+export default Main;
 

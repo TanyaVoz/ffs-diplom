@@ -1,68 +1,62 @@
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { updateHall } from "../../../reducers/createAdmin";
+import { updateHall } from "../../../reducers/adminReducer";
 import ChooseOpenHalls from "../AdminActComponents/SeancesAct/choose";
 import Button from "../AdminPanelComponents/allButtons/button";
 
 export default function CinemaHallStatusManager() {
-  // Получение данных о залах из глобального состояния с использованием useSelector
+  // Получение данных о залах из глобального состояния
   const { cinemaHalls } = useSelector((state) => state.admin);
 
   // Локальное состояние для хранения измененных данных о залах
-  const [changedCinemaHalls, setChangedCinemaHalls] = useState([]);
+  const [modifiedHalls, setModifiedHalls] = useState([]);
 
   // Получение диспатча из React Redux
   const dispatch = useDispatch();
 
   // Обновление локального состояния при изменении данных о залах
   useEffect(() => {
-    setChangedCinemaHalls(cinemaHalls);
+    setModifiedHalls(cinemaHalls);
   }, [cinemaHalls]);
 
   // Обработчик изменения состояния зала (открыт/закрыт)
-  const handleChange = (cinemaHall) => {
-    setChangedCinemaHalls((prevState) =>
-      prevState.map((item) =>
-        item.id === cinemaHall.id ? { ...item, free: !item.free } : item
+  const toggleHallState = (hall) => {
+    setModifiedHalls((prevHalls) =>
+      prevHalls.map((item) =>
+        item.id === hall.id ? { ...item, free: !item.free } : item
       )
     );
   };
 
   // Обработчик сохранения изменений
-  const handleSubmit = () => {
-    changedCinemaHalls.forEach((item) => {
-      const originalCinemaHall = cinemaHalls.find(
-        (cinemaHall) => cinemaHall.id === item.id
-      );
-      // Проверка на изменение состояния зала и отправка обновления в хранилище
-      if (originalCinemaHall && originalCinemaHall.free !== item.free) {
-        dispatch(updateHall(item));
+  const handleSaveChanges = () => {
+    modifiedHalls.forEach((hall) => {
+      const originalHall = cinemaHalls.find((item) => item.id === hall.id);
+      if (originalHall && originalHall.free !== hall.free) {
+        dispatch(updateHall(hall)); // Отправка обновления состояния зала в хранилище
       }
     });
   };
 
   return (
     <div className="conf-step__wrapper text-center">
-      <p className="conf-step__paragraph">Открыть зал:</p>
+      <p className="conf-step__paragraph">Управление состоянием залов:</p>
       <ul className="conf-step__list conf-step__list_start">
         {/* Вывод списка залов с возможностью изменения их состояния */}
-        {changedCinemaHalls.map((cinemaHall) => (
-          <li key={cinemaHall.id}>
+        {modifiedHalls.map((hall) => (
+          <li key={hall.id}>
             <ChooseOpenHalls
-              id={cinemaHall.id}
-              name={cinemaHall.name}
-              free={cinemaHall.free}
-              callback={() => handleChange(cinemaHall)}
+              id={hall.id}
+              name={hall.name}
+              free={hall.free}
+              callback={() => toggleHallState(hall)}
             />
           </li>
         ))}
       </ul>
-      <p className="conf-step__paragraph">Всё готово, теперь можно:</p>
+      <p className="conf-step__paragraph">Сохраните изменения:</p>
       {/* Кнопка для сохранения изменений */}
-      <Button
-        text={"Открыть продажу билетов"}
-        callback={handleSubmit}
-      />
+      <Button text={"Сохранить изменения"} callback={handleSaveChanges} />
     </div>
   );
 }

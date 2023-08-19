@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createHall, getHalls, updateHall } from "../../../../../reducers/createAdmin";
-import { closePopup } from "../../../../../reducers/createPopup";
+import { createHall, getHalls, updateHall } from "../../../../../reducers/adminReducer";
+import { closePopup } from "../../../../../reducers/popupReducer";
 import SessionButton from "../../allButtons/sessionButton";
 
 export default function AddHall(props) {

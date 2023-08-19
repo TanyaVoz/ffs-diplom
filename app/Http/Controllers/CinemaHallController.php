@@ -10,71 +10,91 @@ use Illuminate\Http\Response;
 class CinemaHallController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * Display a list of cinema halls.
      */
-    // Возвращает JSON-ответ, содержащий список всех кинозалов из базы данных.
-    
     public function index(): JsonResponse
     {
-        return response()->json(CinemaHall::all());
+         // Получение всех кинозалов из базы данных
+        $cinemaHalls = CinemaHall::all();
+      
+        return response()->json($cinemaHalls);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created cinema hall.
      *
      * @param \App\Http\Requests\CinemaHallRequest $request
      * @return \App\Models\CinemaHall
      */
-
-    // Создает новый кинозал на основе валидированных данных из запроса и сохраняет его в базе данных.
     public function store(CinemaHallRequest $request): CinemaHall
     {
-        return CinemaHall::create($request->validated());
+        
+        $validatedData = $request->validated();
+        // Создание нового кинозала с использованием валидированных данных и сохранение в базе данных
+        $cinemaHall = CinemaHall::create($validatedData);
+        
+        return $cinemaHall;
     }
 
     /**
-     * Display the specified resource.
+     * Display information about the specified cinema hall.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-            // Ищет кинозал с указанным идентификатором в базе данных.
-        
-    public function show(int $id): Response
+    public function show(int $id): JsonResponse
     {
-        return CinemaHall::findOrFail($id);
+        try {
+           // Поиск кинозала с указанным идентификатором в базе данных
+            $cinemaHall = CinemaHall::findOrFail($id);
+            
+            return response()->json($cinemaHall);
+        } catch (\Exception $e) {
+   // Возвращение JSON-ответа с сообщением об ошибке, если кинозал не найден
+            return response()->json(['error' => 'Cinema hall not found.'], Response::HTTP_NOT_FOUND);
+        }
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update information about the specified cinema hall.
      *
      * @param \App\Http\Requests\CinemaHallRequest $request
      * @param \App\Models\CinemaHall $cinemaHall
-     * @return bool
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(CinemaHallRequest $request, CinemaHall $cinemaHall): bool
+    public function update(CinemaHallRequest $request, CinemaHall $cinemaHall): JsonResponse
     {
-        $cinemaHall->fill($request->validated());
-        return $cinemaHall->save();
+        // Проверка и валидация входных данных запроса
+        $validatedData = $request->validated();
+        
+        $cinemaHall->fill($validatedData);
+
+        if ($cinemaHall->save()) {
+           
+            return response()->json(['message' => 'Cinema hall updated successfully.']);
+        } else {
+             // Возвращение JSON-ответа с сообщением об ошибке, если обновление не удалось
+            return response()->json(['error' => 'Failed to update cinema hall.'], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified cinema hall.
      *
      * @param \App\Models\CinemaHall $cinemaHall
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    // Пытается удалить кинозал из базы данных.
-        // Если удаление прошло успешно, возвращает HTTP-ответ с кодом 204 (No Content).
-        // Если удаление не удалось, возвращает HTTP-ответ с кодом 500 (Internal Server Error) и сообщением об ошибке.
-    public function destroy(CinemaHall $cinemaHall): Response
+    public function destroy(CinemaHall $cinemaHall): JsonResponse
     {
-        if ($cinemaHall->delete()) {
-            return response(null, Response::HTTP_NO_CONTENT);
+        try {
+             // Удаление выбранного кинозала из базы данных
+            $cinemaHall->delete();
+           
+            return response()->json(['message' => 'Cinema hall deleted successfully.']);
+        } catch (\Exception $e) {
+           // Возвращение JSON-ответа с сообщением об ошибке, если удаление не удалось
+            return response()->json(['error' => 'Failed to delete cinema hall.'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
-        return response()->json(['error' => 'Failed to delete cinema hall.'], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }
 

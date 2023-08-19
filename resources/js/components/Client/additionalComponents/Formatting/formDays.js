@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { chooseDate } from "../../../../reducers/createCalendar";
+import { chooseDate } from "../../../../reducers/calendarReducer";
 import Navigation from "./index";
 
 export default function Navigate() {

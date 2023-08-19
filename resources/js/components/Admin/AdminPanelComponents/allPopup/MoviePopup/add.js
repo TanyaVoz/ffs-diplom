@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { createMovie } from "../../../../../reducers/createAdmin";
+import { createMovie } from "../../../../../reducers/adminReducer";
 import MovieCard from "../../../AdminConfigurationsComponents/movie";
 
 export default function AddMovie() {

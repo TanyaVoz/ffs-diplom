@@ -41,37 +41,41 @@ function Header() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Exit)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createAuth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../reducers/createAuth */ "./resources/js/reducers/createAuth.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_authReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/authReducer */ "./resources/js/reducers/authReducer.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+// import { logout } from "../../../../reducers/authReducer";
 
 
-function Exit() {
+var Exit = function Exit() {
   // Извлечение информации о токене из состояния
-  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.auth;
     }),
     token = _useSelector.token;
-
-  // Получение диспетчера Redux
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
   // Обработчик для выхода из системы (вызов действия logout)
-  var handleClick = function handleClick() {
-    dispatch((0,_reducers_createAuth__WEBPACK_IMPORTED_MODULE_1__.logout)());
+  var handleLogout = function handleLogout() {
+    dispatch((0,_reducers_authReducer__WEBPACK_IMPORTED_MODULE_2__.logoutAdmin)());
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: token && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "page-header__exit",
-      onClick: handleClick,
-      children: "\u0412\u044B\u0445\u043E\u0434"
-    })
+  if (!token) {
+    return null; // Не отображаем компонент, если нет токена
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    className: "page-header__exit",
+    onClick: handleLogout,
+    children: "\u0412\u044B\u0445\u043E\u0434"
   });
-}
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Exit);
 
 /***/ }),
 
@@ -83,13 +87,13 @@ function Exit() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Login)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _reducers_createAuth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/createAuth */ "./resources/js/reducers/createAuth.js");
+/* harmony import */ var _reducers_authReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../reducers/authReducer */ "./resources/js/reducers/authReducer.js");
 /* harmony import */ var _AdminPanelComponents_adminHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../AdminPanelComponents/adminHeader */ "./resources/js/components/Admin/AdminPanelComponents/adminHeader/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -107,54 +111,56 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+//import { getToken, resetAuthStatus } from "../../../../reducers/authReducer";
 
 
 
 
-
-function Login() {
+var Login = function Login() {
   // Извлечение информации о статусе аутентификации из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.auth;
     }),
     status = _useSelector.status;
 
+  // Получение диспетчера Redux
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+
+  // Получение функции навигации для переходов
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
+
   // Изначальное состояние формы для входа
-  var EMPTY_STATE = {
+  var initialLoginForm = {
     mail: "",
     pwd: ""
   };
 
   // Состояние формы для входа
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(EMPTY_STATE),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialLoginForm),
     _useState2 = _slicedToArray(_useState, 2),
     loginForm = _useState2[0],
     setLoginForm = _useState2[1];
 
-  // Получение диспетчера Redux
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-
-  // Получение функции навигации
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
+  // Эффект для обработки изменений статуса аутентификации
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    // При изменении статуса аутентификации
     if (status === "success") {
       // Сброс статуса аутентификации и переход на главную страницу администратора
-      dispatch((0,_reducers_createAuth__WEBPACK_IMPORTED_MODULE_2__.resetAuthStatus)());
-      navigate('/admin');
+      dispatch((0,_reducers_authReducer__WEBPACK_IMPORTED_MODULE_2__.resetAuthStatusAdmin)());
+      navigate("/admin");
     } else if (status === "error") {
       // Если статус - ошибка, сбрасываем данные формы
-      setLoginForm(EMPTY_STATE);
+      setLoginForm(initialLoginForm);
     }
   }, [status]);
 
   // Обработчик изменения полей формы
-  var handleChange = function handleChange(_ref) {
+  var handleInputChange = function handleInputChange(_ref) {
     var target = _ref.target;
-    var name = target.name;
-    var value = target.value;
-    setLoginForm(function (prevState) {
-      return _objectSpread(_objectSpread({}, prevState), {}, _defineProperty({}, name, value));
+    var name = target.name,
+      value = target.value;
+    // Обновление состояния формы с новыми данными
+    setLoginForm(function (prevForm) {
+      return _objectSpread(_objectSpread({}, prevForm), {}, _defineProperty({}, name, value));
     });
   };
 
@@ -162,12 +168,12 @@ function Login() {
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
     // Вызываем действие для получения токена с указанными данными
-    dispatch((0,_reducers_createAuth__WEBPACK_IMPORTED_MODULE_2__.getToken)({
+    dispatch((0,_reducers_authReducer__WEBPACK_IMPORTED_MODULE_2__.adminAuth)({
       email: loginForm.mail,
       password: loginForm.pwd
     }));
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AdminPanelComponents_adminHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("main", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("section", {
         className: "login",
@@ -192,7 +198,7 @@ function Login() {
                 placeholder: "example@domain.xyz",
                 name: "mail",
                 value: loginForm.mail,
-                onChange: handleChange,
+                onChange: handleInputChange,
                 required: true
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
@@ -204,14 +210,14 @@ function Login() {
                 placeholder: "",
                 name: "pwd",
                 value: loginForm.pwd,
-                onChange: handleChange,
+                onChange: handleInputChange,
                 required: true
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
               className: "text-center",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                value: "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u043E\u0432\u0430\u0442\u044C\u0441\u044F",
                 type: "submit",
+                value: "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u043E\u0432\u0430\u0442\u044C\u0441\u044F",
                 className: "login__button"
               })
             })]
@@ -220,7 +226,8 @@ function Login() {
       })
     })]
   });
-}
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Login);
 
 /***/ })
 

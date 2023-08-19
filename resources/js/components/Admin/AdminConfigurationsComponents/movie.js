@@ -1,7 +1,7 @@
 import React, { useRef, useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { getMovies } from "../../../reducers/createAdmin";
-import { closePopup } from "../../../reducers/createPopup";
+import { getMovies } from "../../../reducers/adminReducer";
+import { closePopup } from "../../../reducers/popupReducer";
 import SessionButton from "../AdminPanelComponents/allButtons/sessionButton";
 
 export default function MovieCard(props) {

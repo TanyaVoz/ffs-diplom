@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { closePopup } from "../../../../../reducers/createPopup";
+import { closePopup } from "../../../../../reducers/popupReducer";
 import close from "../../../../Images/close.png";
 import classNames from "classnames";
 import AddHall from "../HallsPopup/add";

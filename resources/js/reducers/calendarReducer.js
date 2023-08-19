@@ -46,3 +46,6 @@ const createCalendarSlice = createSlice({
 // Экспорт действий и редуктора из среза
 export const { chooseDate} = createCalendarSlice.actions;
 export default createCalendarSlice.reducer;
+
+
+

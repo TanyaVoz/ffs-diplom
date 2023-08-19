@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCalendar } from "../../../../reducers/createCalendar";
+import { getCalendar } from "../../../../reducers/calendarReducer";
 import Movie from "./showBillboard";
 import Main from "../../Main";
 
