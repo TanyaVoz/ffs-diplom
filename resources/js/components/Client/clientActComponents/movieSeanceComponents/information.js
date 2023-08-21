@@ -1,4 +1,3 @@
-
 import { useSelector } from "react-redux";
 
 export default function SeanceInformation() {
@@ -10,7 +9,7 @@ export default function SeanceInformation() {
     }
 
     const datetime = new Date(session.datetime);
-    
+
     // Форматирование даты и времени для отображения отдельно
     const formattedDate = datetime.toLocaleDateString('ru-RU');
     const formattedTime = datetime.toLocaleTimeString('ru-RU', {
@@ -18,7 +17,7 @@ export default function SeanceInformation() {
         minute: '2-digit'
     });
 
-   
+
 
     return (
         <div className="buying__info">

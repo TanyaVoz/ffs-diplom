@@ -11,32 +11,30 @@ export default function DeleteHall() {
     const dispatch = useDispatch();
 
     const hallToDelete = cinemaHalls.find((cinemaHall) => cinemaHall.id === id);
-  
+
     const hallTitle = hallToDelete ? hallToDelete.title : "неизвестный зал";
 
     const handleDelete = async (event) => {
         event.preventDefault();
-        
-                try {
-                // Удаление зала и обновление списка
-                dispatch(deleteHall(id));
-                    dispatch(closePopup());
-                    dispatch(getHalls());
-                } catch (error) {
-                    console.error("Ошибка при удалении фильма:", error);
-                    // Дополнительная обработка ошибок, вывод сообщений и т.д.
-                }
-            };
-           
+
+        try {
+            // Удаление зала и обновление списка
+            dispatch(deleteHall(id));
+            dispatch(closePopup());
+            dispatch(getHalls());
+        } catch (error) {
+            console.error("Ошибка при удалении фильма:", error);
+        }
+    };
+
 
     return (
         <form onSubmit={handleDelete}>
             <p className="conf-step__paragraph">
-            Вы действительно хотите удалить зал <span>{hallTitle}</span>?</p>
-           {/* Кнопка подтверждения удаления */}
+                Вы действительно хотите удалить зал <span>{hallTitle}</span>?</p>
             <SessionButton text={"Удалить"} />
         </form>
     );
-    
+
 }
 

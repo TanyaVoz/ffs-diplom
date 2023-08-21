@@ -4,7 +4,7 @@ import { createMovie } from "../../../../../reducers/adminReducer";
 import MovieCard from "../../../AdminConfigurationsComponents/movie";
 
 export default function AddMovie() {
-    
+
     const dispatch = useDispatch();
 
     // Обработчик создания нового фильма

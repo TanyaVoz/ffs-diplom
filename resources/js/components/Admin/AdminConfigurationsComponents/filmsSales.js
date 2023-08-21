@@ -5,13 +5,10 @@ import ChooseOpenHalls from "../AdminActComponents/SeancesAct/choose";
 import Button from "../AdminPanelComponents/allButtons/button";
 
 export default function CinemaHallStatusManager() {
-  // Получение данных о залах из глобального состояния
   const { cinemaHalls } = useSelector((state) => state.admin);
 
   // Локальное состояние для хранения измененных данных о залах
   const [modifiedHalls, setModifiedHalls] = useState([]);
-
-  // Получение диспатча из React Redux
   const dispatch = useDispatch();
 
   // Обновление локального состояния при изменении данных о залах
@@ -55,7 +52,6 @@ export default function CinemaHallStatusManager() {
         ))}
       </ul>
       <p className="conf-step__paragraph">Сохраните изменения:</p>
-      {/* Кнопка для сохранения изменений */}
       <Button text={"Сохранить изменения"} callback={handleSaveChanges} />
     </div>
   );

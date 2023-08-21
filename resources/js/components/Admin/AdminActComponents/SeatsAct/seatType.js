@@ -20,7 +20,7 @@ export default function SeatStatus(props) {
 
     return (
         <span className={seatClassName} onClick={callback}>
-            {/* Отображение статуса места с применением классов */}
+
         </span>
     );
 }

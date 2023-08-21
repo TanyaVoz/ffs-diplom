@@ -46,7 +46,7 @@ class SeatSeeder extends Seeder
                 $status = 'standard';
             }
 
-            // Заполнение для каждого зала
+            
             for ($h = 1; $h <= $totalCinemaHalls; $h++) {
                 DB::table('seats')->insert([
                     'number' => $num,

@@ -68,9 +68,9 @@ function Navigate() {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.calendar;
     }),
-    chosenDate = _useSelector.chosenDate; // Получение выбранной даты из состояния Redux
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)(); // Получение функции dispatch из Redux
-  var todayDayWeek = new Date(); // Текущая дата
+    chosenDate = _useSelector.chosenDate;
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var todayDayWeek = new Date();
   var _handleDateClick = function handleDateClick(day) {
     dispatch((0,_reducers_calendarReducer__WEBPACK_IMPORTED_MODULE_2__.chooseDate)("".concat(day.getFullYear(), "-").concat(day.getMonth() + 1, "-").concat(day.getDate())));
   };
@@ -208,8 +208,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-//import { Link } from 'react-router-dom';
-
 function Header() {
   return (
     /*#__PURE__*/
@@ -241,7 +239,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
-// Компонент для отображения заголовка билета
 function TicketHeader(props) {
   // Получение текста заголовка из пропсов
   var text = props.text;

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import MovieTime from "./movieTime"; // Импорт компонента для отображения времени сеанса
+import MovieTime from "./movieTime"; 
 
 export default function HallTime(props) {
     const seances = useSelector(state => state.admin.seances); // Получение данных о сеансах из Redux

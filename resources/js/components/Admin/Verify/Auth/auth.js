@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 
 export default function Auth({ children }) {
-// Извлечение информации о токене из состояния
   const { token } = useSelector((state) => state.auth);
   // Получение текущего маршрута
   const currentLocation = useLocation();

@@ -50,7 +50,7 @@ class CinemaHallController extends Controller
             
             return response()->json($cinemaHall);
         } catch (\Exception $e) {
-   // Возвращение JSON-ответа с сообщением об ошибке, если кинозал не найден
+            // Возвращение JSON-ответа с сообщением об ошибке, если кинозал не найден
             return response()->json(['error' => 'Cinema hall not found.'], Response::HTTP_NOT_FOUND);
         }
     }
@@ -73,7 +73,7 @@ class CinemaHallController extends Controller
            
             return response()->json(['message' => 'Cinema hall updated successfully.']);
         } else {
-             // Возвращение JSON-ответа с сообщением об ошибке, если обновление не удалось
+            // Возвращение JSON-ответа с сообщением об ошибке, если обновление не удалось
             return response()->json(['error' => 'Failed to update cinema hall.'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
@@ -87,7 +87,7 @@ class CinemaHallController extends Controller
     public function destroy(CinemaHall $cinemaHall): JsonResponse
     {
         try {
-             // Удаление выбранного кинозала из базы данных
+            // Удаление выбранного кинозала из базы данных
             $cinemaHall->delete();
            
             return response()->json(['message' => 'Cinema hall deleted successfully.']);

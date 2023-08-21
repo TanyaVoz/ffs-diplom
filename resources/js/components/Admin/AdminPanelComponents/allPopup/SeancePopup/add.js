@@ -5,26 +5,21 @@ import SeanceCard from "../../../AdminConfigurationsComponents/seance";
 
 export default function AddSeance() {
     const dispatch = useDispatch();
-
-    // Получение списка фильмов и выбранной даты из состояния
     const { movies, chosenDate } = useSelector((state) => state.admin);
 
     // Получение ID зала из состояния всплывающего окна
     const { id } = useSelector((state) => state.popup);
 
-  
-    // const handleSeanceCreation = async (datetime, cinema_hall_id, film_id) => {
-        const handleSeanceCreation =  async (datetime, cinema_hall_id, film_id) => {
+    const handleSeanceCreation = async (datetime, cinema_hall_id, film_id) => {
         try {
-             dispatch(createSeance({
+            dispatch(createSeance({
                 datetime,
                 cinema_hall_id,
                 film_id
             }));
         } catch (error) {
             console.error("Ошибка при создании сеанса:", error);
-            // Дополнительная обработка ошибок, вывод сообщений и т.д.
-            throw error; // Прокидываем ошибку выше, чтобы вызывающий код мог обработать
+            throw error;
         }
     };
 

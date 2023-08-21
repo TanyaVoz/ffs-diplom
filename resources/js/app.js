@@ -1,4 +1,3 @@
-
 import React, { Suspense, lazy } from 'react'; //  Импортируем необходимые зависимости
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';

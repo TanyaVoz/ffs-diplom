@@ -10,10 +10,10 @@ class FilmRequest extends FormRequest
 {
 
     private mixed $name;
-private mixed $description;
-private mixed $duration;
-private mixed $country;
-private mixed $poster;
+    private mixed $description;
+    private mixed $duration;
+    private mixed $country;
+    private mixed $poster;
     /**
      * Determine if the user is authorized to make this request.
      *

@@ -33,7 +33,7 @@ const DeleteHallAction = ({ id, name }) => {
       <span className="conf-step__edit-hall" onClick={handleEditHallClick}>
         {name}
       </span>
-      {/* Кнопка для удаления зала */}
+
       <button
         className="conf-step__button conf-step__button-trash"
         onClick={handleDeleteHallClick}

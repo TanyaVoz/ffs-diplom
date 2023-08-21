@@ -1,59 +1,54 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-// Начальное состояние хранилища сеанса
+// Определяем начальное состояние для хранилища Redux
 const initialState = {
     session: {},
     seats: [],
     ticket: {},
 };
 
-// Создание асинхронного действия для получения информации о сеансе
+// Определяем асинхронную "thunk" функцию для получения информации о местах для заданного ID сессии
 export const getSeance = createAsyncThunk("seance/getSeats", async (id) => {
     const response = await fetch(`/api/client/seats/${id}`);
     return await response.json();
 });
 
-// Создание асинхронного действия для покупки билета
+// Определяем асинхронную "thunk" функцию для покупки билета с выбранными местами
 export const buyTicket = createAsyncThunk(
     "seance/buyTicket",
     async (_, { getState }) => {
-        const { ticket } = getState().seance;
+        const { seance } = getState();
         const response = await fetch(`/api/ticket`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ "session_id": ticket.seanceId, seats: ticket.seats }),
+            body: JSON.stringify({ session_id: seance.ticket.seanceId, seats: seance.ticket.seats }),
         });
         return await response.json();
     }
 );
 
-// Создание среза состояния и связанных с ним действий для сеанса
+// Создаем "slice" Redux для управления состоянием, связанным с сеансами
 const createSeanceSlice = createSlice({
     name: "seance",
     initialState,
     reducers: {
-        resetSeance: (state) => {
-            return initialState
-        },
+        resetSeance: () => initialState,
         createTicket: (state, action) => {
-            const { seanceId, seats, cost } = action.payload;
-            state.ticket = { seanceId, seats, cost };
+            Object.assign(state.ticket, action.payload);
         },
     },
+    // Обработка результатов выполнения асинхронных операций
     extraReducers: (builder) => {
         builder
             .addCase(getSeance.fulfilled, (state, action) => {
-                const { session, seats } = action.payload;
-                state.session = session;
-                state.seats = seats;
+                Object.assign(state, action.payload);
             })
             .addCase(buyTicket.fulfilled, (state, action) => {
-                const { id } = action.payload;
-                state.ticket.id = id;
+                state.ticket.id = action.payload.id;
             });
     },
 });
 
-// Экспорт действий и редуктора из среза
+// Экспорт созданных действий  и редуктора из среза
 export const { createTicket, resetSeance } = createSeanceSlice.actions;
 export default createSeanceSlice.reducer;

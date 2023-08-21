@@ -22,11 +22,11 @@ class CinemaHallRequest extends FormRequest
         // Указание правил валидации для каждого поля запроса.
         return [
             'name' => ['required', 'string'], // Обязательное поле с типом "строка".
-                       'row' => ['integer'], // Поле с типом "целое число".
-               'chair' => ['integer'], // Поле с типом "целое число".
-              'price_standard' => ['integer'], // Поле с типом "целое число".
-               'price_vip' => ['integer'], // Поле с типом "целое число".
-                       'free' => ['boolean'], // Поле с типом "логическое значение" (true или false).
+            'row' => ['integer'], // Поле с типом "целое число".
+            'chair' => ['integer'], // Поле с типом "целое число".
+            'price_standard' => ['integer'], // Поле с типом "целое число".
+            'price_vip' => ['integer'], // Поле с типом "целое число".
+            'free' => ['boolean'], // Поле с типом "логическое значение" (true или false).
         ];
     }
 

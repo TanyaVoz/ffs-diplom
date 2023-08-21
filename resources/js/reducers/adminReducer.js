@@ -1,15 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const today = new Date();
+// Инициализация начального состояния
 const initialState = {
     cinemaHalls: [],
     seats: [],
     selectedCinemaHallScheme: {},
     movies: [],
-    chosenDate: `${today.getFullYear()}-${('0' + (today.getMonth() + 1)).slice(-2)}-${('0' + today.getDate()).slice(-2)}`,
+    chosenDate: new Date().toISOString().split('T')[0],
     seances: [],
 };
-// Определение асинхронных операций 
+
+// Создание асинхронных thunk-функций для работы с данными
 export const getHalls = createAsyncThunk(
     "admin/getHalls",
     async (_, { getState }) => {
@@ -18,7 +19,8 @@ export const getHalls = createAsyncThunk(
             headers: { "Authorization": `Bearer ${token}` },
         });
         return await response.json();
-    });
+    }
+);
 
 export const createHall = createAsyncThunk(
     "admin/createHall",
@@ -74,7 +76,8 @@ export const getSeats = createAsyncThunk(
             headers: { "Authorization": `Bearer ${token}` },
         });
         return await response.json();
-    });
+    }
+);
 
 export const createSeats = createAsyncThunk(
     "admin/createSeats",
@@ -124,7 +127,7 @@ export const getMovies = createAsyncThunk(
 export const createMovie = createAsyncThunk(
     "admin/createMovie",
     async ({ title, description, duration, country, poster }, { getState }) => {
-        let formData = new FormData()
+        let formData = new FormData();
         formData.append('title', title);
         formData.append('description', description);
         formData.append('duration', duration);
@@ -161,7 +164,7 @@ export const deleteMovie = createAsyncThunk(
 export const updateMovie = createAsyncThunk(
     "admin/updateMovie",
     async ({ id, title, description, duration, country, poster }, { getState }) => {
-        let formData = new FormData()
+        let formData = new FormData();
         formData.append('_method', 'put');
         formData.append('title', title);
         formData.append('description', description);
@@ -242,7 +245,7 @@ export const updateSeance = createAsyncThunk(
     }
 );
 
-
+// Создание среза состояния и действий
 const createAdminSlice = createSlice({
     name: "admin",
     initialState,
@@ -267,6 +270,7 @@ const createAdminSlice = createSlice({
             state.chosenDate = action.payload;
         },
     },
+     // Обработка результатов выполнения асинхронных операций
     extraReducers: (builder) => {
         builder
             .addCase(getHalls.fulfilled, (state, action) => {
@@ -280,17 +284,17 @@ const createAdminSlice = createSlice({
             })
             .addCase(getSeances.fulfilled, (state, action) => {
                 state.seances = action.payload;
-            })
+            });
     },
 });
-// Дополнительные действия (actions)
+
 export const {
     createScheme,
     selectCinemaHallScheme,
     changeHallSize,
     changeSeatStatus,
-    chooseDate
+    chooseDate,
 } = createAdminSlice.actions;
 
-// Редуктор состояния
+// Экспорт среза как редьюсера
 export default createAdminSlice.reducer;

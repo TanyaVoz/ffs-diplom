@@ -6,13 +6,11 @@ import ChooseHall from "../AdminPanelComponents/allButtons/choose";
 import SeatStatus from "../AdminActComponents/SeatsAct/seatType";
 
 export default function PriceConfig() {
-  // Получение данных о залах из глобального состояния
   const { cinemaHalls } = useSelector((state) => state.admin);
 
   // Локальное состояние для хранения выбранного зала и цен
   const [selectedCinemaHall, setSelectedCinemaHall] = useState(null);
 
-  // Получение диспатча из React Redux
   const dispatch = useDispatch();
 
   // Обработчик выбора зала для конфигурации
@@ -79,7 +77,6 @@ export default function PriceConfig() {
           {generatePriceInput("price_standard", "Обычные кресла")}
           {generatePriceInput("price_vip", "VIP кресла")}
 
-          {/* Кнопки для отмены и сохранения изменений */}
           <SaveButton cancel={() => setSelectedCinemaHall(null)} save={handleSave} />
         </>
       )}

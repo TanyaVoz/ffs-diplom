@@ -14,22 +14,18 @@ const createPopupSlice = createSlice({
     initialState,
     reducers: {
         showPopup: (state, action) => {
-            const { form, title, id = -1 } = action.payload;
-            state.form = form;
-            state.title = title;
-            state.id = id;
-            state.active = true;
+            return { ...state, ...action.payload, active: true };
         },
-        closePopup: (state) => {
-            return initialState
-        },
+
+        // Действие closePopup: вызывается, чтобы закрыть попап и вернуть начальное состояние
+        closePopup: () => initialState,
     },
 });
 
-
-// Экспорт действий и редуктора из среза
+// Экспорт созданных действий  и редуктора из среза
 export const { showPopup, closePopup } = createPopupSlice.actions;
 export default createPopupSlice.reducer;
+
 
 
 

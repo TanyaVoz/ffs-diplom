@@ -1,13 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
- import { logoutAdmin } from "../../../../reducers/authReducer";
+import { logoutAdmin } from "../../../../reducers/authReducer";
 
 const Exit = () => {
-    // Извлечение информации о токене из состояния
+  // Извлечение информации о токене из состояния
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  // Обработчик для выхода из системы (вызов действия logout)
+  // Обработчик для выхода из системы .
   const handleLogout = () => {
     dispatch(logoutAdmin());
   };

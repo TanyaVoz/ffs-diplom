@@ -38,15 +38,13 @@ export default function MovieCard(props) {
   }, []);
 
   // Обработчик отправки формы
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (fileInput.current && fileInput.current.files.length > 0) {
       try {
         // Вызов callbackSubmit для добавления фильма
-         callbackSubmit(
+        callbackSubmit(
           form.title,
           form.description,
           form.duration,
@@ -134,8 +132,7 @@ export default function MovieCard(props) {
         />
       </label>
 
-    {/* Кнопка для добавления фильма */}
-     <SessionButton text={"Добавить фильм"} handleDelete={callbackDelete} />
-   </form>
+      <SessionButton text={"Добавить фильм"} handleDelete={callbackDelete} />
+    </form>
   );
 }

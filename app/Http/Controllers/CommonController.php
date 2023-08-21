@@ -26,7 +26,6 @@ class CommonController extends Controller
         // Получение доступных фильмов для полученных сеансов.
         $films = $this->getAvailableFilms($sessions);
 
-        // Возврат собранной информации.
         return [
             "cinemaHalls" => $cinemaHalls,
             "sessions" => $sessions,
@@ -43,7 +42,6 @@ class CommonController extends Controller
         // Получение доступных мест для кинозала, связанного с сеансом.
         $seats = $this->getSessionSeats($session->cinema_hall_id);
 
-        // Возврат деталей сеанса и доступных мест.
         return [
             "session" => $session,
             "seats" => $seats,

@@ -5,10 +5,7 @@ import { adminAuth, resetAuthStatusAdmin } from "../../../../reducers/authReduce
 import Header from "../../AdminPanelComponents/adminHeader";
 
 const Login = () => {
-  // Извлечение информации о статусе аутентификации из состояния
   const { status } = useSelector((state) => state.auth);
-
-  // Получение диспетчера Redux
   const dispatch = useDispatch();
 
   // Получение функции навигации для переходов
@@ -27,7 +24,6 @@ const Login = () => {
       dispatch(resetAuthStatusAdmin());
       navigate("/admin");
     } else if (status === "error") {
-      // Если статус - ошибка, сбрасываем данные формы
       setLoginForm(initialLoginForm);
     }
   }, [status]);
@@ -35,14 +31,12 @@ const Login = () => {
   // Обработчик изменения полей формы
   const handleInputChange = ({ target }) => {
     const { name, value } = target;
-    // Обновление состояния формы с новыми данными
     setLoginForm((prevForm) => ({ ...prevForm, [name]: value }));
   };
 
   // Обработчик отправки формы
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Вызываем действие для получения токена с указанными данными
     dispatch(adminAuth({ email: loginForm.mail, password: loginForm.pwd }));
   };
 

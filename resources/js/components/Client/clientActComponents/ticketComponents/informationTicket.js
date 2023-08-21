@@ -24,6 +24,7 @@ function TicketInformation({ film, seats, cinemaHall, time, cost }) {
         </>
     );
 }
+
 // Проверка типов пропсов
 TicketInformation.propTypes = {
     film: PropTypes.string.isRequired,

@@ -60,7 +60,7 @@ var Exit = function Exit() {
     token = _useSelector.token;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
-  // Обработчик для выхода из системы (вызов действия logout)
+  // Обработчик для выхода из системы .
   var handleLogout = function handleLogout() {
     dispatch((0,_reducers_authReducer__WEBPACK_IMPORTED_MODULE_2__.logoutAdmin)());
   };
@@ -115,13 +115,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Login = function Login() {
-  // Извлечение информации о статусе аутентификации из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.auth;
     }),
     status = _useSelector.status;
-
-  // Получение диспетчера Redux
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
   // Получение функции навигации для переходов
@@ -146,7 +143,6 @@ var Login = function Login() {
       dispatch((0,_reducers_authReducer__WEBPACK_IMPORTED_MODULE_2__.resetAuthStatusAdmin)());
       navigate("/admin");
     } else if (status === "error") {
-      // Если статус - ошибка, сбрасываем данные формы
       setLoginForm(initialLoginForm);
     }
   }, [status]);
@@ -156,7 +152,6 @@ var Login = function Login() {
     var target = _ref.target;
     var name = target.name,
       value = target.value;
-    // Обновление состояния формы с новыми данными
     setLoginForm(function (prevForm) {
       return _objectSpread(_objectSpread({}, prevForm), {}, _defineProperty({}, name, value));
     });
@@ -165,7 +160,6 @@ var Login = function Login() {
   // Обработчик отправки формы
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
-    // Вызываем действие для получения токена с указанными данными
     dispatch((0,_reducers_authReducer__WEBPACK_IMPORTED_MODULE_2__.adminAuth)({
       email: loginForm.mail,
       password: loginForm.pwd

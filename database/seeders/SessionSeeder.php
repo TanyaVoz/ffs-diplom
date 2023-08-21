@@ -32,7 +32,7 @@ class SessionSeeder extends Seeder
             'film_id' => 2,
         ]);
 
-        // // Сеанс для фильма "Хищник"
+        // Сеанс для фильма "Хищник"
         $date3 = new DateTime('2023-06-27T14:40:00.000+05:30');
         DB::table('sessions')->insert([
             'datetime' => $date3->format('Y-m-d H:i'),

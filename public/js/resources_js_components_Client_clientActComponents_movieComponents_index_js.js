@@ -68,9 +68,9 @@ function Navigate() {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.calendar;
     }),
-    chosenDate = _useSelector.chosenDate; // Получение выбранной даты из состояния Redux
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)(); // Получение функции dispatch из Redux
-  var todayDayWeek = new Date(); // Текущая дата
+    chosenDate = _useSelector.chosenDate;
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var todayDayWeek = new Date();
   var _handleDateClick = function handleDateClick(day) {
     dispatch((0,_reducers_calendarReducer__WEBPACK_IMPORTED_MODULE_2__.chooseDate)("".concat(day.getFullYear(), "-").concat(day.getMonth() + 1, "-").concat(day.getDate())));
   };
@@ -208,8 +208,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-//import { Link } from 'react-router-dom';
-
 function Header() {
   return (
     /*#__PURE__*/
@@ -247,13 +245,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function ClientHall(props) {
-  // Получение данных о залах из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.calendar;
     }),
     cinemaHalls = _useSelector.cinemaHalls;
-
-  // Получение идентификаторов зала и фильма из пропсов
   var selectedCinemaHallId = props.selectedCinemaHallId,
     selectedFilmId = props.selectedFilmId;
 
@@ -318,6 +313,8 @@ function MainMovie() {
     films = _useSelector.films,
     error = _useSelector.error;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+
+  // При изменении выбранной даты вызывается функция getCalendar для получения расписания
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     dispatch((0,_reducers_calendarReducer__WEBPACK_IMPORTED_MODULE_2__.getCalendar)(chosenDate));
   }, [chosenDate]);
@@ -473,13 +470,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function MovieComponent(props) {
-  // Получение данных о зале из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.calendar;
     }),
     cinemaHalls = _useSelector.cinemaHalls;
-
-  // Получение идентификатора фильма из пропсов
   var id = props.id;
 
   // Фильтрация залов, где идет выбранный фильм

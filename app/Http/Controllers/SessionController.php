@@ -58,8 +58,7 @@ class SessionController extends Controller
     {
        // Заполнение информации о сеансе обновленными данными из запроса.
         $session->fill($request->validated());
-        
-       
+         
         return $session->save();
     }
 

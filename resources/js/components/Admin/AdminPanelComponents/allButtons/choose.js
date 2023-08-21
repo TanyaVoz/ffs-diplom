@@ -1,5 +1,5 @@
 export default function ChooseHall(props) {
-    
+
     const { name, checked, callback } = props;
 
     return (
@@ -8,7 +8,7 @@ export default function ChooseHall(props) {
             <input
                 type="radio"
                 className="conf-step__radio"
-                value={name} 
+                value={name}
                 checked={checked} // Проверка, выбрана ли радио-кнопка
                 onChange={callback} // Вызов функции обработчика при изменении состояния
             />

@@ -6,10 +6,10 @@ import Navigation from "./index";
 export default function Navigate() {
 
     const [start, setStartDays] = useState(new Date()); // Состояние для отслеживания начальной даты
-    const { chosenDate } = useSelector((state) => state.calendar); // Получение выбранной даты из состояния Redux
-    const dispatch = useDispatch(); // Получение функции dispatch из Redux
-    const todayDayWeek = new Date(); // Текущая дата
-    const  handleDateClick = (day) => {
+    const { chosenDate } = useSelector((state) => state.calendar);
+    const dispatch = useDispatch();
+    const todayDayWeek = new Date();
+    const handleDateClick = (day) => {
         dispatch(chooseDate(`${day.getFullYear()}-${day.getMonth() + 1}-${day.getDate()}`));
     }
     // Обработчик для переключения даты назад или вперед
@@ -34,7 +34,7 @@ export default function Navigate() {
                 <Navigation
                     date={day}
                     chosen={chosenDate}
-                    handleDateClick={() =>  handleDateClick(day)}
+                    handleDateClick={() => handleDateClick(day)}
                     key={day}
                 />
             )}

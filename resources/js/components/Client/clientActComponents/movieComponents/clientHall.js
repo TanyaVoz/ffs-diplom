@@ -2,10 +2,8 @@ import { useSelector } from "react-redux";
 import MovieSeanceItem from "./seanceTimeFilms";
 
 export default function ClientHall(props) {
-    // Получение данных о залах из состояния
     const { cinemaHalls } = useSelector((state) => state.calendar);
 
-    // Получение идентификаторов зала и фильма из пропсов
     const { selectedCinemaHallId, selectedFilmId } = props;
 
     // Поиск информации о конкретном кинозале

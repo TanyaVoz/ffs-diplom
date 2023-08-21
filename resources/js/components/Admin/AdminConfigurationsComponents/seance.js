@@ -5,7 +5,6 @@ import { getSeances } from "../../../reducers/adminReducer";
 import SessionButton from "../AdminPanelComponents/allButtons/sessionButton";
 
 export default function SeanceCard(props) {
-  // Получение данных из глобального состояния с использованием useSelector
   const { cinemaHalls, movies } = useSelector((state) => state.admin);
 
   // Извлечение данных из пропсов с использованием деструктуризации
@@ -17,8 +16,6 @@ export default function SeanceCard(props) {
   // Начальное состояние формы
   const initialFormState = { date, time, cinemaHall: cinema_hall_id, movie: film_id };
   const [form, setForm] = useState(initialFormState);
-
-  // Получение диспатча из React Redux
   const dispatch = useDispatch();
 
   // Обработчик изменения полей формы
@@ -108,7 +105,6 @@ export default function SeanceCard(props) {
         </select>
       </label>
 
-      {/* Кнопка подтверждения добавления сеанса */}
       <SessionButton text={"Добавить сеанс"} handleDelete={callbackDelete} />
     </form>
   );

@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 
 // Создаем константу с путем к странице сеанса

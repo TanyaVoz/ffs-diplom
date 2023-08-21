@@ -8,6 +8,7 @@ export default function MainMovie() {
     const { chosenDate, films, error } = useSelector((state) => state.calendar);
     const dispatch = useDispatch();
 
+    // При изменении выбранной даты вызывается функция getCalendar для получения расписания
     useEffect(() => {
         dispatch(getCalendar(chosenDate));
     }, [chosenDate]);

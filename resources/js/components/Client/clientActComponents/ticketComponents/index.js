@@ -7,7 +7,6 @@ import QRCodeTicket from "./qrcode";
 import TicketHeader from "../../additionalComponents/clientHeader/ticketHeaderClient";
 import TicketInformation from "./informationTicket";
 
-// Компонент для отображения информации о билете
 function TicketContent({ session, seats, ticket }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -20,7 +19,6 @@ function TicketContent({ session, seats, ticket }) {
             navigate("/");
         }
 
-        // Вызов Redux-экшена для покупки билета
         dispatch(buyTicket());
 
         // Очистка данных о сеансе после завершения компонента

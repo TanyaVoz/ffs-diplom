@@ -108,9 +108,9 @@ function Navigate() {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.calendar;
     }),
-    chosenDate = _useSelector.chosenDate; // Получение выбранной даты из состояния Redux
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)(); // Получение функции dispatch из Redux
-  var todayDayWeek = new Date(); // Текущая дата
+    chosenDate = _useSelector.chosenDate;
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var todayDayWeek = new Date();
   var _handleDateClick = function handleDateClick(day) {
     dispatch((0,_reducers_calendarReducer__WEBPACK_IMPORTED_MODULE_2__.chooseDate)("".concat(day.getFullYear(), "-").concat(day.getMonth() + 1, "-").concat(day.getDate())));
   };
@@ -219,8 +219,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-//import { Link } from 'react-router-dom';
-
 function Header() {
   return (
     /*#__PURE__*/
@@ -259,8 +257,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var BuyingScheme = function BuyingScheme(props) {
   var _callback = props.callback;
-
-  // Получение данных о сеансе и местах из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.seance;
     }),
@@ -380,7 +376,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function MainSeance() {
-  // Получение данных о сеансе из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.seance;
     }),
@@ -388,8 +383,6 @@ function MainSeance() {
 
   // Получение идентификатора сеанса из параметров URL
   var seanceId = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useParams)().seanceId;
-
-  // Получение функции для диспетчера Redux
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
 
   // Массив для выбранных мест
@@ -527,15 +520,53 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+// import { useState } from "react";
+// import classnames from 'classnames';
+
+// export default function SeanceSeatStatus(props) {
+//   const { status, callback } = props;
+//   const [taken, setTaken] = useState(false);
+
+//   // Обработчик клика на место
+//   const handleClickSeats = () => {
+//     // Изменение состояния выбора места
+//     setTaken(!taken);
+//     callback();
+//   }
+
+//   // Определение CSS-класса в зависимости от статуса
+//   let activeClass = "buying-scheme__chair_disabled";
+//   switch (status) {
+//     case 'standard':
+//       activeClass = "buying-scheme__chair_standart";
+//       break;
+//     case 'vip':
+//       activeClass = "buying-scheme__chair_vip";
+//       break;
+//     case 'sold':
+//       activeClass = "buying-scheme__chair_taken";
+//       break;
+//     default:
+//       activeClass = "buying-scheme__chair_disabled";
+//   }
+
+//   return (
+//     <span
+//       className={classnames(
+//         'buying-scheme__chair',
+//         taken ? 'buying-scheme__chair_selected' : activeClass
+//       )}
+//       onClick={() => (status === 'disabled' || status === 'sold') ? false : handleClickSeats()}
+//     />
+//   );
+// }
+
 
 
 
 function SeanceSeatStatus(props) {
-  // Получение свойств из пропсов: статус и колбэк
   var status = props.status,
     callback = props.callback;
-
-  // Инициализация состояния для состояния выбора места
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     taken = _useState2[0],
@@ -543,33 +574,25 @@ function SeanceSeatStatus(props) {
 
   // Обработчик клика на место
   var handleClickSeats = function handleClickSeats() {
+    if (status === 'disabled' || status === 'sold') {
+      return;
+    }
+
     // Изменение состояния выбора места
     setTaken(!taken);
-
-    // Вызов переданной функции колбэка
     callback();
   };
 
-  // Определение CSS-класса в зависимости от статуса
-  var activeClass = "buying-scheme__chair_disabled";
-  switch (status) {
-    case 'standard':
-      activeClass = "buying-scheme__chair_standart";
-      break;
-    case 'vip':
-      activeClass = "buying-scheme__chair_vip";
-      break;
-    case 'sold':
-      activeClass = "buying-scheme__chair_taken";
-      break;
-    default:
-      activeClass = "buying-scheme__chair_disabled";
-  }
+  // Определение CSS-классов с помощью библиотеки classnames
+  var seatClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()('buying-scheme__chair', taken ? 'buying-scheme__chair_selected' : '', {
+    'buying-scheme__chair_standart': status === 'standard',
+    'buying-scheme__chair_vip': status === 'vip',
+    'buying-scheme__chair_taken': status === 'sold',
+    'buying-scheme__chair_disabled': status === 'disabled' || status === 'unknown'
+  });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('buying-scheme__chair', taken ? 'buying-scheme__chair_selected' : activeClass),
-    onClick: function onClick() {
-      return status === 'disabled' || status === 'sold' ? false : handleClickSeats();
-    }
+    className: seatClasses,
+    onClick: handleClickSeats
   });
 }
 

@@ -25,7 +25,7 @@ const AddSeanceAction = ({ cinemaHallId, name }) => {
     <div className="conf-step__seances-hall">
       {/* Блок с выбором зала для добавления сеанса */}
       <div className="conf-step__selectors-box">
-        {/* Кнопка выбора зала с обработчиком добавления сеанса */}
+
         <ChooseHall
           name={name}
           checked={false}

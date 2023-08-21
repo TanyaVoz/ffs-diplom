@@ -3,8 +3,6 @@ import SeanceSeatStatus from "./seatStatus";
 
 const BuyingScheme = (props) => {
     const { callback } = props;
-
-    // Получение данных о сеансе и местах из состояния
     const { session, seats } = useSelector((state) => state.seance);
 
     // Получение цен для стандартных и VIP мест из данных сеанса

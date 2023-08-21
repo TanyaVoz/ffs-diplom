@@ -4,10 +4,7 @@ import MovieInfo from "./information";
 import ClientHall from "./clientHall";
 
 export default function MovieComponent(props) {
-    // Получение данных о зале из состояния
     const { cinemaHalls } = useSelector((state) => state.calendar);
-
-    // Получение идентификатора фильма из пропсов
     const { id } = props;
 
     // Фильтрация залов, где идет выбранный фильм
@@ -23,9 +20,9 @@ export default function MovieComponent(props) {
             {/* Отображение залов, в которых идет фильм */}
             {movieHalls.map((selectedCinemaHall) => (
                 <ClientHall
-                selectedCinemaHallId={selectedCinemaHall.id}
-                selectedFilmId={id}
-                key={selectedCinemaHall.id} // Используем id зала как ключ
+                    selectedCinemaHallId={selectedCinemaHall.id}
+                    selectedFilmId={id}
+                    key={selectedCinemaHall.id} // Используем id зала как ключ
                 />
             ))}
         </section>

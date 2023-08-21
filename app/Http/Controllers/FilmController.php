@@ -35,10 +35,8 @@ class FilmController extends Controller
         // Заполняем модель данными, прошедшими валидацию из запроса.
         $film->fill($request->validated());
 
-        // Загружаем файл постера фильма в директорию 'posters'.
         $film->poster = $this->storePoster($request);
 
-        // Сохраняем фильм в базе данных и возвращаем результат операции (boolean).
         return $film->save();
     }
 
@@ -71,10 +69,8 @@ class FilmController extends Controller
             $film->poster = $this->storePoster($request);
         }
 
-        // Заполняем модель данными, прошедшими валидацию из запроса.
         $film->fill($request->validated());
 
-        // Сохраняем обновленные данные фильма в базе данных и возвращаем результат операции (boolean).
         return $film->save();
     }
 
@@ -92,11 +88,10 @@ class FilmController extends Controller
 
         // Пытаемся удалить фильм из базы данных.
         if ($film->delete()) {
-            // Если операция удаления прошла успешно, возвращаем ответ с кодом состояния HTTP 204 (No Content).
+            
             return response(null, Response::HTTP_NO_CONTENT);
         }
 
-        // Возвращаем null, если операция удаления не удалась.
         return null;
     }
 

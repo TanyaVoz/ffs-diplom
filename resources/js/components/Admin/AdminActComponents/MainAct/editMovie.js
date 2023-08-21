@@ -4,17 +4,16 @@ import { showPopup } from "../../../../reducers/popupReducer";
 import PropTypes from "prop-types";
 import getRussianMinutesLabel from "../../../Client/additionalComponents/Formatting/timeFormWords";
 
-// Компонент для действия редактирования фильма
+
 const EditMovieAction = ({ id, img, title, duration }) => {
     // Получение продолжительности фильма в соответствии с числом
     const filmDuration = getRussianMinutesLabel(duration);
 
-    // Получение диспатча из React Redux
     const dispatch = useDispatch();
 
     // Обработчик клика по компоненту фильма
     const handleMovieClick = () => {
-        // Диспатч действия для отображения попапа с формой редактирования фильма
+        // Диспатч действия для показа всплывающего окна
         dispatch(showPopup({ title: "Редактирование фильма", form: "editMovie", id }));
     };
 

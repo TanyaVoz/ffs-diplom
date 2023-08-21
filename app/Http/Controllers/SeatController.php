@@ -16,7 +16,7 @@ class SeatController extends Controller
      */
     public function index(): JsonResponse
     {
-         // Получение всех мест из модели Seat
+        // Получение всех мест из модели Seat
         $seats = Seat::all();
 
         return response()->json($seats, 200);
@@ -30,7 +30,6 @@ class SeatController extends Controller
      */
     public function store(SeatRequest $request): JsonResponse
     {
-        // Проверка входных данных запроса с использованием правил валидации из SeatRequest
         $validatedData = $request->validated();
         
         if (isset($validatedData['seats'])) {
@@ -82,7 +81,6 @@ class SeatController extends Controller
             }
         }
 
-         // Возврат успешного ответа с кодом статуса 200
         return response()->json(['success' => true], 200);
     }
 }

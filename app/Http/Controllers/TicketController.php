@@ -9,14 +9,14 @@ use Illuminate\Http\Response;
 class TicketController extends Controller
 {
     /**
-     * Экземпляр сервиса для билетов.
+     * Instance of the ticket service.
      *
      * @var \App\Services\TicketService
      */
     private $ticketService;
 
     /**
-     * Создание нового экземпляра контроллера.
+     * Create a new controller instance.
      *
      * @param  \App\Services\TicketService  $ticketService
      * @return void
@@ -28,7 +28,7 @@ class TicketController extends Controller
     }
 
     /**
-     * Сохранение нового билета в хранилище данных.
+     * Store a new ticket in the data storage.
      *
      * @param  \App\Http\Requests\TicketRequest  $request
      * @return \Illuminate\Http\Response
@@ -41,7 +41,6 @@ class TicketController extends Controller
         // Создание нового билета с использованием TicketService, передав параметры из запроса.
         $ticket = $this->ticketService->create($params);
         
-        // Возврат ответа с информацией о созданном билете и кодом состояния HTTP 201 (Создано).
         return response($ticket, 201);
     }
 }

@@ -4,7 +4,7 @@ export default function Button(props) {
     const { text, link, callback } = props;
     const navigate = useNavigate();
 
-    const  handleClick = () => {
+    const handleClick = () => {
         // Если callback есть и является функцией, вызываем его
         if (callback && typeof callback === "function") {
             callback();

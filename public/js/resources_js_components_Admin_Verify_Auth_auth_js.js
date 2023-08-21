@@ -19,7 +19,6 @@ __webpack_require__.r(__webpack_exports__);
 
 function Auth(_ref) {
   var children = _ref.children;
-  // Извлечение информации о токене из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
       return state.auth;
     }),

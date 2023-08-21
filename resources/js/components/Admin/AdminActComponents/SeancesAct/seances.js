@@ -6,9 +6,8 @@ import AddSeanceAction from "../MainAct/addSeance";
 export default function SeancesHall() {
     // Получение данных о залах и выбранной дате из Redux
     const { cinemaHalls, chosenDate } = useSelector(state => state.admin);
-    const dispatch = useDispatch(); // Получение функции dispatch из Redux для отправки действий
+    const dispatch = useDispatch();
 
-    // Эффект useEffect, который выполняется при изменении выбранной даты
     useEffect(() => {
         dispatch(getSeances()); // Получение списка сеансов при изменении выбранной даты
     }, [chosenDate]);

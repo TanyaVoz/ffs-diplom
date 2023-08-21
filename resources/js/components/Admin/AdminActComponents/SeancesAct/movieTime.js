@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { showPopup } from "../../../../reducers/popupReducer";
 
 export default function MovieTime(props) {
-    const { movies } = useSelector(state => state.admin); // Получение данных о фильмах из Redux
-    const { id, seance, time } = props; // Получение данных о времени сеанса и фильме из входных параметров
+    const { movies } = useSelector(state => state.admin); 
+    const { id, seance, time } = props; 
     const dispatch = useDispatch();
 
     // Поиск индекса фильма в массиве по его ID

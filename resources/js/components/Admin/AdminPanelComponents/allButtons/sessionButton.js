@@ -13,7 +13,7 @@ export default function SessionButton(props) {
 
     return (
         <div className="conf-step__buttons text-center">
-            {/* Кнопка "Сохранить" или с текстом, переданным через props */}
+            {/* Кнопка "Сохранить"  переданным через props */}
             <input
                 type="submit"
                 value={handleDelete ? "Сохранить" : text}

@@ -8,13 +8,11 @@ import BuyingScheme from "./buying";
 import Button from '../../additionalComponents/Button/buttonClients';
 
 export default function MainSeance() {
-    // Получение данных о сеансе из состояния
     const { session } = useSelector((state) => state.seance);
 
     // Получение идентификатора сеанса из параметров URL
     const seanceId = useParams().seanceId;
 
-    // Получение функции для диспетчера Redux
     const dispatch = useDispatch();
 
     // Массив для выбранных мест
@@ -56,8 +54,6 @@ export default function MainSeance() {
 
                 {/* Отображение схемы выбора мест */}
                 <BuyingScheme callback={handleSeatSelection} />
-
-                {/* Кнопка для бронирования мест */}
                 <Button text={"Забронировать"} link={"/payment"} callback={handleSeatBooking} />
             </section>
         </Main>

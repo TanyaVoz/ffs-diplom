@@ -1,21 +1,22 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-
-// Получение текущей даты
 const today = new Date();
+const formatDate = (date) => {
+    return `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getDate()).slice(-2)}`;
+};
 
-// Начальное состояние хранилища
+// Определение начального состояния хранилища Redux
 const initialState = {
-    chosenDate: `${today.getFullYear()}-${('0' + (today.getMonth() + 1)).slice(-2)}-${('0' + today.getDate()).slice(-2)}`,
+    chosenDate: formatDate(today),
     cinemaHalls: [],
     films: [],
 };
 
+// Определение асинхронного thunk-действия для получения данных календаря с сервера
 export const getCalendar = createAsyncThunk("calendar/getCalendar", async (date) => {
     const response = await fetch(`/api/client/calendar/${date}`);
     return await response.json();
 });
-
 
 // Создание среза состояния и связанных с ним действий
 const createCalendarSlice = createSlice({
@@ -31,21 +32,17 @@ const createCalendarSlice = createSlice({
         builder
             .addCase(getCalendar.fulfilled, (state, action) => {
                 const { cinemaHalls, sessions, films } = action.payload;
-                state.cinemaHalls = cinemaHalls.map((cinemaHall) => {
-                    return {
-                        ...cinemaHall,
-                        "sessions": sessions.filter((session) => +session.cinema_hall_id === cinemaHall.id)
-                    }
-                });
+                state.cinemaHalls = cinemaHalls.map((cinemaHall) => ({
+                    ...cinemaHall,
+                    sessions: sessions.filter((session) => +session.cinema_hall_id === cinemaHall.id)
+                }));
                 state.films = films;
             });
     },
 });
 
-
-// Экспорт действий и редуктора из среза
-export const { chooseDate} = createCalendarSlice.actions;
+// Экспорт созданных действий  и редуктора из среза
+export const { chooseDate } = createCalendarSlice.actions;
 export default createCalendarSlice.reducer;
-
 
 
