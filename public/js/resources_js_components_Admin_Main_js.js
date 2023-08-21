@@ -786,9 +786,9 @@ function CinemaHallStatusManager() {
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
       className: "conf-step__paragraph",
-      children: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u0435 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F:"
+      children: "\u0412\u0441\u0451 \u0433\u043E\u0442\u043E\u0432\u043E, \u0442\u0435\u043F\u0435\u0440\u044C \u043C\u043E\u0436\u043D\u043E:"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_AdminPanelComponents_allButtons_button__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      text: "Сохранить изменения",
+      text: "Открыть продажу билетов",
       callback: handleSaveChanges
     })]
   });

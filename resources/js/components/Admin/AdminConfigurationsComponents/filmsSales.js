@@ -51,8 +51,8 @@ export default function CinemaHallStatusManager() {
           </li>
         ))}
       </ul>
-      <p className="conf-step__paragraph">Сохраните изменения:</p>
-      <Button text={"Сохранить изменения"} callback={handleSaveChanges} />
+      <p className="conf-step__paragraph">Всё готово, теперь можно:</p>
+      <Button text={"Открыть продажу билетов"} callback={handleSaveChanges} />
     </div>
   );
 }
