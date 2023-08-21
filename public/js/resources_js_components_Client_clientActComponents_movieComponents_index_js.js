@@ -382,7 +382,7 @@ function MovieInfo(props) {
         src: "images/".concat(film.poster),
         onError: function onError(e) {
           // Обработка ошибки при загрузке изображения постера
-          e.target.src = "images/poster-not-available.png"; // Здесь можно указать путь к заглушке
+          e.target.src = "images/poster-not-available.png";
         }
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
