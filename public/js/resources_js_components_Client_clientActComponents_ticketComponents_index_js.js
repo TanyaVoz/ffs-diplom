@@ -287,8 +287,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// Компонент для отображения информации о билете
-
 
 function TicketContent(_ref) {
   var session = _ref.session,
@@ -306,8 +304,6 @@ function TicketContent(_ref) {
     if (!session.id || !ticket.seanceId) {
       navigate("/");
     }
-
-    // Вызов Redux-экшена для покупки билета
     dispatch((0,_reducers_seanceReducer__WEBPACK_IMPORTED_MODULE_2__.buyTicket)());
 
     // Очистка данных о сеансе после завершения компонента
@@ -429,6 +425,7 @@ function TicketInformation(_ref) {
     })]
   });
 }
+
 // Проверка типов пропсов
 TicketInformation.propTypes = {
   film: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string.isRequired),

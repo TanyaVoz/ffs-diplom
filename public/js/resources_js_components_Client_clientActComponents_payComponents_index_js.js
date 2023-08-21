@@ -334,12 +334,16 @@ function TicketConfirmation() {
     seats = _useSelector.seats,
     ticket = _useSelector.ticket;
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useNavigate)();
+
+  // Фильтрация выбранных мест и получение их номеров
   var selectedSeats = seats.filter(function (seat) {
     return ticket.seats.includes(seat.id);
   });
   var selectedSeatNumbers = selectedSeats.map(function (seat) {
     return seat.number;
   });
+
+  // Проверка сеанса и билета при монтировании компонента
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (!session.id || !ticket.seanceId) {
       navigate(-1);
@@ -445,6 +449,7 @@ function TicketInformation(_ref) {
     })]
   });
 }
+
 // Проверка типов пропсов
 TicketInformation.propTypes = {
   film: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string.isRequired),

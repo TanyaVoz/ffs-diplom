@@ -6281,6 +6281,8 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+
+// Инициализация начального состояния
 var initialState = {
   cinemaHalls: [],
   seats: [],
@@ -6289,6 +6291,8 @@ var initialState = {
   chosenDate: new Date().toISOString().split('T')[0],
   seances: []
 };
+
+// Создание асинхронных thunk-функций для работы с данными
 var getHalls = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThunk)("admin/getHalls", /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(_, _ref) {
     var getState, token, response;
@@ -6767,6 +6771,8 @@ var updateSeance = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncT
     return _ref34.apply(this, arguments);
   };
 }());
+
+// Создание среза состояния и действий
 var createAdminSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
   name: "admin",
   initialState: initialState,
@@ -6797,6 +6803,7 @@ var createAdminSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSl
       state.chosenDate = action.payload;
     }
   },
+  // Обработка результатов выполнения асинхронных операций
   extraReducers: function extraReducers(builder) {
     builder.addCase(getHalls.fulfilled, function (state, action) {
       state.cinemaHalls = action.payload;
@@ -6815,6 +6822,8 @@ var _createAdminSlice$act = createAdminSlice.actions,
   changeHallSize = _createAdminSlice$act.changeHallSize,
   changeSeatStatus = _createAdminSlice$act.changeSeatStatus,
   chooseDate = _createAdminSlice$act.chooseDate;
+
+// Экспорт среза как редьюсера
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createAdminSlice.reducer);
 
@@ -6840,11 +6849,13 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+
 // Начальное состояние хранилища
 var initialState = {
   token: "",
   status: "idle"
 };
+
 // Определение асинхронной операции для получения токена
 var adminAuth = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThunk)("auth/getToken", /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(_ref) {
@@ -6980,7 +6991,7 @@ var getCalendar = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncTh
   };
 }());
 
-// Создание среза (slice) Redux для управления состоянием календаря
+// Создание среза состояния и связанных с ним действий
 var createCalendarSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
   name: "calendar",
   initialState: initialState,
@@ -6989,6 +7000,7 @@ var createCalendarSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.creat
       state.chosenDate = action.payload;
     }
   },
+  // Обработка результатов выполнения асинхронных операций
   extraReducers: function extraReducers(builder) {
     builder.addCase(getCalendar.fulfilled, function (state, action) {
       var _action$payload = action.payload,
@@ -7174,6 +7186,7 @@ var createSeanceSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createS
       Object.assign(state.ticket, action.payload);
     }
   },
+  // Обработка результатов выполнения асинхронных операций
   extraReducers: function extraReducers(builder) {
     builder.addCase(getSeance.fulfilled, function (state, action) {
       Object.assign(state, action.payload);
