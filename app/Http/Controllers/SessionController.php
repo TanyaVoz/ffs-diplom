@@ -4,12 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SessionRequest;
 use App\Models\Session;
+use App\Services\SessionService;
 use DateTime;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Response;
 
 class SessionController extends Controller
 {
+    protected $sessionService;
+
+    public function __construct(SessionService $sessionService)
+    {
+        $this->sessionService = $sessionService;
+    }
+
     /**
      * Display a list of all sessions.
      *
@@ -17,20 +25,18 @@ class SessionController extends Controller
      */
     public function index(): Collection
     {
-
         return Session::all();
     }
 
     /**
      * Store a new session record in the database.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\SessionRequest $request
      * @return \App\Models\Session
      */
     public function store(SessionRequest $request): Session
     {
-        // Создание и сохранение нового сеанса в базе данных на основе проверенных данных из запроса.
-        return Session::create($request->validated());
+        return $this->sessionService->createSession($request);
     }
 
     /**
@@ -41,25 +47,20 @@ class SessionController extends Controller
      */
     public function show($date): Collection
     {
-        // Преобразование даты из формата 'Y-m-d' в объект DateTime.
         $formattedDate = DateTime::createFromFormat('Y-m-d', $date)->format('Y-m-d');
-        
         return Session::whereDate('datetime', $formattedDate)->get();
     }
 
     /**
      * Update session information in the database.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\SessionRequest $request
      * @param \App\Models\Session $session
      * @return bool
      */
     public function update(SessionRequest $request, Session $session): bool
     {
-       // Заполнение информации о сеансе обновленными данными из запроса.
-        $session->fill($request->validated());
-         
-        return $session->save();
+        return $this->sessionService->updateSession($request, $session);
     }
 
     /**
@@ -70,12 +71,10 @@ class SessionController extends Controller
      */
     public function destroy(Session $session)
     {
-       // Попытка удаления сеанса из базы данных.
-        if ($session->delete()) {
-         
+        if ($this->sessionService->deleteSession($session)) {
             return response(null, Response::HTTP_NO_CONTENT);
         }
-     // Возврат JSON-ответа с сообщением об ошибке, если удаление не удалось, и кодом состояния HTTP 500 (Внутренняя ошибка сервера).
+
         return response()->json(['message' => 'Failed to delete the session.'], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }

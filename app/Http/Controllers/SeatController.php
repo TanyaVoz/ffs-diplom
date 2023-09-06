@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeatRequest;
-use App\Models\Seat;
-use App\Models\CinemaHall;
+use App\Services\SeatService;
 use Illuminate\Http\JsonResponse;
 
 class SeatController extends Controller
 {
+    protected $seatService;
+
+    public function __construct(SeatService $seatService)
+    {
+        $this->seatService = $seatService;
+    }
+
     /**
      * Display a list of all seats in a cinema hall.
      *
@@ -16,8 +22,7 @@ class SeatController extends Controller
      */
     public function index(): JsonResponse
     {
-        // Получение всех мест из модели Seat
-        $seats = Seat::all();
+        $seats = $this->seatService->getAllSeats();
 
         return response()->json($seats, 200);
     }
@@ -30,20 +35,7 @@ class SeatController extends Controller
      */
     public function store(SeatRequest $request): JsonResponse
     {
-        $validatedData = $request->validated();
-        
-        if (isset($validatedData['seats'])) {
-            // Получение ID кинозала из данных первого места
-            $cinemaHallId = $validatedData['seats'][0]['cinema_hall_id'];
-            $cinemaHall = CinemaHall::findOrFail($cinemaHallId);
-            
-            Seat::whereCinemaHallId($cinemaHall->id)->delete();
-
-            // Перебор данных каждого места и создание нового экземпляра модели Seat
-            foreach ($validatedData['seats'] as $seatData) {
-                Seat::create($seatData);
-            }
-        }
+        $this->seatService->createSeats($request);
 
         return response()->json(['success' => true], 201);
     }
@@ -56,8 +48,7 @@ class SeatController extends Controller
      */
     public function show($id): JsonResponse
     {
-        // Получение мест, принадлежащих указанному ID кинозала
-        $seats = Seat::where('cinema_hall_id', $id)->get();
+        $seats = $this->seatService->getSeatsByCinemaHall($id);
 
         return response()->json($seats, 200);
     }
@@ -70,16 +61,7 @@ class SeatController extends Controller
      */
     public function updateMany(SeatRequest $request): JsonResponse
     {
-        // Проверка входных данных запроса с использованием правил валидации из SeatRequest
-        $validatedData = $request->validated();
-        
-        if (isset($validatedData['seats'])) {
-            foreach ($validatedData['seats'] as $seatData) {
-                $cinemaSeat = Seat::findOrFail($seatData['id']);
-                $cinemaSeat->fill($seatData);
-                $cinemaSeat->save();
-            }
-        }
+        $this->seatService->updateSeats($request);
 
         return response()->json(['success' => true], 200);
     }

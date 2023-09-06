@@ -3,107 +3,100 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FilmRequest;
-use App\Models\Film;
+use App\Services\FilmService;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Storage;
 
 class FilmController extends Controller
 {
+    protected $filmService;
+
+    public function __construct(FilmService $filmService)
+    {
+        
+        $this->filmService = $filmService;
+    }
+
     /**
-     * Display a listing of the films.
+     * Get a list of all films.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function index(): \Illuminate\Database\Eloquent\Collection
     {
-        // Получаем список всех фильмов из базы данных.
-        $films = Film::all();
+        
+        $films = $this->filmService->getAllFilms();
         return $films;
     }
 
     /**
-     * Store a newly created film in storage.
+     * Store a new film in the data storage.
      *
-     * @param \App\Http\Requests\FilmRequest $request
+     * @param  \App\Http\Requests\FilmRequest  $request
      * @return bool|int
      */
     public function store(FilmRequest $request): bool|int
     {
-        // Создаем новый экземпляр модели Film.
-        $film = new Film;
-
-        // Заполняем модель данными, прошедшими валидацию из запроса.
-        $film->fill($request->validated());
-
-        $film->poster = $this->storePoster($request);
-
-        return $film->save();
+        
+        return $this->filmService->createFilm($request);
     }
 
     /**
-     * Display the specified film.
+     * Get details of a specific film by ID.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \App\Models\Film|null
      */
     public function show($id): ?\App\Models\Film
     {
-        // Отображаем информацию о конкретном фильме на основе переданного идентификатора $id.
-        $film = Film::findOrFail($id);
+       
+        $film = $this->filmService->getFilmById($id);
         return $film;
     }
 
     /**
-     * Update the specified film in storage.
+     * Update film information by ID.
      *
-     * @param \App\Http\Requests\FilmRequest $request
-     * @param \App\Models\Film $film
+     * @param  \App\Http\Requests\FilmRequest  $request
+     * @param  int  $id
      * @return bool|int
      */
-    public function update(FilmRequest $request, Film $film): bool|int
+    public function update(FilmRequest $request, $id): bool|int
     {
-        // Если в запросе есть новый файл постера, удаляем старый файл из директории 'posters'.
-        if ($request->has('poster')) {
-            Storage::delete($film->poster);
-            // Загружаем новый файл постера в директорию 'posters'.
-            $film->poster = $this->storePoster($request);
+        
+        $film = $this->filmService->getFilmById($id);
+        
+       
+        if (!$film) {
+            return false;
         }
 
-        $film->fill($request->validated());
-
-        return $film->save();
+        
+        return $this->filmService->updateFilm($request, $film);
     }
 
     /**
-     * Remove the specified film from storage.
+     * Delete a film by ID.
      *
-     * @param \App\Models\Film $film
+     * @param  int  $id
      * @return \Illuminate\Http\Response|null
-     * @throws \Exception
      */
-    public function destroy(Film $film): ?\Illuminate\Http\Response
+    public function destroy($id): ?\Illuminate\Http\Response
     {
-        // Удаляем связанный файл постера из директории 'posters'.
-        Storage::delete($film->poster);
+        
+        $film = $this->filmService->getFilmById($id);
 
-        // Пытаемся удалить фильм из базы данных.
-        if ($film->delete()) {
+       
+        if (!$film) {
+            return response(null, Response::HTTP_NOT_FOUND);
+        }
+
+       
+        if ($this->filmService->deleteFilm($film)) {
             
             return response(null, Response::HTTP_NO_CONTENT);
         }
 
         return null;
     }
-
-    /**
-     * Store the poster file in the 'posters' directory.
-     *
-     * @param \App\Http\Requests\FilmRequest $request
-     * @return string
-     */
-    protected function storePoster(FilmRequest $request): string
-    {
-        // Загружаем файл постера фильма в директорию 'posters'.
-        return $request->poster->store('posters');
-    }
 }
+
