@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,20 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Маршрут для администраторской страницы входа
-Route::get('/admin/login', function () {
-    return view('admin'); 
-})->name('login'); 
+Route::get('/admin/login', [WelcomeController::class, 'login'])->name('login');
 
-// Группа маршрутов для администраторской панели
 Route::prefix('admin')->group(function () {
-    // Маршрут для всех страниц администраторской панели
-    Route::get('/{path?}', function () {
-        return view('admin'); 
-    })->where('path', '.*'); 
+    Route::get('/{path?}', [WelcomeController::class, 'login'])->where('path', '.*');
 });
 
-// Маршрут для основной части 
-Route::get('/{path?}', function () {
-    return view('welcome'); 
-})->where('path', '.*'); 
+Route::get('/{path?}', [WelcomeController::class, 'index'])->where('path', '.*');
+
+
