@@ -50,7 +50,6 @@ function TicketContent({ session, seats, ticket }) {
                     Покажите QR-код нашему контроллеру для подтверждения бронирования.
                 </p>
                 <p className="ticket__hint">
-                    {/* Пожелание приятного просмотра */}
                     Приятного просмотра!
                 </p>
             </div>

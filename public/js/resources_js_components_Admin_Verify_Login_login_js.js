@@ -53,7 +53,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Exit = function Exit() {
-  // Извлечение информации о токене из состояния
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.auth;
     }),
@@ -65,9 +64,8 @@ var Exit = function Exit() {
     dispatch((0,_reducers_authReducer__WEBPACK_IMPORTED_MODULE_2__.logoutAdmin)());
   };
   if (!token) {
-    return null; // Не отображаем компонент, если нет токена
+    return null;
   }
-
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "page-header__exit",
     onClick: handleLogout,
@@ -120,17 +118,11 @@ var Login = function Login() {
     }),
     status = _useSelector.status;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-
-  // Получение функции навигации для переходов
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
-
-  // Изначальное состояние формы для входа
   var initialLoginForm = {
     mail: "",
     pwd: ""
   };
-
-  // Состояние формы для входа
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialLoginForm),
     _useState2 = _slicedToArray(_useState, 2),
     loginForm = _useState2[0],
@@ -139,7 +131,6 @@ var Login = function Login() {
   // Эффект для обработки изменений статуса аутентификации
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (status === "success") {
-      // Сброс статуса аутентификации и переход на главную страницу администратора
       dispatch((0,_reducers_authReducer__WEBPACK_IMPORTED_MODULE_2__.resetAuthStatusAdmin)());
       navigate("/admin");
     } else if (status === "error") {

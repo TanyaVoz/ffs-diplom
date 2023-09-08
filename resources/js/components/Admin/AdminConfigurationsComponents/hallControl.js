@@ -7,7 +7,6 @@ import DeleteHallAction from "../AdminActComponents/MainAct/deleteHall";
 
 export default function HallControl() {
   const { cinemaHalls } = useSelector((state) => state.admin);
-  // Получение диспатча из React Redux
   const dispatch = useDispatch();
 
   // Загрузка списка залов при монтировании компонента

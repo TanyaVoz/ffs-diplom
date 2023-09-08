@@ -7,10 +7,7 @@ import SeatStatus from "../AdminActComponents/SeatsAct/seatType";
 
 export default function PriceConfig() {
   const { cinemaHalls } = useSelector((state) => state.admin);
-
-  // Локальное состояние для хранения выбранного зала и цен
   const [selectedCinemaHall, setSelectedCinemaHall] = useState(null);
-
   const dispatch = useDispatch();
 
   // Обработчик выбора зала для конфигурации

@@ -17,7 +17,6 @@ const createPopupSlice = createSlice({
             return { ...state, ...action.payload, active: true };
         },
 
-        // Действие closePopup: вызывается, чтобы закрыть попап и вернуть начальное состояние
         closePopup: () => initialState,
     },
 });

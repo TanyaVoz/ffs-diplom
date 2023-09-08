@@ -6,8 +6,6 @@ import Button from "../AdminPanelComponents/allButtons/button";
 
 export default function CinemaHallStatusManager() {
   const { cinemaHalls } = useSelector((state) => state.admin);
-
-  // Локальное состояние для хранения измененных данных о залах
   const [modifiedHalls, setModifiedHalls] = useState([]);
   const dispatch = useDispatch();
 
@@ -16,7 +14,7 @@ export default function CinemaHallStatusManager() {
     setModifiedHalls(cinemaHalls);
   }, [cinemaHalls]);
 
-  // Обработчик изменения состояния зала (открыт/закрыт)
+  // Обработчик изменения состояния зала 
   const toggleHallState = (hall) => {
     setModifiedHalls((prevHalls) =>
       prevHalls.map((item) =>
@@ -30,7 +28,7 @@ export default function CinemaHallStatusManager() {
     modifiedHalls.forEach((hall) => {
       const originalHall = cinemaHalls.find((item) => item.id === hall.id);
       if (originalHall && originalHall.free !== hall.free) {
-        dispatch(updateHall(hall)); // Отправка обновления состояния зала в хранилище
+        dispatch(updateHall(hall)); 
       }
     });
   };

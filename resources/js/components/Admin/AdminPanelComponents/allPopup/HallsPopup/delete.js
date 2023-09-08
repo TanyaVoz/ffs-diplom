@@ -5,7 +5,6 @@ import { closePopup } from "../../../../../reducers/popupReducer";
 import SessionButton from "../../allButtons/sessionButton";
 
 export default function DeleteHall() {
-    // Получение id выбранного зала и списка всех залов из Redux состояния
     const { id } = useSelector((state) => state.popup);
     const { cinemaHalls } = useSelector((state) => state.admin);
     const dispatch = useDispatch();
@@ -18,7 +17,6 @@ export default function DeleteHall() {
         event.preventDefault();
 
         try {
-            // Удаление зала и обновление списка
             dispatch(deleteHall(id));
             dispatch(closePopup());
             dispatch(getHalls());

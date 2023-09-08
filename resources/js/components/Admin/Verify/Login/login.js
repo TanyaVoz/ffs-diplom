@@ -7,20 +7,13 @@ import Header from "../../AdminPanelComponents/adminHeader";
 const Login = () => {
   const { status } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-
-  // Получение функции навигации для переходов
   const navigate = useNavigate();
-
-  // Изначальное состояние формы для входа
   const initialLoginForm = { mail: "", pwd: "" };
-
-  // Состояние формы для входа
   const [loginForm, setLoginForm] = useState(initialLoginForm);
 
   // Эффект для обработки изменений статуса аутентификации
   useEffect(() => {
     if (status === "success") {
-      // Сброс статуса аутентификации и переход на главную страницу администратора
       dispatch(resetAuthStatusAdmin());
       navigate("/admin");
     } else if (status === "error") {

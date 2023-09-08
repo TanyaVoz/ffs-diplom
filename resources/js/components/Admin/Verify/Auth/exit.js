@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutAdmin } from "../../../../reducers/authReducer";
 
 const Exit = () => {
-  // Извлечение информации о токене из состояния
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -13,7 +12,7 @@ const Exit = () => {
   };
 
   if (!token) {
-    return null; // Не отображаем компонент, если нет токена
+    return null; 
   }
 
   return (

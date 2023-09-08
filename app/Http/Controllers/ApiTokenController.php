@@ -27,8 +27,9 @@ class ApiTokenController extends Controller
         } catch (ValidationException $e) {
             return response()->json(['error' => $e->errors()], 422);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'An error occurred while processing your request'], 500);
+            return response()->json(['error' => 'Service temporarily unavailable due to an unexpected error'], 503);
         }
+
     }
 
     protected function validateTokenRequest(Request $request): void

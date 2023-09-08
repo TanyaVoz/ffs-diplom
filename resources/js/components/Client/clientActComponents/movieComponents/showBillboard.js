@@ -6,8 +6,6 @@ import ClientHall from "./clientHall";
 export default function MovieComponent(props) {
     const { cinemaHalls } = useSelector((state) => state.calendar);
     const { id } = props;
-
-    // Фильтрация залов, где идет выбранный фильм
     const movieHalls = cinemaHalls.filter((selectedCinemaHall) => {
         return selectedCinemaHall.sessions.find((session) => +session.film_id === id);
     });
@@ -22,7 +20,7 @@ export default function MovieComponent(props) {
                 <ClientHall
                     selectedCinemaHallId={selectedCinemaHall.id}
                     selectedFilmId={id}
-                    key={selectedCinemaHall.id} // Используем id зала как ключ
+                    key={selectedCinemaHall.id} 
                 />
             ))}
         </section>

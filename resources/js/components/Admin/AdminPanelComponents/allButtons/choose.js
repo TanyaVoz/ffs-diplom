@@ -9,8 +9,8 @@ export default function ChooseHall(props) {
                 type="radio"
                 className="conf-step__radio"
                 value={name}
-                checked={checked} // Проверка, выбрана ли радио-кнопка
-                onChange={callback} // Вызов функции обработчика при изменении состояния
+                checked={checked} 
+                onChange={callback} 
             />
             {/* Отображение названия зала */}
             <span className="conf-step__selector">{name}</span>

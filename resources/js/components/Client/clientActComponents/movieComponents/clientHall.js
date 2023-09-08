@@ -3,13 +3,8 @@ import MovieSeanceItem from "./seanceTimeFilms";
 
 export default function ClientHall(props) {
     const { cinemaHalls } = useSelector((state) => state.calendar);
-
     const { selectedCinemaHallId, selectedFilmId } = props;
-
-    // Поиск информации о конкретном кинозале
     const selectedCinemaHall = cinemaHalls.find((selectedCinemaHall) => selectedCinemaHall.id === selectedCinemaHallId);
-
-    // Фильтрация сеансов в выбранном кинозале для конкретного фильма
     const selectedCinemaHallSeances = selectedCinemaHall.sessions.filter((session) => +session.film_id === selectedFilmId);
 
     return (
@@ -22,7 +17,7 @@ export default function ClientHall(props) {
                     <MovieSeanceItem
                         id={seance.id}
                         time={seance.datetime}
-                        key={seance.id} // Используем id сеанса как ключ
+                        key={seance.id} 
                     />
                 ))}
             </ul>

@@ -6,14 +6,12 @@ import getRussianMinutesLabel from "../../../Client/additionalComponents/Formatt
 
 
 const EditMovieAction = ({ id, img, title, duration }) => {
-    // Получение продолжительности фильма в соответствии с числом
+   
     const filmDuration = getRussianMinutesLabel(duration);
-
     const dispatch = useDispatch();
 
     // Обработчик клика по компоненту фильма
     const handleMovieClick = () => {
-        // Диспатч действия для показа всплывающего окна
         dispatch(showPopup({ title: "Редактирование фильма", form: "editMovie", id }));
     };
 
@@ -37,10 +35,10 @@ const EditMovieAction = ({ id, img, title, duration }) => {
 
 // Пропсы компонента
 EditMovieAction.propTypes = {
-    id: PropTypes.number.isRequired, // Обязательный номер (ID) фильма
-    img: PropTypes.string.isRequired, // Обязательный путь к изображению постера фильма
-    title: PropTypes.string.isRequired, // Обязательное название фильма
-    duration: PropTypes.number.isRequired, // Обязательная продолжительность фильма в минутах
+    id: PropTypes.number.isRequired, 
+    img: PropTypes.string.isRequired, 
+    title: PropTypes.string.isRequired, 
+    duration: PropTypes.number.isRequired, 
 };
 
 export default EditMovieAction;

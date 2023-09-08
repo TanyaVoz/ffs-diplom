@@ -8,8 +8,6 @@ export default function AddHall(props) {
     const dispatcher = useDispatch();
     const { editMode } = props;
     const [formData, setFormData] = useState({ hallName: "" });
-
-    // Получение данных о залах из состояния Redux
     const { hallData } = useSelector((state) => state.admin);
     const targetHall = editMode ? hallData.find((hall) => hall.id === state.popup.id) : null;
 
@@ -24,14 +22,12 @@ export default function AddHall(props) {
         event.preventDefault();
 
         if (editMode) {
-            // Обновление данных о зале
             const updatedHallData = { ...targetHall, hallName: formData.hallName };
             dispatcher(updateHall(updatedHallData)).then(() => {
                 dispatcher(closePopup());
                 dispatcher(getHalls());
             });
         } else {
-            // Создание нового зала
             dispatcher(createHall(formData.hallName)).then(() => {
                 dispatcher(closePopup());
                 dispatcher(getHalls());

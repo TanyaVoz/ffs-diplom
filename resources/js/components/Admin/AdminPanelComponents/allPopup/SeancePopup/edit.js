@@ -7,11 +7,7 @@ export default function EditSeance() {
     const dispatch = useDispatch();
     const { id } = useSelector((state) => state.popup);
     const { seances } = useSelector((state) => state.admin);
-
-    // Находим сеанс по ID из состояния всплывающего окна
     const session = seances.find((session) => session.id === id);
-
-    // Преобразуем дату и время сеанса в соответствующие форматы
     const datetime = new Date(session.datetime);
     const date = `${datetime.getFullYear()}-${('0' + (datetime.getMonth() + 1)).slice(-2)}-${('0' + datetime.getDate()).slice(-2)}`;
     const time = `${('0' + datetime.getHours()).slice(-2)}:${('0' + datetime.getMinutes()).slice(-2)}`;

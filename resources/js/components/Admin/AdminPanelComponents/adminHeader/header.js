@@ -2,7 +2,6 @@ import { useState } from "react";
 import classNames from "classnames";
 
 export default function CustomStepHeader(props) {
-    // Локальное состояние для управления открытием/закрытием раздела
     const [isSectionOpen, setIsSectionOpen] = useState(true);
 
     return (

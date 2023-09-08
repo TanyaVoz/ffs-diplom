@@ -8,8 +8,6 @@ export default function CustomDeleteMovie() {
     const dispatch = useDispatch();
     const { id } = useSelector((state) => state.popup);
     const { movies } = useSelector((state) => state.admin);
-
-    // Находим выбранный фильм по его ID
     const selectedMovie = movies.find((movie) => movie.id === id);
     const movieTitle = selectedMovie ? selectedMovie.title : "неизвестный фильм";
 
@@ -17,10 +15,10 @@ export default function CustomDeleteMovie() {
         event.preventDefault();
 
         try {
-            dispatch(deleteMovie(id)); // Удаление фильма
-            dispatch(closePopup()); // Закрытие всплывающего окна
-            dispatch(getSeances()); // Обновление списка сеансов
-            dispatch(getMovies());  // Обновление списка фильмов
+            dispatch(deleteMovie(id)); 
+            dispatch(closePopup()); 
+            dispatch(getSeances()); 
+            dispatch(getMovies());  
         } catch (error) {
             console.error("Ошибка при удалении фильма:", error);
         }

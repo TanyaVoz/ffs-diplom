@@ -14,16 +14,9 @@ class CommonController extends Controller
     // Метод возвращает массив доступных кинозалов, сеансов и фильмов для заданной даты.
     public function calendar(string $datetime): array
     {
-        // Преобразование входной даты и времени в нужный формат.
         $timeSeance = DateTime::createFromFormat('Y-m-d', $datetime)->format('Y-m-d');
-
-        // Получение доступных кинозалов для указанной даты.
         $cinemaHalls = $this->getAvailableCinemaHalls($timeSeance);
-
-        // Получение доступных сеансов для указанной даты и кинозалов.
         $sessions = $this->getAvailableSessions($timeSeance);
-
-        // Получение доступных фильмов для полученных сеансов.
         $films = $this->getAvailableFilms($sessions);
 
         return [
@@ -36,10 +29,7 @@ class CommonController extends Controller
     // Метод возвращает детали сеанса и доступные места для заданного идентификатора сеанса.
     public function seatSelect(int $sessionId): array
     {
-        // Получение деталей сеанса для указанного идентификатора.
         $session = $this->getSessionDetails($sessionId);
-
-        // Получение доступных мест для кинозала, связанного с сеансом.
         $seats = $this->getSessionSeats($session->cinema_hall_id);
 
         return [
@@ -97,13 +87,11 @@ class CommonController extends Controller
     // Получение и возврат доступных мест для заданного идентификатора кинозала.
     private function getSessionSeats(int $cinemaHallId)
     {
-        // Получение мест с их статусом и количеством билетов.
         $seats = Seat::where('cinema_hall_id', $cinemaHallId)
             ->select('id', 'number', 'status')
             ->withCount('tickets')
             ->get();
 
-        // Обновление статуса места на основе количества проданных билетов.
         $seats->each(function ($seat) {
             $seat->status = $seat->tickets_count > 0 ? 'sold' : $seat->status;
         });

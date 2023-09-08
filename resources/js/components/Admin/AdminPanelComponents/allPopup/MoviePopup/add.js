@@ -9,7 +9,6 @@ export default function AddMovie() {
 
     // Обработчик создания нового фильма
     const handleMovieCreation = (title, description, duration, country, poster) => {
-        // Диспетчеризация действия создания фильма с переданными данными
         dispatch(createMovie({
             title,
             description,
@@ -26,7 +25,7 @@ export default function AddMovie() {
 
             {/* Компонент MovieCard для ввода информации о фильме */}
             <MovieCard
-                callbackSubmit={handleMovieCreation} // Передача обработчика создания фильма
+                callbackSubmit={handleMovieCreation} 
             />
         </div>
     );

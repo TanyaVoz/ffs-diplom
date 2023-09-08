@@ -9,13 +9,8 @@ import Button from '../../additionalComponents/Button/buttonClients';
 
 export default function MainSeance() {
     const { session } = useSelector((state) => state.seance);
-
-    // Получение идентификатора сеанса из параметров URL
     const seanceId = useParams().seanceId;
-
     const dispatch = useDispatch();
-
-    // Массив для выбранных мест
     const selectedSeats = [];
 
     // Загрузка данных о сеансе при монтировании компонента

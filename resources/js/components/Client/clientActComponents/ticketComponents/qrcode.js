@@ -9,7 +9,6 @@ export default function QRCodeTicket(props) {
     // Функция для генерации QR-кода
     const generateQRCode = async (text) => {
         try {
-            // Генерация изображения QR-кода и установка его в реф
             const qrDataURL = await QRCode.toDataURL(text, {
                 errorCorrectionLevel: "Q",
                 margin: 3,
@@ -20,7 +19,6 @@ export default function QRCodeTicket(props) {
         }
     }
 
-    // Эффект для генерации QR-кода при изменении кода
     useEffect(() => {
         generateQRCode(code);
     }, [code]);

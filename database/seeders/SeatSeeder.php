@@ -15,16 +15,9 @@ class SeatSeeder extends Seeder
      */
     public function run()
     {
-        // Список мест VIP
         $vipSeats = [53, 54, 55, 56];
-
-        // Количество занятых мест (disabled)
-        $totalDisabledSeats = 20; // Например, установим 20 занятых мест
-
-        // Общее количество мест
+        $totalDisabledSeats = 20;
         $totalSeats = 95;
-
-        // Общее количество залов
         $totalCinemaHalls = 3;
 
         // Случайное определение занятых мест

@@ -7066,7 +7066,6 @@ var createPopupSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSl
         active: true
       });
     },
-    // Действие closePopup: вызывается, чтобы закрыть попап и вернуть начальное состояние
     closePopup: function closePopup() {
       return initialState;
     }

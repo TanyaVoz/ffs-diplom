@@ -1,7 +1,7 @@
 export default function ChooseOpenHalls(props) {
     const { id, name, free, callback } = props;
 
-    const uniqueCheckboxId = `cinemaHallCheck${id}`;// Уникальный идентификатор 
+    const uniqueCheckboxId = `cinemaHallCheck${id}`;
 
     return (
         <div className="conf-step__hall-checkbox">
@@ -9,8 +9,8 @@ export default function ChooseOpenHalls(props) {
                 id={uniqueCheckboxId}
                 className="conf-step__custom-checkbox"
                 type="checkbox"
-                checked={free}// Определение состояния выбора (true/false)
-                onChange={callback}// Обработчик изменения состояния
+                checked={free}
+                onChange={callback}
             />
             <label htmlFor={uniqueCheckboxId}>{name}</label>
         </div>

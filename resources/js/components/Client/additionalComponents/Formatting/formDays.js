@@ -5,17 +5,19 @@ import Navigation from "./index";
 
 export default function Navigate() {
 
-    const [start, setStartDays] = useState(new Date()); // Состояние для отслеживания начальной даты
+    const [start, setStartDays] = useState(new Date()); 
     const { chosenDate } = useSelector((state) => state.calendar);
     const dispatch = useDispatch();
     const todayDayWeek = new Date();
     const handleDateClick = (day) => {
         dispatch(chooseDate(`${day.getFullYear()}-${day.getMonth() + 1}-${day.getDate()}`));
     }
+
     // Обработчик для переключения даты назад или вперед
     const handleDateChange = (day, arg) => {
         setStartDays(new Date(day.setDate(day.getDate() + arg)));
     }
+
     // Создание массива дней для отображения
     const weekDates = [new Date(start.getTime())];
     for (let i = 0; i < 5; i++) {
@@ -23,6 +25,7 @@ export default function Navigate() {
         next.setDate(next.getDate() + 1);
         weekDates.push(next);
     }
+    
     //Отображение дней и переключатель на следующую неделю
     return (
         <nav className="page-nav">

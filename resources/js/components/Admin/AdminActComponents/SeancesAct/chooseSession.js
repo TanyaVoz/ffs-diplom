@@ -8,7 +8,7 @@ export default function ChooseSessionDate() {
 
     // Обработчик изменения выбранной даты
     const handleChange = ({ target }) => {
-        dispatch(chooseDate(target.value)); // Диспетчер для обновления выбранной даты в хранилище
+        dispatch(chooseDate(target.value)); 
     };
 
     const minDate = `${today.getFullYear()}-${('0' + (today.getMonth() + 1)).slice(-2)}-${('0' + today.getDate()).slice(-2)}`;
@@ -21,10 +21,10 @@ export default function ChooseSessionDate() {
                     className="conf-step__input"
                     type="date"
                     name="datepicker"
-                    min={minDate} // Устанавливаем минимальную дату как текущую дату
-                    value={chosenDate} // Установка значения даты
-                    onChange={handleChange} // Привязка обработчика изменения
-                    pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" // Паттерн для ввода даты
+                    min={minDate} 
+                    value={chosenDate} 
+                    onChange={handleChange} 
+                    pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" 
                     required
                 />
             </label>

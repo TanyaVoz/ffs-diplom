@@ -44,8 +44,8 @@ const DeleteHallAction = ({ id, name }) => {
 
 // Пропсы компонента
 DeleteHallAction.propTypes = {
-  id: PropTypes.number.isRequired,// Обязательный номер (ID) зала
-  name: PropTypes.string.isRequired,// Обязательное имя зала
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default DeleteHallAction;

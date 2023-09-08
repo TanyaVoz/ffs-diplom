@@ -5,13 +5,10 @@ export default function MovieTime(props) {
     const { movies } = useSelector(state => state.admin); 
     const { id, seance, time } = props; 
     const dispatch = useDispatch();
-
-    // Поиск индекса фильма в массиве по его ID
-    const movie = movies.find(movie => movie.id === +id); // Выбранный фильм
-    const width = (movie.duration / 60) * 30; // Вычисление ширины блока сеанса в пикселях на основе длительности фильма
-    const datetime = new Date(time); // Преобразование времени сеанса в объект типа Date
-    const shift = (datetime.getHours() + datetime.getMinutes() / 60) * 30; // Вычисление сдвига блока сеанса по горизонтали
-
+    const movie = movies.find(movie => movie.id === +id); 
+    const width = (movie.duration / 60) * 30; 
+    const datetime = new Date(time); 
+    const shift = (datetime.getHours() + datetime.getMinutes() / 60) * 30; 
     const movieTitle = movie ? movie.title : "Фильм не найден"; // Обработка случая, если фильм не найден
 
     return (

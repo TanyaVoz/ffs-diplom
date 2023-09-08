@@ -40,7 +40,7 @@ class CinemaHallService
         if ($cinemaHall->save()) {
             return response()->json(['message' => 'Cinema hall updated successfully.']);
         } else {
-            return response()->json(['error' => 'Failed to update cinema hall.'], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return response()->json(['error' => 'Invalid data provided for cinema hall update.'], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
     }
 
@@ -50,7 +50,7 @@ class CinemaHallService
             $cinemaHall->delete();
             return response()->json(['message' => 'Cinema hall deleted successfully.']);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Failed to delete cinema hall.'], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return response()->json(['error' => 'Invalid request: The cinema hall could not be deleted.'], Response::HTTP_BAD_REQUEST);
         }
     }
 }

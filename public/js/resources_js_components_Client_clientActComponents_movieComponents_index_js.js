@@ -64,7 +64,7 @@ function Navigate() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(new Date()),
     _useState2 = _slicedToArray(_useState, 2),
     start = _useState2[0],
-    setStartDays = _useState2[1]; // Состояние для отслеживания начальной даты
+    setStartDays = _useState2[1];
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.calendar;
     }),
@@ -74,10 +74,12 @@ function Navigate() {
   var _handleDateClick = function handleDateClick(day) {
     dispatch((0,_reducers_calendarReducer__WEBPACK_IMPORTED_MODULE_2__.chooseDate)("".concat(day.getFullYear(), "-").concat(day.getMonth() + 1, "-").concat(day.getDate())));
   };
+
   // Обработчик для переключения даты назад или вперед
   var handleDateChange = function handleDateChange(day, arg) {
     setStartDays(new Date(day.setDate(day.getDate() + arg)));
   };
+
   // Создание массива дней для отображения
   var weekDates = [new Date(start.getTime())];
   for (var i = 0; i < 5; i++) {
@@ -85,6 +87,7 @@ function Navigate() {
     next.setDate(next.getDate() + 1);
     weekDates.push(next);
   }
+
   //Отображение дней и переключатель на следующую неделю
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("nav", {
     className: "page-nav",
@@ -209,19 +212,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Header() {
-  return (
-    /*#__PURE__*/
-    // Основной контейнер заголовка страницы
-    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
-      className: "page-header",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
-        className: "page-header__title",
-        children: ["\u0418\u0434\u0451\u043C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-          children: "\u0432"
-        }), "\u043A\u0438\u043D\u043E"]
-      })
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
+    className: "page-header",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
+      className: "page-header__title",
+      children: ["\u0418\u0434\u0451\u043C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        children: "\u0432"
+      }), "\u043A\u0438\u043D\u043E"]
     })
-  );
+  });
 }
 
 /***/ }),
@@ -251,13 +250,9 @@ function ClientHall(props) {
     cinemaHalls = _useSelector.cinemaHalls;
   var selectedCinemaHallId = props.selectedCinemaHallId,
     selectedFilmId = props.selectedFilmId;
-
-  // Поиск информации о конкретном кинозале
   var selectedCinemaHall = cinemaHalls.find(function (selectedCinemaHall) {
     return selectedCinemaHall.id === selectedCinemaHallId;
   });
-
-  // Фильтрация сеансов в выбранном кинозале для конкретного фильма
   var selectedCinemaHallSeances = selectedCinemaHall.sessions.filter(function (session) {
     return +session.film_id === selectedFilmId;
   });
@@ -319,7 +314,6 @@ function MainMovie() {
     dispatch((0,_reducers_calendarReducer__WEBPACK_IMPORTED_MODULE_2__.getCalendar)(chosenDate));
   }, [chosenDate]);
   if (error) {
-    // Обработка ошибки
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       children: ["Error: ", error.message]
     });
@@ -366,7 +360,6 @@ function MovieInfo(props) {
     return film.id === id;
   });
   if (!film) {
-    // Обработка случая, когда фильм с заданным id не найден
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       children: "\u0424\u0438\u043B\u044C\u043C \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D."
     });
@@ -475,8 +468,6 @@ function MovieComponent(props) {
     }),
     cinemaHalls = _useSelector.cinemaHalls;
   var id = props.id;
-
-  // Фильтрация залов, где идет выбранный фильм
   var movieHalls = cinemaHalls.filter(function (selectedCinemaHall) {
     return selectedCinemaHall.sessions.find(function (session) {
       return +session.film_id === id;

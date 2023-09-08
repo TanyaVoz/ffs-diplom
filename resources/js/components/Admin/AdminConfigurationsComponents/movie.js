@@ -43,7 +43,6 @@ export default function MovieCard(props) {
 
     if (fileInput.current && fileInput.current.files.length > 0) {
       try {
-        // Вызов callbackSubmit для добавления фильма
         callbackSubmit(
           form.title,
           form.description,
@@ -51,12 +50,9 @@ export default function MovieCard(props) {
           form.country,
           fileInput.current.files[0]
         );
-
-        // Закрытие всплывающего окна и обновление списка фильмов
         dispatch(closePopup());
         dispatch(getMovies());
       } catch (error) {
-        // Обработка ошибок при добавлении фильма
         console.error("Ошибка при добавлении фильма:", error);
       }
     }

@@ -7,7 +7,6 @@ export default function MovieInfo(props) {
     const film = films.find((film) => film.id === id);
 
     if (!film) {
-        // Обработка случая, когда фильм с заданным id не найден
         return <div>Фильм не найден.</div>;
     }
 

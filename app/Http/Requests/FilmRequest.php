@@ -21,7 +21,6 @@ class FilmRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // В данном случае разрешаем доступ для всех пользователей.
         return true;
     }
 
@@ -32,13 +31,13 @@ class FilmRequest extends FormRequest
      */
     public function rules(): array
     {
-        // Указание правил валидации для каждого поля запроса.
+        
         return [
-            'title' => ['required', 'string'], // Обязательное поле с типом "строка".
-            'description' => ['required', 'string'], // Обязательное поле с типом "строка".
-            'duration' => ['required', 'integer'], // Обязательное поле с типом "целое число".
-            'country' => ['required', 'string'], // Обязательное поле с типом "строка".
-            'poster' => ['required', 'image'], // Обязательное поле с типом "изображение".
+            'title' => ['required', 'string'], 
+            'description' => ['required', 'string'], 
+            'duration' => ['required', 'integer'], 
+            'country' => ['required', 'string'], 
+            'poster' => ['required', 'image'], 
         ];
     }
 
@@ -50,7 +49,7 @@ class FilmRequest extends FormRequest
      */
     protected function failedValidation(Validator $validator): void
     {
-        // Если валидация не прошла, выбрасываем исключение с ответом, содержащим ошибки валидации, и кодом состояния HTTP 422 (Непроцессируемый экземпляр).
+        
         throw new HttpResponseException(
            
             response()->json(['errors' => $validator->errors()], Response::HTTP_UNPROCESSABLE_ENTITY)

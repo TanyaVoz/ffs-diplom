@@ -74,7 +74,6 @@ class SessionController extends Controller
         if ($this->sessionService->deleteSession($session)) {
             return response(null, Response::HTTP_NO_CONTENT);
         }
-
-        return response()->json(['message' => 'Failed to delete the session.'], Response::HTTP_INTERNAL_SERVER_ERROR);
+        return response()->json(['message' => 'Session not found.'], Response::HTTP_NOT_FOUND);
     }
 }

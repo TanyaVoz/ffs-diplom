@@ -4,17 +4,10 @@ import { changeSeatStatus } from "../../../../reducers/adminReducer";
 import SeatStatus from "./seatType";
 
 export default function SeatsScheme(props) {
-    const { place } = props; // Получение количества мест в ряду из входных свойств
-
-    // Получение данных о местах из Redux-состояния
+    const { place } = props; 
     const { seats } = useSelector((state) => state.admin);
-
-    // Получение функции dispatch из Redux для отправки действий
     const dispatch = useDispatch();
-
     const allStatus = ["standard", "vip", "disabled"]; // Список доступных статусов мест
-
-    // Вычисление количества мест в ряду
     const chair = seats.length / place;
 
     // Группировка мест по рядам

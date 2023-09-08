@@ -15,7 +15,7 @@ class SeatRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // В данном случае разрешаем доступ для всех пользователей.
+       
         return true;
     }
 
@@ -26,13 +26,13 @@ class SeatRequest extends FormRequest
      */
     public function rules(): array
     {
-        // Указание правил валидации для каждого поля запроса.
+        
         return [
-            'seats' => ['required', 'array'], // Обязательное поле с типом "массив".
-            'seats.*.number' => ['required', 'integer'], // Обязательное поле с типом "целое число".
-            'seats.*.status' => ['required', 'string'], // Обязательное поле с типом "строка".
-            'seats.*.id' => ['integer'], // Поле с типом "целое число".
-            'seats.*.cinema_hall_id' => ['integer'], // Поле с типом "целое число".
+            'seats' => ['required', 'array'], 
+            'seats.*.number' => ['required', 'integer'], 
+            'seats.*.status' => ['required', 'string'], 
+            'seats.*.id' => ['integer'], 
+            'seats.*.cinema_hall_id' => ['integer'], 
         ];
     }
 
@@ -44,7 +44,7 @@ class SeatRequest extends FormRequest
      */
     protected function failedValidation(Validator $validator): void
     {
-        // Если валидация не прошла, выбрасываем исключение с ответом, содержащим ошибки валидации, и кодом состояния HTTP 422 (Непроцессируемый экземпляр).
+        
         throw new HttpResponseException(
             response()->json(['errors' => $validator->errors()], Response::HTTP_UNPROCESSABLE_ENTITY)
         );

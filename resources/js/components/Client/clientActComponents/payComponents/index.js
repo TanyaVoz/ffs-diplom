@@ -9,8 +9,6 @@ import TicketInfo from "../ticketComponents/informationTicket";
 export default function TicketConfirmation() {
     const { session, seats, ticket } = useSelector((state) => state.seance);
     const navigate = useNavigate();
-
-    // Фильтрация выбранных мест и получение их номеров
     const selectedSeats = seats.filter((seat) => ticket.seats.includes(seat.id));
     const selectedSeatNumbers = selectedSeats.map((seat) => seat.number);
 

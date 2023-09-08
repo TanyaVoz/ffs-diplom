@@ -14,7 +14,6 @@ export default function MainMovie() {
     }, [chosenDate]);
 
     if (error) {
-        // Обработка ошибки
         return <div>Error: {error.message}</div>;
     }
 

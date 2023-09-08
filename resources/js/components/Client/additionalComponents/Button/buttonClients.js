@@ -5,12 +5,11 @@ export default function Button(props) {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        // Если callback есть и является функцией, вызываем его
+       
         if (callback && typeof callback === "function") {
             callback();
         }
 
-        // Проверяем, есть ли ссылка, прежде чем переходить
         if (link) {
             navigate(link);
         }

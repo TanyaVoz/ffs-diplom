@@ -13,7 +13,7 @@ export default function SaveButton(props) {
                 type="submit"
                 value="Сохранить"
                 className="conf-step__button conf-step__button-accent"
-                onClick={save} // Вызов функции save при клике на кнопку
+                onClick={save} 
             />
         </div>
     );

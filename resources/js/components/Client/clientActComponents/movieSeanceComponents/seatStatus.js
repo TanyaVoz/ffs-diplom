@@ -10,8 +10,6 @@ export default function SeanceSeatStatus(props) {
     if (status === 'disabled' || status === 'sold') {
       return;
     }
-
-    // Изменение состояния выбора места
     setTaken(!taken);
     callback();
   };

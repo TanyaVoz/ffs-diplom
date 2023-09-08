@@ -6,14 +6,8 @@ import SessionButton from "../AdminPanelComponents/allButtons/sessionButton";
 
 export default function SeanceCard(props) {
   const { cinemaHalls, movies } = useSelector((state) => state.admin);
-
-  // Извлечение данных из пропсов с использованием деструктуризации
   const { cinema_hall_id, film_id, date, time, callbackSubmit, callbackDelete } = props;
-
-  // Получение текущей даты
   const today = new Date();
-
-  // Начальное состояние формы
   const initialFormState = { date, time, cinemaHall: cinema_hall_id, movie: film_id };
   const [form, setForm] = useState(initialFormState);
   const dispatch = useDispatch();
@@ -33,10 +27,7 @@ export default function SeanceCard(props) {
     const formattedDatetime = `${datetime.getFullYear()}-${('0' + (datetime.getMonth() + 1)).slice(-2)}-${('0' + datetime.getDate()).slice(-2)} ${form.time}`;
 
     try {
-      // Вызов коллбэка для добавления сеанса
       await callbackSubmit(formattedDatetime, form.cinemaHall, form.movie);
-
-      // Закрытие всплывающего окна и обновление списка сеансов
       dispatch(closePopup());
       dispatch(getSeances());
     } catch (error) {

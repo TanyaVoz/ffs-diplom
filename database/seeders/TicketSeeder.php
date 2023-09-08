@@ -19,7 +19,7 @@ class TicketSeeder extends Seeder
         $sessions = DB::table('sessions')->pluck('id');
 
         foreach ($sessions as $session_id) {
-            // Генерировать случайное количество билетов от 1 до 10
+            
             $numTickets = random_int(1, 10);
 
             // Вставить билеты для текущего сеанса

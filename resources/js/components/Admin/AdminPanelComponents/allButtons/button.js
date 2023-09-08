@@ -6,7 +6,7 @@ export default function Button(props) {
         
         <button
             className={`conf-step__button conf-step__button-accent ${className || ''}`}
-            onClick={callback} // Вызов функции callback при клике на кнопку
+            onClick={callback} 
         >
             {text} {/* Отображение текста на кнопке */}
         </button>

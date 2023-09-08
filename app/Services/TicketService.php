@@ -22,16 +22,13 @@ class TicketService
         }
 
         return DB::transaction(function () use ($params) {
-            // Создание билетов
             $tickets = Ticket::create($params);
 
-            // Связывание билетов с выбранными местами
             foreach ($params['seats'] as $seatId) {
                 $seat = Seat::findOrFail($seatId);
                 $tickets->seats()->attach($seat);
             }
 
-            // Завершение транзакции
             return $tickets;
         });
     }

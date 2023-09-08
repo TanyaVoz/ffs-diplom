@@ -23,7 +23,6 @@ class TicketController extends Controller
      */
     public function __construct(TicketService $ticketService)
     {
-        // Внедрение экземпляра сервиса для работы с билетами.
         $this->ticketService = $ticketService;
     }
 
@@ -35,10 +34,7 @@ class TicketController extends Controller
      */
     public function store(TicketRequest $request): Response
     {
-        // Валидация входящего запроса с использованием TicketRequest.
         $params = $request->validated();
-        
-        // Создание нового билета с использованием TicketService, передав параметры из запроса.
         $ticket = $this->ticketService->create($params);
         
         return response($ticket, 201);

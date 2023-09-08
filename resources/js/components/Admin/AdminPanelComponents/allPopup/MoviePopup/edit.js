@@ -6,12 +6,8 @@ import MovieCard from "../../../AdminConfigurationsComponents/movie";
 
 export default function EditMovie() {
   const dispatch = useDispatch();
-
-  // Выборка ID фильма из состояния всплывающего окна
   const { id } = useSelector((state) => state.popup);
   const { movies } = useSelector((state) => state.admin);
-
-  // Поиск фильма по ID
   const movie = movies.find((movie) => movie.id === id);
 
   // Обработчик обновления информации о фильме

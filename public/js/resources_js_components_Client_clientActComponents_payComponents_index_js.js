@@ -52,12 +52,9 @@ function Button(props) {
     callback = props.callback;
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
   var handleClick = function handleClick() {
-    // Если callback есть и является функцией, вызываем его
     if (callback && typeof callback === "function") {
       callback();
     }
-
-    // Проверяем, есть ли ссылка, прежде чем переходить
     if (link) {
       navigate(link);
     }
@@ -104,7 +101,7 @@ function Navigate() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(new Date()),
     _useState2 = _slicedToArray(_useState, 2),
     start = _useState2[0],
-    setStartDays = _useState2[1]; // Состояние для отслеживания начальной даты
+    setStartDays = _useState2[1];
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
       return state.calendar;
     }),
@@ -114,10 +111,12 @@ function Navigate() {
   var _handleDateClick = function handleDateClick(day) {
     dispatch((0,_reducers_calendarReducer__WEBPACK_IMPORTED_MODULE_2__.chooseDate)("".concat(day.getFullYear(), "-").concat(day.getMonth() + 1, "-").concat(day.getDate())));
   };
+
   // Обработчик для переключения даты назад или вперед
   var handleDateChange = function handleDateChange(day, arg) {
     setStartDays(new Date(day.setDate(day.getDate() + arg)));
   };
+
   // Создание массива дней для отображения
   var weekDates = [new Date(start.getTime())];
   for (var i = 0; i < 5; i++) {
@@ -125,6 +124,7 @@ function Navigate() {
     next.setDate(next.getDate() + 1);
     weekDates.push(next);
   }
+
   //Отображение дней и переключатель на следующую неделю
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("nav", {
     className: "page-nav",
@@ -249,19 +249,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Header() {
-  return (
-    /*#__PURE__*/
-    // Основной контейнер заголовка страницы
-    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
-      className: "page-header",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
-        className: "page-header__title",
-        children: ["\u0418\u0434\u0451\u043C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-          children: "\u0432"
-        }), "\u043A\u0438\u043D\u043E"]
-      })
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
+    className: "page-header",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
+      className: "page-header__title",
+      children: ["\u0418\u0434\u0451\u043C", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        children: "\u0432"
+      }), "\u043A\u0438\u043D\u043E"]
     })
-  );
+  });
 }
 
 /***/ }),
@@ -280,19 +276,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 function TicketHeader(props) {
-  // Получение текста заголовка из пропсов
   var text = props.text;
-  return (
-    /*#__PURE__*/
-    // Основной контейнер заголовка билета
-    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
-      className: "tichet__check",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
-        className: "ticket__check-title",
-        children: text
-      })
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
+    className: "tichet__check",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
+      className: "ticket__check-title",
+      children: text
     })
-  );
+  });
 }
 
 /***/ }),
@@ -334,8 +325,6 @@ function TicketConfirmation() {
     seats = _useSelector.seats,
     ticket = _useSelector.ticket;
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useNavigate)();
-
-  // Фильтрация выбранных мест и получение их номеров
   var selectedSeats = seats.filter(function (seat) {
     return ticket.seats.includes(seat.id);
   });
