@@ -12,7 +12,6 @@ class FilmController extends Controller
 
     public function __construct(FilmService $filmService)
     {
-        
         $this->filmService = $filmService;
     }
 
@@ -23,7 +22,6 @@ class FilmController extends Controller
      */
     public function index(): \Illuminate\Database\Eloquent\Collection
     {
-        
         $films = $this->filmService->getAllFilms();
         return $films;
     }
@@ -36,7 +34,6 @@ class FilmController extends Controller
      */
     public function store(FilmRequest $request): bool|int
     {
-        
         return $this->filmService->createFilm($request);
     }
 
@@ -48,7 +45,6 @@ class FilmController extends Controller
      */
     public function show($id): ?\App\Models\Film
     {
-       
         $film = $this->filmService->getFilmById($id);
         return $film;
     }
@@ -62,15 +58,12 @@ class FilmController extends Controller
      */
     public function update(FilmRequest $request, $id): bool|int
     {
-        
         $film = $this->filmService->getFilmById($id);
         
-       
         if (!$film) {
             return false;
         }
 
-        
         return $this->filmService->updateFilm($request, $film);
     }
 
@@ -82,17 +75,13 @@ class FilmController extends Controller
      */
     public function destroy($id): ?\Illuminate\Http\Response
     {
-        
         $film = $this->filmService->getFilmById($id);
 
-       
         if (!$film) {
             return response(null, Response::HTTP_NOT_FOUND);
         }
 
-       
         if ($this->filmService->deleteFilm($film)) {
-            
             return response(null, Response::HTTP_NO_CONTENT);
         }
 

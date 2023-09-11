@@ -11,14 +11,15 @@ export default function CustomDeleteMovie() {
     const selectedMovie = movies.find((movie) => movie.id === id);
     const movieTitle = selectedMovie ? selectedMovie.title : "неизвестный фильм";
 
+    // Обработчик удаления фильма
     const handleDelete = async (event) => {
         event.preventDefault();
 
         try {
-            dispatch(deleteMovie(id)); 
-            dispatch(closePopup()); 
-            dispatch(getSeances()); 
-            dispatch(getMovies());  
+            dispatch(deleteMovie(id));
+            dispatch(closePopup());
+            dispatch(getSeances());
+            dispatch(getMovies());
         } catch (error) {
             console.error("Ошибка при удалении фильма:", error);
         }

@@ -11,7 +11,7 @@ const AddSeanceAction = ({ cinemaHallId, name }) => {
 
   // Обработчик добавления сеанса
   const handleAddSeance = () => {
-    
+
     dispatch(
       showPopup({
         title: "Добавление сеанса",

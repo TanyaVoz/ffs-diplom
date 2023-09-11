@@ -23,16 +23,16 @@ function HallConfig() {
   // Обработчик выбора зала
   const handleSelect = (id) => {
     const selectedHall = cinemaHalls.find((cinemaHall) => cinemaHall.id === id);
-    dispatch(selectCinemaHallScheme(selectedHall)); 
-    dispatch(getSeats(id)); 
-    setUpdatedSize({ row: selectedHall.row, chair: selectedHall.chair }); 
+    dispatch(selectCinemaHallScheme(selectedHall));
+    dispatch(getSeats(id));
+    setUpdatedSize({ row: selectedHall.row, chair: selectedHall.chair });
   };
 
   // Обработчик изменения размеров зала
   const handleChange = ({ target }) => {
     const { name, value } = target;
     const newSize = { ...updatedSize, [name]: value };
-    setUpdatedSize(newSize); 
+    setUpdatedSize(newSize);
 
     // Создание новых мест в зале с обновленными размерами
     const updatedSeats = Array.from({ length: newSize.row * newSize.chair }, (_, i) => ({
@@ -42,8 +42,8 @@ function HallConfig() {
       cinema_hall_id: selectedCinemaHallScheme.id,
     }));
 
-    dispatch(changeHallSize(newSize)); 
-    dispatch(createScheme(updatedSeats)); 
+    dispatch(changeHallSize(newSize));
+    dispatch(createScheme(updatedSeats));
   };
 
   // Обработчик сохранения изменений
@@ -51,10 +51,10 @@ function HallConfig() {
     const sourceHall = cinemaHalls.find((cinemaHall) => cinemaHall.id === selectedCinemaHallScheme.id);
 
     if (sourceHall.row === updatedSize.row && sourceHall.chair === updatedSize.chair) {
-      dispatch(updateSeats()); 
+      dispatch(updateSeats());
     } else {
-      dispatch(updateHall(selectedCinemaHallScheme)); 
-      dispatch(createSeats()); 
+      dispatch(updateHall(selectedCinemaHallScheme));
+      dispatch(createSeats());
       dispatch(getHalls());
     }
 

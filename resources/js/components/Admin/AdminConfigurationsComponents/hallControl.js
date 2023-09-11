@@ -9,7 +9,6 @@ export default function HallControl() {
   const { cinemaHalls } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
 
-  // Загрузка списка залов при монтировании компонента
   useEffect(() => {
     dispatch(getHalls());
   }, []);

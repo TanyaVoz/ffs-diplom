@@ -9,7 +9,6 @@ export default function CinemaHallStatusManager() {
   const [modifiedHalls, setModifiedHalls] = useState([]);
   const dispatch = useDispatch();
 
-  // Обновление локального состояния при изменении данных о залах
   useEffect(() => {
     setModifiedHalls(cinemaHalls);
   }, [cinemaHalls]);
@@ -28,7 +27,7 @@ export default function CinemaHallStatusManager() {
     modifiedHalls.forEach((hall) => {
       const originalHall = cinemaHalls.find((item) => item.id === hall.id);
       if (originalHall && originalHall.free !== hall.free) {
-        dispatch(updateHall(hall)); 
+        dispatch(updateHall(hall));
       }
     });
   };

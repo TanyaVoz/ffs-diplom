@@ -25,7 +25,7 @@ export default function AddMovie() {
 
             {/* Компонент MovieCard для ввода информации о фильме */}
             <MovieCard
-                callbackSubmit={handleMovieCreation} 
+                callbackSubmit={handleMovieCreation}
             />
         </div>
     );

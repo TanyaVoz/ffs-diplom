@@ -5,7 +5,7 @@ import Navigation from "./index";
 
 export default function Navigate() {
 
-    const [start, setStartDays] = useState(new Date()); 
+    const [start, setStartDays] = useState(new Date());
     const { chosenDate } = useSelector((state) => state.calendar);
     const dispatch = useDispatch();
     const todayDayWeek = new Date();
@@ -25,7 +25,7 @@ export default function Navigate() {
         next.setDate(next.getDate() + 1);
         weekDates.push(next);
     }
-    
+
     //Отображение дней и переключатель на следующую неделю
     return (
         <nav className="page-nav">

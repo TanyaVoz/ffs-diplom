@@ -3,12 +3,12 @@ import { closePopup } from "../../../../reducers/popupReducer";
 
 export default function SessionButton(props) {
     const { text, handleDelete } = props;
-    const dispatch = acceptBtnUseDispatch(); 
+    const dispatch = acceptBtnUseDispatch();
 
     // Обработчик для отмены (закрытия попапа)
     const CancelPopup = (e) => {
         e.preventDefault();
-        dispatch(closePopup()); 
+        dispatch(closePopup());
     };
 
     return (

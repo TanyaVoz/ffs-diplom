@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 export default function SeatStatus(props) {
-    const { status, callback } = props; 
+    const { status, callback } = props;
     const getStatusClassName = (status) => {
         switch (status) {
             case "standard":

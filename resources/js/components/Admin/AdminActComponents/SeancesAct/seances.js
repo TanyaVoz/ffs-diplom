@@ -8,7 +8,7 @@ export default function SeancesHall() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getSeances()); 
+        dispatch(getSeances());
     }, [chosenDate]);
 
     // Функция для отображения кнопок добавления сеансов для каждого кинозала

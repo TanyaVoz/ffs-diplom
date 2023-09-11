@@ -37,7 +37,6 @@ export default function MainSeance() {
             return res;
         }, { seats: [], cost: 0 });
 
-        // Создание билета с выбранными местами и стоимостью
         dispatch(createTicket({ seanceId, seats: ticket.seats, cost: ticket.cost }));
     }
 

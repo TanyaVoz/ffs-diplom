@@ -9,7 +9,7 @@ export default function Auth({ children }) {
   if (!token) {
     return <Navigate to="/admin/login" state={{ from: currentLocation }} replace />;
   }
-  
+
   return children;
 }
 

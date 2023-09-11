@@ -4,7 +4,7 @@ import { changeSeatStatus } from "../../../../reducers/adminReducer";
 import SeatStatus from "./seatType";
 
 export default function SeatsScheme(props) {
-    const { place } = props; 
+    const { place } = props;
     const { seats } = useSelector((state) => state.admin);
     const dispatch = useDispatch();
     const allStatus = ["standard", "vip", "disabled"]; // Список доступных статусов мест

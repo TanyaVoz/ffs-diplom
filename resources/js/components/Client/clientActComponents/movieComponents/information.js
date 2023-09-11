@@ -21,7 +21,7 @@ export default function MovieInfo(props) {
                     src={`images/${film.poster}`}
                     onError={(e) => {
                         // Обработка ошибки при загрузке изображения постера
-                        e.target.src = "images/poster-not-available.png"; 
+                        e.target.src = "images/poster-not-available.png";
                     }}
                 />
             </div>

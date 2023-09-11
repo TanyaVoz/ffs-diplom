@@ -20,7 +20,7 @@ export default function MovieComponent(props) {
                 <ClientHall
                     selectedCinemaHallId={selectedCinemaHall.id}
                     selectedFilmId={id}
-                    key={selectedCinemaHall.id} 
+                    key={selectedCinemaHall.id}
                 />
             ))}
         </section>

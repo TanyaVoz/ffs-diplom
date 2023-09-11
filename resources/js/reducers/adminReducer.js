@@ -270,7 +270,7 @@ const createAdminSlice = createSlice({
             state.chosenDate = action.payload;
         },
     },
-     // Обработка результатов выполнения асинхронных операций
+    // Обработка результатов выполнения асинхронных операций
     extraReducers: (builder) => {
         builder
             .addCase(getHalls.fulfilled, (state, action) => {

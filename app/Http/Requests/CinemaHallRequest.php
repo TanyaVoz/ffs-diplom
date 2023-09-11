@@ -7,8 +7,6 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Response;
 
-
-
 class CinemaHallRequest extends FormRequest
 {
     public function authorize(): bool

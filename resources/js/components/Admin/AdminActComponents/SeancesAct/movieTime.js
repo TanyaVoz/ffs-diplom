@@ -2,13 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { showPopup } from "../../../../reducers/popupReducer";
 
 export default function MovieTime(props) {
-    const { movies } = useSelector(state => state.admin); 
-    const { id, seance, time } = props; 
+    const { movies } = useSelector(state => state.admin);
+    const { id, seance, time } = props;
     const dispatch = useDispatch();
-    const movie = movies.find(movie => movie.id === +id); 
-    const width = (movie.duration / 60) * 30; 
-    const datetime = new Date(time); 
-    const shift = (datetime.getHours() + datetime.getMinutes() / 60) * 30; 
+    const movie = movies.find(movie => movie.id === +id);
+    const width = (movie.duration / 60) * 30;
+    const datetime = new Date(time);
+    const shift = (datetime.getHours() + datetime.getMinutes() / 60) * 30;
     const movieTitle = movie ? movie.title : "Фильм не найден"; // Обработка случая, если фильм не найден
 
     return (

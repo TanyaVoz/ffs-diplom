@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import MovieTime from "./movieTime"; 
+import MovieTime from "./movieTime";
 
 export default function HallTime(props) {
-    const seances = useSelector(state => state.admin.seances); 
-    const { cinemaHall } = props; 
+    const seances = useSelector(state => state.admin.seances);
+    const { cinemaHall } = props;
 
     // Фильтрация и сортировка сеансов для указанного кинозала
     const cinemaHallSeances = seances.filter(seance => +seance.cinema_hall_id === cinemaHall);

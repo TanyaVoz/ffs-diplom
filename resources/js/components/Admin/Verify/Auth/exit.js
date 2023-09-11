@@ -12,7 +12,7 @@ const Exit = () => {
   };
 
   if (!token) {
-    return null; 
+    return null;
   }
 
   return (

@@ -13,7 +13,7 @@ const AddMovieAction = () => {
   // Загрузка списка фильмов при монтировании компонента
   useEffect(() => {
     const fetchMovies = () => {
-      dispatch(getMovies()); 
+      dispatch(getMovies());
     };
     fetchMovies();
   }, [dispatch]);

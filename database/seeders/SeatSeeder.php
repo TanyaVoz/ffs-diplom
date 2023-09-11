@@ -39,7 +39,6 @@ class SeatSeeder extends Seeder
                 $status = 'standard';
             }
 
-            
             for ($h = 1; $h <= $totalCinemaHalls; $h++) {
                 DB::table('seats')->insert([
                     'number' => $num,

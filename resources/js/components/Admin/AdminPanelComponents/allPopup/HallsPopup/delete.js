@@ -25,7 +25,6 @@ export default function DeleteHall() {
         }
     };
 
-
     return (
         <form onSubmit={handleDelete}>
             <p className="conf-step__paragraph">

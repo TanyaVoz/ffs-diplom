@@ -17,7 +17,7 @@ export default function ClientHall(props) {
                     <MovieSeanceItem
                         id={seance.id}
                         time={seance.datetime}
-                        key={seance.id} 
+                        key={seance.id}
                     />
                 ))}
             </ul>

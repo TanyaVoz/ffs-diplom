@@ -6,7 +6,7 @@ import getRussianMinutesLabel from "../../../Client/additionalComponents/Formatt
 
 
 const EditMovieAction = ({ id, img, title, duration }) => {
-   
+
     const filmDuration = getRussianMinutesLabel(duration);
     const dispatch = useDispatch();
 
@@ -35,10 +35,10 @@ const EditMovieAction = ({ id, img, title, duration }) => {
 
 // Пропсы компонента
 EditMovieAction.propTypes = {
-    id: PropTypes.number.isRequired, 
-    img: PropTypes.string.isRequired, 
-    title: PropTypes.string.isRequired, 
-    duration: PropTypes.number.isRequired, 
+    id: PropTypes.number.isRequired,
+    img: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    duration: PropTypes.number.isRequired,
 };
 
 export default EditMovieAction;
